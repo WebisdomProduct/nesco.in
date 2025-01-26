@@ -22,7 +22,7 @@ function Navbar() {
   const toggleSidebar = () => setIsSidebarOpen(!isSidebarOpen);
 
   return (
-    <nav className="bg-[#403092] py-8 px-16 flex items-center justify-between relative w-full">
+    <nav className="bg-[#403092] py-8 px-16 flex items-center justify-between relative w-full z-[999]">
       {/* Logo */}
       <div>
         <span className="text-white lg:text-4xl text-3xl font-extrabold">
@@ -34,7 +34,10 @@ function Navbar() {
       <div className="hidden lg:flex items-center">
         <ul className="flex items-center xl:gap-10 lg:gap-3">
           {NavData.map((data, index) => (
-            <li key={index} className="text-white border-r border-white last:border-none pr-5">
+            <li
+              key={index}
+              className="text-white border-r border-white last:border-none pr-5"
+            >
               {data.title}
             </li>
           ))}
@@ -61,7 +64,6 @@ function Navbar() {
         } lg:hidden`}
       >
         <div className="flex justify-end items-center mb-8 mx-6">
-          
           <FaTimes
             className="text-white text-3xl cursor-pointer"
             onClick={toggleSidebar}

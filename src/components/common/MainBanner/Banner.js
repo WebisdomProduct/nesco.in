@@ -2,13 +2,12 @@
 import React, { useEffect } from "react";
 import Slider from "react-slick";
 import { FaAngleLeft, FaAngleRight } from "react-icons/fa";
-import BannerImage from "@/assests/mainBanner/nescoBanner1.jpg";
 
 // Import Slick CSS
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
-function Banner() {
+function Banner({ SliderData }) {
   const sliderRef = React.useRef(null);
 
   // slider settings
@@ -32,58 +31,6 @@ function Banner() {
       <div className="w-3 h-3 rounded-full bg-gray-300 transition-colors duration-300 mt-4"></div>
     ),
   };
-
-  // slider data
-  const SliderData = [
-    {
-      image: BannerImage,
-      title: "Believe",
-      subtitle1: "The possibilities",
-      subtitle2: "are endless",
-      description1: "Welcome to",
-      description2: "Nesco",
-    },
-    {
-      image: BannerImage,
-      title: "Believe",
-      subtitle1: "The possibilities",
-      subtitle2: "are endless",
-      description1: "Welcome to",
-      description2: "Nesco",
-    },
-    {
-      image: BannerImage,
-      title: "Believe",
-      subtitle1: "The possibilities",
-      subtitle2: "are endless",
-      description1: "Welcome to",
-      description2: "Nesco",
-    },
-    {
-      image: BannerImage,
-      title: "Believe",
-      subtitle1: "The possibilities",
-      subtitle2: "are endless",
-      description1: "Welcome to",
-      description2: "Nesco",
-    },
-    {
-      image: BannerImage,
-      title: "Believe",
-      subtitle1: "The possibilities",
-      subtitle2: "are endless",
-      description1: "Welcome to",
-      description2: "Nesco",
-    },
-    {
-      image: BannerImage,
-      title: "Believe",
-      subtitle1: "The possibilities",
-      subtitle2: "are endless",
-      description1: "Welcome to",
-      description2: "Nesco",
-    },
-  ];
 
   // Apply default purple background to the first dot
   useEffect(() => {
@@ -150,10 +97,10 @@ function Banner() {
                       <p className="text-primary md:text-[4rem] text-[3rem] leading-[4rem] font-bold">
                         {data.title}.
                       </p>
-                      <p className="md:text-[2.2rem] text-[1.5rem] md:leading-[3.3rem] font-normal">
+                      <p className="md:text-[2.2rem] text-[1.5rem] md:leading-[3.3rem] font-normal text-black">
                         {data.subtitle1}
                       </p>
-                      <p className="font-medium md:text-[3rem] text-[2rem] md:leading-[2rem]">
+                      <p className="font-medium md:text-[3rem] text-[2rem] md:leading-[2rem] text-black">
                         {data.subtitle2}
                       </p>
                       <p className="mt-4 text-primary md:text-2xl text-lg">
