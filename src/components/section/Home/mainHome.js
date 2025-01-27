@@ -4,6 +4,8 @@ import HomeBanner from "./HomeBanner";
 import Goal from "./Goal";
 import Mentor from "./Mentor";
 import Service from "./Service";
+import Life from "./Life";
+import News from "./News";
 
 function MainHome() {
   return (
@@ -12,6 +14,8 @@ function MainHome() {
       <Goal />
       <Mentor />
       <Service />
+      <Life />
+      <News />
     </Pagewrapper>
   );
 }

@@ -22,7 +22,7 @@ function Navbar() {
   const toggleSidebar = () => setIsSidebarOpen(!isSidebarOpen);
 
   return (
-    <nav className="bg-[#403092] py-8 px-16 flex items-center justify-between relative w-full z-[999]">
+    <nav className="bg-[#403092] py-8 md:px-16 px-8 flex items-center justify-between relative w-full z-[999]">
       {/* Logo */}
       <div>
         <span className="text-white lg:text-4xl text-3xl font-extrabold">
@@ -63,7 +63,7 @@ function Navbar() {
           isSidebarOpen ? "translate-x-0" : "translate-x-full"
         } lg:hidden`}
       >
-        <div className="flex justify-end items-center mb-8 mx-6">
+        <div className="flex justify-end items-center mb-8 md:mx-6">
           <FaTimes
             className="text-white text-3xl cursor-pointer"
             onClick={toggleSidebar}
