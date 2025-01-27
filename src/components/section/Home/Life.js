@@ -50,11 +50,11 @@ function Life() {
               <text
                 x="50%"
                 y="20%"
-                text-anchor="middle"
+                textAnchor="middle"
                 fill="white"
-                font-size="16"
-                font-family="Arial, sans-serif"
-                font-weight="bold"
+                fontSize="16"
+                fontFamily="Arial, sans-serif"
+                fontWeight="bold"
               >
                 INDIA
               </text>
