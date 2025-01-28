@@ -22,7 +22,7 @@ function Navbar() {
   const toggleSidebar = () => setIsSidebarOpen(!isSidebarOpen);
 
   return (
-    <nav className="bg-[#403092] py-8 md:px-16 px-8 flex items-center justify-between relative w-full z-[999]">
+    <nav className="bg-[#403092] py-8 md:px-16 px-8 flex items-center justify-between w-full z-[999] fixed">
       {/* Logo */}
       <div>
         <span className="text-white lg:text-4xl text-3xl font-extrabold font-branding-light">

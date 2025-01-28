@@ -17,9 +17,13 @@ function Banner({ SliderData }) {
     speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1,
-    autoplay: false,
+    autoplay: true,
+    autoplaySpeed: 3000,
     arrows: false,
     adaptiveHeight: true,
+    vertical: true,
+    verticalSwiping: true,
+    swipeToSlide: true,
     appendDots: (dots) => (
       <div className="pt-5">
         <ul className="flex justify-center md:gap-4 gap-2 items-center">
@@ -57,22 +61,22 @@ function Banner({ SliderData }) {
   };
 
   return (
-    <div className="w-full mt-5 mb-16">
+    <div className="w-full pt-24 mb-16">
       <div className="relative">
         {/* Left Arrow */}
-        <button
+        {/* <button
           className="absolute md:left-5 left-3 top-1/2 transform -translate-y-1/2 z-10 bg-primary p-2 rounded-full shadow-lg"
           onClick={handlePrev}
         >
           <FaAngleLeft size={34} className="text-white" />
-        </button>
+        </button> */}
 
         {/* Slider */}
         <div className="flex justify-center w-full">
           <Slider
             ref={sliderRef}
             {...settings}
-            className="w-[85%]"
+            className="w-full"
             beforeChange={(oldIndex, newIndex) => {
               const dots = document.querySelectorAll(".slick-dots li");
               dots.forEach((dot, index) => {
@@ -93,7 +97,7 @@ function Banner({ SliderData }) {
                     key={index}
                     className="bg-black text-white flex justify-center items-center text-2xl h-[500px] relative"
                   >
-                    <div className="z-20 absolute bottom-14 lg:left-20 md:left-10 left-5">
+                    {/* <div className="z-20 absolute bottom-14 lg:left-36 md:left-28 left-16">
                       <p className="text-primary md:text-[4rem] text-[3rem] leading-[4rem] font-bold">
                         {data.title}.
                       </p>
@@ -109,7 +113,7 @@ function Banner({ SliderData }) {
                         </span>
                         <span className="font-bold">{data.description2}</span>
                       </p>
-                    </div>
+                    </div> */}
                     <img
                       src={data.image.src}
                       className=" mx-auto w-full h-full z-0 object-cover"
@@ -121,12 +125,12 @@ function Banner({ SliderData }) {
         </div>
 
         {/* Right Arrow */}
-        <button
+        {/* <button
           className="absolute right-5 top-1/2 transform -translate-y-1/2 z-10 bg-primary p-2 rounded-full shadow-lg"
           onClick={handleNext}
         >
           <FaAngleRight size={34} className="text-white" />
-        </button>
+        </button> */}
       </div>
     </div>
   );
