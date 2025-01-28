@@ -17,13 +17,14 @@ function Banner({ SliderData }) {
     speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1,
+    vertical: true,
+    verticalSwiping: true,
+    swipeToSlide: true,
     autoplay: true,
     autoplaySpeed: 3000,
     arrows: false,
     adaptiveHeight: true,
-    vertical: true,
-    verticalSwiping: true,
-    swipeToSlide: true,
+
     appendDots: (dots) => (
       <div className="pt-5">
         <ul className="flex justify-center md:gap-4 gap-2 items-center">
@@ -76,7 +77,7 @@ function Banner({ SliderData }) {
           <Slider
             ref={sliderRef}
             {...settings}
-            className="w-full"
+            className="w-full h-[80vh]"
             beforeChange={(oldIndex, newIndex) => {
               const dots = document.querySelectorAll(".slick-dots li");
               dots.forEach((dot, index) => {
@@ -95,7 +96,7 @@ function Banner({ SliderData }) {
               ? SliderData.map((data, index) => (
                   <div
                     key={index}
-                    className="bg-black text-white flex justify-center items-center text-2xl h-[500px] relative"
+                    className="bg-black text-white flex justify-center items-center text-2xl h-[80vh] mb-10 relative"
                   >
                     {/* <div className="z-20 absolute bottom-14 lg:left-36 md:left-28 left-16">
                       <p className="text-primary md:text-[4rem] text-[3rem] leading-[4rem] font-bold">
