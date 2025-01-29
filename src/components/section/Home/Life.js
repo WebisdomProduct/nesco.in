@@ -3,7 +3,7 @@ import PlaceImage from "@/assests/Home/place.png";
 
 function Life() {
   return (
-    <div className="flex lg:px-[7rem] px-5 md:px-16 justify-between w-full bg-[#002172] relative pt-24">
+    <div className="flex lg:px-[7rem] px-5 md:px-16 justify-between w-full bg-[#002172] relative lg:pt-16">
       <div className="flex flex-col lg:w-[40%]  gap-7 py-20 z-10">
         <p className="text-3xl font-bold text-secondary ">Life at Nesco</p>
         <p className="text-white text-3xl">An inspired culture of progress</p>

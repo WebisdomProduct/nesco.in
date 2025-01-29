@@ -3,7 +3,7 @@ import ServiceImage from "@/assests/Home/service.jpeg";
 
 function Service() {
   return (
-    <div className="my-16 flex w-full justify-center  pt-32">
+    <div className="my-16 flex w-full justify-center  lg:pt-10">
       <div className="lg:w-[60%] md:w-[80%] w-[90%] relative overflow-hidden">
         <div className="absolute top-0 left-0 -z-[1] w-full h-full">
           <img

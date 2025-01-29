@@ -3,7 +3,7 @@ import MentorImage from "@/assests/Home/Mentor.png";
 
 function Mentor() {
   return (
-    <div className="bg-[#D2EFFF] flex flex-col items-center py-10  pt-28">
+    <div className="bg-[#D2EFFF] flex flex-col items-center py-10  lg:pt-28">
       <div className="md:w-[60%] flex flex-col items-center">
         <p className="lg:text-3xl text-xl text-primary">
           A note from the Founding
