@@ -9,7 +9,7 @@ function Goal() {
           <p className="text-center md:text-3xl text-2xl font-bold leading-[3rem] mt-6">
             One goal. 8 decades.
           </p>
-          <p className="md:text-3xl text-2xl border-b-2 border-b-primary pb-3 leading-[3rem] font-medium text-center">
+          <p className="md:text-3xl text-2xl  pb-3 leading-[3rem] font-medium text-center">
             Infinite possibilities
           </p>
         </div>

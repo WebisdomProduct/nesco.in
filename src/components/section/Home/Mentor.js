@@ -16,7 +16,7 @@ function Mentor() {
         <p className="lg:text-3xl text-xl text-primary">
           A note from the Founding
         </p>
-        <p className="lg:text-3xl text-2xl font-bold text-primary border-b-2 border-b-primary pb-3 mt-2">
+        <p className="lg:text-3xl text-2xl font-bold text-primary  pb-3 mt-2">
           Director and Mentor
         </p>
       </div>

@@ -75,7 +75,7 @@ function News() {
 
   return (
     <div className="w-full flex flex-col items-center py-10 lg:pt-28">
-      <p className="border-b-2 border-primary text-primary font-bold pb-3 text-3xl">
+      <p className=" text-primary font-bold pb-3 text-3xl">
         In the news
       </p>
 
