@@ -22,48 +22,44 @@ function Life() {
           community of motivated individuals shaping the future together.
         </p>
       </div>
-      <div className="hidden lg:block absolute w-full h-full top-0 left-0">
-        <img
-          src={background.src}
-          alt="background"
-          className=" absolute z-0 right-0  xl:w-[900px] lg:w-[700px] xl:-top-[20%] lg:top-[10%]"
-        />
-
-        <div className="absolute hidden md:block z-0 bottom-16 right-10 w-[140px]">
-          <div className="overflow-hidden relative text-white bg-red-500 text-[2rem] leading-8 border-x-2 border-t-2 border-white p-3">
-            Great Place To Work
-          </div>
-          <div className="text-white flex flex-col items-center border-x-2 relative">
-            <p className="text-[1.8rem]">Certified</p>
-            <p className="text-[8px] pb-1">December 2024 - December 2025</p>
-          </div>
-          <div className="text-white flex flex-col items-center relative mb-5">
-            <span className="inline-block bg-[#002172] absolute -top-1 left-0 h-1 w-full z-10 rounded-full border-l-2 border-r-2"></span>
-            <span className="absolute -top-[16px] ">
-              <svg
-                width="140"
-                height="100"
-                viewBox="0 0 200 100"
-                xmlns="http://www.w3.org/2000/svg"
+      <div className="absolute hidden md:block z-0 bottom-16 right-10 w-[140px]">
+        <div className="overflow-hidden relative text-white bg-red-500 text-[2rem] leading-8 border-x-2 border-t-2 border-white p-3">
+          Great Place To Work
+        </div>
+        <div className="text-white flex flex-col items-center border-x-2 relative">
+          <p className="text-[1.8rem]">Certified</p>
+          <p className="text-[8px] pb-1">December 2024 - December 2025</p>
+          {/* Triangle */}
+          {/* <div className="absolute w-0 h-0 border-l-[70px] border-l-transparent border-r-[70px] border-r-transparent border-t-[70px] border-t-white top-full"></div> */}
+        </div>
+        <div className="text-white flex flex-col items-center relative mb-5">
+          <span className="inline-block bg-[#002172] absolute -top-1 left-0 h-1 w-full z-10 rounded-full border-l-2 border-r-2"></span>
+          <span className="absolute -top-[16px] ">
+            <svg
+              width="140"
+              height="100"
+              viewBox="0 0 200 100"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <polygon
+                points="0,0 200,0 100,80"
+                fill="#002172"
+                stroke="#ffffff"
+                strokeWidth="2"
+              />
+              <text
+                x="50%"
+                y="20%"
+                textAnchor="middle"
+                fill="white"
+                fontSize="16"
+                fontFamily="Arial, sans-serif"
+                fontWeight="bold"
               >
-                <polygon
-                  points="0,0 200,0 100,80"
-                  fill="#002172"
-                  stroke="#ffffff"
-                  strokeWidth="2"
-                />
-                <text
-                  x="50%"
-                  y="20%"
-                  text-anchor="middle"
-                  fill="white"
-                  className=" text-[16px] font-bold "
-                >
-                  INDIA
-                </text>
-              </svg>
-            </span>
-          </div>
+                INDIA
+              </text>
+            </svg>
+          </span>
         </div>
       </div>
     </div>
