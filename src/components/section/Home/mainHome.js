@@ -38,38 +38,77 @@ function MainHome() {
     const handleScroll = (e) => {
       if (isScrolling) return;
 
-      isScrolling = true;
       const delta = e.deltaY;
       const sections = Array.from(document.querySelectorAll(".section"));
       const currentScroll = container.scrollTop;
+      const viewportHeight = window.innerHeight;
 
-      if (delta > 0) {
-        // Scroll down
-        const nextSection = sections.find(
-          (section) => section.offsetTop > currentScroll + 10 // Allow small tolerance
-        );
-        if (nextSection) {
-          smoothScrollTo(nextSection.offsetTop);
-        }
-      } else {
-        // Scroll up
-        const prevSection = sections
-          .slice()
-          .reverse()
-          .find((section) => section.offsetTop < currentScroll - 10); // Allow small tolerance
-        if (prevSection) {
-          smoothScrollTo(prevSection.offsetTop);
+      // Find the current active section
+      let activeSectionIndex = -1;
+      for (let i = 0; i < sections.length; i++) {
+        const section = sections[i];
+        const sectionTop = section.offsetTop;
+        const sectionBottom = sectionTop + section.offsetHeight;
+
+        if (currentScroll >= sectionTop && currentScroll < sectionBottom) {
+          activeSectionIndex = i;
+          break;
         }
       }
 
-      // Allow new scrolling after animation
-      setTimeout(() => {
-        isScrolling = false;
-      }, 1000); // Match duration of `smoothScrollTo`
+      if (activeSectionIndex === -1) return;
+
+      // Handle Goal section scrolling
+      const activeSection = sections[activeSectionIndex];
+      if (activeSection.classList.contains("goal-section")) {
+        const goalSectionBottom =
+          activeSection.offsetTop + activeSection.offsetHeight;
+        const isAtGoalSectionEnd =
+          currentScroll + viewportHeight >= goalSectionBottom - 10;
+
+        // Scroll down from Goal section to Mentor
+        if (delta > 0 && isAtGoalSectionEnd) {
+          const nextSection = sections[activeSectionIndex + 1];
+          if (nextSection) {
+            isScrolling = true;
+            smoothScrollTo(nextSection.offsetTop);
+            setTimeout(() => (isScrolling = false), 1000);
+          }
+          return;
+        }
+
+        // Scroll up from Goal section to HomeBanner
+        if (delta < 0 && currentScroll <= activeSection.offsetTop + 10) {
+          const prevSection = sections[activeSectionIndex - 1];
+          if (prevSection) {
+            isScrolling = true;
+            smoothScrollTo(prevSection.offsetTop);
+            setTimeout(() => (isScrolling = false), 1000);
+          }
+          return;
+        }
+
+        // Allow normal scrolling within Goal section
+        return;
+      }
+
+      // Handle scroll-snapping for other sections
+      isScrolling = true;
+
+      if (delta > 0) {
+        // Scroll down: Move to the next section
+        const nextSection = sections[activeSectionIndex + 1];
+        if (nextSection) smoothScrollTo(nextSection.offsetTop);
+      } else {
+        // Scroll up: Move to the previous section
+        const prevSection = sections[activeSectionIndex - 1];
+        if (prevSection) smoothScrollTo(prevSection.offsetTop);
+      }
+
+      setTimeout(() => (isScrolling = false), 1000);
     };
 
     container.addEventListener("wheel", handleScroll);
-
     return () => container.removeEventListener("wheel", handleScroll);
   }, []);
 
@@ -79,7 +118,7 @@ function MainHome() {
         <div className="section">
           <HomeBanner />
         </div>
-        <div className="section">
+        <div className="section goal-section">
           <Goal />
         </div>
         <div className="section">

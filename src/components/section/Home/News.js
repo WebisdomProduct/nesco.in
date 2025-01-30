@@ -124,7 +124,7 @@ function News() {
               return (
                 <div>
                   <div
-                    className=" p-5 shadow-lg gap-5 relative overflow-hidden h-full"
+                    className=" p-5 shadow-lg gap-5 relative overflow-hidden md:h-full h-[292px]"
                     style={{ backgroundColor: data.backgroundcolor }}
                   >
                     <div className="absolute  top-0 left-0 w-full h-full z-0">
@@ -134,7 +134,7 @@ function News() {
                         className="w-full h-full z-0"
                       />
                     </div>
-                    <div className="flex flex-col mt-5 w-[60%] h-full justify-between pb-5 z-10 relative">
+                    <div className="flex flex-col mt-5 w-[60%] justify-between h-full z-10 relative pb-5">
                       <div>
                         <p
                           className="text-3xl font-semibold mb-2"

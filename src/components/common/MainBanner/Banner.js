@@ -1,51 +1,78 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import "./Banner.css";
+import Slider from "react-slick";
+import { FaAngleLeft, FaAngleRight } from "react-icons/fa";
+
+// Import Slick CSS
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
 function Banner({ SliderData }) {
-  const [currentImage, setCurrentImage] = useState(0);
-  // const [isVisible, setIsVisible] = useState(true);
-  // const elementRef = useRef(null);
+  const sliderRef = React.useRef(null);
+  const [activeIndex, setActiveIndex] = useState(0);
 
-  // useEffect(() => {
-  //   if (elementRef.current) {
-  //     const calculatedHeight = elementRef.current.scrollHeight;
+  // Custom arrow components
+  const PrevArrow = ({ onClick }) => (
+    <button
+      onClick={onClick}
+      className="absolute left-4 top-[60%] transform -translate-y-1/2 bg-primary text-white p-3 rounded-full z-10"
+    >
+      <FaAngleLeft size={24} />
+    </button>
+  );
 
-  //     // if (calculatedHeight > 660) {
-  //     //   setIsVisible(false);
-  //     // }
-  //   }
-  // }, []);
+  const NextArrow = ({ onClick }) => (
+    <button
+      onClick={onClick}
+      className="absolute right-4 top-[60%] transform -translate-y-1/2 bg-primary text-white p-3 rounded-full z-10"
+    >
+      <FaAngleRight size={24} />
+    </button>
+  );
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentImage((prev) => (prev + 1) % SliderData.length);
-    }, 3000);
-
-    return () => clearInterval(interval); // Cleanup on unmount
-  }, [SliderData]);
+  // slider settings
+  const settings = {
+    dots: false,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    swipeToSlide: true,
+    autoplay: true,
+    autoplaySpeed: 3000,
+    arrows: true,
+    prevArrow: <PrevArrow />, // Custom previous arrow
+    nextArrow: <NextArrow />, // Custom next arrow
+    adaptiveHeight: true,
+    beforeChange: (oldIndex, newIndex) => {
+      setActiveIndex(newIndex);
+    },
+  };
 
   return (
-    <div className="w-full mb-16 h-[100vh] relative banner-section">
-      <div className="flex justify-center w-full overflow-hidden h-[100vh] relative">
-        <div
-          className=" top-0 left-0 py-6 md:px-16 px-8  w-full h-[100vh] z-10 "
-          style={{
-            background: "black",
-
-            opacity: ".4",
-          }}
-        ></div>
-        {SliderData.map((data, index) => (
-          <img
-            key={index}
-            src={data.image.src}
-            alt={`Slide ${index + 1}`}
-            className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-[2s] ${
-              currentImage === index ? "opacity-100" : "opacity-0"
-            }`}
-          />
-        ))}
+    <div className="w-full mb-16 h-[100vh] banner-section relative">
+      <div className="relative">
+        <div className="flex justify-center w-full overflow-hidden h-[100vh]">
+          <Slider ref={sliderRef} {...settings} className="w-full h-[80vh]">
+            {SliderData
+              ? SliderData.map((data, index) => (
+                  <div
+                    key={index}
+                    className={`bg-black text-white flex justify-center items-center text-2xl h-[100vh] mb-10 relative transform transition-all duration-700 ${
+                      index === activeIndex
+                        ? "opacity-100 translate-x-0 scale-100"
+                        : "opacity-0 translate-x-10 scale-95"
+                    }`}
+                  >
+                    <img
+                      src={data.image.src}
+                      className="mx-auto w-full h-full z-0 object-cover"
+                    />
+                  </div>
+                ))
+              : "Slider data"}
+          </Slider>
+        </div>
       </div>
     </div>
   );

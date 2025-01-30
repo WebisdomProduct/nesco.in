@@ -88,11 +88,11 @@ function Navbar() {
 
       {/* Desktop NavBar */}
       <div className="hidden lg:flex items-center z-10">
-        <ul className="flex items-center xl:gap-10 lg:gap-3">
+        <ul className="flex items-center ">
           {NavData.map((data, index) => (
             <li
               key={index}
-              className={`text-white border-r border-white last:border-none pr-5  `}
+              className={`text-white border-r border-white last:border-none xl:px-7 lg:px-5 flex justify-center w-full `}
             >
               <button
                 className={`${

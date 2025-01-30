@@ -2,7 +2,7 @@ import React from "react";
 import GoalImage from "@/assests/Home/Goal.jpg";
 function Goal() {
   return (
-    <div className="w-full relative flex flex-col items-center my-10 pt-10">
+    <div className="w-full relative flex flex-col items-center justify-center py-24 ">
       <div className="w-full absolute bg-[#D2EFFF] top-0 left-0 h-[30%] z-0"></div>
       <div className="lg:w-[60%] w-[80%] flex flex-col items-center justify-center z-10">
         <div className=" text-primary">
