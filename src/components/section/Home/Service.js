@@ -3,8 +3,8 @@ import ServiceImage from "@/assests/Home/girl.jpg";
 
 function Service() {
   return (
-    <div className="my-16 flex w-full justify-center  lg:pt-10">
-      <div className="lg:w-[60%] md:w-[80%] w-[90%] relative overflow-hidden">
+    <div className="md:pt-16 pt-10 flex w-full justify-center items-center h-[100vh]">
+      <div className=" md:w-[80%] w-[90%] relative overflow-hidden h-[80%] flex items-center">
         <div className="absolute top-0 left-0 -z-[1] w-full h-full">
           <img
             src={ServiceImage.src}
@@ -20,11 +20,11 @@ function Service() {
             }}
           ></div> */}
         </div>
-        <div className="md:w-[50%] z-[1] flex flex-col gap-5 py-10 md:px-10 px-5">
-          <p className="text-primary md:text-3xl text-2xl font-bold mt-10">
+        <div className="xl:w-[50%] lg:w-[60%] md:w-[70%] z-[1] flex flex-col gap-5 py-10 lg:px-20 md:px-10 px-5">
+          <p className="text-primary md:text-4xl text-3xl font-bold mt-10">
             In service of a better & brighter tomorrow
           </p>
-          <p className="md:text-lg text-justify">
+          <p className="text-lg lg:text-xl text-justify">
             For us, social responsibility is all about creating positive impact
             in the lives of the hopeful by working tirelessly to improve access
             to education, infrastructure & medical facilities in rural areas.

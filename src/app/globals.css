@@ -50,6 +50,7 @@ body {
     "branding-italic";
 }
 /* mainHome.css */
+/* mainHome.css */
 .container1 {
   scroll-behavior: auto;
   overflow-y: auto;
@@ -61,5 +62,9 @@ body {
   scroll-snap-align: start;
   position: relative;
   width: 100%;
-  display: flex;
+  min-height: 100vh; /* Ensure sections take full height */
+}
+
+.goal-section {
+  height: auto; /* Allow content to expand */
 }
