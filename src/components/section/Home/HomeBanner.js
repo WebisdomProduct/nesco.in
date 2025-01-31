@@ -14,7 +14,7 @@ import hexaImage5 from "@/assests/mainBanner/hexa5.png";
 import hexaLogo1 from "@/assests/mainBanner/f1.png";
 import hexaLogo2 from "@/assests/mainBanner/e1.png";
 import hexaLogo3 from "@/assests/mainBanner/b1.png";
-import hexaLogo4 from "@/assests/mainBanner/i1.png";
+import hexaLogo4 from "@/assests/mainBanner/i11.png";
 import hexaLogo5 from "@/assests/mainBanner/r1.png";
 
 function HomeBanner() {
@@ -51,7 +51,7 @@ function HomeBanner() {
       description:
         "manufactures abrasives & shot blasting machine for industries like automotive and aerospace since 1975",
       hexaImage: hexaImage4,
-      hexaLogo: hexaLogo1,
+      hexaLogo: hexaLogo4,
     },
     {
       image: BannerImage5,

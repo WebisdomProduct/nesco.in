@@ -70,21 +70,21 @@ function Banner({ SliderData }) {
                 {index !== 0 && (
                   <div className="absolute z-10 w-full h-full flex items-center justify-end overflow-hidden">
                     <div className="relative">
-                      <div className="absolute z-20 md:top-[35%] top-[30%] transform -translate-y-1/2 w-1/2 md:translate-x-1/2 translate-x-[48%] text-center">
+                      <div className="absolute z-20 md:top-[35%] top-[28%] transform -translate-y-1/2 w-1/2 md:translate-x-[52%] translate-x-[48%] text-center">
                         <img
                           src={data.hexaLogo.src}
                           alt="hexa image"
                           className="object-cover md:scale-50 scale-[.6]"
                         />
                       </div>
-                      <div className="absolute z-20 md:top-[50%] top-[55%] transform -translate-y-1/2 md:w-1/2 w-[60%] md:translate-x-1/2 translate-x-[35%] text-center md:text-2xl text-lg">
+                      <div className="absolute z-20 md:top-[55%] top-[57%] transform -translate-y-1/2 md:w-[48%] w-[60%] md:translate-x-[55%] translate-x-[36%] text-center md:text-2xl text-lg">
                         {data.description}
                       </div>
 
                       <img
                         src={data.hexaImage.src}
                         alt="hexa image"
-                        className="object-cover md:scale-75 "
+                        className="object-cover md:scale-75 scale-[1.2] "
                       />
                     </div>
                   </div>
