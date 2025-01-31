@@ -30,6 +30,12 @@ function Banner({ SliderData }) {
     </button>
   );
 
+  useEffect(() => {
+    if (sliderRef.current) {
+      sliderRef.current.slickPlay();
+    }
+  }, [activeIndex, SliderData]);
+
   // slider settings
   const settings = {
     dots: false,
@@ -37,9 +43,10 @@ function Banner({ SliderData }) {
     speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1,
-    swipeToSlide: true,
     autoplay: true,
     autoplaySpeed: 3000,
+    swipeToSlide: true,
+
     arrows: true,
     prevArrow: <PrevArrow />, // Custom previous arrow
     nextArrow: <NextArrow />, // Custom next arrow
@@ -54,23 +61,17 @@ function Banner({ SliderData }) {
       <div className="relative">
         <div className="flex justify-center w-full overflow-hidden h-[100vh]">
           <Slider ref={sliderRef} {...settings} className="w-full h-[80vh]">
-            {SliderData
-              ? SliderData.map((data, index) => (
-                  <div
-                    key={index}
-                    className={`bg-black text-white flex justify-center items-center text-2xl h-[100vh] mb-10 relative transform transition-all duration-700 ${
-                      index === activeIndex
-                        ? "opacity-100 translate-x-0 scale-100"
-                        : "opacity-0 translate-x-10 scale-95"
-                    }`}
-                  >
-                    <img
-                      src={data.image.src}
-                      className="mx-auto w-full h-full z-0 object-cover"
-                    />
-                  </div>
-                ))
-              : "Slider data"}
+            {SliderData.map((data, index) => (
+              <div
+                key={index}
+                className="bg-black text-white flex justify-center items-center text-2xl h-[100vh] relative transition-all duration-700"
+              >
+                <img
+                  src={data.image.src}
+                  className="mx-auto w-full h-full object-cover"
+                />
+              </div>
+            ))}
           </Slider>
         </div>
       </div>

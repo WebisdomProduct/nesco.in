@@ -5,10 +5,15 @@ import BannerImage1 from "@/assests/mainBanner/image11.png";
 import BannerImage3 from "@/assests/mainBanner/image3.jpg";
 import BannerImage4 from "@/assests/mainBanner/image4.jpg";
 import BannerImage5 from "@/assests/mainBanner/image5.jpg";
+import Model from "@/assests/mainBanner/Model.png";
 
 function HomeBanner() {
   // slider data
   const SliderData = [
+    {
+      image: Model,
+      description: "We bring extraordinary flavours to your table.",
+    },
     {
       image: BannerImage,
       description: "We bring extraordinary flavours to your table.",
