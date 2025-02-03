@@ -15,7 +15,7 @@ function Mentor() {
           </p>
         </div>
         <div className="lg:w-[55%] w-[80%] flex flex-col items-center md:text-lg mt-10">
-          <p>
+          <p className="text-justify">
             In the last eight decades, Nesco has come a long way. We see our
             present success as only the start to newer and bolder initiatives.
             This is an affirmation that as we continue to grow, we add to the
@@ -23,7 +23,7 @@ function Mentor() {
           </p>
           <div className="lg:flex mt-10 h-full w-full">
             <div className="lg:w-[70%] flex flex-col justify-between gap-10 lg:gap-0 md:text-lg">
-              <p>
+              <p className="text-justify">
                 Our teams are motivated to set new benchmarks across industries
                 through perseverance and innovation. The world we live in is
                 rapidly evolving and at Nesco we are prepared to meet every
