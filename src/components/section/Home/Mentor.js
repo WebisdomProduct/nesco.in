@@ -14,7 +14,7 @@ function Mentor() {
             Director and Mentor
           </p>
         </div>
-        <div className="lg:w-[60%] w-[80%] flex flex-col items-center md:text-lg mt-10">
+        <div className="lg:w-[55%] w-[80%] flex flex-col items-center md:text-lg mt-10">
           <p>
             In the last eight decades, Nesco has come a long way. We see our
             present success as only the start to newer and bolder initiatives.
@@ -33,7 +33,7 @@ function Mentor() {
                 -Late Shri. Sumant J. Patel.
               </p>
             </div>
-            <div className="lg:w-[30%] flex lg:justify-end justify-center mt-10 lg:mt-0">
+            <div className="lg:w-[40%] flex lg:justify-end justify-center mt-10 lg:mt-0">
               <img
                 src={MentorImage.src}
                 alt="Mentor image"
