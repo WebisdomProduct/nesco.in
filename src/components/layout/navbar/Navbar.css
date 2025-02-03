@@ -1,7 +1,6 @@
 .boxAnimation {
   padding-bottom: 6px;
 }
-
 .boxAnimation::after {
   content: "";
   position: absolute;
@@ -10,7 +9,8 @@
   width: 100%;
   height: 5px;
   border-radius: 0 5px 5px 0;
-  background-color: #cfa866;
+  /* background-color: #cfa866; */
+  background-color: rgb(187, 223, 252);
   animation: move;
   animation-duration: 0.7s;
 }

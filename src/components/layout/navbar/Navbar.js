@@ -78,17 +78,17 @@ function Navbar() {
 
   return (
     <nav
-      className={`py-6 md:px-14 px-8 flex items-center justify-between w-full z-[900] fixed transition-all duration-300 overflow-hidden bg-transparent 
+      className={`py-6 md:px-6 px-8 flex items-center justify-between w-full z-[900] fixed transition-all duration-300 overflow-hidden bg-transparent 
       `}
     >
       {!isScrolled && (
         <div
-          className="fixed top-0 left-0 py-6 md:px-16 px-8  w-full h-20 shadow-2xl shadow-black"
-          style={{
-            background: "black",
+          className="fixed top-0 left-0 py-6 md:px-16 px-8  w-full h-20"
+          // style={{
+          //   background: "transparant",
 
-            opacity: ".1",
-          }}
+          //   opacity: "1",
+          // }}
         ></div>
       )}
       {/* Logo */}
@@ -118,7 +118,7 @@ function Navbar() {
                   : isScrolled
                   ? "text-black"
                   : "text-white"
-              } border-r border-white last:border-none xl:px-6 lg:px-5`}
+              } border-r border-white font-branding-semibold text-[1rem] last:border-none xl:px-6 lg:px-5`}
             >
               <Link
                 href={data.route}

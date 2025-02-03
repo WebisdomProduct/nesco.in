@@ -77,7 +77,7 @@ function Banner({ SliderData }) {
                           className="object-cover md:scale-50 scale-[.6]"
                         />
                       </div>
-                      <div className="absolute z-20 md:top-[55%] top-[57%] transform -translate-y-1/2 md:w-[47%] w-[60%] md:translate-x-[58%] translate-x-[36%] text-center md:text-2xl text-lg">
+                      <div className="absolute z-20 md:top-[55%] font-branding-medium top-[57%] transform -translate-y-1/2 md:w-[47%] w-[60%] md:translate-x-[58%] translate-x-[36%] text-center md:text-[1.8rem] leading-[2.1rem] text-lg">
                         {data.description}
                       </div>
 
@@ -97,14 +97,40 @@ function Banner({ SliderData }) {
 
                 {index === 0 && (
                   <div className="text-black font-poppins absolute bottom-40 left-48">
-                    <h1 className="text-6xl text-blue-900 font-[600]">
+                    <h1
+                      //  className="text-6xl text-blue-900 font-[600]"
+                      className="lg:text-[4.5rem] text-2xl font-bold text-primary pb-3 mt-4"
+                      style={{ fontFamily: "BrandingSemibold" }}
+                    >
                       Believe.
                     </h1>
-                    <h2 className="text-4xl font-medium">The possibilities</h2>
-                    <h3 className="text-4xl font-semibold">are endless</h3>
-                    <p className="text-xl">
+                    <h2
+                      // className="text-4xl font-medium"
+                      className="md:text-[2.2rem] text-xl mt-4 font-bold my-4"
+                      style={{ fontFamily: "BrandingSemibold" }}
+                    >
+                      The possibilities
+                    </h2>
+                    <h3
+                      // className="text-4xl font-semibold"
+                      className="md:text-[2.2rem] text-xl mt-4 font-bold my-4"
+                      style={{ fontFamily: "BrandingSemibold" }}
+                    >
+                      are endless
+                    </h3>
+                    <p
+                      // className="text-xl"
+                      className="md:text-[1.4rem] text-xl mt-4 font-bold my-4"
+                      style={{ fontFamily: "BrandingSemibold" }}
+                    >
                       Welcome to{" "}
-                      <strong className="text-blue-900">Nesco</strong>
+                      <strong
+                        // className="text-blue-900"
+                        className="md:text-[1.8rem] text-xl text-blue-900 mt-4 font-bold my-4"
+                        style={{ fontFamily: "BrandingSemibold" }}
+                      >
+                        Nesco
+                      </strong>
                     </p>
                   </div>
                 )}
