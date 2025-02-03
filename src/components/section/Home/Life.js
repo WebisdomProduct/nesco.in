@@ -3,7 +3,10 @@ import background from "@/assests/Home/N-1.png";
 
 function Life() {
   return (
-    <div className="flex lg:px-[7rem] px-5 md:px-16 justify-between items-center w-full bg-[#002172] relative pt-16 overflow-hidden lg:h-full md:h-[100vh] xl:h-[100vh]">
+    <div
+      id="header_white"
+      className="flex lg:px-[7rem] px-5 md:px-16 justify-between items-center w-full bg-[#002172] relative pt-16 overflow-hidden lg:h-full md:h-[100vh] xl:h-[100vh]"
+    >
       <div className="flex flex-col xl:w-[40%] lg:w-[50%] md:gap-7 gap-10 py-20 z-10">
         <p className="text-3xl font-bold text-secondary text-center md:text-left">
           Life at Nesco

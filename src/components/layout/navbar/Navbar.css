@@ -14,10 +14,12 @@
   animation: move;
   animation-duration: 0.7s;
 }
+
 @keyframes move {
   0% {
     left: -100%;
   }
+
   100% {
     left: 0%;
   }

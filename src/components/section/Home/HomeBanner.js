@@ -23,7 +23,6 @@ function HomeBanner() {
     {
       image: Model,
       description: "We bring extraordinary flavours to your table.",
-      // hexaImage:
     },
     {
       image: BannerImage,

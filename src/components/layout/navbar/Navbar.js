@@ -20,6 +20,7 @@ function Navbar() {
 
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isHeaderWhite, setIsHeaderWhite] = useState(false);
   const [hoverStates, setHoverStates] = useState(
     Array(NavData.length).fill(false)
   );
@@ -48,30 +49,37 @@ function Navbar() {
   };
 
   useEffect(() => {
-    const observer = new IntersectionObserver(
+    const banner = document.querySelector(".banner-section");
+    const headerWhiteSection = document.querySelector("#header_white");
+
+    const mainObserver = new IntersectionObserver(
       ([entry]) => {
         setIsScrolled(!entry.isIntersecting);
       },
       { threshold: 0.1 }
     );
 
-    const banner = document.querySelector(".banner-section");
-    if (banner) {
-      observer.observe(banner);
-    }
+    // Observer to track when #header_white is in view
+    const headerObserver = new IntersectionObserver(
+      ([entry]) => {
+        setIsHeaderWhite(entry.isIntersecting);
+      },
+      { threshold: 0.5 }
+    );
+
+    if (banner) mainObserver.observe(banner);
+    if (headerWhiteSection) headerObserver.observe(headerWhiteSection);
 
     return () => {
-      if (banner) {
-        observer.unobserve(banner);
-      }
+      if (banner) mainObserver.unobserve(banner);
+      if (headerWhiteSection) headerObserver.unobserve(headerWhiteSection);
     };
   }, []);
 
   return (
     <nav
-      className={`py-6 md:px-14 px-8 flex items-center justify-between w-full z-[900] fixed transition-all duration-300 overflow-hidden ${
-        isScrolled ? "bg-primary shadow-lg" : "bg-transparent"
-      }`}
+      className={`py-6 md:px-14 px-8 flex items-center justify-between w-full z-[900] fixed transition-all duration-300 overflow-hidden bg-transparent 
+      `}
     >
       {!isScrolled && (
         <div
@@ -90,7 +98,9 @@ function Navbar() {
             <Image
               src={logo.imagePath}
               alt="Nesco Logo"
-              className="w-full h-full"
+              className={`w-full h-full ${
+                isHeaderWhite ? "" : isScrolled ? "filter brightness-0" : ""
+              }`}
             />
           </span>
         </Link>
@@ -102,9 +112,17 @@ function Navbar() {
           {NavData.map((data, index) => (
             <li
               key={index}
-              className={`text-white border-r border-white last:border-none xl:px-6 lg:px-5 flex justify-center w-full whitespace-nowrap`}
+              className={`${
+                isHeaderWhite
+                  ? "text-white"
+                  : isScrolled
+                  ? "text-black"
+                  : "text-white"
+              } border-r border-white last:border-none xl:px-6 lg:px-5`}
             >
-              <button
+              <Link
+                href={data.route}
+                key={index}
                 className={`${
                   hoverStates[index] && "boxAnimation relative overflow-hidden"
                 } w-full`}
@@ -112,19 +130,23 @@ function Navbar() {
                 onMouseLeave={() => handleMouseLeave(index)}
               >
                 {data.title}
-              </button>
+              </Link>
             </li>
           ))}
         </ul>
 
         {/* Search bar */}
         <div className="h-[30px] w-[200px] xl:w-[250px] relative">
-          <input
-            type="text"
-            className="w-full h-full rounded-full pl-6 pr-12"
-          />
-          <span className="inline-block absolute top-1/2 -translate-y-1/2 right-5">
-            <FaSearch />
+          <span
+            className={`inline-block cursor-pointer absolute top-1/2 ${
+              isHeaderWhite
+                ? "text-white"
+                : isScrolled
+                ? "text-black"
+                : "text-white"
+            } -translate-y-1/2 right-5 `}
+          >
+            <FaSearch className="text-[20px]" />
           </span>
         </div>
       </div>

@@ -77,7 +77,7 @@ function Banner({ SliderData }) {
                           className="object-cover md:scale-50 scale-[.6]"
                         />
                       </div>
-                      <div className="absolute z-20 md:top-[55%] top-[57%] transform -translate-y-1/2 md:w-[48%] w-[60%] md:translate-x-[55%] translate-x-[36%] text-center md:text-2xl text-lg">
+                      <div className="absolute z-20 md:top-[55%] top-[57%] transform -translate-y-1/2 md:w-[47%] w-[60%] md:translate-x-[58%] translate-x-[36%] text-center md:text-2xl text-lg">
                         {data.description}
                       </div>
 
@@ -92,8 +92,22 @@ function Banner({ SliderData }) {
                 <img
                   src={data.image.src}
                   alt="banner image"
-                  className="mx-auto w-full h-full object-cover"
+                  className="mx-auto w-full h-full object-cover "
                 />
+
+                {index === 0 && (
+                  <div className="text-black font-poppins absolute bottom-40 left-48">
+                    <h1 className="text-6xl text-blue-900 font-[600]">
+                      Believe.
+                    </h1>
+                    <h2 className="text-4xl font-medium">The possibilities</h2>
+                    <h3 className="text-4xl font-semibold">are endless</h3>
+                    <p className="text-xl">
+                      Welcome to{" "}
+                      <strong className="text-blue-900">Nesco</strong>
+                    </p>
+                  </div>
+                )}
               </div>
             ))}
           </Slider>
