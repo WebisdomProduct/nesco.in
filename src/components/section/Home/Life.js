@@ -7,14 +7,25 @@ function Life() {
       id="header_white"
       className="flex lg:px-[7rem] px-5 md:px-16 justify-between items-center w-full bg-[#002172] relative pt-16 overflow-hidden lg:h-full md:h-[100vh] xl:h-[100vh]"
     >
-      <div className="flex flex-col xl:w-[40%] lg:w-[50%] md:gap-7 gap-10 py-20 z-10">
-        <p className="text-3xl font-bold text-secondary text-center md:text-left">
+      <div className="flex flex-col xl:w-[50%] lg:w-[60%] md:gap-7 gap-10 py-20 z-10">
+        {/* <p className="text-3xl font-bold text-secondary text-center md:text-left"> */}
+        <p
+          className="lg:text-[3.5rem] text-2xl font-bold text-secondary mt-10 tracking-wide leading-[3.5rem]"
+          style={{ fontFamily: "BrandingBoldHeading" }}
+        >
           Life at Nesco
         </p>
-        <p className="text-white text-3xl  text-center md:text-left">
+        {/* <p className="text-white text-3xl  text-center md:text-left"> */}
+        <p
+          className="lg:text-4xl text-xl text-white"
+          style={{
+            fontFamily: "BrandingMedium",
+          }}
+        >
           An inspired culture of progress
         </p>
-        <p className="text-white text-justify md:w-[70%] md:text-base text-lg">
+        {/* <p className="text-white text-justify md:w-[70%] md:text-base text-lg"> */}
+        <p className="text-justify text-white text-[1.4rem] md:w-[80%] font-branding-medium leading-[2.2rem]">
           At Nesco, we foster an inspired culture of{" "}
           <span className="font-bold">
             {" "}
@@ -34,15 +45,28 @@ function Life() {
         <img
           src={background.src}
           alt="background"
-          className=" absolute z-0 right-0  xl:w-[65%] lg:w-[650px] xl:-top-[8%] lg:top-[8%]"
+          className=" absolute z-0 right-[-7rem] xl:w-[75%] lg:w-[650px] xl:-top-[8%] lg:top-[8%]"
         />
-        <div className="absolute hidden md:block z-0 bottom-16 right-10 w-[140px]">
-          <div className="overflow-hidden relative text-white bg-red-500 text-[2rem] leading-8 border-x-2 border-t-2 border-white p-3">
+        <div className="absolute hidden md:block z-0 bottom-16 right-12 w-[140px]">
+          <div
+            className="overflow-hidden lg:text-[2.3rem] text-2xl relative text-white bg-red-600 text-[2rem] leading-8 border-x-2 border-t-2 border-white p-3"
+            style={{ fontFamily: "BrandingSemibold" }}
+          >
             Great Place To Work
           </div>
           <div className="text-white flex flex-col items-center border-x-2 relative">
-            <p className="text-[1.8rem]">Certified</p>
-            <p className="text-[8px] pb-1">December 2024 - December 2025</p>
+            <p
+              className="text-[1.8rem]"
+              style={{ fontFamily: "BrandingSemibold" }}
+            >
+              Certified
+            </p>
+            <p
+              className="text-[8px] uppercase pb-1"
+              style={{ fontFamily: "BrandingSemibold" }}
+            >
+              December 2024 - December 2025
+            </p>
             {/* Triangle */}
             {/* <div className="absolute w-0 h-0 border-l-[70px] border-l-transparent border-r-[70px] border-r-transparent border-t-[70px] border-t-white top-full"></div> */}
           </div>

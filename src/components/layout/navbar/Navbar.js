@@ -1,4 +1,3 @@
-// Navbar.js
 "use client";
 import React, { useEffect, useState } from "react";
 import { FaSearch, FaBars, FaTimes } from "react-icons/fa";
@@ -7,9 +6,10 @@ import Nescologo from "@/assests/Home/nescoLogo1.png";
 import Image from "next/image";
 import Link from "next/link";
 
-function Navbar() {
+function Navbar({ activeSlide }) {
   const NavData = [
     { title: "About", route: "/about" },
+    // { title: "Nesco Center", route: "/nesco-center" },
     { title: "Businesses", route: "/businesses" },
     { title: "Investors", route: "/investors" },
     { title: "Our Imapact", route: "/impact" },
@@ -59,7 +59,6 @@ function Navbar() {
       { threshold: 0.1 }
     );
 
-    // Observer to track when #header_white is in view
     const headerObserver = new IntersectionObserver(
       ([entry]) => {
         setIsHeaderWhite(entry.isIntersecting);
@@ -76,20 +75,39 @@ function Navbar() {
     };
   }, []);
 
+  const getTextColor = () => {
+    if (activeSlide === 0) {
+      return "text-black";
+    }
+    if (isHeaderWhite) {
+      return "text-white";
+    }
+    if (isScrolled) {
+      return "text-black";
+    }
+    return "text-white";
+  };
+
+  const getLogoColorWork = () => {
+    if (activeSlide === 0) {
+      return "filter brightness-0";
+    }
+    if (isHeaderWhite) {
+      return "filter brightness-1";
+    }
+    if (isScrolled) {
+      return "filter brightness-0";
+    }
+    return "filter brightness-1";
+  };
+
   return (
     <nav
-      className={`py-6 md:px-14 px-8 flex items-center justify-between w-full z-[900] fixed transition-all duration-300 overflow-hidden bg-transparent 
+      className={`py-6 md:px-6 px-8 flex items-center justify-between w-full z-[999] fixed transition-all duration-300 overflow-hidden bg-transparent
       `}
     >
       {!isScrolled && (
-        <div
-          className="fixed top-0 left-0 py-6 md:px-16 px-8  w-full h-20 shadow-2xl shadow-black"
-          style={{
-            background: "black",
-
-            opacity: ".1",
-          }}
-        ></div>
+        <div className="fixed top-0 left-0 py-6 md:px-16 px-8  w-full h-20"></div>
       )}
       {/* Logo */}
       <div className="">
@@ -98,9 +116,7 @@ function Navbar() {
             <Image
               src={logo.imagePath}
               alt="Nesco Logo"
-              className={`w-full h-full ${
-                isHeaderWhite ? "" : isScrolled ? "filter brightness-0" : ""
-              }`}
+              className={`w-full h-full ${getLogoColorWork()}`}
             />
           </span>
         </Link>
@@ -112,13 +128,7 @@ function Navbar() {
           {NavData.map((data, index) => (
             <li
               key={index}
-              className={`${
-                isHeaderWhite
-                  ? "text-white"
-                  : isScrolled
-                  ? "text-black"
-                  : "text-white"
-              } border-r border-white last:border-none xl:px-6 lg:px-5`}
+              className={`${getTextColor()} border-r border-white font-branding-semibold text-[1.1rem] last:border-none xl:px-6 lg:px-5`}
             >
               <Link
                 href={data.route}
@@ -136,15 +146,9 @@ function Navbar() {
         </ul>
 
         {/* Search bar */}
-        <div className="h-[30px] w-[200px] xl:w-[250px] relative">
+        <div className="h-[30px] w-[200px] xl:w-[110px] relative">
           <span
-            className={`inline-block cursor-pointer absolute top-1/2 ${
-              isHeaderWhite
-                ? "text-white"
-                : isScrolled
-                ? "text-black"
-                : "text-white"
-            } -translate-y-1/2 right-5 `}
+            className={`inline-block cursor-pointer absolute top-1/2 ${getTextColor()} -translate-y-1/2 right-5`}
           >
             <FaSearch className="text-[20px]" />
           </span>

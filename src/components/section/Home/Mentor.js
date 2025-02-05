@@ -54,7 +54,7 @@ function Mentor() {
         <img
           src={backgroundImage.src}
           alt="background image"
-          className="object-cover md:w-[70%]  sm:h-full w-full h-[50%]"
+          className="object-cover md:w-[70%] sm:h-full w-full h-[50%]"
         />
       </div>
     </div>

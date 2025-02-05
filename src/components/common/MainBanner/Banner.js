@@ -6,11 +6,14 @@ import { FaAngleLeft, FaAngleRight } from "react-icons/fa";
 // Import Slick CSS
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import Image from "next/image";
 
-function Banner({ SliderData }) {
+function Banner({ SliderData, onSlideChange }) {
   const sliderRef = React.useRef(null);
   const [activeIndex, setActiveIndex] = useState(0);
+
+  useEffect(() => {
+    onSlideChange(activeIndex);
+  }, [activeIndex, onSlideChange]);
 
   // Custom arrow components
   const PrevArrow = ({ onClick }) => (
@@ -111,15 +114,44 @@ function Banner({ SliderData }) {
                 />
 
                 {index === 0 && (
-                  <div className="text-black font-poppins absolute bottom-40 left-48">
-                    <h1 className="text-6xl text-blue-900 font-[600]">
+                  <div
+                    id="slider-0"
+                    className="text-black font-poppins absolute bottom-40 left-48"
+                  >
+                    <h1
+                      //  className="text-6xl text-blue-900 font-[600]"
+                      className="lg:text-[4.5rem] text-2xl font-bold text-primary pb-3 mt-4"
+                      style={{ fontFamily: "BrandingSemibold" }}
+                    >
                       Believe.
                     </h1>
-                    <h2 className="text-4xl font-medium">The possibilities</h2>
-                    <h3 className="text-4xl font-semibold">are endless</h3>
-                    <p className="text-xl">
+                    <h2
+                      // className="text-4xl font-medium"
+                      className="md:text-[2.2rem] text-xl mt-4 font-bold my-4"
+                      style={{ fontFamily: "BrandingSemibold" }}
+                    >
+                      The possibilities
+                    </h2>
+                    <h3
+                      // className="text-4xl font-semibold"
+                      className="md:text-[2.2rem] text-xl mt-4 font-bold my-4"
+                      style={{ fontFamily: "BrandingSemibold" }}
+                    >
+                      are endless
+                    </h3>
+                    <p
+                      // className="text-xl"
+                      className="md:text-[1.4rem] text-xl mt-4 font-bold my-4"
+                      style={{ fontFamily: "BrandingSemibold" }}
+                    >
                       Welcome to{" "}
-                      <strong className="text-blue-900">Nesco</strong>
+                      <strong
+                        // className="text-blue-900"
+                        className="md:text-[1.8rem] text-xl text-blue-900 mt-4 font-bold my-4"
+                        style={{ fontFamily: "BrandingSemibold" }}
+                      >
+                        Nesco
+                      </strong>
                     </p>
                   </div>
                 )}
