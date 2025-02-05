@@ -15,24 +15,24 @@ export default function Goal() {
             priority
           />
         </div>
-        <div className="space-y-6">
-          <div className="space-y-2">
-            <h1 className="text-4xl md:text-5xl lg:text-6xl ">
-              <span className="text-[#1e3a8a] font-branding font-bold">
-                One goal. 8 decades.
-              </span>
-              <br />
-              <span className="text-[#1e3a8a] mt-4">
-                Infinite possibilities
-              </span>
+        <div className="">
+          <div className="">
+            <h1
+              style={{ fontFamily: "BrandingSemibold" }}
+              className="text-[#1e3a8a] text-4xl md:text-5xl lg:text-6xl font-BrandingSemibold font-bold"
+            >
+              One goal. 8 decades.
             </h1>
+            <h2 className="text-[#1e3a8a] mt-3 text-4xl md:text-5xl font-branding-medium">
+              Infinite possibilities
+            </h2>
           </div>
-          <div className="space-y-6">
-            <h2 className="text-2xl md:text-3xl font-semibold">
+          <div className="space-y-4 mt-8">
+            <h2 className="text-2xl md:text-3xl text-black font-branding-medium">
               In 1939, we set out on our goal to make India stand out on the
               world map.
             </h2>
-            <p className="text-gray-700 text-lg text-justify tracking-wider leading-relaxed">
+            <p className="text-gray-700 text-lg text-justify font-branding-medium tracking-wider leading-relaxed">
               From designing and manufacturing engineering solutions, the Nesco
               Group has diversified into multiple industries including
               Exhibitions, Real Estate, Hospitality, Events and Entertainment.

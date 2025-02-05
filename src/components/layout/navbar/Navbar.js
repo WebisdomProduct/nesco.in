@@ -128,7 +128,7 @@ function Navbar({ activeSlide }) {
           {NavData.map((data, index) => (
             <li
               key={index}
-              className={`${getTextColor()} border-r border-white font-branding-semibold text-[1.1rem] last:border-none xl:px-6 lg:px-5`}
+              className={`${getTextColor()} border-r border-white font-branding-medium text-[1.1rem] last:border-none xl:px-6 lg:px-5`}
             >
               <Link
                 href={data.route}

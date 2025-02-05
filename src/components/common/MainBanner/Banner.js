@@ -19,7 +19,7 @@ function Banner({ SliderData, onSlideChange }) {
   const PrevArrow = ({ onClick }) => (
     <button
       onClick={onClick}
-      className="absolute left-16 top-[60%] transform -translate-y-1/2 text-white p-3 rounded-full z-10"
+      className="absolute left-4 top-[60%] transform -translate-y-1/2 text-white p-3 rounded-full z-10"
     >
       <FaAngleLeft size={40} />
     </button>
@@ -28,7 +28,7 @@ function Banner({ SliderData, onSlideChange }) {
   const NextArrow = ({ onClick }) => (
     <button
       onClick={onClick}
-      className="absolute right-16 top-[60%] transform -translate-y-1/2 text-white p-3 rounded-full z-10"
+      className="absolute right-4 top-[60%] transform -translate-y-1/2 text-white p-3 rounded-full z-10"
     >
       <FaAngleRight size={40} />
     </button>
@@ -71,7 +71,10 @@ function Banner({ SliderData, onSlideChange }) {
                 className="bg-black text-white flex justify-center items-center text-2xl h-[100vh] relative transition-all duration-700"
               >
                 {index !== 0 && (
-                  <div className="absolute z-10 w-full h-full flex items-center justify-end overflow-hidden">
+                  <div
+                    className={`absolute z-10 w-full h-full flex items-center justify-end overflow-hidden 
+            ${index === 3 || index === 5 ? "bottom-[17px]" : ""}`}
+                  >
                     <div className="relative">
                       <div className="absolute z-20 md:top-[35%] top-[28%] transform -translate-y-1/2 w-1/2 md:translate-x-[52%] translate-x-[48%] text-center">
                         <img

@@ -9,20 +9,23 @@ function Mentor() {
       <div className="z-10 relative w-[81%] flex flex-col items-center justify-center mx-auto h-full my-20">
         <div className="grid md:grid-cols-2 gap-8 items-start">
           <div className="">
-            <h2 className="font-semibold text-3xl md:text-4xl text-indigo-700">
+            <h2
+              style={{ fontFamily: "BrandingSemibold" }}
+              className=" text-3xl md:text-5xl text-indigo-700"
+            >
               A note from the Founding
             </h2>
-            <h3 className="font-medium text-3xl mt-2 md:text-4xl text-indigo-700">
+            <h3 className="font-branding-medium text-3xl mt-2 md:text-4xl text-indigo-700">
               Director and Mentor
             </h3>
             <div className="space-y-4 text-gray-700 mt-8">
-              <p className="text-[19px]">
+              <p className="text-[19px] font-branding-medium">
                 In the last eight decades, Nesco has come a long way. We see our
                 present success as only the start to newer and bolder
                 initiatives. This is an affirmation that as we continue to grow,
                 we add to the growth of our country.
               </p>
-              <p className="text-[19px]">
+              <p className="text-[19px] font-branding-medium">
                 Our teams are motivated to set new benchmarks across industries
                 through perseverance and innovation. The world we live in is
                 rapidly evolving and at Nesco we are prepared to meet every
@@ -40,10 +43,10 @@ function Mentor() {
               />
             </div>
             <div className="text-center mt-4">
-              <h3 className="text-2xl font-semibold text-indigo-700">
+              <h3 className="text-2xl font-branding-medium text-indigo-700">
                 Sumant J. Patel
               </h3>
-              <p className="text-gray-600 mt-1">
+              <p className="text-gray-600 mt-1 font-branding-medium">
                 (15th August 1935 – 17th November 2021)
               </p>
             </div>
