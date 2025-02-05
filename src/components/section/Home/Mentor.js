@@ -22,7 +22,7 @@ function Mentor() {
       </div>
 
       {/* Content */}
-      <div className="z-10 relative w-[81%] flex flex-col items-center justify-center mx-auto mt-24 mb-10 h-full">
+      <div className="z-10 relative w-[81%] flex flex-col items-center justify-center mx-auto mt-24 mb-10 h-screen">
         <div className="grid md:grid-cols-2 items-start">
           {/* Text Content */}
           <div className="">
