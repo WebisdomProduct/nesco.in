@@ -16,7 +16,7 @@ function Navbar({ activeSlide }) {
     { title: "Our Imapact", route: "/impact" },
     { title: "Media", route: "/media" },
     { title: "Life at Nesco", route: "/life-nesco" },
-    { title: "Contact", route: "/contact" },
+    { title: "Contact", route: "/contact-us" },
   ];
 
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
