@@ -20,6 +20,7 @@ export default {
         "branding-bold-italic": ['"branding-bold-italic"'],
         "branding-light": ['"branding-light"'],
         "branding-light-italic": ['"branding-light-italic"'],
+        poppins: ["var(--font-poppins)"],
       },
     },
   },

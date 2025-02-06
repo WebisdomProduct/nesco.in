@@ -21,7 +21,7 @@ function News() {
     },
     {
       backgroundcolor: "#caecff",
-      color: "#58667D",
+      color: "#403092",
       svgImage: Image2,
       title: "Technology Transfer Meet",
       description:
@@ -64,7 +64,7 @@ function News() {
     },
     {
       backgroundcolor: "#c8dee6",
-      color: "#4D6873",
+      color: "#18565A",
       svgImage: Image6,
       title: "Introducing",
       description:
@@ -75,7 +75,14 @@ function News() {
 
   return (
     <div className="w-full flex flex-col items-center py-10 pt-28">
-      <p className="border-b-2 border-primary text-primary font-bold pb-3 text-3xl">
+      {/* <p className="text-primary font-bold pb-3 text-3xl"> */}
+
+      <p
+        className="lg:text-[3.5rem] text-2xl text-primary"
+        style={{
+          fontFamily: "BrandingSemibold",
+        }}
+      >
         In the news
       </p>
 
@@ -108,10 +115,14 @@ function News() {
                       >
                         {data.description}
                       </p>
-                      <p className="text-xl font-semibold">
+                      <p
+                        // className="text-xl font-semibold"
+                        className="text-justify  text-[1.6rem] font-branding-medium leading-[2.2rem]"
+                        style={{ fontFamily: "BrandingSemibold" }}
+                      >
                         {data.description1}
                       </p>
-                      <div className="flex w-full mt-10 text-[13px]">
+                      <div className="flex w-full mt-10 text-[1.2rem] font-branding-medium leading-[2.2rem]">
                         {data.description2}
                       </div>
                     </div>
@@ -122,7 +133,7 @@ function News() {
 
             if (index === 4) {
               return (
-                <div>
+                <div key={index}>
                   <div
                     className=" p-5 shadow-lg gap-5 relative overflow-hidden md:h-full h-[292px]"
                     style={{ backgroundColor: data.backgroundcolor }}
@@ -137,12 +148,21 @@ function News() {
                     <div className="flex flex-col mt-5 w-[60%] justify-between h-full z-10 relative pb-5">
                       <div>
                         <p
-                          className="text-3xl font-semibold mb-2"
-                          style={{ color: data.color }}
+                          className="text-[1.9rem] font-semibold text-primary mb-2"
+                          style={{
+                            fontFamily: "BrandingSemibold",
+                            color: data.color,
+                          }}
                         >
                           {data.title}
                         </p>
-                        <p className="text-2xl font-bold">{data.description}</p>
+                        {/* <p className="text-2xl font-bold"> */}
+                        <p
+                          className="text-justify  text-[1.6rem] font-branding-medium leading-[2.2rem]"
+                          style={{ fontFamily: "BrandingSemibold" }}
+                        >
+                          {data.description}
+                        </p>
                       </div>
 
                       <div className="flex w-full ">
@@ -180,14 +200,22 @@ function News() {
                       className="w-full h-full z-0"
                     />
                   </div>
-                  <div className="flex flex-col mt-5 w-[60%] justify-between h-full z-10 relative pb-5">
+                  <div className="flex flex-col mt-5 w-[60%] md:w-[70%] justify-between h-full z-10 relative pb-5">
                     <p
-                      className="text-2xl font-semibold mb-4"
-                      style={{ color: data.color }}
+                      className="text-[2rem] leading-[2.2rem] text-primary mb-2"
+                      style={{
+                        fontFamily: "BrandingSemibold",
+                        color: data.color,
+                      }}
                     >
                       {data.title}
                     </p>
-                    <p className="text-sm">{data.description}</p>
+                    <p
+                      // className="text-sm"
+                      className="text-left w-full text-[1.2rem] font-branding-medium leading-[1.6rem]"
+                    >
+                      {data.description}
+                    </p>
                     <div className="flex w-full mt-10">
                       <button
                         className="w-[40px] h-[40px] rounded-full flex justify-center items-center"

@@ -1,5 +1,5 @@
 import Banner from "@/components/common/MainBanner/Banner";
-import React from "react";
+import React, { useState } from "react";
 import BannerImage from "@/assests/mainBanner/image.jpg";
 import BannerImage1 from "@/assests/mainBanner/image11.png";
 import BannerImage3 from "@/assests/mainBanner/image3.jpg";
@@ -16,14 +16,33 @@ import hexaLogo2 from "@/assests/mainBanner/e1.png";
 import hexaLogo3 from "@/assests/mainBanner/b1.png";
 import hexaLogo4 from "@/assests/mainBanner/i11.png";
 import hexaLogo5 from "@/assests/mainBanner/r1.png";
+import Navbar from "@/components/layout/navbar/Navbar";
 
 function HomeBanner() {
+  const [activeSlide, setActiveSlide] = useState(0);
+
+  const handleSlideChange = (index) => {
+    setActiveSlide(index);
+  };
   // slider data
   const SliderData = [
     {
       image: Model,
       description: "We bring extraordinary flavours to your table.",
-      // hexaImage:
+    },
+    {
+      image: BannerImage3,
+      description:
+        "A premier venue that hosts a diverse array of events, trade shows, conferences and exhibitons.",
+      hexaImage: hexaImage3,
+      hexaLogo: hexaLogo3,
+    },
+    {
+      image: BannerImage5,
+      description:
+        "Renowned for leasing premium office spaces tailored to the needs of IT compaines.",
+      hexaImage: hexaImage5,
+      hexaLogo: hexaLogo5,
     },
     {
       image: BannerImage,
@@ -39,32 +58,21 @@ function HomeBanner() {
       hexaImage: hexaImage2,
       hexaLogo: hexaLogo2,
     },
-    {
-      image: BannerImage3,
-      description:
-        "A premier venue that hosts a diverse array of events, trade shows, conferences and exhibitons.",
-      hexaImage: hexaImage3,
-      hexaLogo: hexaLogo3,
-    },
+
     {
       image: BannerImage4,
       description:
-        "manufactures abrasives & shot blasting machine for industries like automotive and aerospace since 1975",
+        "Manufactures abrasives & shot blasting machine for industries like automotive and aerospace since 1975",
       hexaImage: hexaImage4,
       hexaLogo: hexaLogo4,
-    },
-    {
-      image: BannerImage5,
-      description:
-        "Renowned for leasing premium office spaces tailored to the needs of IT compaines.",
-      hexaImage: hexaImage5,
-      hexaLogo: hexaLogo5,
     },
   ];
 
   return (
     <div className="w-full">
-      <Banner SliderData={SliderData} />
+      <Navbar activeSlide={activeSlide} />
+      {/* <Banner SliderData={SliderData}  onSlideChange={handleSlideChange} /> */}
+      <Banner SliderData={SliderData} onSlideChange={handleSlideChange} />
     </div>
   );
 }

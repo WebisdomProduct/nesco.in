@@ -1,4 +1,3 @@
-// Navbar.js
 "use client";
 import React, { useEffect, useState } from "react";
 import { FaSearch, FaBars, FaTimes } from "react-icons/fa";
@@ -8,9 +7,10 @@ import Nescologo2 from "@/assests/Home/nescoLogo2.png";
 import Image from "next/image";
 import Link from "next/link";
 
-function Navbar() {
+function Navbar({ activeSlide }) {
   const NavData = [
     { title: "About", route: "/about" },
+    // { title: "Nesco Center", route: "/nesco-center" },
     { title: "Businesses", route: "/businesses" },
     { title: "Investors", route: "/investors" },
     { title: "Our Imapact", route: "/impact" },
@@ -21,6 +21,7 @@ function Navbar() {
 
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isHeaderWhite, setIsHeaderWhite] = useState(false);
   const [hoverStates, setHoverStates] = useState(
     Array(NavData.length).fill(false)
   );
@@ -49,40 +50,65 @@ function Navbar() {
   };
 
   useEffect(() => {
-    const observer = new IntersectionObserver(
+    const banner = document.querySelector(".banner-section");
+    const headerWhiteSection = document.querySelector("#header_white");
+
+    const mainObserver = new IntersectionObserver(
       ([entry]) => {
         setIsScrolled(!entry.isIntersecting);
       },
       { threshold: 0.1 }
     );
 
-    const banner = document.querySelector(".banner-section");
-    if (banner) {
-      observer.observe(banner);
-    }
+    const headerObserver = new IntersectionObserver(
+      ([entry]) => {
+        setIsHeaderWhite(entry.isIntersecting);
+      },
+      { threshold: 0.5 }
+    );
+
+    if (banner) mainObserver.observe(banner);
+    if (headerWhiteSection) headerObserver.observe(headerWhiteSection);
 
     return () => {
-      if (banner) {
-        observer.unobserve(banner);
-      }
+      if (banner) mainObserver.unobserve(banner);
+      if (headerWhiteSection) headerObserver.unobserve(headerWhiteSection);
     };
   }, []);
 
+  const getTextColor = () => {
+    if (activeSlide === 0) {
+      return "text-black";
+    }
+    if (isHeaderWhite) {
+      return "text-white";
+    }
+    if (isScrolled) {
+      return "text-black";
+    }
+    return "text-white";
+  };
+
+  const getLogoColorWork = () => {
+    if (activeSlide === 0) {
+      return "filter brightness-0";
+    }
+    if (isHeaderWhite) {
+      return "filter brightness-1";
+    }
+    if (isScrolled) {
+      return "filter brightness-0";
+    }
+    return "filter brightness-1";
+  };
+
   return (
     <nav
-      className={`py-6 md:px-14 px-8 flex items-center justify-between w-full z-[900] fixed transition-all duration-300 overflow-hidden ${
-        isScrolled ? " shadow-lg text-black" : "bg-transparent"
-      }`}
+      className={`py-6 md:px-6 px-8 flex items-center justify-between w-full z-[999] fixed transition-all duration-300 overflow-hidden bg-transparent
+      `}
     >
       {!isScrolled && (
-        <div
-          className="fixed top-0 left-0 py-6 md:px-16 px-8  w-full h-20 shadow-2xl shadow-black"
-          style={{
-            background: "black",
-
-            opacity: ".1",
-          }}
-        ></div>
+        <div className="fixed top-0 left-0 py-6 md:px-16 px-8  w-full h-20"></div>
       )}
       {/* Logo */}
       <div className="">
@@ -91,7 +117,7 @@ function Navbar() {
             <Image
               src={!isScrolled ? Nescologo : Nescologo2}
               alt="Nesco Logo"
-              className="w-full h-full"
+              className={`w-full h-full ${getLogoColorWork()}`}
             />
           </span>
         </Link>
@@ -103,13 +129,11 @@ function Navbar() {
           {NavData.map((data, index) => (
             <li
               key={index}
-              className={`${
-                isScrolled
-                  ? " text-black border-black"
-                  : "text-white border-white"
-              } border-r  last:border-none xl:px-6 lg:px-5 flex justify-center w-full whitespace-nowrap`}
+              className={`${getTextColor()} border-r border-white font-branding-medium text-[1.1rem] last:border-none xl:px-6 lg:px-5`}
             >
-              <button
+              <Link
+                href={data.route}
+                key={index}
                 className={`${
                   hoverStates[index] && "boxAnimation relative overflow-hidden"
                 } w-full`}
@@ -117,19 +141,17 @@ function Navbar() {
                 onMouseLeave={() => handleMouseLeave(index)}
               >
                 {data.title}
-              </button>
+              </Link>
             </li>
           ))}
         </ul>
 
         {/* Search bar */}
-        <div className="h-[30px] w-[200px] xl:w-[250px] relative">
-          <input
-            type="text"
-            className="w-full h-full rounded-full pl-6 pr-12"
-          />
-          <span className="inline-block absolute top-1/2 -translate-y-1/2 right-5">
-            <FaSearch />
+        <div className="h-[30px] w-[200px] xl:w-[110px] relative">
+          <span
+            className={`inline-block cursor-pointer absolute top-1/2 ${getTextColor()} -translate-y-1/2 right-5`}
+          >
+            <FaSearch className="text-[20px]" />
           </span>
         </div>
       </div>

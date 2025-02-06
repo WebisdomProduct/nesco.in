@@ -1,40 +1,47 @@
 import React from "react";
-import GoalImage from "@/assests/Home/Goal.jpg";
-function Goal() {
-  return (
-    <div className="w-full h-full relative flex flex-col items-center justify-center md:py-24 py-20 ">
-      <div className="w-full absolute bg-[#D2EFFF] top-0 left-0 md:h-[30%] h-[35%] z-0"></div>
-      <div className="lg:w-[60%] w-[80%] flex flex-col items-center justify-center z-10">
-        <div className=" text-primary">
-          <p className="text-center md:text-3xl text-2xl font-bold md:leading-[3rem] mt-6">
-            One goal. 8 decades.
-          </p>
-          <p className="md:text-3xl text-2xl border-b-2 border-b-primary pb-3 leading-[3rem] font-medium text-center">
-            Infinite possibilities
-          </p>
-        </div>
-        <div className="mt-10 flex justify-center flex-col items-center">
-          <div>
-            <img src={GoalImage.src} alt="Goal image" className="" />
-          </div>
-          <p className="mt-8 md:text-2xl text-xl font-bold text-center">
-            In 1939, we set out on our goal to make India
-          </p>
-          <p className="md:text-2xl text-xl mt-2 font-bold">
-            stand out on the world map.
-          </p>
+import GoalImage from "@/assests/Home/goal.png";
+import Image from "next/image";
 
-          <p className="text-justify mt-8 md:text-lg">
-            From designing and manufacturing engineering solutions, the Nesco
-            Group has diversified into multiple industries including
-            Exhibitions, Real Estate, Hospitality, Events and Entertainment. Our
-            inspirational growth over the last eight decades only shows how a
-            vision can empower limitless possibilities.
-          </p>
+export default function Goal() {
+  return (
+    <section className="w-full h-screen bg-gray-200">
+      <div className="grid md:grid-cols-2 gap-8 pt-24 items-center w-[81%] mx-auto ">
+        <div className="relative h-[400px] md:h-[600px]">
+          <Image
+            src={GoalImage}
+            alt="Illustration of a person with a flag standing on a light bulb"
+            fill
+            className="object-cover"
+            priority
+          />
+        </div>
+        <div className="">
+          <div className="">
+            <h1
+              style={{ fontFamily: "BrandingSemibold" }}
+              className="text-[#1e3a8a] text-4xl md:text-5xl lg:text-6xl font-BrandingSemibold font-bold"
+            >
+              One goal. 8 decades.
+            </h1>
+            <h2 className="text-[#1e3a8a] mt-3 text-4xl md:text-5xl font-branding-medium">
+              Infinite possibilities
+            </h2>
+          </div>
+          <div className="space-y-4 mt-8">
+            <h2 className="text-2xl md:text-3xl text-black font-branding-medium">
+              In 1939, we set out on our goal to make India stand out on the
+              world map.
+            </h2>
+            <p className="text-gray-700 text-[19px] text-justify font-branding-medium tracking-wider leading-relaxed">
+              From designing and manufacturing engineering solutions, the Nesco
+              Group has diversified into multiple industries including
+              Exhibitions, Real Estate, Hospitality, Events and Entertainment.
+              Our inspirational growth over the last eight decades only shows
+              how a vision can empower limitless possibilities.
+            </p>
+          </div>
         </div>
       </div>
-    </div>
+    </section>
   );
 }
-
-export default Goal;

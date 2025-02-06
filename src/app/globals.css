@@ -13,33 +13,73 @@
     --foreground: #ededed;
   }
 } */
+@font-face {
+  font-family: "BrandingSemibold";
+  src: url("/Font/Branding-Semibold.otf") format("opentype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "BrandingMedium";
+  src: url("/Font/Branding-Medium.otf") format("opentype");
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "BrandingBoldHeading";
+  src: url("/Font/Branding-Bold.otf") format("opentype");
+  font-weight: bold;
+  font-style: normal;
+}
+
+/* Apply letter spacing */
+.font-branding-semibold {
+  font-family: "BrandingSemibold", sans-serif;
+  letter-spacing: 0.5px;
+}
+
+.font-branding-medium {
+  font-family: "BrandingMedium", sans-serif;
+  letter-spacing: 0.2px;
+}
+
+@font-face {
+  font-family: "BrandingBold";
+  src: url("/Font/Branding-Bold-Italic.otf") format("opentype");
+  font-weight: normal;
+  font-style: italic;
+}
 
 @font-face {
   font-family: "branding";
   src: url("/nesco-web/public/Font/Branding\ Black.otf") format("opentype");
 }
+
 @font-face {
   font-family: "branding-itaic";
-  src: url("/nesco-web/public/Font/Branding\ Black\ Italic.otf")
-    format("opentype");
+  src: url("/nesco-web/public/Font/Branding\ Black\ Italic.otf") format("opentype");
 }
+
 @font-face {
   font-family: "branding-bold-itaic";
-  src: url("/nesco-web/public/Font/Branding\ Bold\ Italic.otf")
-    format("opentype");
+  src: url("/nesco-web/public/Font/Branding\ Bold\ Italic.otf") format("opentype");
 }
+
 @font-face {
   font-family: "branding-bold";
   src: url("/nesco-web/public/Font/Branding\ Bold.otf") format("opentype");
 }
+
 @font-face {
   font-family: "branding-light";
   src: url("/nesco-web/public/Font/Branding\ Light.otf") format("opentype");
 }
+
 @font-face {
   font-family: "branding-light-italic";
-  src: url("/nesco-web/public/Font/Branding\ Light\ Italic.otf")
-    format("opentype");
+  src: url("/nesco-web/public/Font/Branding\ Light\ Italic.otf") format("opentype");
 }
 
 body {
@@ -49,6 +89,7 @@ body {
     "branding-light", "branding-light-italic", "branding-bold-italic",
     "branding-italic";
 }
+
 /* mainHome.css */
 /* mainHome.css */
 .container1 {
@@ -62,9 +103,10 @@ body {
   scroll-snap-align: start;
   position: relative;
   width: 100%;
-  min-height: 100vh; /* Ensure sections take full height */
+  /* min-height: 100vh;  */
 }
 
 .goal-section {
-  height: auto; /* Allow content to expand */
+  height: auto;
+  /* Allow content to expand */
 }
