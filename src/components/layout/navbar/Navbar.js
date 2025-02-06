@@ -51,7 +51,7 @@ function Navbar({ activeSlide }) {
 
   useEffect(() => {
     const banner = document.querySelector(".banner-section");
-    const headerWhiteSection = document.querySelector("#header_white");
+    const headerWhiteSection = document.querySelector(".header_white");
 
     const mainObserver = new IntersectionObserver(
       ([entry]) => {
@@ -80,13 +80,16 @@ function Navbar({ activeSlide }) {
     if (activeSlide === 0) {
       return "text-black border-black";
     }
+    // if (activeSlide === 1) {
+    //   return "text-white border-white";
+    // }
     if (isHeaderWhite) {
       return "text-white border-white";
     }
     if (isScrolled) {
       return "text-black  border-black";
     }
-    return "text-white  border-white";
+    return "text-white border-white";
   };
 
   const getLogoColorWork = () => {
@@ -115,7 +118,7 @@ function Navbar({ activeSlide }) {
         <Link href={logo.link}>
           <span className="overflow-hidden absolute inline-block w-[180px] h-[60px] top-1/2 -translate-y-1/2">
             <Image
-              src={!isScrolled || isHeaderWhite ? Nescologo : Nescologo2}
+              src={Nescologo}
               alt="Nesco Logo"
               className={`w-full h-full ${getLogoColorWork()}`}
             />

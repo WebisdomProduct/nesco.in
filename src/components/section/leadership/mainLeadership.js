@@ -1,14 +1,15 @@
 "use client";
 import React, { useEffect } from "react";
 import Pagewrapper from "@/components/layout/pagewrapper";
-import HomeBanner from "./HomeBanner";
-import Goal from "./Goal";
-import Mentor from "./Mentor";
-import Service from "./Service";
-import Life from "./Life";
-import News from "./News";
 
-function MainHome() {
+import LeadershipBanner from "./leadershipBanner";
+import Believe from "./believe";
+import LeadershipMentor from "./leadershipMentor";
+import LeadershipMentor2 from "./leadershipMentor2";
+import BoardOfDirector from "./boardOfDirector";
+import VisionaryLeader from "./visionaryLeader";
+
+function MainLeadership() {
   useEffect(() => {
     const container = document.querySelector(".container1");
     let isScrolling = false;
@@ -115,26 +116,26 @@ function MainHome() {
     <Pagewrapper>
       <div className="container1">
         <div className="section">
-          <HomeBanner />
-        </div>
-        <div className="section goal-section">
-          <Goal />
+          <LeadershipBanner />
         </div>
         <div className="section">
-          <Mentor />
+          <Believe />
         </div>
-        <div className="section">
-          <Service />
+        <div className="">
+          <LeadershipMentor />
         </div>
-        <div className="section">
-          <Life />
+        <div className="">
+          <LeadershipMentor2 />
         </div>
-        <div className="section">
-          <News />
+        <div className="">
+          <BoardOfDirector />
+        </div>
+        <div className="">
+          <VisionaryLeader />
         </div>
       </div>
     </Pagewrapper>
   );
 }
 
-export default MainHome;
+export default MainLeadership;
