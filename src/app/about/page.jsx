@@ -12,8 +12,9 @@ const page = () => {
           alt="about"
           className="img w-full"
         />
-        <div className="sideBox bg-violet-900  sm:w-[80%] md:w-[350px] lg:w-[400px] z-50 absolute top-1/2 left-[15vh] transform -translate-x-1/2 -translate-y-1/2 py-10 pr-0 pl-10 opacity-85 flex justify-center items-center flex-wrap ">
-          <p className="text-white sm:text-xl md:text-2xl font-branding-medium ">
+        <div className="sideBox bg-violet-900  sm:w-[45%] md:w-[45%] lg:w-[25%] z-50 absolute top-1/2 sm:left-[12vh] md:left-[13vh] lg: left-[15vh] transform -translate-x-1/2 -translate-y-1/2 py-10 md:pl-10 sm:pl-3 lg:pl-16 opacity-85 flex justify-center items-center flex-wrap  ">
+         <div className="innerContainer text-center">
+         <p className="text-white sm:text-xl md:text-2xl font-branding-medium ">
             To be constantly
           </p>
 
@@ -27,6 +28,7 @@ const page = () => {
           <p className="text-blue-300 text-xl sm:text-2xl md:text-3xl  font-branding-medium">
             learning is wisdom
           </p>
+         </div>
         </div>
       </div>
 
@@ -39,8 +41,8 @@ const page = () => {
           </p>
         </div>
 
-        <div className="rightText  px-4 md:px-16 py-8 text flex flex-row  md:flex-col"> 
-          <p class="text-gray-700 text-base md:text-2xl font-branding-medium p-4 text-justify ">
+        <div className="rightText  px-4 md:px-16 py-8 text flex"> 
+          <p class="text-gray-700 text-base md:text-2xl font-branding-medium p-4  ">
             With business verticals as varied as exhibitions, events,
             hospitality, MICE, and realty, our steady expansion augments our
             growth as we watch several new ideas find form.
