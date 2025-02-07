@@ -1,0 +1,52 @@
+.about{
+    /* background-color: #da4fda; */
+
+}
+
+.imgcontainer {
+  height: 30%;
+  width: 100%;
+    
+}
+
+.img{
+    height: 100vh;
+    
+}
+
+.text{
+    display: grid;
+    grid-template-columns: 50% 50%;
+    height: 100%;
+    
+    
+}
+
+.leftText{
+/* background-color: aqua; */
+height: 100%;
+
+padding-top: 10px;
+width:auto;
+
+
+}
+
+.rightText{
+/* background-color: aquamarine; */
+height: 100%;
+
+
+}
+
+/* .sideBox {
+    display: flex;
+    background-color: aqua;
+    width: fit-content;
+    margin-top : -25px;
+    position: relative;
+    z-index: 2;
+
+} */
+
+

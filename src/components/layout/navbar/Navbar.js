@@ -13,7 +13,7 @@ function Navbar({ activeSlide }) {
     // { title: "Nesco Center", route: "/nesco-center" },
     { title: "Businesses", route: "/businesses" },
     { title: "Investors", route: "/investors" },
-    { title: "Our Imapact", route: "/impact" },
+    { title: "Our Impact", route: "/impact" },
     { title: "Media", route: "/media" },
     { title: "Life at Nesco", route: "/life-nesco" },
     { title: "Contact", route: "/contact-us" },
