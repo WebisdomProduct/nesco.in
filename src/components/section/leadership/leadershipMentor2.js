@@ -4,7 +4,7 @@ import Image from "next/image";
 
 function LeadershipMentor2() {
   return (
-    <div className="header_white bg-secondary flex justify-center items-center pb-20 xl:pb-0 xl:pt-20 pt-[10rem] xl:h-screen ">
+    <section className="header_white bg-secondary flex justify-center items-center pb-20 xl:pb-0 xl:pt-20 pt-[10rem] xl:h-screen ">
       <div className="grid lg:grid-cols-2 md:w-[70%] w-[90%] xl:justify-center justify-between xl:gap-0 gap-10 items-center lg:items-start">
         <div className="flex flex-col h-full items-center justify-center">
           <div className="w-full max-w-[450px]">
@@ -42,7 +42,7 @@ function LeadershipMentor2() {
           </p>
         </div>
       </div>
-    </div>
+    </section>
   );
 }
 

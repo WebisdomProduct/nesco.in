@@ -3,7 +3,7 @@ import chessImage from "@/assests/leadership/chess.png";
 import Image from "next/image";
 function believe() {
   return (
-    <div className="w-full relative flex flex-col items-center py-10">
+    <section className="w-full relative flex flex-col items-center py-10">
       <div className=" pt-16 items-center lg:w-[80%] md:w-[85%] mx-auto ">
         <div className=" text-primary flex justify-center items-center">
           <p
@@ -42,7 +42,7 @@ function believe() {
           </div>
         </div>
       </div>
-    </div>
+    </section>
   );
 }
 

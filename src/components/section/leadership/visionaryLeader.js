@@ -25,12 +25,12 @@ function VisionaryLeader() {
   ];
 
   return (
-    <div className="py-16 bg-[#E6F5FC]">
+    <section className="py-16 bg-[#E6F5FC] xl:h-screen">
       <h3 className="text-center text-4xl font-branding-bold">
         Our Visionary Leaders
       </h3>
       <Cards CardData={CardData} />
-    </div>
+    </section>
   );
 }
 

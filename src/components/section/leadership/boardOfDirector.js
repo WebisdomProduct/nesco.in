@@ -43,12 +43,12 @@ function BoardOfDirector() {
   ];
 
   return (
-    <div className="py-16 bg-[#EDEDED]">
+    <section className="py-16 bg-[#EDEDED]">
       <h3 className="text-center text-4xl font-branding-bold">
         Board of Directors
       </h3>
       <Cards CardData={CardData} />
-    </div>
+    </section>
   );
 }
 
