@@ -3,10 +3,37 @@ import Navbar from "@/components/layout/navbar/Navbar";
 import React, { useState } from "react";
 
 const page = () => {
+  const [visibleCheckboxes, setVisibleCheckboxes] = useState(5);
+  const [visibleRows, setVisibleRows] = useState(5);
+  const [selectedYears, setSelectedYears] = useState([]);
+  const [searchQuery, setSearchQuery] = useState("");
 
-    const [visibleCheckboxes, setVisibleCheckboxes] = useState(5);
-    const [visibleRows, setVisibleRows] = useState(5);
+  const allYears = Array.from({ length: 10 }, (_, i) => {
+    const startYear = 2015 + i;
+    const endYear = startYear + 1;
+    return `${startYear}-${endYear.toString().slice(-2)}`;
+  });
 
+  const handleYearChange = (year) => {
+    setSelectedYears((prevSelected) =>
+      prevSelected.includes(year)
+        ? prevSelected.filter((y) => y !== year)
+        : [...prevSelected, year]
+    );
+  };
+
+  const financialData = Array.from({ length: 10 }, (_, i) => ({
+    year: allYears[i],
+    title: `Financial Statements of Subsidiaries ${allYears[i]}`,
+  }));
+
+  const filteredData = financialData
+    .filter((item) =>
+      selectedYears.length > 0 ? selectedYears.includes(item.year) : true
+    )
+    .filter((item) =>
+      item.title.toLowerCase().includes(searchQuery.toLowerCase())
+    );
   return (
     <div className="financials">
       <Navbar />
@@ -20,7 +47,6 @@ const page = () => {
           />
         </div>
 
-        {/* Centered on the right side */}
         <div
           className="sideBox  absolute top-1/2 right-[5%] 
       transform -translate-y-1/2  
@@ -43,6 +69,8 @@ const page = () => {
               <input
                 type="text"
                 placeholder="Search..."
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
                 className="sm:w-24 md:w-32 lg:w-48  px-2 py-1 pl-8 border-b  border-gray-300  focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
               />
               <svg
@@ -62,63 +90,75 @@ const page = () => {
             </div>
           </div>
           <div className="checkContainer w-full p-4 py-6 mt-2 sm:ml-3 md:ml-4 mb-2 flex flex-col">
-            <p className=" w-fit mt-2 font-branding-medium text-gray-500">Filters</p>
-            <p className="mt-2 mb-2 w-fit font-branding-medium text-gray-500">Filters</p>
+            <p className=" w-fit mt-2 font-branding-medium text-gray-500">
+              Filters
+            </p>
+            <p className="mt-2 mb-2 w-fit font-branding-medium text-gray-500">
+              Filters
+            </p>
 
-            {Array(15)
-              .fill("Default Checkbox")
-              .slice(0, visibleCheckboxes)
-              .map((label, index) => (
-                <div
-                  className="flex items-center mb-2 font-branding-medium"
-                  key={index}
-                >
-                  <input
-                    type="checkbox"
-                    className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded-sm focus:ring-blue-500"
-                  />
-                  <label className="ml-2 text-sm font-medium text-gray-500">
-                    {label}
-                  </label>
-                </div>
-              ))}
+            {allYears.slice(0, visibleCheckboxes).map((year, index) => (
+              <div key={index} className="flex items-center mb-2">
+                <input
+                  type="checkbox"
+                  className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded-sm focus:ring-blue-500"
+                  checked={selectedYears.includes(year)}
+                  onChange={() => handleYearChange(year)}
+                />
+                <label className="ml-2 text-sm font-medium text-gray-500">
+                  {year}
+                </label>
+              </div>
+            ))}
 
-              {visibleCheckboxes < 15 && (
-                <button className="mt-2 text-gray-500 hover:underline  w-fit p-1  "
-                onClick = {() => setVisibleCheckboxes(visibleCheckboxes + 5)}>
-                    Show More Filters
-                </button>
-              )}
+            {visibleCheckboxes < allYears.length && (
+              <button
+                className="mt-2 text-gray-500 hover:underline  w-fit p-1  "
+                onClick={() => setVisibleCheckboxes(visibleCheckboxes + 5)}
+              >
+                Show More Filters
+              </button>
+            )}
           </div>
 
-          <div className="tableContainer  w-auto p-3 col-span-3 m-6 ">
+          <div className="tableContainer w-auto p-3 col-span-3 m-6 ">
             <table className="table-auto border-separate text-left w-full h-full  ">
               <thead>
                 <tr>
-                  <th className="title bg-violet-700 text-gray-200 shadow-sm pl-2 ">
+                  <th className="title bg-violet-700 text-gray-200 shadow-sm pl-8  ">
                     Title
                   </th>
+                  {/* <th className="title bg-violet-700 text-gray-200 shadow-sm pl-2  ">
+                    Title
+                  </th> */}
                 </tr>
               </thead>
               <tbody>
-                {Array(10)
-                  .fill("Financial Statements of Subsidiaries 2023-24")
-                  .slice(0, visibleRows)
-                  .map((row, index) => (
-                    <tr key={index}>
-                      <td className="border-separate border-spacing-2 shadow-sm pl-3 font-branding-medium text-gray-500">
-                        {row}
-                      </td>
-                    </tr>
-                  ))}
+                {filteredData.slice(0, visibleRows).map((row, index) => (
+                  <tr key={index}>
+                    <td className="border-collapse border-spacing-0 shadow-sm pl-3 font-branding-medium text-gray-500">
+                      {/* {row.year} &nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp;  {row.title} */}
+                      <div className="flex justify-between text-left mx-4 md:pr-[8%]">
+                        <span className="w-fit">{row.year}</span>
+                        <span className="w-fit ">{row.title}</span>
+                      </div>
+                    </td>
+
+                    {/* <td className="border-collapse border-spacing-0 shadow-sm pl-3 font-branding-medium text-gray-500">
+                      {row.title}
+                    </td> */}
+                  </tr>
+                ))}
               </tbody>
             </table>
 
             {visibleRows < 10 && (
-                <button className="mt-2 text-gray-500 hover: underline w-fit p-1"
-                onClick={() => setVisibleRows(visibleRows+5)}>
-                    Show More Rows
-                </button>
+              <button
+                className="mt-2 text-gray-500 hover: underline w-fit p-1"
+                onClick={() => setVisibleRows(visibleRows + 5)}
+              >
+                Show More Rows
+              </button>
             )}
           </div>
         </div>
