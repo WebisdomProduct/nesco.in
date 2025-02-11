@@ -5,7 +5,7 @@ function AboutEvolve() {
     <div className="flex justify-center py-10 xl:h-screen">
       <div className="flex flex-col md:flex-row justify-between w-[80%]">
         <div className=" lg:w-[40%] h-full flex items-center">
-          <p class="text-blue-800 text-3xl md:text-6xl  font-branding-semibold w-full text-center md:text-left">
+          <p className="text-blue-800 text-3xl md:text-6xl  font-branding-semibold w-full text-center md:text-left">
             Businesses
             <br /> evolve,so do <br /> mindsets. Only <br />
             beliefs remains <br /> unchanged.
@@ -13,7 +13,7 @@ function AboutEvolve() {
         </div>
 
         <div className="flex md:w-[50%] mt-10">
-          <p class="text-gray-700 text-base md:text-2xl font-branding-medium p-4 ">
+          <p className="text-gray-700 text-base md:text-2xl font-branding-medium p-4 ">
             With business verticals as varied as exhibitions, events,
             hospitality, MICE, and realty, our steady expansion <br />
             augments our growth as we watch several new ideas find form.
