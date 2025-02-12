@@ -14,11 +14,11 @@ function Mentor() {
             <div className="z-10 relative">
               <h2
                 style={{ fontFamily: "BrandingSemibold" }}
-                className="text-3xl md:text-5xl text-indigo-700"
+                className="text-3xl md:text-5xl text-primary"
               >
                 A note from the Founding
               </h2>
-              <h3 className="font-branding-medium text-3xl mt-2 md:text-4xl text-indigo-700">
+              <h3 className="font-branding-medium text-3xl mt-2 md:text-4xl text-primary">
                 Director and Mentor
               </h3>
               <div className="space-y-4 mt-7 text-gray-700">
@@ -62,10 +62,10 @@ function Mentor() {
               />
             </div>
             <div className="text-center mt-4">
-              <h3 className="text-2xl font-branding-medium text-indigo-700">
+              <h3 className="text-2xl font-branding-medium text-primary">
                 Sumant J. Patel
               </h3>
-              <p className="text-gray-600 mt-1 font-branding-medium">
+              <p className="mt-1 font-branding-medium">
                 (15th August 1935 – 17th November 2021)
               </p>
             </div>

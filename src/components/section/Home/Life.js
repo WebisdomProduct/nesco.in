@@ -3,7 +3,7 @@ import background from "@/assests/Home/N-1.png";
 
 function Life() {
   return (
-    <section className="header_white flex lg:px-[7rem] px-5 md:px-16 justify-between items-center w-full bg-[#002172] relative pt-16 overflow-hidden lg:h-full md:h-[100vh] xl:h-[100vh]">
+    <section className="header_white flex lg:px-[7rem] px-5 md:px-16 justify-between items-center w-full bg-[#403092] relative pt-16 overflow-hidden lg:h-full md:h-[100vh] xl:h-[100vh]">
       <div className="flex flex-col xl:w-[50%] lg:w-[60%] md:gap-7 gap-10 py-20 z-10">
         {/* <p className="text-3xl font-bold text-secondary text-center md:text-left"> */}
         <p
@@ -68,7 +68,7 @@ function Life() {
             {/* <div className="absolute w-0 h-0 border-l-[70px] border-l-transparent border-r-[70px] border-r-transparent border-t-[70px] border-t-white top-full"></div> */}
           </div>
           <div className="text-white flex flex-col items-center relative mb-5">
-            <span className="inline-block bg-[#002172] absolute -top-1 left-0 h-1 w-full z-10 rounded-full border-l-2 border-r-2"></span>
+            <span className="inline-block bg-[#403092] absolute -top-1 left-0 h-1 w-full z-10 rounded-full border-l-2 border-r-2"></span>
             <span className="absolute -top-[16px] ">
               <svg
                 width="140"
@@ -78,7 +78,7 @@ function Life() {
               >
                 <polygon
                   points="0,0 200,0 100,80"
-                  fill="#002172"
+                  fill="#403092"
                   stroke="#ffffff"
                   strokeWidth="2"
                 />

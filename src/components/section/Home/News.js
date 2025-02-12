@@ -78,7 +78,7 @@ function News() {
       {/* <p className="text-primary font-bold pb-3 text-3xl"> */}
 
       <p
-        className="lg:text-[3rem] text-2xl text-primary"
+        className="text-[3rem] text-primary"
         style={{
           fontFamily: "BrandingSemibold",
         }}
@@ -148,7 +148,7 @@ function News() {
                     <div className="flex flex-col mt-5 w-[60%] justify-between h-full z-10 relative pb-2">
                       <div>
                         <p
-                          className="text-[1.9rem] font-semibold text-primary mb-2"
+                          className="text-[2rem] leading-[2.2rem] mb-2"
                           style={{
                             fontFamily: "BrandingSemibold",
                             color: data.color,
@@ -202,7 +202,7 @@ function News() {
                   </div>
                   <div className="flex flex-col mt-2 w-[70%] md:w-[100%] justify-between h-full z-10 relative pb-2">
                     <p
-                      className="text-[2rem] leading-[2.2rem] text-primary mb-2"
+                      className="text-[2rem] leading-[2.2rem] mb-2"
                       style={{
                         fontFamily: "BrandingSemibold",
                         color: data.color,

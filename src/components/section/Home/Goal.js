@@ -4,7 +4,7 @@ import Image from "next/image";
 
 export default function Goal() {
   return (
-    <section className="w-full lg:h-screen h-full bg-gray-200 pb-10 md:pb-0 flex flex-col justify-center">
+    <section className="w-full lg:h-screen h-full bg-gray-200 pb-10 flex flex-col justify-center">
       <div className="grid md:grid-cols-2 justify-between gap-10 pt-24 items-center w-[90%] mx-auto ">
         <div className="relative h-[400px] md:h-[650px]">
           <Image
@@ -15,7 +15,7 @@ export default function Goal() {
             priority
           />
         </div>
-        <div className="">
+        <div className="px-5">
           <div className="">
             <h1
               style={{ fontFamily: "BrandingSemibold" }}
@@ -23,12 +23,12 @@ export default function Goal() {
             >
               One goal. 8 decades.
             </h1>
-            <h2 className="text-[#1e3a8a] mt-3 text-4xl md:text-5xl font-branding-medium">
+            <h2 className="text-[#1e3a8a] mt-3 text-4xl md:text-5xl lg:text-6xl font-branding-medium">
               Infinite possibilities
             </h2>
           </div>
           <div className="space-y-4 mt-8">
-            <h2 className="text-2xl md:text-3xl text-black font-branding-medium">
+            <h2 className="text-2xl md:text-3xl text-black font-branding-bold">
               In 1939, we set out on our goal to make India stand out on the
               world map.
             </h2>
