@@ -1,58 +1,57 @@
 import React from "react";
 import MentorImage from "@/assests/Home/Mentor.png";
-import backgroundImage from "@/assests/Home/N1.png";
+import backgroundImage from "@/assests/Home/N.png";
 import Image from "next/image";
 
 function Mentor() {
   return (
-    <section className="bg-[#a6c8d8] flex flex-col items-center justify-center relative w-full xl:h-auto h-full overflow-hidden pt-8 md:pt-0">
-      {/* Background Image */}
-      <div className="w-full h-full z-0 absolute flex lg:items-center lg:justify-start justify-center sm:items-start items-center left-0 mt-36">
-        <div className="relative w-full h-full -top-5">
-          <Image
-            src={backgroundImage}
-            alt="background image"
-            layout="fill"
-            objectFit="contain"
-            objectPosition="left"
-            className="md:w-[70%] sm:h-full w-full h-[50%]"
-          />
-          {/* <div className="absolute inset-0 bg-[#889ea9] opacity-50 mix-blend-multiply"></div> */}
-        </div>
-      </div>
-
+    <section className="bg-[#cbe0e7] flex flex-col items-center justify-center relative w-full xl:h-auto h-full overflow-hidden pt-8 md:pt-0">
       {/* Content */}
-      <div className="z-10 relative w-[81%] flex flex-col items-center justify-center mx-auto mt-20 mb-10 md:h-screen">
+      <div className="z-20 relative w-[81%] flex flex-col items-center justify-center mx-auto mt-20 mb-10 md:h-screen">
         <div className="grid md:grid-cols-2 items-start gap-5 lg:gap-0">
           {/* Text Content */}
-          <div className="">
-            <h2
-              style={{ fontFamily: "BrandingSemibold" }}
-              className="text-3xl md:text-5xl text-indigo-700"
-            >
-              A note from the Founding
-            </h2>
-            <h3 className="font-branding-medium text-3xl mt-2 md:text-4xl text-indigo-700">
-              Director and Mentor
-            </h3>
-            <div className="space-y-4 mt-7 text-gray-700">
-              <p className="text-[21px] font-branding-medium leading-7">
-                In the last eight decades, Nesco has come a long way. We see our
-                present success as only the start to newer and bolder
-                initiatives. This is an affirmation that as we continue to grow,
-                we add to the growth of our country.
-              </p>
-              <p className="text-[21px] font-branding-medium leading-7">
-                Our teams are motivated to set new benchmarks across industries
-                through perseverance and innovation. The world we live in is
-                rapidly evolving and at Nesco we are prepared to meet every
-                challenge head on.
-              </p>
+          <div className="relative w-full h-full">
+            <div className="z-10 relative">
+              <h2
+                style={{ fontFamily: "BrandingSemibold" }}
+                className="text-3xl md:text-5xl text-indigo-700"
+              >
+                A note from the Founding
+              </h2>
+              <h3 className="font-branding-medium text-3xl mt-2 md:text-4xl text-indigo-700">
+                Director and Mentor
+              </h3>
+              <div className="space-y-4 mt-7 text-gray-700">
+                <p className="text-[21px] font-branding-medium leading-7">
+                  In the last eight decades, Nesco has come a long way. We see
+                  our present success as only the start to newer and bolder
+                  initiatives. This is an affirmation that as we continue to
+                  grow, we add to the growth of our country.
+                </p>
+                <p className="text-[21px] font-branding-medium leading-7">
+                  Our teams are motivated to set new benchmarks across
+                  industries through perseverance and innovation. The world we
+                  live in is rapidly evolving and at Nesco we are prepared to
+                  meet every challenge head on.
+                </p>
+              </div>
+            </div>
+            {/* Background Image */}
+            <div className="w-full h-full z-0 absolute top-0">
+              <div className="relative w-full h-full flex justify-center items-center">
+                <Image
+                  src={backgroundImage}
+                  alt="background image"
+                  objectFit="cover"
+                  className="w-full xl:scale-[1.1] lg:scale-[1.5] md:scale-[1.7] scale-[1.5]"
+                />
+                {/* <div className="absolute inset-0 bg-[#889ea9] opacity-50 mix-blend-multiply"></div> */}
+              </div>
             </div>
           </div>
 
           {/* Mentor Image and Name */}
-          <div className="flex flex-col h-full items-center justify-center">
+          <div className="flex flex-col h-full items-center justify-center z-10 relative">
             <div className="w-full max-w-[450px]">
               <Image
                 src={MentorImage}

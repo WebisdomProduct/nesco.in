@@ -74,7 +74,7 @@ function News() {
   ];
 
   return (
-    <section className="w-full flex flex-col items-center pb-5 pt-28">
+    <section className="w-full flex flex-col items-center pb-10 pt-28">
       {/* <p className="text-primary font-bold pb-3 text-3xl"> */}
 
       <p
