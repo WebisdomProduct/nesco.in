@@ -1,17 +1,94 @@
 "use client";
 import React, { useState } from "react";
 import { IoSearch } from "react-icons/io5";
+import { FaArrowRight } from "react-icons/fa";
 
 function AnnouncementFilter() {
-  const [visibleCheckboxes, setVisibleCheckboxes] = useState(5);
-  const [visibleRows, setVisibleRows] = useState(5);
+  const tableData = [
+    {
+      year: "2024-2025",
+      date: "Jan 23, 2025",
+      description:
+        "Disclosure under Regulation 30 of the SEBI (Listing Obligations and Disclosure Requirements) Regulations, 2015-Sale of 100% stake in M Entertainments Private Limited ",
+    },
+    {
+      year: "2024-2025",
+      date: "Jan 17, 2025",
+      description:
+        "Disclosure under Flegulation 30 of the Securities and Exchange Board of India (Listing Obligations and Disclosure Requirements) Regulations, 2015-Update on acquisition of 100% equity stake of Reliance New Energy Battery Limited ",
+    },
+    {
+      year: "2024-2025",
+      date: "Jan 17, 2025 ",
+      description:
+        "Audio/video recording and transcript of the presentation made to analysts on the Unaudited Financial Results (Consolidated and Standalone) for the quarter and nine months ended December 31, 2024 ",
+    },
+    {
+      year: "2024-2025",
+      date: "Jan 16, 2025 ",
+      description:
+        "Integrated Filing (Financial) for the quarter and nine months ended December 31, 2024 ",
+    },
+    {
+      year: "2024-2025",
+      date: "Jan 16, 2025 ",
+      description:
+        "Disclosure under Regulation 30 of the SEBI (Listing Obligations and Disclosure Requirements) Regulations, 2015-Acquisition of 100% equity stake of Lakadia B Power Transmission Limited ",
+    },
+    {
+      year: "2024-2025",
+      date: "Jan 10, 2025 ",
+      description:
+        "Disclosure under Regulation 30 of the SEBI (Listing Obligations and Disclosure Requirements) Regulations, 2015-Acquisition of 100% equity stake of Reliance New Energy Battery Limited ",
+    },
+    {
+      year: "2024-2025",
+      date: "Jan 16, 2025",
+      description:
+        "Presentation on the Unaudited Financial Results (Consolidated and Standalone) for the quarter and nine months ended December 31, 2024 ",
+    },
+    {
+      year: "2024-2025",
+      date: "Jan 16, 2025",
+      description:
+        "Media Release - Consolidated and Standalone Unaudited Financial Results for the quarter and nine months ended December 31, 2024 ",
+    },
+    {
+      year: "2024-2025",
+      date: "Jan 16, 2025 ",
+      description:
+        "Consolidated and Standalone Unaudited Financial Results for the quarter and nine months ended December 31, 2024 ",
+    },
+    {
+      year: "2024-2025",
+      date: "Dec 31, 2024 ",
+      description:
+        "Conversion of compulsorily convertible preference shares held by the Company in Viacom 18 Media Private Limited ",
+    },
+    {
+      year: "2024-2025",
+      date: "Dec 31, 2024 ",
+      description:
+        "Conversion of compulsorily convertible preference shares held by the Company in Viacom 18 Media Private Limited ",
+    },
+    {
+      year: "2023-2024",
+      date: "Dec 31, 2024 ",
+      description:
+        "Conversion of compulsorily convertible preference shares held by the Company in Viacom 18 Media Private Limited ",
+    },
+  ];
+
+  const [visibleCheckboxes, setVisibleCheckboxes] = useState(10);
+  const [visibleRows, setVisibleRows] = useState(10);
+  const totalRows = tableData.length;
   const [selectedYears, setSelectedYears] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
 
-  const allYears = Array.from({ length: 10 }, (_, i) => {
-    const startYear = 2025 - i;
+  const allYears = Array.from({ length: 12 }, (_, i) => {
+    const startYear = 2024 - i;
     const endYear = startYear + 1;
-    return `${startYear}-${endYear.toString().slice(-2)}`;
+    return `${startYear}-${endYear.toString()}`;
   });
 
   const handleYearChange = (year) => {
@@ -22,30 +99,26 @@ function AnnouncementFilter() {
     );
   };
 
-  const financialData = Array.from({ length: 10 }, (_, i) => ({
-    year: allYears[i],
-    title: `Financial Statements of Subsidiaries ${allYears[i]}`,
-  }));
-
-  const filteredData = financialData
+  const filteredData = tableData
     .filter((item) =>
       selectedYears.length > 0 ? selectedYears.includes(item.year) : true
     )
     .filter((item) =>
-      item.title.toLowerCase().includes(searchQuery.toLowerCase())
+      item.description.toLowerCase().includes(searchQuery.toLowerCase())
     );
+
   return (
     <div>
-      <div className="flex justify-center">
-        <div className=" my-12 px-4 flex md:flex-row flex-col justify-between lg:w-[80%] md:w-[90%]">
-          <div className="md:w-[30%] p-4 py-6 mt-2 sm:ml-3 md:ml-4 mb-2 flex flex-col">
-            <div className="relative text-gray-500 flex justify-center items-center">
+      <div className="flex justify-center header_purple">
+        <div className=" my-12 flex md:flex-row flex-col justify-between w-[90%]">
+          <div className="md:w-[30%]  py-6 mt-2 mb-2 flex flex-col">
+            <div className="relative md:pr-20 text-gray-500 flex justify-center items-center">
               <input
                 type="text"
                 placeholder="Search..."
+                className="w-full px-2 py-1 pl-8 border-b  border-gray-300 "
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full px-2 py-1 pl-8 border-b  border-gray-300 "
               />
               <button className="absolute left-2  w-5 h-5 text-gray-500 ">
                 <IoSearch className="w-full h-full" />
@@ -72,67 +145,85 @@ function AnnouncementFilter() {
 
             {visibleCheckboxes < allYears.length ? (
               <button
-                className="mt-2 text-gray-500 hover:underline  w-fit p-1  "
+                className="mt-2 text-gray-500 hover:underline w-fit p-1 flex justify-center items-center gap-3"
                 onClick={() => setVisibleCheckboxes(visibleCheckboxes + 5)}
               >
-                Show More Filters
+                Show More{" "}
+                <span className="w-4 h-4 rounded-full border-2 flex justify-center items-center">
+                  <span className="inline-block w-2 h-2 rounded-full bg-gray-600 "></span>
+                </span>
               </button>
             ) : (
               <button
-                className="mt-2 text-gray-500 hover:underline  w-fit p-1  "
-                onClick={() => setVisibleCheckboxes(5)}
+                className="mt-2 text-gray-500 hover:underline w-fit p-1 flex justify-center items-center gap-3"
+                onClick={() => setVisibleCheckboxes(10)}
               >
-                Show Less Filters
+                Show Less{" "}
+                <span className="w-4 h-4 rounded-full border-2 flex justify-center items-center">
+                  <span className="inline-block w-2 h-2 rounded-full bg-gray-600 "></span>
+                </span>
               </button>
             )}
           </div>
 
-          <div className=" md:w-[70%] p-3 col-span-3 ">
+          <div className=" md:w-[70%] py-3 col-span-3 ">
             <table className="table-auto border-separate text-left w-full ">
               <thead>
                 <tr>
                   <th className=" bg-violet-700 text-gray-200 shadow-sm pl-8 py-3 ">
                     Title
                   </th>
-                  {/* <th className="title bg-violet-700 text-gray-200 shadow-sm pl-2  ">
-              Title
-            </th> */}
                 </tr>
               </thead>
               <tbody>
-                {filteredData.slice(0, visibleRows).map((row, index) => (
+                {/* {filteredData.slice(0, visibleRows).map((row, index) => (
                   <tr key={index}>
                     <td className="shadow-md pl-3 font-branding-medium text-gray-500">
-                      {/* {row.year} &nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp;  {row.title} */}
                       <div className="flex justify-between mx-4 md:pr-[8%] my-3">
                         <span className="">{row.year}</span>
                         <span className=" ">{row.title}</span>
                       </div>
                     </td>
-
-                    {/* <td className="border-collapse border-spacing-0 shadow-sm pl-3 font-branding-medium text-gray-500">
-                {row.title}
-              </td> */}
+                  </tr>
+                ))} */}
+                {filteredData.slice(0, visibleRows).map((data, index) => (
+                  <tr key={index}>
+                    <td className="shadow-md pl-3 font-branding-medium text-gray-500 text-base">
+                      <div className="flex gap-10 my-3">
+                        <p className=" whitespace-nowrap flex justify-center items-center">
+                          {data.date}
+                        </p>
+                        <p className="px-4">{data.description}</p>
+                      </div>
+                    </td>
                   </tr>
                 ))}
               </tbody>
             </table>
 
-            {visibleRows < 10 ? (
-              <button
-                className="mt-2 text-gray-500 hover: underline w-fit p-1"
-                onClick={() => setVisibleRows(visibleRows + 5)}
-              >
-                Show More Rows
-              </button>
-            ) : (
-              <button
-                className="mt-2 text-gray-500 hover: underline w-fit p-1"
-                onClick={() => setVisibleRows(5)}
-              >
-                Show Less Rows
-              </button>
-            )}
+            <div className="w-full justify-center items-center flex mt-10">
+              {visibleRows < filteredData.length ? (
+                <button
+                  className="mt-2 px-6 py-2 rounded-full text-purple-700 border-2 border-purple-700 flex justify-center items-center gap-3"
+                  onClick={() => setVisibleRows((prev) => prev + 5)}
+                >
+                  Load More{" "}
+                  <span className="">
+                    <FaArrowRight className="rotate-90" />
+                  </span>
+                </button>
+              ) : (
+                <button
+                  className="mt-2 px-6 py-2 rounded-full text-purple-700 border-2 border-purple-700 flex justify-center items-center gap-3"
+                  onClick={() => setVisibleRows(10)}
+                >
+                  Load Less{" "}
+                  <span className="">
+                    <FaArrowRight className="-rotate-90" />
+                  </span>
+                </button>
+              )}
+            </div>
           </div>
         </div>
       </div>

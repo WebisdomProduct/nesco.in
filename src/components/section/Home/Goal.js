@@ -1,12 +1,13 @@
-import React from "react";
+import React, { useEffect, useState, useRef } from "react";
 import GoalImage from "@/assests/Home/goal.png";
 import Image from "next/image";
+import "./animation.css";
 
 export default function Goal() {
   return (
     <section className="w-full lg:h-screen h-full bg-gray-200 pb-10 flex flex-col justify-center">
-      <div className="grid md:grid-cols-2 justify-between gap-10 pt-24 items-center w-[90%] mx-auto ">
-        <div className="relative h-[400px] md:h-[650px]">
+      <div className="grid md:grid-cols-2 justify-between gap-10 pt-24 items-center w-[90%] mx-auto goal-section1">
+        <div className={`relative h-[400px] md:h-[650px] `}>
           <Image
             src={GoalImage}
             alt="Illustration of a person with a flag standing on a light bulb"
@@ -16,10 +17,10 @@ export default function Goal() {
           />
         </div>
         <div className="px-5">
-          <div className="">
+          <div>
             <h1
               style={{ fontFamily: "BrandingSemibold" }}
-              className="text-[#1e3a8a] text-4xl md:text-5xl lg:text-6xl font-BrandingSemibold font-bold"
+              className={`text-[#1e3a8a] text-4xl md:text-5xl lg:text-6xl font-BrandingSemibold font-bold `}
             >
               One goal. 8 decades.
             </h1>

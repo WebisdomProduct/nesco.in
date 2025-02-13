@@ -8,6 +8,7 @@ import Service from "./Service";
 import Life from "./Life";
 import News from "./News";
 import ScrollSnip from "@/components/layout/scrollSnipEffect/scrollSnip";
+import AnimateOnScroll from "../../common/animateContent/animation";
 
 function MainHome() {
   const Children = [
@@ -16,24 +17,44 @@ function MainHome() {
       classCss: "section ",
     },
     {
-      comp: <Goal />,
+      comp: (
+        <AnimateOnScroll>
+          <Goal />
+        </AnimateOnScroll>
+      ),
       classCss: "section goal-section",
     },
     {
-      comp: <Mentor />,
+      comp: (
+        <AnimateOnScroll>
+          <Mentor />
+        </AnimateOnScroll>
+      ),
       classCss: "section",
     },
     {
-      comp: <Service />,
+      comp: (
+        <AnimateOnScroll>
+          <Service />
+        </AnimateOnScroll>
+      ),
       classCss: "section",
     },
     {
-      comp: <Life />,
+      comp: (
+        <AnimateOnScroll>
+          <Life />
+        </AnimateOnScroll>
+      ),
       classCss: "section",
     },
     {
-      comp: <News />,
-      classCss: "section",
+      comp: (
+        <AnimateOnScroll>
+          <News />
+        </AnimateOnScroll>
+      ),
+      classCss: "section ",
     },
   ];
 

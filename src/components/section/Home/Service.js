@@ -4,7 +4,7 @@ import ServiceImage from "@/assests/Home/girl.jpg";
 function Service() {
   return (
     <section className="md:pt-[78px] pt-10 flex w-full justify-center items-center h-[100vh]">
-      <div className=" md:w-[80%] w-[90%] relative overflow-hidden h-[80%] flex items-center">
+      <div className=" md:w-[90%] w-[90%] relative overflow-hidden h-[80%] flex items-center goal-section1">
         <div className="absolute top-0 left-0 -z-[1] w-full h-full">
           <img
             src={ServiceImage.src}

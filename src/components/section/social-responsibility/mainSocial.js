@@ -22,23 +22,23 @@ function MainSocial() {
     },
     {
       comp: <SocialCSR />,
-      classCss: "",
+      classCss: "section",
     },
     {
       comp: <SocialFocus />,
-      classCss: "",
+      classCss: "section",
     },
     {
       comp: <SocialEducation />,
-      classCss: "",
+      classCss: "section",
     },
     {
       comp: <SocialInfra />,
-      classCss: "",
+      classCss: "section",
     },
     {
       comp: <SocialHealth />,
-      classCss: "",
+      classCss: "section",
     },
   ];
 

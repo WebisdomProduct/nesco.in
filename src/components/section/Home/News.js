@@ -74,7 +74,7 @@ function News() {
   ];
 
   return (
-    <section className="w-full flex flex-col items-center pb-10 pt-28">
+    <section className="header_purple w-full flex flex-col items-center py-28 goal-section1 ">
       {/* <p className="text-primary font-bold pb-3 text-3xl"> */}
 
       <p
@@ -86,7 +86,7 @@ function News() {
         In the news
       </p>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3  gap-8 lg:px-[7rem] px-5 md:px-10 mt-10">
+      <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3  gap-8 w-[90%]  mt-10">
         {newsData &&
           newsData.map((data, index) => {
             // Check if it's the 3rd item (index 2) to display a custom card

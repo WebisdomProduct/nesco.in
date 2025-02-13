@@ -18,10 +18,10 @@ function SocialCSR() {
   ];
 
   return (
-    <section className="w-full relative flex flex-col items-center md:py-10 xl:py-0 xl:h-screen">
-      <div className=" pt-16 items-center lg:w-[80%] md:w-[85%] mx-auto ">
+    <section className="w-full relative flex flex-col justify-center items-center md:py-10 xl:py-0 xl:h-screen">
+      <div className=" py-12 items-center w-[90%] mx-auto">
         <div className="mt-10 flex lg:flex-row flex-col justify-between items-center w-full gap-5">
-          <div className="text-justify lg:w-[60%] w-[90%] md:mt-0 mt-10 flex flex-col gap-5 md:text-2xl font-poppins">
+          <div className="text-justify lg:w-[60%] w-full md:mt-0 mt-10 flex flex-col gap-5 md:text-2xl font-poppins">
             <div className=" text-primary flex justify-center items-center">
               <p
                 style={{ fontFamily: "BrandingSemibold" }}
@@ -40,7 +40,7 @@ function SocialCSR() {
               communities and addressing their most pressing needs. The CSR
               Committee ensures that our initiatives are effectively
             </p>
-            <p className="mt-6">
+            <p className="">
               cation, and continuous monitoring. Through these programs, Nesco
               aims to make a significant and positive impact, enhancing both
               social welfare and environmental sustainability
@@ -59,7 +59,7 @@ function SocialCSR() {
               ))}
             </div>
           </div>
-          <div className="relative h-[500px] lg:w-[40%] w-[90%]">
+          <div className="relative md:h-[500px] h-[400px] lg:w-[40%] w-full">
             <Image
               src={chessImage}
               alt="Chess Image"

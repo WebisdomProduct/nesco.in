@@ -1,0 +1,29 @@
+/* .image1 {
+  animation: imageAnimation 1s 10s;
+  transform: translateY(0%);
+  transition: all 1s ease-in;
+}
+@keyframes imageAnimation {
+  0% {
+    transform: translateY(100%);
+  }
+  100% {
+    transform: translateY(0%);
+  }
+} */
+/* .image1 {
+  opacity: 0;
+  transform: translateY(100%);
+  transition: transform 0.8s ease-out, opacity 0.8s ease-out;
+}
+
+.animate-image {
+  opacity: 1;
+  transform: translateY(0%);
+}
+
+.reset-image {
+  opacity: 50;
+  transform: translateY(100%);
+} */
+/* Initial State */

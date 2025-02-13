@@ -10,11 +10,9 @@ import Link from "next/link";
 function Navbar({ activeSlide }) {
   const NavData = [
     { title: "About", route: "/about" },
-    // { title: "Nesco Center", route: "/nesco-center" },
     { title: "Businesses", route: "/businesses" },
     { title: "Investors", route: "/investors" },
     { title: "Our Impact", route: "/impact" },
-    // { title: "Media", route: "/media" },
     { title: "Life at Nesco", route: "/life-nesco" },
     { title: "Contact", route: "/contact-us" },
   ];
@@ -25,6 +23,8 @@ function Navbar({ activeSlide }) {
   const [hoverStates, setHoverStates] = useState(
     Array(NavData.length).fill(false)
   );
+  const [activePurpleSection, setActivePurpleSection] = useState(null); // Track active purple section
+  const [isFooter, setIsFooter] = useState(false);
 
   const logo = {
     imagePath: Nescologo,
@@ -52,6 +52,7 @@ function Navbar({ activeSlide }) {
   useEffect(() => {
     const banner = document.querySelector(".banner-section");
     const headerWhiteSection = document.querySelector(".header_white");
+    const footerSection = document.querySelector(".footer_section");
 
     const mainObserver = new IntersectionObserver(
       ([entry]) => {
@@ -64,35 +65,72 @@ function Navbar({ activeSlide }) {
       ([entry]) => {
         setIsHeaderWhite(entry.isIntersecting);
       },
-      { threshold: 0.5 }
+      { threshold: 0.1 }
+    );
+
+    // Observe all sections with the class "header_purple"
+    const purpleSections = document.querySelectorAll(".header_purple");
+    const purpleObserver = new IntersectionObserver(
+      (entries) => {
+        let isAnyPurpleActive = false;
+
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            isAnyPurpleActive = true;
+          }
+        });
+
+        setActivePurpleSection(isAnyPurpleActive ? entries[0].target : null);
+      },
+      { threshold: 0.1, rootMargin: "0px 0px 150px 0px" }
+    );
+
+    const FooterObserver = new IntersectionObserver(
+      ([entry]) => {
+        setIsFooter(entry.isIntersecting); // Update isPurple based on intersection
+      },
+      { threshold: 0.9, rootMargin: "0px 0px 150px 0px" } // Adjust rootMargin to detect footer earlier
     );
 
     if (banner) mainObserver.observe(banner);
+    if (footerSection) FooterObserver.observe(footerSection);
     if (headerWhiteSection) headerObserver.observe(headerWhiteSection);
+    purpleSections.forEach((section) => purpleObserver.observe(section));
 
     return () => {
       if (banner) mainObserver.unobserve(banner);
       if (headerWhiteSection) headerObserver.unobserve(headerWhiteSection);
+      if (footerSection) FooterObserver.unobserve(footerSection);
+      purpleSections.forEach((section) => purpleObserver.unobserve(section));
     };
   }, []);
 
   const getTextColor = () => {
+    if (activePurpleSection) {
+      return "text-white border-white"; // Apply white text for purple header
+    }
+    if (isFooter) {
+      return "text-white border-white"; // Apply white text for purple header
+    }
     if (activeSlide === 0) {
       return "text-black border-black";
     }
-    // if (activeSlide === 1) {
-    //   return "text-white border-white";
-    // }
     if (isHeaderWhite) {
       return "text-white border-white";
     }
     if (isScrolled) {
-      return "text-black  border-black";
+      return "text-black border-black";
     }
     return "text-white border-white";
   };
 
   const getLogoColorWork = () => {
+    if (activePurpleSection) {
+      return "filter brightness-1"; // Apply brightness for purple header
+    }
+    if (isFooter) {
+      return "filter brightness-1"; // Apply brightness for purple header
+    }
     if (activeSlide === 0) {
       return "filter brightness-0";
     }
@@ -105,13 +143,24 @@ function Navbar({ activeSlide }) {
     return "filter brightness-1";
   };
 
+  const changeNavbar = () => {
+    if (activePurpleSection) {
+      return "bg-[#403092]"; // Apply purple background when a purple section is active
+    }
+    return ""; // Return empty string for other cases
+  };
+  const changeNavbar1 = () => {
+    if (isFooter) {
+      return "bg-[#403092]"; // Apply purple background when isPurple is true
+    }
+  };
+
   return (
     <nav
-      className={`py-6 md:px-6 px-8 flex items-center justify-between w-full z-[999] fixed transition-all duration-300 overflow-hidden bg-transparent
-      `}
+      className={`py-6 md:px-6 px-8 flex items-center justify-between w-full z-[999] fixed transition-all duration-300 overflow-hidden ${changeNavbar()} ${changeNavbar1()}`}
     >
       {!isScrolled && (
-        <div className="fixed top-0 left-0 py-6 md:px-16 px-8  w-full h-20"></div>
+        <div className="fixed top-0 left-0 py-6 md:px-16 px-8 w-full h-20"></div>
       )}
       {/* Logo */}
       <div className="">
@@ -127,7 +176,7 @@ function Navbar({ activeSlide }) {
       </div>
 
       {/* Desktop NavBar */}
-      <div className="hidden xl:flex items-center z-10">
+      <div className={`hidden xl:flex items-center z-10`}>
         <ul className="flex items-center ">
           {NavData.map((data, index) => (
             <li

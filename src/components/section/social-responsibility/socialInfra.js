@@ -27,7 +27,7 @@ function SocialInfra() {
   ];
 
   return (
-    <section>
+    <section className="">
       <SocialBanner1 SliderData={SliderData} title={title} />
     </section>
   );
