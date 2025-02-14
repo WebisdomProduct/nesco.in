@@ -9,11 +9,11 @@ import Link from "next/link";
 
 function Navbar({ activeSlide }) {
   const NavData = [
-    { title: "About", route: "/about" },
-    { title: "Businesses", route: "/businesses" },
-    { title: "Investors", route: "/investors" },
-    { title: "Our Impact", route: "/impact" },
-    { title: "Life at Nesco", route: "/life-nesco" },
+    { title: "About", route: "" },
+    { title: "Businesses", route: "" },
+    { title: "Investors", route: "" },
+    { title: "Our Impact", route: "" },
+    { title: "Life at Nesco", route: "" },
     { title: "Contact", route: "/contact-us" },
   ];
 
@@ -65,7 +65,7 @@ function Navbar({ activeSlide }) {
       ([entry]) => {
         setIsHeaderWhite(entry.isIntersecting);
       },
-      { threshold: 0.1 }
+      { threshold: 0.5, rootMargin: "0px 0px 150px 0px" }
     );
 
     // Observe all sections with the class "header_purple"

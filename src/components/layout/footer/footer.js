@@ -5,7 +5,7 @@ function Footer() {
   const FooterData = [
     {
       title: "About Us",
-      titleLink: "/about",
+      titleLink: "",
       category: [
         {
           title: "Overview",
@@ -21,7 +21,7 @@ function Footer() {
         },
         {
           title: "Leadership",
-          link: "/leadership",
+          link: "",
         },
         {
           title: "Sustainability",
@@ -82,11 +82,11 @@ function Footer() {
         },
         {
           title: "Stock Information ",
-          link: "/stock",
+          link: "",
         },
         {
           title: "Shareholder Services ",
-          link: "shareholders",
+          link: "",
         },
       ],
     },
@@ -95,7 +95,7 @@ function Footer() {
   const FooterData2 = [
     {
       title: "Careers",
-      link: "/careers",
+      link: "",
     },
     {
       title: "Contact",
