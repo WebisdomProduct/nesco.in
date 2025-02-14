@@ -79,13 +79,13 @@ function AnnouncementFilter() {
     },
   ];
 
-  const [visibleCheckboxes, setVisibleCheckboxes] = useState(10);
+  const [visibleCheckboxes, setVisibleCheckboxes] = useState(8);
   const [visibleRows, setVisibleRows] = useState(10);
   const totalRows = tableData.length;
   const [selectedYears, setSelectedYears] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
 
-  const allYears = Array.from({ length: 12 }, (_, i) => {
+  const allYears = Array.from({ length: 8 }, (_, i) => {
     const startYear = 2024 - i;
     const endYear = startYear + 1;
     return `${startYear}-${endYear.toString()}`;
@@ -143,10 +143,10 @@ function AnnouncementFilter() {
               </div>
             ))}
 
-            {visibleCheckboxes < allYears.length ? (
+            {/* {visibleCheckboxes < allYears.length ? (
               <button
                 className="mt-2 text-gray-500 hover:underline w-fit p-1 flex justify-center items-center gap-3"
-                onClick={() => setVisibleCheckboxes(visibleCheckboxes + 5)}
+                onClick={() => setVisibleCheckboxes(visibleCheckboxes + 1)}
               >
                 Show More{" "}
                 <span className="w-4 h-4 rounded-full border-2 flex justify-center items-center">
@@ -156,14 +156,14 @@ function AnnouncementFilter() {
             ) : (
               <button
                 className="mt-2 text-gray-500 hover:underline w-fit p-1 flex justify-center items-center gap-3"
-                onClick={() => setVisibleCheckboxes(10)}
+                onClick={() => setVisibleCheckboxes(7)}
               >
                 Show Less{" "}
                 <span className="w-4 h-4 rounded-full border-2 flex justify-center items-center">
                   <span className="inline-block w-2 h-2 rounded-full bg-gray-600 "></span>
                 </span>
               </button>
-            )}
+            )} */}
           </div>
 
           <div className=" md:w-[70%] py-3 col-span-3 ">
