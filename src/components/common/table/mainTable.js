@@ -73,7 +73,7 @@ const MainTable = ({ tableData, pagination }) => {
 
   return (
     <Table
-      className={styles.customTable}
+      className={`${styles.customTable} shadow-xl`}
       pagination={pagination}
       columns={columns}
       dataSource={dataSource}

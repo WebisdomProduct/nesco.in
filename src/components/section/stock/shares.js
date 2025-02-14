@@ -99,12 +99,12 @@ function Shares() {
 
   return (
     <section className="pt-20 pb-10 font-branding-medium flex justify-center items-center flex-col">
-      <div className="w-full">
-        <h2 className="text-5xl font-branding-bold text-primary text-center mb-10">
-          Shares
-        </h2>
-        <div className="bg-secondary flex flex-col items-center justify-center py-5">
-          <div className="flex justify-between md:w-[70%] w-[90%] items-center">
+      <h2 className="text-5xl font-branding-bold text-primary text-center my-8">
+        Shares
+      </h2>
+      <div className="w-full flex justify-center items-center flex-col bg-secondary">
+        <div className=" flex flex-col items-center justify-center py-5 w-[90%]">
+          <div className="flex justify-between w-full items-center">
             <span className="text-3xl text-primary">Stock Quote</span>
             <div className="flex gap-2 text-xl">
               <button
@@ -124,20 +124,24 @@ function Shares() {
               </button>
             </div>
           </div>
-          <div className=" md:w-[70%] w-[90%] mt-10 ">
-            {select === "bse" ? (
-              <div className="flex flex-col gap-10">
-                <MainTable tableData={BseData} pagination={false} />
-                <MainTable tableData={BseData2} pagination={false} />
-              </div>
-            ) : (
-              <div className="flex flex-col gap-10">
-                <MainTable tableData={NseData} pagination={false} />
-                <MainTable tableData={NseData2} pagination={false} />
-              </div>
-            )}
-            <div className="text-end w-full mt-5">
-              <p> pricing delay by {timing.delay} minutes</p>
+          <div className=" bg-white w-full flex flex-col items-center my-10">
+            <div className=" w-[90%] my-10">
+              {select === "bse" ? (
+                <div className="flex flex-col gap-10">
+                  <MainTable tableData={BseData} pagination={false} />
+                  <MainTable tableData={BseData2} pagination={false} />
+                </div>
+              ) : (
+                <div className="flex flex-col gap-10">
+                  <MainTable tableData={NseData} pagination={false} />
+                  <MainTable tableData={NseData2} pagination={false} />
+                </div>
+              )}
+            </div>
+          </div>
+          <div className=" w-full my-5 flex justify-end ">
+            <div className="text-left">
+              <p> Pricing delay by {timing.delay} minutes</p>
               <p>Last Updated {timing.lastUpdated}</p>
             </div>
           </div>

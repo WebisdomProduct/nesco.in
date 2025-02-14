@@ -60,13 +60,13 @@ export default function LineChart({ GraphData }) {
   };
 
   return (
-    <div className="py-10 bg-white shadow-md rounded-lg  flex flex-col justify-center">
+    <div className="pb-10 bg-white shadow-md rounded-lg  flex flex-col justify-center">
       {/* Navigation Tabs */}
 
       {/* Line Chart */}
-      <div className="mb-6 xl:h-[36rem] w-full">
-        <p className=" text-2xl text-primary">03/02/2025</p>
-        <p className="ml-20 text-2xl text-primary">RIL - Value</p>
+      <div className="mb-6  w-full">
+        <p className=" text-2xl">03/02/2025</p>
+        <p className="ml-20 my-2 text-2xl">RIL - Value</p>
         <Line
           data={lineData}
           options={options}
@@ -75,7 +75,7 @@ export default function LineChart({ GraphData }) {
       </div>
 
       {/* Bar Chart */}
-      <div className="md:mt-20  xl:h-[36rem] w-full ">
+      <div className="md:mt-20  w-full ">
         <p className="ml-20 text-2xl text-primary">Volume</p>
         <Bar data={barData} options={options} />
       </div>

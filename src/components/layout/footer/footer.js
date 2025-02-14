@@ -114,7 +114,10 @@ function Footer() {
               </Link>
               <div className="mt-10 flex flex-col gap-3">
                 {data.category.map((d, h) => (
-                  <Link href={d.link} className="text-2xl">
+                  <Link
+                    href={d.link}
+                    className="text-2xl text-gray-600 hover:text-gray-300 transition-all"
+                  >
                     {d.title}
                   </Link>
                 ))}

@@ -60,7 +60,7 @@ function Quote() {
       <h2 className="text-5xl font-branding-bold text-primary text-center mb-10">
         Historical Stock Quote
       </h2>
-      <div className="flex lg:flex-row flex-col gap-10 bg-secondary p-4  md:w-[70%] w-[90%] justify-center items-center ">
+      <div className="flex lg:flex-row flex-col gap-10 bg-secondary p-4  w-[90%] justify-center items-center ">
         {/* Exchange Selector */}
         <div className="flex flex-col gap-2">
           <p>Exchange: </p>
@@ -169,7 +169,7 @@ function Quote() {
           </button>
         </div>
       </div>
-      <div className="flex flex-col md:w-[70%] w-[90%] gap-4 mt-16 font-branding-bold">
+      <div className="flex flex-col w-[90%] gap-4 mt-16 font-branding-bold">
         <p>
           <span> Exchange : {exchange}</span> |
           <span>

@@ -105,7 +105,7 @@ function Banner({ SliderData, onSlideChange, filter }) {
                                   : index === 4
                                   ? "md:top-[47%] lg:top-[47%] md:w-[47%]"
                                   : "md:top-[47%] lg:top-[47%] md:w-[47%] "
-                              } lg:top-[57%] top-[45%] md:left-[27%] left-[22%] w-[60%] text-center md:text-2xl text-lg`}
+                              } md:top-[45%] top-[45%] md:left-[27%] left-[22%] w-[60%] text-center md:text-2xl text-lg`}
                             >
                               {data.description}
                             </div>
