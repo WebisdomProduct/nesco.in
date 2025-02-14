@@ -44,9 +44,9 @@ function Life() {
           <img
             src={background.src}
             alt="background"
-            className=" absolute z-0 right-[-7rem] xl:w-[72%] lg:w-[650px] xl:-top-[8%] lg:top-[8%]"
+            className=" absolute z-0 right-[-7rem] xl:w-[72%] lg:w-[65%] xl:-top-[20%] lg:top-[5%]"
           />
-          <div className="absolute hidden md:block z-0 bottom-16 right-12 w-[140px]">
+          <div className="absolute hidden lg:block z-0 xl:bottom-20 bottom-10 right-12 w-[140px]">
             <div
               className="overflow-hidden lg:text-[2.3rem] text-2xl relative text-white bg-red-600 text-[2rem] leading-8 border-x-2 border-t-2 border-white p-3"
               style={{ fontFamily: "BrandingSemibold" }}
