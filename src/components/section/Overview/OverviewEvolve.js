@@ -2,7 +2,7 @@ import React from "react";
 
 function OverviewEvolve() {
   return (
-    <div className="header_purple flex justify-center py-10 xl:h-screen">
+    <div className="header_purple goal-section1 flex justify-center py-10 xl:h-screen">
       <div className="flex flex-col md:flex-row justify-between w-[90%]">
         <div className=" lg:w-[50%] h-full flex items-center">
           <p className="text-blue-800 text-3xl md:text-[5rem] md:leading-[5rem] font-branding-semibold w-full text-center md:text-left">
@@ -13,7 +13,7 @@ function OverviewEvolve() {
         </div>
 
         <div className="flex md:w-[50%] mt-10 items-center">
-          <p className="text-gray-700 text-base md:text-2xl font-branding-medium p-4 ">
+          <p className="text-gray-700 md:text-2xl text-xl font-branding-medium p-4 ">
             With business verticals as varied as exhibitions, events,
             hospitality, MICE, and realty, our steady expansion <br />
             augments our growth as we watch several new ideas find form.

@@ -98,7 +98,7 @@ function Shares() {
   };
 
   return (
-    <section className="header_purple pt-20 pb-10 font-branding-medium flex justify-center items-center flex-col">
+    <section className="header_purple goal-section1 pt-20 pb-10 font-branding-medium flex justify-center items-center flex-col">
       <h2 className="text-5xl font-branding-bold text-primary text-center my-8">
         Shares
       </h2>

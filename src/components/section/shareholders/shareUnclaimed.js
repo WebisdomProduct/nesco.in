@@ -55,7 +55,7 @@ function ShareUnclaimed() {
   ];
 
   return (
-    <div className="dividendDiv bg-gray-300 flex justify-center items-center flex-col gap-5 md:gap-10 py-10 header_purple">
+    <div className="dividendDiv goal-section1 bg-gray-300 flex justify-center items-center flex-col gap-5 md:gap-10 py-10 header_purple">
       <div className="flex flex-col items-center w-[90%]">
         <p className="font-branding-semibold text-4xl sm:text-5xl text-blue-800 my-6 justify-center text-center">
           Unclaimed Dividends

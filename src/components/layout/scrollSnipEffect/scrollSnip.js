@@ -110,7 +110,7 @@ function ScrollSnip({ Children }) {
   return (
     <div className="container1 font-branding-medium" ref={containerRef}>
       {Children.map((data, index) => (
-        <div className={` ${data.classCss}`} key={index}>
+        <div className={`overflow-hidden ${data.classCss}`} key={index}>
           {data.comp}
         </div>
       ))}

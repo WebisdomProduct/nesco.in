@@ -9,6 +9,7 @@ import LeadershipMentor2 from "./leadershipMentor2";
 import BoardOfDirector from "./boardOfDirector";
 import VisionaryLeader from "./visionaryLeader";
 import ScrollSnip from "@/components/layout/scrollSnipEffect/scrollSnip";
+import AnimateOnScroll from "@/components/common/animateContent/animation";
 
 function MainLeadership() {
   const Children = [
@@ -17,23 +18,43 @@ function MainLeadership() {
       classCss: "section ",
     },
     {
-      comp: <Believe />,
+      comp: (
+        <AnimateOnScroll>
+          <Believe />
+        </AnimateOnScroll>
+      ),
       classCss: "section ",
     },
     {
-      comp: <LeadershipMentor />,
+      comp: (
+        <AnimateOnScroll>
+          <LeadershipMentor />
+        </AnimateOnScroll>
+      ),
       classCss: "section",
     },
     {
-      comp: <LeadershipMentor2 />,
+      comp: (
+        <AnimateOnScroll>
+          <LeadershipMentor2 />
+        </AnimateOnScroll>
+      ),
       classCss: "section",
     },
     {
-      comp: <BoardOfDirector />,
+      comp: (
+        <AnimateOnScroll>
+          <BoardOfDirector />
+        </AnimateOnScroll>
+      ),
       classCss: "",
     },
     {
-      comp: <VisionaryLeader />,
+      comp: (
+        <AnimateOnScroll>
+          <VisionaryLeader />
+        </AnimateOnScroll>
+      ),
       classCss: "",
     },
   ];

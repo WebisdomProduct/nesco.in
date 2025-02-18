@@ -18,7 +18,7 @@ function SocialCSR() {
   ];
 
   return (
-    <section className="w-full relative flex flex-col justify-center items-center md:py-10 xl:py-0 xl:h-screen">
+    <section className="goal-section1 w-full relative flex flex-col justify-center items-center md:py-10 xl:py-0 xl:h-screen">
       <div className=" py-12 items-center w-[90%] mx-auto">
         <div className="mt-10 flex lg:flex-row flex-col justify-between items-center w-full gap-5">
           <div className="text-justify lg:w-[60%] w-full md:mt-0 mt-10 flex flex-col gap-5 md:text-2xl font-poppins">

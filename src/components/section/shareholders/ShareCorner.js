@@ -42,7 +42,7 @@ function ShareCorner() {
   ];
 
   return (
-    <div className="flex flex-col items-center h-[80vh] my-10 header_purple mt-10 lg:mt-20">
+    <div className="goal-section1 flex flex-col items-center h-[80vh] my-10 header_purple mt-10 lg:mt-20">
       <p className="font-branding-semibold text-4xl sm:text-5xl text-blue-800 my-6 justify-center text-center w-[90%]">
         Shareholder's Corner
       </p>

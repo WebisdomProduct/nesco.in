@@ -2,7 +2,7 @@ import React from "react";
 
 function SustainabilityGovernance() {
   return (
-    <div className="flex justify-center mt-20">
+    <div className="goal-section1 flex justify-center mt-20">
       <div className="text-center w-[90%]">
         <h1 className="text-3xl font-bold text-[#39c2ab] mb-8">
           ESG Governance Structure
@@ -23,6 +23,11 @@ function SustainabilityGovernance() {
           <div className=" relative">
             <div className="py-8 bg-[#85c667] w-full px-2 rounded-full transform -translate-y-1/2 absolute">
               <p className="text-2xl text-white">Environment</p>
+              <div className="absolute transform -translate-y-1/2 top-1/2 w-20 h-20  rounded-full flex justify-center items-center border-2 border-white">
+                <div className="w-16 h-16 rounded-full flex justify-center items-center text-5xl text-[#85c667] bg-white font-branding-bold">
+                  E
+                </div>
+              </div>
             </div>
             <div className="w-full h-full  px-8">
               <div className="text-justify px-8 text-[15px] pb-8 pt-20 bg-gray-200 rounded-3xl flex flex-col items-center">
@@ -40,6 +45,11 @@ function SustainabilityGovernance() {
           <div className=" relative ">
             <div className="py-8 bg-[#69bbef] w-full px-2 rounded-full transform -translate-y-1/2 absolute">
               <p className="text-2xl text-white">Social</p>
+              <div className="absolute transform -translate-y-1/2 top-1/2 w-20 h-20  rounded-full flex justify-center items-center border-2 border-white">
+                <div className="w-16 h-16 rounded-full flex justify-center items-center text-5xl text-[#69bbef] bg-white font-branding-bold">
+                  S
+                </div>
+              </div>
             </div>
             <div className="w-full h-full  px-8">
               <div className="text-justify px-8 text-[15px] pb-8 pt-20 bg-gray-200 rounded-3xl flex flex-col items-center h-full">
@@ -57,6 +67,11 @@ function SustainabilityGovernance() {
           <div className=" relative">
             <div className="py-8 bg-[#48cfde] w-full px-2 rounded-full transform -translate-y-1/2 absolute">
               <p className="text-2xl text-white">Governance</p>
+              <div className="absolute transform -translate-y-1/2 top-1/2 w-20 h-20  rounded-full flex justify-center items-center border-2 border-white">
+                <div className="w-16 h-16 rounded-full flex justify-center items-center text-5xl text-[#48cfde] bg-white font-branding-bold">
+                  G
+                </div>
+              </div>
             </div>
             <div className="w-full h-full  px-8">
               <div className="text-justify px-8 text-[15px] pb-8 pt-20 bg-gray-200 rounded-3xl flex flex-col items-center h-full">

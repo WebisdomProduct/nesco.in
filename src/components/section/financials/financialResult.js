@@ -90,18 +90,18 @@ function FinancialResult() {
 
   return (
     <div>
-      <div className="flex justify-center mt-16 lg:mt-28 mb-10 header_purple ">
+      <div className="flex justify-center mt-16 lg:mt-28 mb-10 header_purple goal-section1">
         <div className="flex items-end flex-col border-2 w-[90%] lg:px-12 px-5">
           <div className="w-full flex md:flex-row flex-col justify-between items-center z-50 gap-6 lg:w-[70%] transform md:-translate-y-1/2">
-            <div className=" bg-blue-600 px-4  py-2 text-center font-branding-semibold text-xl text-white">
+            <div className=" bg-blue-600 px-4  py-2 text-center font-branding-semibold text-2xl text-white">
               Financial Results
             </div>
 
-            <div className=" bg-cyan-500 px-4  py-2 text-center font-branding-semibold text-xl text-white">
+            <div className=" bg-cyan-500 px-4  py-2 text-center font-branding-semibold text-2xl text-white">
               Annual Reports
             </div>
 
-            <div className=" bg-purple-500 px-4  py-2 text-center font-branding-semibold text-xl text-white">
+            <div className=" bg-purple-500 px-4  py-2 text-center font-branding-semibold text-2xl text-white">
               Subsidiary Accounts
             </div>
           </div>
@@ -120,10 +120,10 @@ function FinancialResult() {
                   <IoSearch className="w-full h-full" />
                 </button>
               </div> */}
-              <p className=" mt-2 font-branding-medium text-gray-500">
-                Filters
+              <p className=" mt-2 font-branding-medium text-gray-500 text-2xl">
+                FILTERS
               </p>
-              <p className="mt-2 mb-2 font-branding-medium text-gray-500">
+              <p className="mt-4 mb-2 font-branding-medium text-gray-500">
                 Select All
               </p>
 
@@ -135,7 +135,7 @@ function FinancialResult() {
                     checked={selectedYears.includes(year)}
                     onChange={() => handleYearChange(year)}
                   />
-                  <label className="ml-2 text-sm font-medium text-gray-500">
+                  <label className="ml-2 text-base md:text-xl font-medium text-gray-500">
                     {year}
                   </label>
                 </div>
@@ -164,12 +164,12 @@ function FinancialResult() {
               )} */}
 
               <div className="mt-5 mb-2">
-                <p className="mb-2 ">QUARTER</p>
+                <p className="mb-2 text-xl">QUARTER</p>
                 <div className="flex flex-col gap-1">
                   {Array.from({ length: 4 }).map((_, index) => (
                     <label
                       key={index}
-                      className="flex items-center gap-2 text-gray-500"
+                      className="flex items-center gap-2 text-gray-500 text-base md:text-xl"
                     >
                       <input
                         type="checkbox"
@@ -186,7 +186,7 @@ function FinancialResult() {
               <table className="table-auto border-separate text-left w-full ">
                 <thead>
                   <tr>
-                    <th className=" bg-violet-700 text-gray-200 shadow-sm pl-8 py-3 ">
+                    <th className=" bg-violet-700 text-gray-200 shadow-sm pl-8 py-3 text-3xl">
                       Title
                     </th>
                   </tr>
@@ -204,7 +204,7 @@ function FinancialResult() {
                          ))} */}
                   {filteredData.slice(0, visibleRows).map((data, index) => (
                     <tr key={index}>
-                      <td className="shadow-md pl-3 font-branding-medium text-gray-500 text-base">
+                      <td className="shadow-md pl-3 font-branding-medium text-gray-500 text-base md:text-xl">
                         <div className="flex gap-10 my-3">
                           <p className="px-4">
                             {data.description} -{" "}
@@ -220,7 +220,7 @@ function FinancialResult() {
               <div className="w-full justify-center items-center flex mt-10">
                 {visibleRows < filteredData.length ? (
                   <button
-                    className="mt-2 px-6 py-2 rounded-full text-purple-700 border-2 border-purple-700 flex justify-center items-center gap-3"
+                    className="mt-2 px-6 py-2 rounded-full text-gray-500 border-2 border-gray-500 flex justify-center items-center gap-3"
                     onClick={() => setVisibleRows((prev) => prev + 3)}
                   >
                     Load More{" "}
@@ -230,7 +230,7 @@ function FinancialResult() {
                   </button>
                 ) : (
                   <button
-                    className="mt-2 px-6 py-2 rounded-full text-purple-700 border-2 border-purple-700 flex justify-center items-center gap-3"
+                    className="mt-2 px-6 py-2 rounded-full text-gray-500 border-2 border-gray-500 flex justify-center items-center gap-3"
                     onClick={() => setVisibleRows(10)}
                   >
                     Load Less{" "}

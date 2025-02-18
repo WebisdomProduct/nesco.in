@@ -45,7 +45,7 @@ function SustainabilityPractices() {
   ];
 
   return (
-    <div className="flex flex-col justify-center items-center mt-0 lg:mt-10">
+    <div className="goal-section1 flex flex-col justify-center items-center mt-0 lg:mt-10">
       <div className="my-12 text-center relative w-[90%]">
         <div className="mb-14">
           <h1 className="text-3xl font-bold"> Integrated Sustainability </h1>

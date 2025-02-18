@@ -4,7 +4,7 @@ import Image from "next/image";
 
 function LeadershipMentor2() {
   return (
-    <section className="header_white bg-secondary flex justify-center items-center pb-20 xl:pb-0 xl:pt-20 pt-[10rem] xl:h-screen ">
+    <section className="header_white goal-section1 bg-secondary flex justify-center items-center pb-20 xl:pb-0 xl:pt-20 pt-[10rem] xl:h-screen ">
       <div className="flex flex-col lg:flex-row w-[90%] xl:justify-center justify-between gap-10 items-center lg:items-start">
         <div className="flex flex-col h-full lg:items-end items-center justify-center lg:w-[40%]">
           <div>
@@ -28,7 +28,7 @@ function LeadershipMentor2() {
           </div>
         </div>
         <div className="lg:w-[60%]">
-          <p className="text-[21px] font-branding-medium leading-7 text-justify">
+          <p className="md:text-2xl text-xl font-branding-medium leading-7 text-justify">
             A dynamic people's leader, Krishna Patel is adept at spot-ting and
             implementing future trends in any industry even as he hones in on
             new business opportunities and verticals.An alumnus of The
@@ -36,7 +36,7 @@ function LeadershipMentor2() {
             is passionate about bringing a global perspective to the workings of
             Nesco. Krishna began his career in Corporate Strategy
           </p>
-          <p className="text-[21px] font-branding-medium leading-7 mt-8 text-justify">
+          <p className="md:text-2xl text-xl font-branding-medium leading-7 mt-8 text-justify">
             taught him the value of a services backbone. He has guided the
             corporate expansion of Bombay Exhibition Center and introduced the
             fast-gaining service verticals of hospitality and events.A

@@ -2,9 +2,9 @@ import React from "react";
 
 function CareerPassion() {
   return (
-    <section className=" flex flex-col justify-center items-center py-20">
+    <section className="goal-section1 flex flex-col justify-center items-center py-20">
       <div className="w-[90%] font-branding-medium text-justify">
-        <h1 className=" md:text-5xl text-2xl mb-5 text-center text-primary ">
+        <h1 className=" md:text-5xl text-2xl mb-5 text-center text-primary font-branding-semibold">
           Where Passion Meets Purpose
         </h1>
         <p className="mt-5 md:text-2xl">

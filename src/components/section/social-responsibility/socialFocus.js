@@ -21,7 +21,7 @@ function SocialFocus() {
   ];
 
   return (
-    <section className=" w-full flex justify-center flex-col items-center py-20  font-branding-medium bg-[#EDEDED] relative ">
+    <section className="goal-section1 w-full flex justify-center flex-col items-center py-20  font-branding-medium bg-[#EDEDED] relative ">
       <div className="absolute w-full bottom-0 left-0 bg-primary md:h-[30%] h-[20%]"></div>
       <div className="relative z-10 flex flex-col items-center w-[90%] md:gap-10 gap-4 mt-10">
         <h2

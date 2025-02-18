@@ -96,7 +96,7 @@ function Quote() {
   const years = Array.from({ length: 20 }, (_, i) => 2020 + i);
 
   return (
-    <div className=" flex flex-col justify-center items-center py-10 font-branding-medium mt-0 lg:mt-10">
+    <div className="goal-section1 flex flex-col justify-center items-center py-10 font-branding-medium mt-0 lg:mt-10">
       <h2 className="text-5xl font-branding-bold text-primary text-center mb-10">
         Historical Stock Quote
       </h2>

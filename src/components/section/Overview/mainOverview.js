@@ -5,6 +5,7 @@ import ScrollSnip from "@/components/layout/scrollSnipEffect/scrollSnip";
 import Pagewrapper from "@/components/layout/pagewrapper";
 import OverviewEvolve from "./OverviewEvolve";
 import OverviewBanner from "./OverviewBanner";
+import AnimateOnScroll from "@/components/common/animateContent/animation";
 
 const MainOverview = () => {
   const Children = [
@@ -13,7 +14,11 @@ const MainOverview = () => {
       classCss: "section",
     },
     {
-      comp: <OverviewEvolve />,
+      comp: (
+        <AnimateOnScroll>
+          <OverviewEvolve />
+        </AnimateOnScroll>
+      ),
       classCss: "section",
     },
   ];

@@ -70,7 +70,7 @@ function Chart1() {
   };
 
   return (
-    <div className=" pb-10 py-20 bg-white shadow-md rounded-lg  flex justify-center">
+    <div className="goal-section1 pb-10 py-20 bg-white shadow-md rounded-lg  flex justify-center">
       <div className="flex flex-col w-[90%] items-center">
         <h1 className="text-5xl font-branding-bold text-primary text-center mb-10">
           Stock Chart

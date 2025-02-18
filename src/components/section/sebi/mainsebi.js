@@ -4,6 +4,7 @@ import SebiDetails from "./sebiDetails";
 import Pagewrapper from "@/components/layout/pagewrapper";
 import ScrollSnip from "@/components/layout/scrollSnipEffect/scrollSnip";
 import SebiBanner from "./sebiBanner";
+import AnimateOnScroll from "@/components/common/animateContent/animation";
 
 function Mainsebi() {
   // const [activeSlide, setActiveSlide] = useState(0);
@@ -18,8 +19,10 @@ function Mainsebi() {
     },
     {
       comp: (
-        <div className="mt-14 flex flex-wrap justify-center items-center mb-20">
-          <SebiDetails />
+        <div className="mt-14 flex justify-center items-center mb-20">
+          <AnimateOnScroll>
+            <SebiDetails />
+          </AnimateOnScroll>
         </div>
       ),
       classCss: "",

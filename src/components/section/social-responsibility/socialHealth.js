@@ -15,7 +15,7 @@ function SocialHealth() {
   ];
 
   return (
-    <section className="w-full mt-5 ">
+    <section className="w-full mt-5 goal-section1">
       <SocialBanner1 SliderData={SliderData} title={title} />
     </section>
   );

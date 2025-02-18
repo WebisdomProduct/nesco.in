@@ -106,7 +106,7 @@ function ShareInvestor() {
   );
 
   return (
-    <div className="flex flex-col justify-center items-center header_purple mt-0 lg:mt-10">
+    <div className="goal-section1 flex flex-col justify-center items-center header_purple mt-0 lg:mt-10">
       <div className="py-8 w-[90%]">
         <p className="font-branding-semibold text-4xl sm:text-5xl text-blue-800 m-auto my-6 text-center">
           Investor Contacts
@@ -119,7 +119,7 @@ function ShareInvestor() {
             >
               <div className="w-full h-full bg-gray-200">
                 {data.title && (
-                  <h3 className="text-xl px-5 py-3 xl:py-2 xl:h-[100px] bg-blue-200 text-blue-900 font-branding-semibold flex items-center">
+                  <h3 className="md:text-2xl text-xl px-5 py-3 xl:py-2 xl:h-[130px] bg-blue-200 text-blue-900 font-branding-semibold flex items-center">
                     {data.title}
                   </h3>
                 )}

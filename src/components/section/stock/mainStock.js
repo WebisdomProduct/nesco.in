@@ -5,6 +5,7 @@ import Chart1 from "./Chart1";
 import Quote from "./Quote";
 import Pagewrapper from "@/components/layout/pagewrapper";
 import ScrollSnip from "@/components/layout/scrollSnipEffect/scrollSnip";
+import AnimateOnScroll from "@/components/common/animateContent/animation";
 
 function MainStock() {
   const Children = [
@@ -13,15 +14,27 @@ function MainStock() {
       classCss: "",
     },
     {
-      comp: <Shares />,
+      comp: (
+        <AnimateOnScroll>
+          <Shares />
+        </AnimateOnScroll>
+      ),
       classCss: "",
     },
     {
-      comp: <Chart1 />,
+      comp: (
+        <AnimateOnScroll>
+          <Chart1 />
+        </AnimateOnScroll>
+      ),
       classCss: "header_purple",
     },
     {
-      comp: <Quote />,
+      comp: (
+        <AnimateOnScroll>
+          <Quote />
+        </AnimateOnScroll>
+      ),
       classCss: "header_purple",
     },
   ];

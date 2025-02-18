@@ -4,7 +4,7 @@ import awardsImage from "@/assests/sustainability/image.png";
 
 function SustainabilityImage() {
   return (
-    <div className=" bg-[#2B2B76] flex justify-center items-center">
+    <div className="goal-section1 bg-[#2B2B76] flex justify-center items-center">
       <div className="w-[90%] my-20 flex md:flex-row flex-col">
         <div className="md:w-1/2">
           <Image

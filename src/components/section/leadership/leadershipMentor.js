@@ -4,10 +4,10 @@ import Image from "next/image";
 
 function LeadershipMentor() {
   return (
-    <section className="header_white bg-primary text-white flex justify-center items-center pb-20 xl:pb-0 xl:pt-20 pt-[10rem] xl:h-screen ">
+    <section className="header_white goal-section1 bg-primary text-white flex justify-center items-center pb-20 xl:pb-0 xl:pt-20 pt-[10rem] xl:h-screen ">
       <div className="flex flex-col lg:flex-row w-[90%] xl:justify-center justify-between gap-10 items-center lg:items-start">
         <div className="lg:w-[60%]">
-          <p className="text-[21px] font-branding-medium leading-7 text-justify">
+          <p className="md:text-2xl text-xl font-branding-medium leading-7 text-justify">
             A fearless pioneer, Sumant Patel's crystal-clear vision had been
             instrumental in shaping the Nesco Group. A mechanical engineer from
             the University of Pennsylva-nia, USA and a business graduate from
@@ -15,7 +15,7 @@ function LeadershipMentor() {
             suc-cessfully founded the engineering heavy weights - GMM and
             Indabrator. In the decades that followed, Sumant's
           </p>
-          <p className="text-[21px] font-branding-medium leading-7 mt-8 text-justify">
+          <p className="md:text-2xl text-xl font-branding-medium leading-7 mt-8 text-justify">
             ly face challenges in each new sector. As the architect of Nesco's
             diversification, he created a state-of-the-art IT Park with unique
             offerings. His foresight established In-dia's largest exhibition
@@ -30,7 +30,7 @@ function LeadershipMentor() {
               <Image
                 src={MentorImage}
                 alt="Mentor"
-                width={550}
+                width={650}
                 height={300}
                 className=""
               />

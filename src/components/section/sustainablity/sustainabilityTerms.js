@@ -4,7 +4,7 @@ import stakeholder from "@/assests/sustainability/stakeholder.png";
 
 function SustainabilityTerms() {
   return (
-    <div className="flex justify-center items-center flex-col mt-0 lg:mt-10">
+    <div className="goal-section1 flex justify-center items-center flex-col mt-0 lg:mt-10">
       <div className="my-20 text-center w-[90%]">
         <div className="text-right md:mr-24">
           <h1 className="text-3xl font-bold px-5 py-3 bg-[#c2ddf7] text-gray-900 inline-block text-center ">

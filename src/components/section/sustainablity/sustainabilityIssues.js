@@ -5,7 +5,7 @@ import Image from "next/image";
 
 function SustainabilityIssues() {
   return (
-    <div className="flex flex-col justify-center items-center bg-[#b6d6ef]">
+    <div className="goal-section1 flex flex-col justify-center items-center bg-[#b6d6ef]">
       <div className=" mb-10 w-[90%] md:py-28 py-12  text-center">
         <h1 className="text-3xl font-bold mb-10">Material ESG Issues</h1>
         <table className=" border-2 border-gray-400 lg:text-[21px] md:text-lg sm:text-xs text-[12px] text-left">

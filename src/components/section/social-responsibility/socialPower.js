@@ -2,7 +2,7 @@ import React from "react";
 
 function SocialPower() {
   return (
-    <section className="header_white flex flex-col justify-center items-center py-20 bg-[#21409A]">
+    <section className="goal-section1 header_white flex flex-col justify-center items-center py-20 bg-[#21409A]">
       <div className="w-[90%] font-branding-medium text-justify">
         <h1 className="flex flex-col text-secondary md:text-5xl text-2xl mb-5 text-center">
           <span className="font-branding-bold"> Believe you have the</span>

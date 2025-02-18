@@ -9,6 +9,7 @@ import CareerCommitment from "./careerCommitment";
 import CareerTeam from "./CareerTeam";
 import CareerVoice from "./careerVoice";
 import CareerJoin from "./careerJoin";
+import AnimateOnScroll from "@/components/common/animateContent/animation";
 
 function MainCareers() {
   const Children = [
@@ -17,27 +18,51 @@ function MainCareers() {
       classCss: "section",
     },
     {
-      comp: <CareerPassion />,
+      comp: (
+        <AnimateOnScroll>
+          <CareerPassion />
+        </AnimateOnScroll>
+      ),
       classCss: "section header_color_black pt-0 lg:pt-10",
     },
     {
-      comp: <CareerCulture />,
+      comp: (
+        <AnimateOnScroll>
+          <CareerCulture />
+        </AnimateOnScroll>
+      ),
       classCss: "section",
     },
     {
-      comp: <CareerCommitment />,
+      comp: (
+        <AnimateOnScroll>
+          <CareerCommitment />
+        </AnimateOnScroll>
+      ),
       classCss: "section",
     },
     {
-      comp: <CareerTeam />,
+      comp: (
+        <AnimateOnScroll>
+          <CareerTeam />
+        </AnimateOnScroll>
+      ),
       classCss: "section",
     },
     {
-      comp: <CareerVoice />,
+      comp: (
+        <AnimateOnScroll>
+          <CareerVoice />
+        </AnimateOnScroll>
+      ),
       classCss: "section",
     },
     {
-      comp: <CareerJoin />,
+      comp: (
+        <AnimateOnScroll>
+          <CareerJoin />
+        </AnimateOnScroll>
+      ),
       classCss: "section",
     },
   ];

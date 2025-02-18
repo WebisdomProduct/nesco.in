@@ -48,7 +48,7 @@ function BoardOfDirector() {
   ];
 
   return (
-    <section className="py-16 pt-16 lg:pt-24 bg-[#EDEDED] header_purple">
+    <section className="py-16 pt-16 lg:pt-24 bg-[#EDEDED] header_purple goal-section1">
       <h3 className="text-center text-4xl font-branding-bold">
         Board of Directors
       </h3>

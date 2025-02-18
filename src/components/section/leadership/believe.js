@@ -3,18 +3,18 @@ import chessImage from "@/assests/leadership/24.png";
 import Image from "next/image";
 function believe() {
   return (
-    <section className="w-full relative flex flex-col items-center py-10">
+    <section className="w-full goal-section1 relative flex flex-col items-center py-10">
       <div className=" pt-16 items-center w-[90%] mx-auto ">
         <div className=" text-primary flex justify-center items-center">
           <p
             style={{ fontFamily: "BrandingSemibold" }}
-            className="text-[#1e3a8a] text-4xl md:text-5xl font-BrandingSemibold font-bold text-center xl:w-[50%] lg:w-[70%] md:w-[80%]"
+            className="text-[#1e3a8a] text-4xl md:text-5xl font-branding-semibold font-bold text-center xl:w-[50%] lg:w-[70%] md:w-[80%]"
           >
             We believe in people & people believe in us.
           </p>
         </div>
         <div className="mt-10 flex md:flex-row flex-col justify-between xl:items-start items-center w-full overflow-hidden">
-          <div className="relative h-[500px] md:w-[50%] w-full">
+          <div className="relative h-[550px] md:w-[50%] w-full">
             <Image
               src={chessImage}
               alt="Chess Image"
@@ -23,7 +23,7 @@ function believe() {
             />
           </div>
 
-          <div className="text-justify xl:w-[50%] md:w-[45%] w-full md:mt-0 mt-10 flex flex-col gap-5 text-2xl font-poppins">
+          <div className="text-justify xl:w-[50%] md:w-[45%] w-full md:mt-0 mt-10 flex flex-col gap-5 md:text-2xl text-xl font-poppins">
             <p>
               Leadership at Nesco is more than just man-agement, it is a
               principle. Our founder, J. V. Patel was a first-generation

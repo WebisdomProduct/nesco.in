@@ -6,7 +6,7 @@ import Image from "next/image";
 
 function SustainabilityFeatures() {
   return (
-    <div className="flex justify-center mb-14 mt-28 lg:mt-32">
+    <div className="goal-section1 flex justify-center mb-14 mt-28 lg:mt-32">
       <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 justify-between text-center w-[90%] gap-10">
         <div className="flex flex-col items-center relative">
           <div className="absolute md:w-[70px] w-[60px] h-[60px] bg-[#eeeed4] left-0 transform -translate-y-1/2 top-5 md:-translate-x-[30%]">

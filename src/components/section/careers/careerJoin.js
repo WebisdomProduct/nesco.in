@@ -21,15 +21,15 @@ function CareerJoin() {
   ];
 
   return (
-    <section className="header_purple w-full flex justify-center flex-col items-center py-20 pt-24  font-branding-medium">
+    <section className="header_purple goal-section1 w-full flex justify-center flex-col items-center py-20 pt-24  font-branding-medium">
       <div className="relative z-10 flex flex-col items-center w-[90%] md:gap-10 gap-4">
         <h2
           style={{ fontFamily: "BrandingSemibold" }}
-          className="text-[#1e3a8a] text-2xl md:text-5xl lg:text-6xl font-BrandingSemibold font-bold"
+          className="text-[#1e3a8a] text-2xl md:text-5xl lg:text-6xl font-branding-semibold"
         >
           Join Us
         </h2>
-        <p className="md:text-3xl text-justify">
+        <p className="md:text-3xl text-xl text-justify">
           At Nesco, we believe in fostering talent across all stages of your
           career. Whether you are an intern eager to learn, a fresh graduate
           ready to take on new challenges, or an experienced professional

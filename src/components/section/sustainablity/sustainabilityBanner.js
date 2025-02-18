@@ -14,7 +14,7 @@ function SustainabilityBanner() {
     {
       image: bannerImage,
       data: (
-        <div className="absolute top-[40%] md:right-[10%] text-white z-20 text-5xl text-center font-branding-medium">
+        <div className="goal-section1 absolute top-[40%] md:right-[10%] text-white z-20 text-5xl text-center font-branding-medium">
           <p className="my-5 text-secondary">Empowering tomorrow,</p>
           <p>by acting today</p>
         </div>
