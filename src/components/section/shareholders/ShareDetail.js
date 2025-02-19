@@ -13,7 +13,7 @@ function ShareDetail() {
       {/* Content */}
       <div className="relative flex flex-col md:flex-row gap-6 justify-evenly w-[90%]">
         {/* Card 1 */}
-        <div className="border border-gray-300 shadow-lg p-6 lg:w-[30%] w-full bg-white">
+        <div className="border border-black shadow-lg p-6 lg:w-[30%] w-full bg-white">
           <div className="bg-indigo-900 flex-col items-center flex py-2">
             <div className="w-[50%] h-[50%]">
               <Image src={image} alt="image" className="w-full h-full" />
@@ -27,7 +27,7 @@ function ShareDetail() {
               </p>
               <div className="w-full flex justify-end">
                 <div className="bg-white flex justify-center items-center w-10 h-10 mt-3">
-                  <button className=" bg-blue-500 text-white p-2 rounded-full hover:bg-blue-700">
+                  <button className=" bg-blue-900 text-white p-2 rounded-full">
                     <FaArrowDown />
                   </button>
                 </div>
@@ -37,7 +37,7 @@ function ShareDetail() {
         </div>
 
         {/* Card 2 */}
-        <div className="border border-gray-300 shadow-lg p-6 lg:w-[30%] w-full bg-white">
+        <div className="border border-black shadow-lg p-6 lg:w-[30%] w-full bg-white">
           <div className="bg-indigo-900 flex-col h-full items-center justify-between flex py-2">
             <div className="w-[50%]">
               <Image src={image} alt="image" className="w-full h-full" />
@@ -48,7 +48,7 @@ function ShareDetail() {
               </h2>
               <div className="w-full flex justify-end">
                 <div className="bg-white flex justify-center items-center w-10 h-10 mt-3">
-                  <button className=" bg-blue-500 text-white p-2 rounded-full hover:bg-blue-700">
+                  <button className=" bg-blue-900 text-white p-2 rounded-full">
                     <FaArrowDown className="-rotate-90" />
                   </button>
                 </div>

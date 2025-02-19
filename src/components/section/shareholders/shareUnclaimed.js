@@ -57,7 +57,7 @@ function ShareUnclaimed() {
   return (
     <div className="dividendDiv goal-section1 bg-gray-300 flex justify-center items-center flex-col gap-5 md:gap-10 py-10 header_purple">
       <div className="flex flex-col items-center w-[90%]">
-        <p className="font-branding-semibold text-4xl sm:text-5xl text-blue-800 my-6 justify-center text-center">
+        <p className="font-branding-semibold text-4xl sm:text-6xl text-primary my-6 justify-center text-center">
           Unclaimed Dividends
         </p>
 
@@ -117,8 +117,8 @@ function ShareUnclaimed() {
                   </td>
                   <td className="px-4 py-2">{data.dueDate}</td>
                   <td className="px-4 py-2 flex justify-center items-center">
-                    <div className="flex justify-center items-center w-10 h-10 mt-3 bg-blue-500">
-                      <button className="bg-white text-blue-500 p-2 rounded-full">
+                    <div className="flex justify-center items-center w-10 h-10 mt-3 bg-[#2560C0]">
+                      <button className="bg-white text-[#2560C0] p-2 rounded-full">
                         <FaArrowDown />
                       </button>
                     </div>

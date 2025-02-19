@@ -69,7 +69,7 @@ function Footer() {
         },
         {
           title: "Social Responsibility ",
-          link: "/social-responsibility",
+          link: "",
         },
         {
           title: "Announcements ",
@@ -78,15 +78,19 @@ function Footer() {
         {
           title:
             "Disclosures under Regulation 46 of SEBI (LODR) Regulations, 2015 & other statutory information Financials ",
-          link: "",
+          link: "/sebi",
         },
         {
           title: "Stock Information ",
-          link: "",
+          link: "/stock",
         },
         {
           title: "Shareholder Services ",
-          link: "",
+          link: "/shareholders",
+        },
+        {
+          title: "Financials",
+          link: "/financials",
         },
       ],
     },

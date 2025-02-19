@@ -8,35 +8,31 @@ function ShareCorner() {
       downloadFile: new URL("@/assests/sebi/image.png", import.meta.url).href,
     },
     {
-      title: "Form 10F",
+      title: "Form 15G and 15H ",
       downloadFile: new URL("@/assests/sebi/image.png", import.meta.url).href,
     },
     {
-      title: "Form 10F",
+      title: "Declaration Form ",
       downloadFile: new URL("@/assests/sebi/image.png", import.meta.url).href,
     },
     {
-      title: "Form 10F",
+      title: "Form ISR-1 ",
       downloadFile: new URL("@/assests/sebi/image.png", import.meta.url).href,
     },
     {
-      title: "Form 10F",
+      title: "Form ISR-2 ",
       downloadFile: new URL("@/assests/sebi/image.png", import.meta.url).href,
     },
     {
-      title: "Form 10F",
+      title: "Form SH-13 ",
       downloadFile: new URL("@/assests/sebi/image.png", import.meta.url).href,
     },
     {
-      title: "Form 10F",
+      title: "Form ISR-3 ",
       downloadFile: new URL("@/assests/sebi/image.png", import.meta.url).href,
     },
     {
-      title: "Form 10F",
-      downloadFile: new URL("@/assests/sebi/image.png", import.meta.url).href,
-    },
-    {
-      title: "Form 10F",
+      title: "Form ISR-4",
       downloadFile: new URL("@/assests/sebi/image.png", import.meta.url).href,
     },
   ];
