@@ -4,46 +4,46 @@ import { FaArrowRight } from "react-icons/fa";
 import { IoSearch } from "react-icons/io5";
 
 function FinancialResult() {
-  const tableData = [
-    {
-      year: "2024-2025",
-      description: "Financials Statements of Subsidiaries",
-    },
-    {
-      year: "2023-2024",
-      description: "Financials Statements of Subsidiaries",
-    },
-    {
-      year: "2022-2023",
-      description: "Financials Statements of Subsidiaries",
-    },
-    {
-      year: "2021-2022",
-      description: "Financials Statements of Subsidiaries",
-    },
-    {
-      year: "2020-2021",
-      description: "Financials Statements of Subsidiaries",
-    },
-    {
-      year: "2019-2020",
-      description: "Financials Statements of Subsidiaries",
-    },
-    {
-      year: "2018-2019",
-      description: "Financials Statements of Subsidiaries",
-    },
-    {
-      year: "2017-2018",
-      description: "Financials Statements of Subsidiaries",
-    },
+  const FinancialtableData = [
+    { year: "2024-2025", description: "Financials Statements of Subsidiaries" },
+    { year: "2023-2024", description: "Financials Statements of Subsidiaries" },
+    { year: "2022-2023", description: "Financials Statements of Subsidiaries" },
+    { year: "2021-2022", description: "Financials Statements of Subsidiaries" },
+    { year: "2020-2021", description: "Financials Statements of Subsidiaries" },
+    { year: "2019-2020", description: "Financials Statements of Subsidiaries" },
+    { year: "2018-2019", description: "Financials Statements of Subsidiaries" },
+    { year: "2017-2018", description: "Financials Statements of Subsidiaries" },
+  ];
+
+  const AnnualtableData = [
+    { year: "2024-2025", description: "Annual Reports" },
+    { year: "2023-2024", description: "Annual Reports" },
+    { year: "2022-2023", description: "Annual Reports" },
+    { year: "2021-2022", description: "Annual Reports" },
+    { year: "2020-2021", description: "Annual Reports" },
+    { year: "2019-2020", description: "Annual Reports" },
+    { year: "2018-2019", description: "Annual Reports" },
+    { year: "2017-2018", description: "Annual Reports" },
+  ];
+
+  const SubsidiarytableData = [
+    { year: "2024-2025", description: "Subsidiary Accounts" },
+    { year: "2023-2024", description: "Subsidiary Accounts" },
+    { year: "2022-2023", description: "Subsidiary Accounts" },
+    { year: "2021-2022", description: "Subsidiary Accounts" },
+    { year: "2020-2021", description: "Subsidiary Accounts" },
+    { year: "2019-2020", description: "Subsidiary Accounts" },
+    { year: "2018-2019", description: "Subsidiary Accounts" },
+    { year: "2017-2018", description: "Subsidiary Accounts" },
   ];
 
   const [visibleCheckboxes, setVisibleCheckboxes] = useState(8);
   const [visibleRows, setVisibleRows] = useState(5);
-  const totalRows = tableData.length;
+  // const totalRows = tableData.length;
   const [selectedYears, setSelectedYears] = useState([]);
-  const [searchQuery, setSearchQuery] = useState("");
+
+  const [click, setClick] = useState("financials");
+  // const [searchQuery, setSearchQuery] = useState("");
 
   const allYears = Array.from({ length: 8 }, (_, i) => {
     const startYear = 2024 - i;
@@ -59,18 +59,31 @@ function FinancialResult() {
     );
   };
 
-  const filteredData = tableData
-    .filter((item) =>
-      selectedYears.length > 0 ? selectedYears.includes(item.year) : true
-    )
-    .filter((item) =>
-      item.description.toLowerCase().includes(searchQuery.toLowerCase())
-    );
+  const filteredData = (
+    click === "financials"
+      ? FinancialtableData
+      : click === "annual"
+      ? AnnualtableData
+      : SubsidiarytableData
+  ).filter((item) =>
+    selectedYears.length > 0 ? selectedYears.includes(item.year) : true
+  );
+  // .filter((item) =>
+  //   item.description.toLowerCase().includes(searchQuery.toLowerCase())
+  // );
 
   // const financialData = Array.from({ length: 10 }, (_, i) => ({
   //   year: allYears[i],
   //   title: `Financial Statements of Subsidiaries ${allYears[i]}`,
   // }));
+
+  const handleSelectAll = () => {
+    if (selectedYears.length === allYears.length) {
+      setSelectedYears([]);
+    } else {
+      setSelectedYears(allYears);
+    }
+  };
 
   return (
     <div>
@@ -78,15 +91,21 @@ function FinancialResult() {
         <div className="flex items-end flex-col border-2 w-[90%] lg:px-12 px-5">
           <div className="w-full flex md:flex-row flex-col justify-between items-center z-50 gap-6 lg:w-[70%] transform md:-translate-y-1/2">
             <div className=" bg-blue-600 px-4  py-2 text-center font-branding-medium text-2xl text-white">
-              Financial Results
+              <button className="" onClick={() => setClick("financials")}>
+                Financial Results
+              </button>
             </div>
 
             <div className=" bg-cyan-500 px-4  py-2 text-center font-branding-medium text-2xl text-white">
-              Annual Reports
+              <button className="" onClick={() => setClick("annual")}>
+                Annual Reports
+              </button>
             </div>
 
             <div className=" bg-purple-500 px-4  py-2 text-center font-branding-medium text-2xl text-white">
-              Subsidiary Accounts
+              <button className="" onClick={() => setClick("subsidiary")}>
+                Subsidiary Accounts
+              </button>
             </div>
           </div>
 
@@ -107,9 +126,18 @@ function FinancialResult() {
               <p className=" mt-2 font-branding-medium text-gray-500 text-2xl">
                 FILTERS
               </p>
-              <p className="mt-4 mb-2 font-branding-medium text-gray-500">
+              <button
+                className="mt-4 mb-2 font-branding-medium text-gray-500 text-left"
+                onClick={handleSelectAll}
+              >
+                {/* <input
+                  type="checkbox"
+                  className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded-sm focus:ring-blue-500"
+                  checked={selectedYears.length === allYears.length}
+                  onChange={handleSelectAll}
+                /> */}
                 Select All
-              </p>
+              </button>
 
               {allYears.slice(0, visibleCheckboxes).map((year, index) => (
                 <div key={index} className="flex items-center mb-2">
