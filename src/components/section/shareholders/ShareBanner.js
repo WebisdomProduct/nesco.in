@@ -1,7 +1,7 @@
 "use client";
 import Banner from "@/components/common/MainBanner/Banner";
 import React, { useState } from "react";
-import bannerImage from "@/assests/sebi/image.png";
+import bannerImage from "@/assests/shareHolder/banner.jpg";
 // import sebiImage from "@/assests/sebi/image.png";
 import Navbar from "@/components/layout/navbar/Navbar";
 function ShareBanner() {
