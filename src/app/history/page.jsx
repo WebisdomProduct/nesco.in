@@ -14,8 +14,17 @@ import historyNine from "@/assests/history/historyNine.png";
 import historyTen from "@/assests/history/historyTen.png";
 import historyEleven from "@/assests/history/historyEleven.png";
 import nescoLogo from "@/assests/history/nescoLogo.png";
+import historyXIV from "@/assests/history/historyXIV.png";
+import historyXV from "@/assests/history/historyXV.png";
+import XVI from "@/assests/history/XVI.png";
+import XVII from "@/assests/history/XVII.png";
+import XIX from "@/assests/history/XIX.png";
 import historySeven from "@/assests/history/historySeven.jpg";
 import historyXII from "@/assests/history/historyXII.jpg";
+import historyXIII from "@/assests/history/historyXIII.jpg";
+import XVIII from "@/assests/history/XVIII.jpg";
+import XX from "@/assests/history/XX.jpg";
+import XXI from "@/assests/history/XXI.png";
 import { IoEllipseOutline } from "react-icons/io5";
 
 const page = () => {
@@ -24,37 +33,49 @@ const page = () => {
     2013, 2017, 2019, 2023,
   ];
   return (
-    <div className="historyDiv  max-w-full m-2 flex flex-col-2">
+    <div className="historyDiv  max-w-full m-2 flex flex-col-2 ">
       <Navbar />
-      <div className="sideProgress flex flex-col-1 mt-[10%] bg-cyan-300 ml-2 w-[10%] p-2 m-2 ">
-        <ul className="bg-red-500 w-full text-center p-2 ">
-          {years.map((year, index) => (
-            <li key={index}>{year}</li>
-          ))}
-        </ul>
-      </div>
+      <div className="sideProgress flex flex-col fixed items-center mt-[10%]  ml-2 w-fit p-4 rounded-lg">
+      {/* Timeline */}
+      <ul className="relative   pl-4">
+        {years.map((year, index) => (
+          <li key={index} className="flex items-center space-x-2 mb-4">
+            {/* Dot Indicator */}
+            <span className={`w-3 h-3 rounded-full ${
+              index === 0 ? "bg-blue-500" : "bg-gray-500"
+            }`}></span>
+            {/* Year Text */}
+            <p className={`text-xl font-branding-semibold  ${index === 0 ? "text-black" : "text-gray-600"}`}>
+              {year}
+            </p>
+          </li>
+        ))}
+      </ul>
+    </div>
 
-      <div className="rightSectionContainer w-full mt-[11%] m-2">
-        <div className="upperDiv  w-full flex flex-col p-5 m-2 mb-3 relative h-auto">
+      <div className="rightSectionContainer w-fit h-fit mt-[11%] m-2  right-2 ml-[15%]">
+        <div className="upperDiv  w-fit flex flex-col p-5  mb-3 relative h-auto md:left-2 lg:left-[2%] bg-red-200">
           <Image
             src={top}
             alt="Top Image"
             width={1500}
             height={300}
-            className="w-full h-auto"
+            className="md:w-[90%] lg:w-[90%]  h-auto object-cover relative"
           />
           <div
-            className="sideContentDiv rounded-lg  bg-sky-500 text-justify p-8 
-                absolute bottom-[0%] right-5 w-[90%] sm:w-[40%] md:w-[50%] lg:w-[60%] 
+            className="sideContentDiv  flex flex-col  relative bg-sky-500 text-justify p-8 
+                 left-[35%] md:bottom-[5vh] lg:bottom-[45vh]    sm:w-[40%] md:w-[55%] lg:w-[65%] 
                  z-50 transition-all ease-in-out duration-300 hover:-translate-y-1 hover:bg-gray-600"
           >
-            <p className="lg:text-6xl sm:text-2xl font-branding-medium p-2 text-white text-left">
+            <div className="header flex relative w-fit  h-fit">
+            <p className="lg:text-6xl sm:text-2xl font-branding-medium p-2  text-left text-sky-900">
               Every journey begins with a single step. Introducing the man
               behind the legacy.
             </p>
+            </div>
             <br></br>
             <br></br>
-            <p className="font-branding-medium p-2 lg:text-2xl sm:text-md md: text-md">
+            <p className="font-branding-medium p-2 lg:text-2xl text-white sm:text-md md: text-md">
               {" "}
               Shri. J. V. Patel, or Jethabhai as he was fondly called, grew up
               in an India that was not industrially advanced. The lack of
@@ -65,7 +86,7 @@ const page = () => {
             </p>
             <br></br>
             <br></br>
-            <p className="font-branding-medium p-2 lg:text-2xl sm:text-md md: text-md">
+            <p className="font-branding-medium text-white p-2 lg:text-2xl sm:text-md md: text-md">
               The Standard Engineering Company was in fact founded on his belief
               in ‘indigenous’ growth. He also took several sick companies under
               his wing, which is why he was often known as the ‘Doctor of Sick
@@ -76,7 +97,7 @@ const page = () => {
         </div>
 
         <div
-          className="bottomContentDiv w-fit  text-gray-500 bottom-1 p-4 pt-6  transition-all ease-in-out duration-300
+          className="bottomContentDiv w-fit md:w-[75%] bg-red-200 lg:bottom-[20vh]  text-gray-500  p-4 pt-6  transition-all ease-in-out duration-300
           hover:translate-y-1 m-auto mt-6 flex flex-col md:flex-row  relative "
         >
           <div className="imgDiv w-fit justify-left z-50 ">
@@ -85,10 +106,10 @@ const page = () => {
               alt="Mid Image"
               width={300}
               height={200}
-              className=" h-fit  rounded-lg m-4  "
+              className=" md:w-[95%] lg:w-[90%]  h-auto object-cover relative  "
             />
           </div>
-          <div className="textDiv flex flex-col  m-2 items-center justify-center">
+          <div className="textDiv flex flex-col relative bg-cyan-200 w-[50%]  m-2 items-center justify-center left-[4%] ">
             <p className=" md:text-2xl lg:text-4xl font-branding-semibold text-center p-2">
               ‘Your right is in action, never to its fruits, let not the fruits
               of action be your motive.’{" "}
@@ -100,14 +121,14 @@ const page = () => {
           </div>
         </div>
 
-        <div className="year1939Div mt-[3%] w-full relative p-4 items-center h-fit flex flex-col md:flex-row-reverse m-4 rounded-lg transition-all  ease-in-out duration-300 hover:translate-y-1 ">
+        <div className="year1939Div mt-[3%] w-fit md:w-[85%] relative bg-red-200 p-4 items-center h-fit flex flex-col md:flex-row-reverse m-4  transition-all  ease-in-out duration-300 hover:translate-y-1 ">
           <div className="iconDiv h-fit w-fit mt-4 m-6 flex-1 relative">
             <Image
               src={mid}
               alt="Top Image"
               width={1000}
               height={500}
-              className="h-auto"
+              className=" lg:w-[90%]  h-auto object-cover relative"
               priority
             />
             <div className="year absolute  z-50 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 flex flex-row w-fit m-2">
@@ -125,7 +146,7 @@ const page = () => {
                 alt="Top Image"
                 width={300}
                 height={300}
-                className="h-auto"
+                className="md:w-[80%] lg:w-[90%]  h-auto object-cover relative"
                 priority
               />
               <p className="text-left text-gray-600 mt-6 sm:text-lg md:text-xl lg:text-xl leading-relaxed max-w-xs">
@@ -413,9 +434,9 @@ const page = () => {
           </div>
         </div>
 
-        <div className="year2001 flex flex-col relative mt-[5%] bg-gray-200 justify-center  ">
-          <div className="imgDiv flex relative md:left-[3%] lg:left-[10%]">
-          <Image
+        <div className="year2001 flex flex-col relative   justify-center ">
+          <div className="imgDiv flex relative sm:top-6 md:top-6 lg:top-4 md:left-[3%] lg:left-[10%] ">
+            <Image
               src={nescoLogo}
               alt="Historical Image"
               width={600}
@@ -423,12 +444,252 @@ const page = () => {
               className=" md:w-[50%] lg:w-[30%] h-auto object-cover relative"
             />
           </div>
-          <div className="contentDiv flex flex-col sm:left-[40%] md:left-[55%] bg-yellow-100 w-fit relative p-2 bottom-[20vh]">
-            <div className="yearDiv flex relative">
-              <p>2001</p>
+          <div className="contentDiv flex flex-col sm:left-[40%] md:left-[55%] gap-4  sm:w-[25vh] md:w-[35vh] lg:w-[45vh] relative p-4 sm:bottom-[22vh] lg:bottom-[25vh] border h-[25vh] border-gray-800">
+            <div className="yearDiv flex relative w-fit left-2">
+              <p className="text-3xl text-gray-600">2001</p>
             </div>
-            <div className="textDiv flex relative">
-              <p>The Company rebrands <br></br> itself as Nesco Limited <br></br> in light of further diversification <br></br> and business verticals.</p>
+            <div className="textDiv flex relative left-2 text-gray-400">
+              <p className="text-2xl">
+                The Company rebrands <br></br> itself as Nesco Limited <br></br>{" "}
+                in light of further diversification <br></br> and business
+                verticals.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div className="year2013 flex flex-col relative ">
+          <div className="contentDiv bg-[#001F9C] flex relative w-[50%] left-[8%]  md:top-[5vh] lg:top-[50vh] text-left p-4 sm:h-[50vh] md:h-[50vh] lg:h-[60vh]  ">
+            <div className="yearDiv flex relative sm: top-[15vh] md:top-[15vh] lg:top-[27vh] left-2  w-fit h-fit">
+              <p className="sm:text-4xl md:text-7xl lg:text-8xl text-blue-400">
+                2013
+              </p>
+            </div>
+
+            <div className="textDiv flex relative w-fit h-fit md:top-[30vh] lg:top-[45vh]  sm:right-[40%] md:right-[40%] lg:right-[26%] p-2">
+              <p className="sm:text:md md:text-lg lg:text-xl text-white">
+                Launched Nesco IT Park,<br></br> Tower 03 (6.6 lakh sq. ft. area
+                <br></br> licensed to Marquee MNC clients)
+              </p>
+            </div>
+          </div>
+          <div className="imgDiv relative flex sm:left-[40%] md:left-[40%] lg:left-1/3 z-10 bottom-[35vh]">
+            <Image
+              src={historyXIII}
+              alt="Historical Image"
+              width={700}
+              height={500}
+              className=" md:w-[50%] lg:w-[50%]  h-auto object-cover relative"
+            />
+          </div>
+        </div>
+
+        <div className="year2016 flex flex-col relative   ">
+          <div className="imgDiv flex relative left-[8%] z-10 lg:bottom-[10vh] ">
+            <Image
+              src={historyXIV}
+              alt="Historical Image"
+              width={700}
+              height={500}
+              className=" md:w-[50%] lg:w-[50%]  h-auto object-cover relative"
+            />
+          </div>
+          <div className="contentDiv flex relative bg-sky-500 md:w-[45%] lg:w-[35%] left-1/2 text-left md:bottom-[50vh] lg:bottom-[80vh] md:h-[60vh] lg:h-[80vh]">
+            <div className="yearDiv flex relative  md:left-[25%] lg:left-[30%] md:top-1/4 lg:top-1/3 h-fit ">
+              <p className="md:text-6xl lg:text-8xl text-white font-branding-bold">
+                2016
+              </p>
+            </div>
+
+            <div className="textDiv flex relative  w-fit h-fit md:top-1/2 lg:top-[50vh] right-6 ">
+              <p className="md:text-lg lg:text-xl text-white">
+                The beginning of<br></br> Nesco Foods. Mumbai gains one<br></br>{" "}
+                of the largest and most hygienic food<br></br> production
+                centers in the non-flight<br></br> category, serving<br></br>{" "}
+                50,000 meals per<br></br> day.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div className="year2017 flex flex-col relative  z-30 md:bottom-[40vh] lg:bottom-[70vh]  ">
+          <div className="contentDiv bg-[#001F9C] flex relative w-[50%] left-[8%]  md:top-[5vh] lg:top-[20vh] text-left p-4 sm:h-[50vh] md:h-[50vh] lg:h-[60vh]  ">
+            <div className="yearDiv flex relative sm: top-[15vh] md:top-[15vh] lg:top-[27vh] md:left-2 lg:left-4  w-fit h-fit">
+              <p className="sm:text-4xl md:text-7xl lg:text-8xl text-blue-400">
+                2017
+              </p>
+            </div>
+
+            <div className="textDiv flex relative w-fit h-fit md:top-[30vh] lg:top-[45vh]  sm:right-[40%] md:right-[40%] lg:right-[24%] p-2">
+              <p className="sm:text:md md:text-lg lg:text-xl text-white">
+                Launched Nesco IT Park,<br></br> Tower 03 (6.6 lakh sq. ft. area
+                <br></br> licensed to Marquee MNC clients)
+              </p>
+            </div>
+          </div>
+          <div className="imgDiv relative flex sm:left-[40%] md:left-[40%] lg:left-1/3 z-10 bottom-[35vh] ">
+            <Image
+              src={historyXV}
+              alt="Historical Image"
+              width={600}
+              height={500}
+              className=" md:w-[50%] lg:w-[40%]  h-auto object-cover relative"
+            />
+          </div>
+        </div>
+
+        <div className="year2017 flex flex-col relative  z-40 md:bottom-[40vh] lg:bottom-[70vh] ">
+          <div className="imgDiv flex relative left-[8%] z-10 lg:bottom-[10vh] ">
+            <Image
+              src={XVI}
+              alt="Historical Image"
+              width={700}
+              height={500}
+              className=" md:w-[50%] lg:w-[50%]  h-auto object-cover relative"
+            />
+          </div>
+          <div className="contentDiv flex relative bg-sky-500 md:w-[40%] lg:w-[50%] left-1/2 text-left md:bottom-[25vh] lg:bottom-[98vh] md:h-[35vh] lg:h-[60vh]">
+            <div className="yearDiv flex relative  md:left-1/2 lg:left-[60%] md:top-[10%] lg:top-1/4 h-fit ">
+              <p className="md:text-6xl lg:text-9xl text-white font-branding-bold">
+                2017
+              </p>
+            </div>
+
+            <div className="textDiv flex relative  md:w-48 lg:w-72 h-fit md:top-1/2 lg:top-[40vh] lg:left-[28%] ">
+              <p className="md:text-lg lg:text-xl text-white text-justify">
+                Rangilo Re, started on 2017 has becpme one of the top Navratri
+                destinations of Mumbai.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div className="year2017 flex flex-col relative  md:bottom-[50vh] lg:bottom-[120vh] z-50 ">
+          <div className="contentDiv bg-[#001F9C] flex relative w-[50%] left-[8%]  md:top-[25vh] lg:top-[60vh] text-left p-4 sm:h-[50vh] md:h-[50vh] lg:h-[60vh]  ">
+            <div className="yearDiv flex relative sm: top-[15vh] md:top-[15vh] lg:top-[27vh] left-2  w-fit h-fit">
+              <p className="sm:text-4xl md:text-7xl lg:text-8xl text-blue-400">
+                2017
+              </p>
+            </div>
+
+            <div className="textDiv flex relative w-fit h-fit md:top-[30vh] lg:top-[45vh]  sm:right-[40%] md:right-[40%] lg:right-[26%] p-2">
+              <p className="sm:text:md md:text-lg lg:text-xl text-white">
+                Added a premium lounge/bar “Dress Circle” towards the end of the
+                year in Nesco Centre
+              </p>
+            </div>
+          </div>
+          <div className="imgDiv relative flex sm:left-[40%] md:left-[40%] lg:left-1/3 z-10 bottom-[35vh]">
+            <Image
+              src={XVII}
+              alt="Historical Image"
+              width={700}
+              height={500}
+              className=" md:w-[50%] lg:w-[40%]  h-auto object-cover relative"
+            />
+          </div>
+        </div>
+
+        <div className="year2019 flex flex-col relative md:flex-row md:bottom-[40vh] lg:bottom-[110vh] p-auto ">
+          <div className="imgDiv  w-fit flex relative z-10 left-[5%]">
+            <Image
+              src={XVIII}
+              alt="Mid Image"
+              width={700}
+              height={500}
+              className=" m-auto  "
+            />
+          </div>
+          <div className="rightDiv bg-sky-500 sm:w-[50%] md:w-[50%] lg:w-[10%] flex relative right-[9%] lg:top-[30vh] md:top-[5vh] flex-grow ">
+            <div className="yearDiv  flex flex-col relative w-auto sm:left-[40%] md:left-[40%] lg:left-[60%] text-left h-fit sm:top-10 md:top-1/4 lg:top-1/3 p-6 ">
+              <p className="sm:text-6xl md:text-6xl lg:text-9xl p-2 text-white font-branding-bold">
+                2019
+              </p>
+            </div>
+
+            <div className="bottomContent flex  relative   sm:h-fit md:h-fit lg:h-[30%] sm:top-[55%] md:top-[55%] lg:top-[70%] md:right-10 lg:left-[12%] text-right  h-fit  ">
+              <p className=" sm:text-md md:text-lg lg:text-2xl text-white">
+                Launched Nesco IT Park,
+                <br /> Tower 04 (11.20 lakh sq. ft. area licensed <br /> to
+                Marquee MNC clients)
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div className="year2023 flex flex-col relative md:flex-row md:bottom-[20vh] lg:bottom-[60vh] p-auto ">
+          <div className="imgDiv  w-fit flex relative z-10 left-[5%]">
+            <Image
+              src={XIX}
+              alt="Mid Image"
+              width={700}
+              height={500}
+              className=" m-auto  "
+            />
+          </div>
+          <div className="rightDiv bg-sky-500 sm:w-[50%] md:w-[50%] lg:w-[10%] flex relative right-[9%] lg:top-[30vh] md:top-[5vh] flex-grow ">
+            <div className="yearDiv  flex flex-col relative w-auto sm:left-[40%] md:left-[40%] lg:left-[60%] text-left h-fit sm:top-10 md:top-1/4 lg:top-1/3 p-6 ">
+              <p className="sm:text-6xl md:text-6xl lg:text-9xl p-2 text-white font-branding-bold">
+                2023
+              </p>
+            </div>
+
+            <div className="bottomContent flex  relative   sm:h-fit md:h-fit lg:h-[30%] sm:top-[55%] md:top-[55%] lg:top-[70%] md:right-8 lg:left-[27%] lg:w-48 text-left  h-fit  ">
+              <p className=" sm:text-md md:text-lg lg:text-2xl text-white">
+                Recognition as one of the Top 10 Brands in Real Estate
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div className="year2023 flex flex-col relative  md:bottom-[10vh] lg:bottom-[2%] ">
+          <div className="contentDiv bg-[#001F9C] flex relative w-[50%] left-[8%]  md:top-[5vh] lg:top-[20vh] text-left p-4 sm:h-[50vh] md:h-[50vh] lg:h-[60vh]  ">
+            <div className="yearDiv flex relative sm: top-[15vh] md:top-[15vh] lg:top-[27vh] left-2  w-fit h-fit">
+              <p className="sm:text-4xl md:text-7xl lg:text-8xl text-blue-400">
+                2023
+              </p>
+            </div>
+
+            <div className="textDiv flex relative w-fit h-fit md:top-[30vh] lg:top-[45vh]  sm:right-[40%] md:right-[40%] lg:right-[26%] p-2">
+              <p className="sm:text:md md:text-lg lg:text-xl text-white">
+                Bombay Exhibition Centre (BEC) awarded for support extended to
+                Intimasia 2023{" "}
+              </p>
+            </div>
+          </div>
+          <div className="imgDiv relative flex sm:left-[40%] md:left-[40%] lg:left-1/3 z-10 bottom-[50vh]">
+            <Image
+              src={XX}
+              alt="Historical Image"
+              width={700}
+              height={500}
+              className=" md:w-[50%] lg:w-[40%]  h-auto object-cover relative"
+            />
+          </div>
+        </div>
+
+        <div className="year2023 flex flex-col relative md:flex-row md:bottom-[20vh] lg:bottom-[3%] p-auto ">
+          <div className="imgDiv  w-fit flex relative z-10 left-[6%]">
+            <Image
+              src={XXI}
+              alt="Mid Image"
+              width={700}
+              height={500}
+              className=" m-auto  "
+            />
+          </div>
+          <div className="rightDiv bg-sky-500 sm:w-[50%] md:w-[50%] lg:w-[10%] flex relative right-[9%] lg:top-[30vh] md:top-[5vh] flex-grow ">
+            <div className="yearDiv  flex flex-col relative w-auto sm:left-[40%] md:left-[40%] lg:left-[60%] text-left h-fit sm:top-10 md:top-1/4 lg:top-1/3 p-6 ">
+              <p className="sm:text-6xl md:text-6xl lg:text-9xl p-2 text-white font-branding-bold">
+                2023
+              </p>
+            </div>
+
+            <div className="bottomContent flex  relative   sm:h-fit md:h-fit lg:h-[30%] sm:top-[55%] md:top-[55%] lg:top-[70%] md:right-8 lg:left-[27%] lg:w-72 text-left  h-fit  ">
+              <p className=" sm:text-md md:text-lg lg:text-2xl text-white">
+                Food Connoisseurs India Awards – Best Customer Experience in
+                Food Court{" "}
+              </p>
             </div>
           </div>
         </div>
