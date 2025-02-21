@@ -12,7 +12,7 @@ function Cards({ CardData }) {
               <Image
                 src={data.image}
                 alt="Mentor"
-                className="h-full w-full object-cover filter grayscale contrast-125 hover:filter-none transition-all duration-300"
+                className="h-[23rem] w-[22rem] object-cover filter grayscale contrast-125 hover:filter-none transition-all duration-300"
               />
 
               <p className="flex justify-between mt-3">
