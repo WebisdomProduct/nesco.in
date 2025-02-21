@@ -14,11 +14,11 @@ function Mentor() {
             <div className="z-10 relative">
               <h2
                 style={{ fontFamily: "BrandingSemibold" }}
-                className="text-3xl md:text-6xl text-primary"
+                className="text-3xl md:text-5xl text-primary"
               >
                 A note from the Founding
               </h2>
-              <h3 className="font-branding-medium text-3xl mt-2 md:text-5xl text-primary">
+              <h3 className="font-branding-medium text-3xl mt-2 md:text-4xl text-primary">
                 Director and Mentor
               </h3>
               <div className="space-y-4 mt-7 text-gray-700 text-justify">
