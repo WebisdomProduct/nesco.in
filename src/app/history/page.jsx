@@ -28,8 +28,9 @@ import XVIII from "@/assests/history/XVIII.jpg";
 import XX from "@/assests/history/XX.jpg";
 import XXI from "@/assests/history/XXI.png";
 import { IoEllipseOutline } from "react-icons/io5";
-
-
+import { motion, useAnimation } from "framer-motion";
+import { useRef } from "react";
+import { useInView } from "react-intersection-observer";
 
 const Timeline = ({ years }) => {
   const [activeYear, setActiveYear] = useState(years[0]);
@@ -87,26 +88,75 @@ const page = () => {
     2013, 2016, 2017, 2019, 2023,
   ];
 
+  const [upperInView, setUpperInView] = useState(false);
+  const [bottomInView, setBottomInView] = useState(false);
+  const [year1939InView, setYear1939InView] = useState(false);
+  const [year1952InView, setYear1952InView] = useState(false);
+
+  const controls = useAnimation();
+
+  const { ref: upperObserver } = useInView({
+    threshold: 0.2,
+    triggerOnce: true,
+    onChange: (inView) => setUpperInView(inView),
+  });
+
+  const { ref: bottomObserver } = useInView({
+    threshold: 0.2,
+    triggerOnce: true,
+    onChange: (inView) => setBottomInView(inView),
+  });
+
+  const { ref: year1939Observer } = useInView({
+    threshold: 0.2,
+    triggerOnce: true,
+    onChange: (inView) => setYear1939InView(inView),
+  });
+
+  const { ref: year1952Observer } = useInView({
+    threshold: 0.2,
+    triggerOnce: true,
+    onChange: (inView) => setYear1952InView(inView),
+  });
+
+  useEffect(() => {
+    if (year1952InView) {
+      controls.start({ count: 1952 });
+    }
+  }, [year1952InView, controls]);
+
+
   return (
     <div className="historyDiv max-w-full m-2 flex flex-col overflow-x-hidden overflow-y-auto">
       <Navbar />
       <Timeline years={years} />
 
-      
-
       <div className="rightSectionContainer w-fit h-fit mt-[11%] m-2  right-2 ml-[15%]">
-        <div className="upperDiv  w-fit md:w-[87%] flex flex-col p-5  mb-3 relative h-auto md:left-2 lg:left-[2%]  ml-auto">
-          <Image
-            src={top}
-            alt="Top Image"
-            width={1500}
-            height={300}
-            className=" lg:w-[90%]  h-auto object-cover relative"
-          />
-          <div
+        <div
+          ref={upperObserver}
+          className="upperDiv  w-fit md:w-[87%] flex flex-col p-5  mb-3 relative h-auto md:left-2 lg:left-[2%]  ml-auto"
+        >
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={upperInView ? { opacity: 1, scale: 1 } : {}}
+            transition={{ duration: 1, delay: 0.3 }}
+          >
+            <Image
+              src={top}
+              alt="Top Image"
+              width={1500}
+              height={300}
+              className=" lg:w-[90%]  h-auto object-cover relative"
+            />
+          </motion.div>
+
+          <motion.div
             className="sideContentDiv  flex flex-col  relative bg-sky-500 text-justify p-8 
                  left-[35%] md:bottom-[5vh] lg:bottom-[45vh]    sm:w-[40%] md:w-[65%] lg:w-[65%] 
                  z-50 transition-all ease-in-out duration-300 hover:-translate-y-1 hover:bg-gray-600"
+            initial={{ opacity: 0, x: 100 }}
+            animate={upperInView ? { opacity: 1, x: 0 } : {}}
+            transition={{ duration: 1.5, delay: 1 }}
           >
             <div className="header flex relative w-fit  h-fit">
               <p className="lg:text-6xl sm:text-2xl font-branding-medium p-2  text-left text-sky-900">
@@ -134,35 +184,59 @@ const page = () => {
               Units’. He eventually became a full-time philanthropist,
               supporting multiple social and educational initiatives.
             </p>
-          </div>
+          </motion.div>
         </div>
 
-        <div
-          className="bottomContentDiv w-fit md:w-[75%]  lg:bottom-[20vh] ml-auto text-gray-500  p-4 pt-6  transition-all ease-in-out duration-300
-          hover:translate-y-1  mt-6 flex flex-col md:flex-row  relative "
+        <div ref={bottomObserver}>
+          <motion.div
+            className="bottomContentDiv w-fit md:w-[75%] lg:bottom-[20vh] ml-auto text-gray-500 p-4 pt-6 transition-all 
+                ease-in-out duration-300 hover:-translate-y-1 mt-6 flex flex-col md:flex-row relative"
+            initial={{ opacity: 0, y: 50 }}
+            animate={bottomInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 1, delay: 0.5 }}
+          >
+            {/* Image Animation: Slides in from the left */}
+            <motion.div
+              className="imgDiv w-fit justify-left z-50"
+              initial={{ opacity: 0, x: -50 }}
+              animate={bottomInView ? { opacity: 1, x: 0 } : {}}
+              transition={{ duration: 1, delay: 0.8 }}
+            >
+              <Image
+                src={historyOne}
+                alt="Mid Image"
+                width={300}
+                height={200}
+                className="md:w-[95%] lg:w-[90%] h-auto object-cover relative"
+              />
+            </motion.div>
+
+            <motion.div
+              className="textDiv flex flex-col relative w-[50%] m-2 items-center justify-center left-[4%]"
+              initial={{ opacity: 0, x: 50 }}
+              animate={bottomInView ? { opacity: 1, x: 0 } : {}}
+              transition={{ duration: 1, delay: 1 }}
+            >
+              <p className="md:text-2xl lg:text-4xl font-branding-semibold text-center p-2">
+                ‘Your right is in action, never to its fruits, let not the
+                fruits of action be your motive.’
+              </p>
+              <p className="text-md font-branding-semibold text-center p-2">
+                The Bhagavad Gita, Chapter 2, Verse 47. A verse that was Shri.
+                J.V. Patel's guiding statement in life.
+              </p>
+            </motion.div>
+          </motion.div>
+        </div>
+
+        <motion.div
+          ref={year1939Observer}
+          className="year1939Div  mt-[3%] w-fit md:w-[85%] relative  p-4 items-center h-fit flex flex-col md:flex-row-reverse m-4   ml-auto"
+          data-year="1939"
+          initial={{ opacity: 0, y: 50 }}
+          animate={year1939InView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6, delay: 0.5, ease: "easeOut" }}
         >
-          <div className="imgDiv w-fit justify-left z-50 ">
-            <Image
-              src={historyOne}
-              alt="Mid Image"
-              width={300}
-              height={200}
-              className=" md:w-[95%] lg:w-[90%]  h-auto object-cover relative  "
-            />
-          </div>
-          <div className="textDiv flex flex-col relative  w-[50%]  m-2 items-center justify-center left-[4%] ">
-            <p className=" md:text-2xl lg:text-4xl font-branding-semibold text-center p-2">
-              ‘Your right is in action, never to its fruits, let not the fruits
-              of action be your motive.’{" "}
-            </p>
-            <p className="text-md font-branding-semibold text-center p-2">
-              The Bhagavad Gita, Chapter it, verse 47. A verse that was Shri.
-              J.V. Patel's guiding statement in life.
-            </p>
-          </div>
-        </div>
-
-        <div className="year1939Div  mt-[3%] w-fit md:w-[85%] relative  p-4 items-center h-fit flex flex-col md:flex-row-reverse m-4  transition-all  ease-in-out duration-300 hover:translate-y-1 ml-auto" data-year= "1939">
           <div className="iconDiv h-fit w-fit mt-4 m-6 flex-1 relative">
             <Image
               src={mid}
@@ -180,7 +254,12 @@ const page = () => {
             </div>
           </div>
 
-          <div className="year1939Div flex-1 flex flex-col  justify-center items-center relative h-fit p-2 ">
+          <motion.div
+            className="year1939Div flex-1 flex flex-col  justify-center items-center relative h-fit p-2 "
+            initial={{ opacity: 0, x: 50 }}
+            animate={year1939InView ? { opacity: 1, x: 0 } : {}}
+            transition={{ duration: 0.6, delay: 0.5, ease: "easeOut" }}
+          >
             <div className="rightContent  text-left w-fit p-4 ">
               <Image
                 src={historyTwo}
@@ -195,14 +274,24 @@ const page = () => {
                 Standard Engineering Company (SEC).
               </p>
             </div>
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
 
-        <div
+        <motion.div
+          ref={year1952Observer}
           className="1952Div mt-[3%] w-fit relative p-4 ml-auto   h-fit flex flex-col md:flex-row justify-center items-center   transition-all ease-in-out duration-300
-          hover:translate-y-1   " data-year="1952">
-        
-          <div className="contentDiv p-4 sm:p-6 md:p-8 m-2 flex flex-col items-left relative h-fit">
+          hover:translate-y-1   "
+          data-year="1952"
+          initial={{ opacity: 0, y: 50 }}
+          animate={year1952InView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 1 }}
+        >
+          <motion.div
+            className="contentDiv p-4 sm:p-6 md:p-8 m-2 flex flex-col items-left relative h-fit"
+            initial={{ opacity: 0, x: -100 }}
+            animate={year1952InView ? { opacity: 1, x: 0 } : {}}
+            transition={{ duration: 1.2, delay: 0.2 }}
+          >
             {[
               "Empress Iron Works Ltd / Acme Mfg Co",
               "Ltd / Khandelwal Udyog Ltd / Glass",
@@ -212,35 +301,56 @@ const page = () => {
               "Co Ltd / Agro Precision Co Ltd / Millars",
               "Construction Machinery Ltd",
             ].map((text, index) => (
-              <p
+              <motion.p
                 key={index}
                 className="bg-blue-700 m-2 p-2 sm:p-3 md:p-4 text-lg sm:text-xl md:text-2xl text-white font-poppins rounded-md max-w-lg"
+                initial={{ opacity: 0, x: -50 }}
+            animate={year1952InView ? { opacity: 1, x: 0 } : {}}
+            transition={{ duration: 0.5, delay: index * 0.2 }}
               >
                 {text}
-              </p>
+              </motion.p>
             ))}
-          </div>
+          </motion.div>
 
-          <div className="iconDiv ml-auto flex items-center justify-center relative w-fit">
+          <motion.div
+            className="iconDiv ml-auto flex items-center justify-center relative w-fit"
+            initial={{ opacity: 0, x: 100 }}
+            animate={year1952InView ? { opacity: 1, x: 0 } : {}}
+            transition={{ duration: 1.2, delay: 0.4 }}
+          >
             <IoEllipseOutline
               className="w-[80px] h-[80px] sm:w-[200px] sm:h-[200px] md:w-[400px] md:h-[400px] lg:w-[600px] lg:h-[600px]"
               color="cyan"
               strokeWidth={1}
             />
             <span className="absolute text-blue-600 text-center w-fit flex flex-col items-center">
-              <p className="text-4xl sm:text-5xl md:text-6xl lg:text-8xl">
+              <motion.p
+                className="text-4xl sm:text-5xl md:text-6xl lg:text-8xl"
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={year1952InView ? { opacity: 1, scale: 1 } : {}}
+                transition={{ duration: 1.2, delay: 0.6 }}
+              >
                 1952
-              </p>
-              <p className="w-60 sm:w-72 md:w-80 lg:w-96 p-2 sm:p-4">
+              </motion.p>
+              <motion.p
+                className="w-60 sm:w-72 md:w-80 lg:w-96 p-2 sm:p-4"
+                initial={{ opacity: 0, y: 20 }}
+                animate={year1952InView ? { opacity: 1, y: 0 } : {}}
+                transition={{ duration: 1.2, delay: 0.8 }}
+              >
                 By this time, SEC was taking over & reviving the fortunes of
                 several struggling companies to build an engineering powerhouse.
-              </p>
+              </motion.p>
             </span>
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
 
         <div className="1956Div mt-[3%] w-fit relative p-4 items-center h-fit flex flex-col md:flex-row m-4  transition-all ease-in-out duration-300 hover:translate-y-1 gap-10 ml-auto">
-          <div className="iconDiv flex items-center justify-center relative h-fit w-fit mt-4 md:m-6" data-year= "1956">
+          <div
+            className="iconDiv flex items-center justify-center relative h-fit w-fit mt-4 md:m-6"
+            data-year="1956"
+          >
             <Image
               src={historyThree}
               alt="Top Image"
@@ -273,7 +383,10 @@ const page = () => {
         </div>
 
         <div className="year1957Div mt-[3%] w-f relative p-4 flex flex-col md:flex-row-reverse m-4 transition-all  ease-in-out duration-300 hover:translate-y-1">
-          <div className="iconDiv h-fit w-full md:w-1/2 mt-4 m-6 relative flex justify-center" data-year= "1957">
+          <div
+            className="iconDiv h-fit w-full md:w-1/2 mt-4 m-6 relative flex justify-center"
+            data-year="1957"
+          >
             <Image
               src={historyFour}
               alt="Top Image"
@@ -304,7 +417,10 @@ const page = () => {
           </div>
         </div>
 
-        <div className="year1958 mt-16 flex flex-col gap-2  relative items-center justify-center w-fit m-auto "data-year= "1958">
+        <div
+          className="year1958 mt-16 flex flex-col gap-2  relative items-center justify-center w-fit m-auto "
+          data-year="1958"
+        >
           <div className="topDiv  flex relative items-center justify-center m-4 border-b-2 border-cyan-300 w-full">
             <p className="text-[80px] text-cyan-400">1958</p>
           </div>
@@ -316,7 +432,10 @@ const page = () => {
           </div>
         </div>
 
-        <div className=" year1960 relative mt-16 flex  flex-col md:flex-row items-center  p-6 w-fit ml-auto"data-year= "1960">
+        <div
+          className=" year1960 relative mt-16 flex  flex-col md:flex-row items-center  p-6 w-fit ml-auto"
+          data-year="1960"
+        >
           <div className="bg-[#001F9C] bottom-3 text-white flex-1 p-6 relative w-full md:w-[60%] h-full">
             <h2 className="text-5xl font-bold text-blue-300">1960</h2>
             <Image
@@ -343,7 +462,10 @@ const page = () => {
           </div>
         </div>
 
-        <div className="year1962  flex flex-col relative md:flex-row w-fit mt-[15%] p-auto "data-year= "1962">
+        <div
+          className="year1962  flex flex-col relative md:flex-row w-fit mt-[15%] p-auto "
+          data-year="1962"
+        >
           <div className="imgDiv  w-fit flex relative z-10 left-[5%]">
             <Image
               src={historySeven}
@@ -370,7 +492,10 @@ const page = () => {
           </div>
         </div>
 
-        <div className="year1964 flex flex-col relative md:flex-row  mt-[25%] p-auto "data-year= "1964">
+        <div
+          className="year1964 flex flex-col relative md:flex-row  mt-[25%] p-auto "
+          data-year="1964"
+        >
           <div className="contentDiv flex  relative bg-cyan-400 h-auto m-2 left-[5%] w-[50%] md:w-[65%] ">
             <div className="yearDiv flex flex-col relative  h-fit sm:top-1/2 md:top-[80%] lg:top-1/3 sm:left-3 md:left-[10%] lg:left-[5%]  ">
               <p className="sm:text-2xl md:text-6xl lg:text-8xl text-blue-800 font-branding-bold">
@@ -398,7 +523,10 @@ const page = () => {
           </div>
         </div>
 
-        <div className="year1966 flex flex-col relative  md:flex-row  mt-[15%] p-auto "data-year= "1966">
+        <div
+          className="year1966 flex flex-col relative  md:flex-row  mt-[15%] p-auto "
+          data-year="1966"
+        >
           <div className="imgDiv  w-fit flex relative z-10 left-[5%]">
             <Image
               src={historyNine}
@@ -425,7 +553,10 @@ const page = () => {
           </div>
         </div>
 
-        <div className="year1986  relative w-fit flex justify-center items-center py-10 mt-[25%] ml-auto" data-year= "1986">
+        <div
+          className="year1986  relative w-fit flex justify-center items-center py-10 mt-[25%] ml-auto"
+          data-year="1986"
+        >
           <div className="absolute top-0 left-[5%] w-[80%] h-[20vh] md:h-[25vh] lg:h-[50vh] bg-blue-900 z-0 "></div>
 
           <div className="relative z-10 w-[90%] md:w-[70%]">
@@ -447,7 +578,10 @@ const page = () => {
           </div>
         </div>
 
-        <div className="year1992 relative flex flex-col  mt-[5%]"data-year= "1992">
+        <div
+          className="year1992 relative flex flex-col  mt-[5%]"
+          data-year="1992"
+        >
           <div className="imgDiv flex relative z-10 top-10 left-1/3">
             <Image
               src={historyXII}
@@ -483,7 +617,10 @@ const page = () => {
           </div>
         </div>
 
-        <div className="year2001 flex flex-col relative   justify-center "data-year= "2001">
+        <div
+          className="year2001 flex flex-col relative   justify-center "
+          data-year="2001"
+        >
           <div className="imgDiv flex relative sm:top-6 md:top-6 lg:top-4 md:left-[3%] lg:left-[10%] ">
             <Image
               src={nescoLogo}
@@ -507,7 +644,7 @@ const page = () => {
           </div>
         </div>
 
-        <div className="year2013 flex flex-col relative  "data-year= "2013">
+        <div className="year2013 flex flex-col relative  " data-year="2013">
           <div className="contentDiv bg-[#001F9C] flex relative w-[50%] md:w-[55%] left-[8%]  md:top-[5vh] lg:top-[50vh] text-left p-4 sm:h-[50vh] md:h-[50vh] lg:h-[60vh]  ">
             <div className="yearDiv flex relative sm: top-[15vh] md:top-[15vh] lg:top-[27vh] left-2  w-fit h-fit">
               <p className="sm:text-4xl md:text-7xl lg:text-8xl text-blue-400">
@@ -533,7 +670,7 @@ const page = () => {
           </div>
         </div>
 
-        <div className="year2016 flex flex-col relative   " data-year= "2016">
+        <div className="year2016 flex flex-col relative   " data-year="2016">
           <div className="imgDiv flex relative left-[8%] z-10 lg:bottom-[10vh] ">
             <Image
               src={historyXIV}
@@ -561,7 +698,10 @@ const page = () => {
           </div>
         </div>
 
-        <div className="year2017 flex flex-col relative  z-30 md:bottom-[40vh] lg:bottom-[70vh]   " data-year= "2017">
+        <div
+          className="year2017 flex flex-col relative  z-30 md:bottom-[40vh] lg:bottom-[70vh]   "
+          data-year="2017"
+        >
           <div className="contentDiv bg-[#001F9C] flex relative w-[55%] left-[8%]  md:top-[5vh] lg:top-[20vh] text-left p-4 sm:h-[50vh] md:h-[50vh] lg:h-[60vh]  ">
             <div className="yearDiv flex relative sm: top-[15vh] md:top-[15vh] lg:top-[27vh] md:left-2 lg:left-4  w-fit h-fit">
               <p className="sm:text-4xl md:text-7xl lg:text-8xl text-blue-400">
@@ -587,7 +727,10 @@ const page = () => {
           </div>
         </div>
 
-        <div className="year2017  flex flex-col relative  z-40 md:bottom-[40vh] lg:bottom-[70vh] "data-year= "2017">
+        <div
+          className="year2017  flex flex-col relative  z-40 md:bottom-[40vh] lg:bottom-[70vh] "
+          data-year="2017"
+        >
           <div className="imgDiv flex relative left-[8%] z-10 lg:bottom-[10vh] ">
             <Image
               src={XVI}
@@ -613,7 +756,10 @@ const page = () => {
           </div>
         </div>
 
-        <div className="year2017  flex flex-col relative  md:bottom-[50vh] lg:bottom-[120vh] z-50 "data-year= "2017">
+        <div
+          className="year2017  flex flex-col relative  md:bottom-[50vh] lg:bottom-[120vh] z-50 "
+          data-year="2017"
+        >
           <div className="contentDiv bg-[#001F9C] flex relative w-[50%] left-[8%]  md:top-[25vh] lg:top-[60vh] text-left p-4 sm:h-[50vh] md:h-[50vh] lg:h-[60vh]  ">
             <div className="yearDiv flex relative sm: top-[15vh] md:top-[15vh] lg:top-[27vh] left-2  w-fit h-fit">
               <p className="sm:text-4xl md:text-7xl lg:text-8xl text-blue-400">
@@ -639,7 +785,10 @@ const page = () => {
           </div>
         </div>
 
-        <div className="year2019  flex flex-col relative md:flex-row md:bottom-[40vh] lg:bottom-[110vh] p-auto "data-year= "2019">
+        <div
+          className="year2019  flex flex-col relative md:flex-row md:bottom-[40vh] lg:bottom-[110vh] p-auto "
+          data-year="2019"
+        >
           <div className="imgDiv  w-fit flex relative z-10 left-[5%]">
             <Image
               src={XVIII}
@@ -666,7 +815,10 @@ const page = () => {
           </div>
         </div>
 
-        <div className="year2023  flex flex-col relative md:flex-row md:bottom-[20vh] lg:bottom-[60vh] p-auto " data-year= "2023">
+        <div
+          className="year2023  flex flex-col relative md:flex-row md:bottom-[20vh] lg:bottom-[60vh] p-auto "
+          data-year="2023"
+        >
           <div className="imgDiv  w-fit flex relative z-10 left-[5%]">
             <Image
               src={XIX}
@@ -691,7 +843,10 @@ const page = () => {
           </div>
         </div>
 
-        <div className="year2023  flex flex-col relative  md:bottom-[10vh] lg:bottom-[2%] " data-year= "2023">
+        <div
+          className="year2023  flex flex-col relative  md:bottom-[10vh] lg:bottom-[2%] "
+          data-year="2023"
+        >
           <div className="contentDiv bg-[#001F9C] flex relative w-[50%] left-[8%]  md:top-[5vh] lg:top-[20vh] text-left p-4 sm:h-[50vh] md:h-[50vh] lg:h-[60vh]  ">
             <div className="yearDiv flex relative sm: top-[15vh] md:top-[15vh] lg:top-[27vh] left-2  w-fit h-fit">
               <p className="sm:text-4xl md:text-7xl lg:text-8xl text-blue-400">
@@ -717,7 +872,10 @@ const page = () => {
           </div>
         </div>
 
-        <div className="year2023  flex flex-col relative md:flex-row md:bottom-[20vh] lg:bottom-[3%] p-auto "data-year= "2023">
+        <div
+          className="year2023  flex flex-col relative md:flex-row md:bottom-[20vh] lg:bottom-[3%] p-auto "
+          data-year="2023"
+        >
           <div className="imgDiv  w-fit flex relative z-10 left-[6%]">
             <Image
               src={XXI}
