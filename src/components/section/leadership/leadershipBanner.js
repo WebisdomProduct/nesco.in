@@ -11,6 +11,7 @@ import LeaderBanner3 from "@/assests/leadership/Leadership_3.jpg";
 import LeaderBanner4 from "@/assests/leadership/Leadership_4.jpg";
 import LeaderBanner5 from "@/assests/leadership/Leadership_5.jpg";
 import Image from "next/image";
+import LeadershipBanner1 from "@/components/common/MainBanner/leadershipBanner";
 
 function LeadershipBanner() {
   const [activeSlide, setActiveSlide] = useState(0);
@@ -50,37 +51,40 @@ function LeadershipBanner() {
         </div>
       ),
     },
-    // {
-    //   image: LeaderBanner,
-    //   data: <div></div>,
-    // },
-    // {
-    //   image: LeaderBanner1,
-    //   data: <div></div>,
-    // },
-    // {
-    //   image: LeaderBanner2,
-    //   data: <div></div>,
-    // },
-    // {
-    //   image: LeaderBanner3,
-    //   data: <div></div>,
-    // },
-    // {
-    //   image: LeaderBanner4,
-    //   data: <div></div>,
-    // },
-    // {
-    //   image: LeaderBanner5,
-    //   data: <div></div>,
-    // },
+    {
+      image: LeaderBanner,
+      data: <div></div>,
+    },
+    {
+      image: LeaderBanner1,
+      data: <div></div>,
+    },
+    {
+      image: LeaderBanner2,
+      data: <div></div>,
+    },
+    {
+      image: LeaderBanner3,
+      data: <div></div>,
+    },
+    {
+      image: LeaderBanner4,
+      data: <div></div>,
+    },
+    {
+      image: LeaderBanner5,
+      data: <div></div>,
+    },
   ];
 
   return (
     <div className="w-full">
       <Navbar activeSlide={activeSlide} />
       {/* <Banner SliderData={SliderData}  onSlideChange={handleSlideChange} /> */}
-      <Banner SliderData={SliderData} onSlideChange={handleSlideChange} />
+      <LeadershipBanner1
+        SliderData={SliderData}
+        onSlideChange={handleSlideChange}
+      />
     </div>
   );
 }
