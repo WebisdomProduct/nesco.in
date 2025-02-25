@@ -59,7 +59,6 @@ function AnnouncementFilter() {
       description:
         "Disclosure under Regulation 30 of the SEBI (Listing Obligations and Disclosure Requirements) Regulations, 2015-Acquisition of 100% equity stake of Reliance New Energy Battery Limited ",
     },
-
     {
       year: "2024-2025",
       date: "31 Dec 2024 ",
