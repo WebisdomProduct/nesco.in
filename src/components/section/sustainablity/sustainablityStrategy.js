@@ -4,8 +4,8 @@ import Image from "next/image";
 
 function SustainablityStrategy() {
   return (
-    <div className="goal-section1 flex justify-center items-center flex-col mt-0 lg:mt-10">
-      <div className="my-20 text-center w-[90%]">
+    <div className="goal-section1 flex justify-center items-center flex-col ">
+      <div className="my-10 text-center w-[90%]">
         <div className="text-left ">
           <h1 className="text-3xl font-bold px-5 py-3 bg-[#bfe9e2] text-gray-900 inline-block text-center ">
             {" "}
@@ -18,7 +18,7 @@ function SustainablityStrategy() {
             <p className="lg:text-[21px] md:text-[16px] text-[14px] w-[93%] ">
               {" "}
               Nesco undertook a Materiality Assessment to identify key ESG
-              issues rele vant to its operations and stakeholders. This included
+              issues relevant to its operations and stakeholders. This included
               obtaining inputs from internal and external stakeholders based on
               our engagements. The material issues identified in the process
               have been prioritized which has helped Nesco to allocate resources

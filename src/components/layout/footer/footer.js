@@ -14,7 +14,7 @@ function Footer() {
       category: [
         {
           title: "Overview",
-          link: "",
+          link: "/overview",
         },
         {
           title: "Philosophy",
@@ -26,7 +26,7 @@ function Footer() {
         },
         {
           title: "Leadership",
-          link: "",
+          link: "/leadership",
         },
         // {
         //   title: "Sustainability",
@@ -113,11 +113,11 @@ function Footer() {
         // },
         {
           title: "Corporate Social Responsibility",
-          link: "",
+          link: "/social-responsibility",
         },
         {
           title: "Sustainability",
-          link: "",
+          link: "/sustainability",
         },
       ],
     },

@@ -3,8 +3,8 @@ import ServiceImage from "@/assests/Home/girl.jpg";
 
 function Service() {
   return (
-    <section className="md:pt-[78px] pt-10 flex w-full justify-center items-center h-[100vh]">
-      <div className=" md:w-[90%] w-[90%] relative overflow-hidden h-[80%] flex items-center goal-section1">
+    <section className="md:pt-[78px] pt-10 flex w-full justify-center items-center h-[100vh] goal-section1">
+      <div className=" md:w-[90%] w-[90%] relative overflow-hidden lg:h-[80%] flex items-center ">
         <div className="absolute top-0 left-0 -z-[1] w-full h-full">
           <img
             src={ServiceImage.src}
@@ -20,7 +20,7 @@ function Service() {
             }}
           ></div> */}
         </div>
-        <div className="xl:w-[65%] md:w-[70%] z-[1] flex flex-col gap-5 py-10 xl:px-20 md:px-10 px-5 h-full">
+        <div className="xl:w-[65%] md:w-[70%] z-[1] flex flex-col gap-5 py-10 xl:px-20 md:px-10 px-5 lg:h-full">
           {/* <p className="text-primary md:text-4xl text-3xl font-bold mt-10"> */}
 
           <p

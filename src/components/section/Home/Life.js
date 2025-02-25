@@ -4,7 +4,7 @@ import background from "@/assests/Home/N-1.png";
 function Life() {
   return (
     <section className="header_white flex justify-between items-center w-full bg-[#403092] relative pt-16 overflow-hidden lg:h-full md:h-[100vh] xl:h-[100vh]">
-      <div className="px-[5%] goal-section1">
+      <div className="px-[5%]  goal-section1 xl:py-20">
         <div className="flex flex-col xl:w-[50%] lg:w-[60%] md:gap-7 gap-10 md:py-20 pb-20 z-10">
           {/* <p className="text-3xl font-bold text-secondary text-center md:text-left"> */}
           <p
@@ -40,11 +40,11 @@ function Life() {
           </p>
         </div>
 
-        <div className="hidden lg:block absolute w-full h-full top-0 left-0">
+        <div className="hidden lg:flex absolute w-full h-full top-0 left-0 lg:justify-center lg:items-center overflow-hidden">
           <img
             src={background.src}
             alt="background"
-            className=" absolute z-0 right-[-7rem] xl:w-[72%] lg:w-[65%] xl:-top-[20%] lg:top-[5%]"
+            className="absolute z-0 xl:w-[50%] w-[45%] right-10"
           />
           <div className="absolute hidden lg:block z-0 xl:bottom-20 bottom-10 right-12 w-[140px]">
             <div

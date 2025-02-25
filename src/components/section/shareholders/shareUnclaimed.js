@@ -109,7 +109,7 @@ function ShareUnclaimed() {
             Unclaimed Dividends
           </p>
 
-          <p className="justify-center text-justify text-3xl sm:text-2xl font-branding-medium w-[90%]">
+          <p className="justify-center text-justify text-3xl sm:text-2xl font-branding-medium">
             Pursuant to Sections 124(5) of the Companies Act, 2013, read with
             rules framed there under, the Company is required to transfer the
             amount of dividend remained unpaid/unclaimed for a period of seven
@@ -117,9 +117,9 @@ function ShareUnclaimed() {
             Protection Fund (IEPF).
           </p>
         </div>
-        <div className="w-[90%]">
+        <div className="w-full">
           <div className="overflow-x-auto">
-            <table className="table-auto border-separate  m-auto text-center bg-gray-300">
+            <table className="table-auto border-separate w-full m-auto text-center bg-gray-300">
               <thead className=" font-branding-semibold">
                 {/* First Row: Main Headers */}
                 <tr className="">

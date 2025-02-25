@@ -17,11 +17,9 @@ function SocialPower() {
           therefore, embedded into the very foundation of the company. His
           efforts to promote education and self-sustainability are still close
           to the heart of the organization and remain at the core of our
-          pioneering initiatives. Over the years, we have trans
-        </p>
-        <p className="mt-5 md:text-2xl text-white">
-          touch through our organized welfare initiatives, and as a result, we
-          are now one big family.
+          pioneering initiatives. Over the years, we have transtouch through our
+          organized welfare initiatives, and as a result, we are now one big
+          family.
         </p>
       </div>
     </section>

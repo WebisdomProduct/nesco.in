@@ -62,9 +62,9 @@ function SustainabilityPractices() {
             Practices for a Resilient Future
           </h1>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 justify-center ">
           {cardData.map((data, index) => (
-            <div className="flex flex-col justify-center items-center">
+            <div className="flex flex-col justify-between items-center">
               <div
                 className="border-2 relative z-10"
                 style={{ borderColor: data.color }}
@@ -79,7 +79,7 @@ function SustainabilityPractices() {
                   style={{ backgroundColor: data.color }}
                 />
               </div>
-              <p className="text-xl font-branding-semibold w-[50%] mt-5">
+              <p className="text-xl font-branding-semibold w-[50%] h-[80%] mt-5">
                 {data.title}
               </p>
             </div>

@@ -5,7 +5,7 @@ import stakeholder from "@/assests/sustainability/stakeholder.png";
 function SustainabilityTerms() {
   return (
     <div className="goal-section1 flex justify-center items-center flex-col mt-0 lg:mt-10">
-      <div className="my-20 text-center w-[90%]">
+      <div className="my-10 text-center w-[90%]">
         <div className="text-right md:mr-24">
           <h1 className="text-3xl font-bold px-5 py-3 bg-[#c2ddf7] text-gray-900 inline-block text-center ">
             {" "}
@@ -14,7 +14,7 @@ function SustainabilityTerms() {
         </div>
 
         <div className="md:flex mt-16">
-          <div className="basis-[40%] md:mb-0 mb-8">
+          <div className="basis-[40%] md:mb-0 mb-5">
             <Image
               src={stakeholder}
               alt="stakeholder"
@@ -44,7 +44,7 @@ function SustainabilityTerms() {
               segmentation facilitates targeted engagement and actions tailored
               to each group's needs. These are complemented by effective
               grievance management mechanisms to address and resolve stakeholder
-              concerns promptly and fairly
+              concerns promptly and fairly.
             </p>
           </div>
         </div>

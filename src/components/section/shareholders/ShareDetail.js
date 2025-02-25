@@ -18,13 +18,17 @@ function ShareDetail() {
       {/* Content */}
       <div className="relative flex flex-col md:flex-row gap-6 justify-evenly w-[90%]">
         {/* Card 1 */}
-        <div className="border border-black shadow-lg p-6 xl:w-[30%] w-full bg-white">
+        <div
+          className={`border border-black shadow-lg p-6 xl:w-[30%] transition-all duration-300 ${
+            enter === "card1" ? "bg-primary" : "bg-white"
+          } w-full `}
+        >
           <div
-            className="bg-primary hover:bg-white hover:text-primary transition-all duration-300 text-white  flex-col items-center flex py-2"
+            className="bg-primary hover:bg-white hover:text-primary transition-all duration-300 text-white h-full flex-col items-center justify-between flex py-2"
             onMouseEnter={() => setEnter("card1")}
             onMouseLeave={() => setEnter(null)}
           >
-            <div className="max-w-[7rem] mt-5">
+            <div className="max-w-[6rem] mt-5">
               {enter === "card1" ? (
                 <Image
                   src={imageBlue}
@@ -39,7 +43,7 @@ function ShareDetail() {
                 />
               )}
             </div>
-            <div className="  p-6 flex flex-col">
+            <div className="p-3 flex flex-col">
               <h2 className="md:text-3xl text-2xl text-center font-bold">
                 Details of shares transferred to IEPF
               </h2>
@@ -58,13 +62,17 @@ function ShareDetail() {
         </div>
 
         {/* Card 2 */}
-        <div className="border border-black shadow-lg p-6 xl:w-[30%] w-full bg-white">
+        <div
+          className={`border border-black shadow-lg p-6 xl:w-[30%] transition-all duration-300 ${
+            enter === "card2" ? "bg-primary" : "bg-white"
+          } w-full `}
+        >
           <div
             className="bg-primary hover:bg-white hover:text-primary transition-all duration-300 text-white h-full flex-col items-center justify-between flex py-2"
             onMouseEnter={() => setEnter("card2")}
             onMouseLeave={() => setEnter(null)}
           >
-            <div className="xl:w-[10rem] md:w-[12rem] sm:w-[11rem] w-[11.3rem] mt-5">
+            <div className="xl:w-[8rem] md:w-[10rem] sm:w-[9rem] w-[9.3rem] mt-5">
               {enter === "card2" ? (
                 <Image
                   src={imageBlue2}
@@ -79,8 +87,8 @@ function ShareDetail() {
                 />
               )}
             </div>
-            <div className=" p-6 flex flex-col">
-              <h2 className="md:text-3xl text-2xl text-center font-bold px-5 pb-5 xl:pb-0">
+            <div className=" p-3 flex flex-col">
+              <h2 className="md:text-3xl text-2xl text-center font-bold px-3 pb-5 xl:pb-0">
                 Application to claim unpaid dividend and shares
               </h2>
               <div className="w-full flex justify-end">

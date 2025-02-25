@@ -1,8 +1,8 @@
 import Cards from "@/components/common/cards/Cards";
 import React from "react";
-import MentorImage from "@/assests/leadership/7.png";
-import MentorImage2 from "@/assests/leadership/26.png";
-import MentorImage3 from "@/assests/leadership/3.png";
+import MentorImage from "@/assests/leadership/7-1.jpg";
+import MentorImage2 from "@/assests/leadership/26-1.jpg";
+import MentorImage3 from "@/assests/leadership/3-1.jpg";
 
 function VisionaryLeader() {
   const CardData = [

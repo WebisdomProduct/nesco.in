@@ -7,20 +7,20 @@ function SocialInfra() {
 
   const SliderData = [
     {
-      title1: "Sardar Patel Memorial",
-      title2: "and Trust, Karamsad, Gujarat.",
+      title1: "Water Supply System",
+      title2: "Karamsad",
       link: "",
       image: bannerImage,
     },
     {
-      title1: "Sardar Patel Memorial",
-      title2: "and Trust, Karamsad, Gujarat.",
+      title1: "Water Supply System",
+      title2: "Karamsad",
       link: "",
       image: bannerImage,
     },
     {
-      title1: "Sardar Patel Memorial",
-      title2: "and Trust, Karamsad, Gujarat.",
+      title1: "Water Supply System",
+      title2: "Karamsad",
       link: "",
       image: bannerImage,
     },

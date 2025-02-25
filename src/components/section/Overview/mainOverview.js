@@ -14,11 +14,7 @@ const MainOverview = () => {
       classCss: "section",
     },
     {
-      comp: (
-        <AnimateOnScroll>
-          <OverviewEvolve />
-        </AnimateOnScroll>
-      ),
+      comp: <OverviewEvolve />,
       classCss: "section",
     },
   ];

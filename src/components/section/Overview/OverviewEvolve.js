@@ -2,7 +2,7 @@ import React from "react";
 
 function OverviewEvolve() {
   return (
-    <div className="header_purple goal-section1 flex justify-center py-10 xl:h-screen">
+    <div className="header_purple  flex justify-center py-10 xl:h-screen">
       <div className="flex flex-col md:flex-row justify-between w-[90%]">
         <div className=" lg:w-[50%] h-full flex items-center">
           <p className="text-blue-800 text-3xl md:text-[5rem] md:leading-[5rem] font-branding-semibold w-full text-center md:text-left">

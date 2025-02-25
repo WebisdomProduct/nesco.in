@@ -7,8 +7,8 @@ function SocialHealth() {
 
   const SliderData = [
     {
-      title1: "Sardar Patel Memorial",
-      title2: "and Trust, Karamsad, Gujarat.",
+      title1: "J.V. Patel surgical ICU at",
+      title2: "Shree Krishna Hospital, Karamsad",
       link: "",
       image: bannerImage,
     },

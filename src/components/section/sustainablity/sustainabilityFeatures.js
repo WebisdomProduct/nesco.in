@@ -16,10 +16,10 @@ function SustainabilityFeatures() {
               className="w-full h-full object-contain"
             />
           </div>
-          <p className="mb-8 bg-[#eeeed4] py-2 md:px-6 md:text-lg font-bold text-gray-800 w-full pl-10">
+          <p className="mb-8 bg-[#eeeed4] py-2 md:px-6 md:text-xl whitespace-nowrap font-bold text-gray-800 w-full pl-10">
             Fostering Stakeholder Trust
           </p>
-          <p className="text-gray-600 text-justify ml-20 mr-4">
+          <p className="text-gray-600 text-lg text-justify ml-20 mr-4">
             {" "}
             Trust is the cornerstone of Nesco&#39;s relationships and we embrace
             ethical practices, transparency, and account ability in all our
@@ -36,10 +36,10 @@ function SustainabilityFeatures() {
               className="w-full h-full object-contain"
             />
           </div>
-          <p className="mb-8 bg-[#bfe9e2] py-2 md:px-4 md:text-lg font-bold text-gray-800 w-full xl:pl-[3.2rem] pl-10">
+          <p className="mb-8 bg-[#bfe9e2] py-2 md:px-4 md:text-xl whitespace-nowrap font-bold text-gray-800 w-full xl:pl-[3.2rem] pl-10">
             Driving Continuous Improvement
           </p>
-          <p className="text-gray-600 text-justify ml-20 mr-4">
+          <p className="text-gray-600 text-lg text-justify ml-20 mr-4">
             {" "}
             Nesco sees sustainability as a catalyst for continuous improvement
             for its busi nesses. We set ambitious and progres sive goals
@@ -56,11 +56,11 @@ function SustainabilityFeatures() {
               className="w-full h-full object-contain"
             />
           </div>
-          <p className="mb-8 bg-[#f1d2ef] py-2 md:px-6 md:text-lg font-bold text-gray-800 w-full pl-10 ">
+          <p className="mb-8 bg-[#f1d2ef] py-2 md:px-6 md:text-xl whitespace-nowrap font-bold text-gray-800 w-full pl-10 ">
             {" "}
             Creating Long-Term Value
           </p>
-          <p className="text-gray-600 text-justify ml-20 mr-4">
+          <p className="text-gray-600 text-lg text-justify ml-20 mr-4">
             Appreciating diverse and often conflicting stakeholder needs, Nesco
             leverages sustainable practices to deliver on its commitment to
             creating enduring value. By integrating sustainable practices into

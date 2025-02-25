@@ -20,9 +20,7 @@ function Mainsebi() {
     {
       comp: (
         <div className="mt-14 flex justify-center items-center mb-20">
-          <AnimateOnScroll>
-            <SebiDetails />
-          </AnimateOnScroll>
+          <SebiDetails />
         </div>
       ),
       classCss: "",

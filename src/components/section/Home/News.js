@@ -93,7 +93,7 @@ function News() {
             if (index === 3) {
               return (
                 <div key={index} className="">
-                  <div className="md:h-full h-[312px]  p-5 shadow-lg gap-2 relative overflow-hidden">
+                  <div className="h-[300px] md:h-[350px] sm:h-[400px] lg:h-[300px] p-5 shadow-lg gap-2 relative overflow-hidden">
                     <div className="absolute  top-0 left-0 w-full h-full z-0">
                       <img
                         src={data.svgImage.src}
@@ -135,7 +135,7 @@ function News() {
               return (
                 <div key={index}>
                   <div
-                    className=" p-5 shadow-lg gap-2 relative overflow-hidden md:h-full h-[312px]"
+                    className=" p-5 shadow-lg gap-2 relative overflow-hidden h-[300px] md:h-[350px] sm:h-[400px] lg:h-[300px]"
                     style={{ backgroundColor: data.backgroundcolor }}
                   >
                     <div className="absolute  top-0 left-0 w-full h-full z-0">
@@ -165,7 +165,7 @@ function News() {
                         </p>
                       </div>
 
-                      <div className="flex w-full pb-2">
+                      <div className="flex w-full pb-3">
                         <button
                           className="w-[40px] h-[40px] rounded-full flex justify-center items-center"
                           style={{
@@ -190,7 +190,7 @@ function News() {
             return (
               <div key={index} className="">
                 <div
-                  className=" p-5 shadow-lg gap-1 relative overflow-hidden h-full"
+                  className=" p-5 shadow-lg gap-1 relative overflow-hidden  h-[300px] md:h-[350px] sm:h-[400px] lg:h-[300px]"
                   style={{ backgroundColor: data.backgroundcolor }}
                 >
                   <div className="absolute  top-0 left-0 w-full h-full z-0">

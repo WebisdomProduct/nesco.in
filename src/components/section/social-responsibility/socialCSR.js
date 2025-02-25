@@ -25,7 +25,7 @@ function SocialCSR() {
             <div className=" text-primary flex justify-center items-center">
               <p
                 style={{ fontFamily: "BrandingSemibold" }}
-                className="text-[#1e3a8a] text-2xl md:text-5xl font-BrandingSemibold font-bold text-center"
+                className="text-[#1e3a8a] text-2xl md:text-5xl font-BrandingSemibold font-bold text-left w-full"
               >
                 About Company's CSR
               </p>
@@ -38,18 +38,19 @@ function SocialCSR() {
               Infrastructure, Sanitation, and Environmental Sustainability. We
               are committed to creating long-term value by investing in local
               communities and addressing their most pressing needs. The CSR
-              Committee ensures that our initiatives are effectively
+              Committee ensures that our initiatives are effectively, and
+              continuous monitoring.
             </p>
             <p className="">
-              cation, and continuous monitoring. Through these programs, Nesco
-              aims to make a significant and positive impact, enhancing both
-              social welfare and environmental sustainability
+              Through these programs, Nesco aims to make a significant and
+              positive impact, enhancing both social welfare and environmental
+              sustainability
             </p>
             <div className="grid xl:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-5 mt-5">
               {buttonData.map((data, index) => (
                 <button
                   key={index}
-                  className={`px-8 py-3 text-base font-branding-bold text-white rounded-lg`}
+                  className={`px-8 py-4 text-xl font-branding-semibold text-white rounded-lg`}
                   style={{
                     backgroundColor: data.buttonColor,
                   }}

@@ -15,39 +15,38 @@ function believe() {
             We believe in people & people believe in us.
           </p>
         </div>
-        <div className="mt-10 flex lg:flex-row flex-col justify-between xl:items-start items-center w-full overflow-hidden xl:gap-0 gap-10">
-          <div className="relative h-[550px] lg:w-[50%] w-full">
-            <Image
-              src={chessImage}
-              alt="Chess Image"
-              className="object-cover w-full h-full xl:-ml-10 xl:-mt-10"
-              priority
-            />
-          </div>
+        <div className="flex relative mt-10">
+          <div className=" flex lg:flex-row flex-col xl:items-start items-center w-full gap-10 overflow-hidden">
+            <div className="relative h-[600px] lg:w-[35%] w-full">
+              <Image
+                src={chessImage}
+                alt="Chess Image"
+                className="object-cover w-full h-full "
+                priority
+              />
+            </div>
 
-          <div className="text-justify xl:w-[50%] lg:w-[45%] w-full md:mt-0 mt-10 flex flex-col gap-5 md:text-2xl text-xl font-poppins z-10">
-            <p>
-              Leadership at. Nesco is more than just man-agement, it is a
-              principle. Our founder, J. V. Patelwas a first-generation
-              industrialist in in-dependent India and a peerless entrepreneur.
-              He carved a niche for himself in the industrial and business realm
-              by dint of technical know-how, meticulousness, diligence and
-              leadership. The investiture of his beliefs in our teams is what
-              takes us forward as a company. Across our diverse industries, our
-              capabilities at Nesco are expanding. As businesses grow. the focus
-              of our
-            </p>
-            {/* <p className="mt-6">
-              teams is what takes us forward as a company. Across our diverse
-              industries, our capabilities at Nesco are expanding. As businesses
-              grow, the focus of our{" "}
-            </p> */}
-            <p>
-              leadership grows on converting the credo of Bellieve into action.
-            </p>
+            <div className="text-justify xl:w-[50%] lg:w-[45%] w-full md:mt-0 mt-10 flex flex-col gap-5 md:text-2xl text-xl font-poppins z-10">
+              <p className="leading-10">
+                Leadership at Nesco is more than just man-agement, it is a
+                principle. Our founder, J. V. Patelwas a first-generation
+                industrialist in in dependent, India anda peerless entrepreneur.
+                He carved a niche for himself in the industrial and business
+                realm by dint of technical know-how, meticulousness, diligence
+                and leadership. The investiture of his beliefs in our teams is
+                what takes us forward as a company. Across our diverse
+                industries, our capabilities at Nesco are expanding. As
+                businesses grow. the focus of our leadership grows on converting
+                the credo of Bellieve into action,
+              </p>
+            </div>
           </div>
-          <div className=" md:right-20 -mt-5">
-            <Image src={LeaderIcon} alt="icon" className="w-full lg:h-[70vh]" />
+          <div className="absolute -right-20 hidden lg:block">
+            <Image
+              src={LeaderIcon}
+              alt="icon"
+              className="w-full lg:h-[40rem] object-cover -mt-16"
+            />
           </div>
         </div>
       </div>

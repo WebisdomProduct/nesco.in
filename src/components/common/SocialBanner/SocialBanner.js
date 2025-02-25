@@ -59,7 +59,7 @@ function SocialBanner1({ SliderData, title }) {
 
   return (
     <div className="w-full lg:h-[100vh] banner-section relative flex flex-col justify-end lg:pt-8 pt-16">
-      <p className="text-center text-3xl font-branding-bold my-8 text-primary">
+      <p className="text-center text-2xl md:text-4xl lg:text-5xl font-branding-semibold my-8 text-primary">
         {title}
       </p>
       <div className="relative">
@@ -87,8 +87,8 @@ function SocialBanner1({ SliderData, title }) {
                   className="bg-black text-white flex justify-center items-center text-2xl h-[100vh] relative transition-all duration-700"
                 >
                   <div className="absolute w-full h-full flex flex-col justify-center items-center font-branding-medium">
-                    <p className="text-3xl text-center">{data.title1}</p>
-                    <p className="text-3xl text-center">{data.title2}</p>
+                    <p className="text-4xl text-center">{data.title1}</p>
+                    <p className="text-4xl text-center">{data.title2}</p>
                     <button className="border border-white px-6 py-3 text-white mt-8">
                       <Link href={data.link}>Read More</Link>
                     </button>

@@ -1,11 +1,11 @@
 import Cards from "@/components/common/cards/Cards";
 import React from "react";
-import MentorImage from "@/assests/leadership/6.png";
-import MentorImage2 from "@/assests/leadership/7.png";
-import MentorImage3 from "@/assests/leadership/9.png";
-import MentorImage4 from "@/assests/leadership/16.png";
-import MentorImage5 from "@/assests/leadership/27.png";
-import MentorImage6 from "@/assests/leadership/28.png";
+import MentorImage from "@/assests/leadership/6-1.jpg";
+import MentorImage2 from "@/assests/leadership/7-1.jpg";
+import MentorImage3 from "@/assests/leadership/9-1.jpg";
+import MentorImage4 from "@/assests/leadership/16-1.jpg";
+import MentorImage5 from "@/assests/leadership/27-1.jpg";
+import MentorImage6 from "@/assests/leadership/28-1.jpg";
 
 function BoardOfDirector() {
   const CardData = [

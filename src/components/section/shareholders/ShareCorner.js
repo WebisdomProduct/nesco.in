@@ -119,7 +119,7 @@ function ShareCorner() {
           <Image
             src={CornerImage}
             alt="Building image"
-            className="h-full object-cover object-right"
+            className="h-full object-cover object-center"
           />
         </div>
         <div className="overflow-y-auto flex md:w-[75%] w-full">
