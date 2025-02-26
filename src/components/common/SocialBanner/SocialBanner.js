@@ -89,7 +89,7 @@ function SocialBanner1({ SliderData, title }) {
                   <div className="absolute w-full h-full flex flex-col justify-center items-center font-branding-medium">
                     <p className="text-4xl text-center">{data.title1}</p>
                     <p className="text-4xl text-center">{data.title2}</p>
-                    <button className="border border-white px-6 py-3 text-white mt-8">
+                    <button className="border border-white px-6 py-3 text-white mt-8 tracking-widest">
                       <Link href={data.link}>Read More</Link>
                     </button>
                   </div>

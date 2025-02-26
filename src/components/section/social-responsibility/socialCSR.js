@@ -50,7 +50,7 @@ function SocialCSR() {
               {buttonData.map((data, index) => (
                 <button
                   key={index}
-                  className={`px-8 py-4 text-xl font-branding-semibold text-white rounded-lg`}
+                  className={`px-6 py-4 text-xl font-branding-semibold text-white rounded-lg`}
                   style={{
                     backgroundColor: data.buttonColor,
                   }}
