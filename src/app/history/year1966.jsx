@@ -18,7 +18,7 @@ const Year1966 = () => {
   return (
     <motion.div
       ref={year1966Observer}
-      className="year1966 flex flex-col relative md:flex-row w-fit mt-[20%] p-auto"
+      className="year1966 flex flex-col relative sm:flex-row md:flex-row w-fit mt-[20%] sm:mt-[10%] p-auto"
       data-year="1966"
       initial={{ opacity: 0, y: 50 }}
       animate={year1966InView ? { opacity: 1, x: 0 } : {}}
@@ -37,13 +37,13 @@ const Year1966 = () => {
         initial={{ opacity: 0, x: 50 }}
         animate={year1966InView ? { opacity: 1, x: 0 } : {}}
         transition={{ duration: 0.7, delay: 0.3 }}
-        className="contentDiv relative bg-cyan-400 h-auto m-2 right-[5%] w-[50%] md:w-[65%] z-50"
+        className="contentDiv relative bg-cyan-400 h-auto m-2 right-[5%]  w-[50%] md:w-[65%] z-50"
       >
         <motion.div
           initial={{ opacity: 0, y: -20 }}
           animate={year1966InView ? { opacity: 1, x: 0 } : {}}
           transition={{ duration: 0.6, delay: 0.5 }}
-          className="yearDiv flex w-fit flex-col relative h-fit sm:top-1/2 md:top-[80%] lg:top-1/3 sm:right-3 md:left-4 lg:left-3"
+          className="yearDiv  flex w-fit flex-col relative h-fit sm:top-1/4 md:top-[80%] lg:top-1/3 sm:right-3 md:left-4 lg:left-3"
         >
           <p className="sm:text-2xl md:text-6xl lg:text-8xl text-white font-branding-bold">
             1966

@@ -25,6 +25,7 @@ import Year2017 from "./year2017";
 import Year2019 from "./year2019";
 import Year2023 from "./year2023";
 
+
 const Timeline = ({ years }) => {
   const [activeYear, setActiveYear] = useState(years[0]);
 
@@ -62,7 +63,7 @@ const Timeline = ({ years }) => {
               transition={{ duration: 0.3, ease: "easeInOut" }}
             ></motion.span>
             <motion.p
-              className="text-lg font-poppins transition-all"
+              className="text-xl font-poppins transition-all"
               animate={{
                 color: year.toString() === activeYear ? "#000000" : "#6B7280",
                 fontWeight: year.toString() === activeYear ? 700 : 400,
@@ -96,13 +97,13 @@ const page = () => {
   const [bottomInView, setBottomInView] = useState(false);
 
   const { ref: upperObserver } = useInView({
-    threshold: 0.2,
+    threshold: 0.4,
     triggerOnce: true,
     onChange: (inView) => setUpperInView(inView),
   });
 
   const { ref: bottomObserver } = useInView({
-    threshold: 0.2,
+    threshold: 0.4,
     triggerOnce: true,
     onChange: (inView) => setBottomInView(inView),
   });
@@ -112,10 +113,10 @@ const page = () => {
       <Navbar />
       <Timeline years={years} />
 
-      <div className="rightSectionContainer w-fit h-fit mt-[11%] m-2  right-2 ml-[15%]">
+      <div className="rightSectionContainer w-fit h-fit mt-[11%] m-2 lg:ml-[15%]">
         <div
           ref={upperObserver}
-          className="upperDiv  w-fit md:w-[87%] flex flex-col p-5  mb-3 relative h-auto md:left-2 lg:left-[2%]  ml-auto"
+          className="upperDiv w-fit md:w-[87%] flex flex-col p-5 mb-3 relative h-auto md:left-2 lg:left-[2%] ml-auto"
         >
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
@@ -127,28 +128,25 @@ const page = () => {
               alt="Top Image"
               width={1500}
               height={300}
-              className=" lg:w-[90%]  h-auto object-cover relative"
+              className="lg:w-[90%] h-auto object-cover relative w-full"
             />
           </motion.div>
 
           <motion.div
-            className="sideContentDiv  flex flex-col  relative bg-sky-500 text-justify p-8 
-                 left-[35%] md:bottom-[5vh] lg:bottom-[45vh]    sm:w-[40%] md:w-[65%] lg:w-[65%] 
-                 z-50 transition-all ease-in-out duration-300 hover:-translate-y-1 hover:bg-gray-600"
+            className="sideContentDiv flex flex-col relative bg-sky-500 text-justify p-8 left-0 md:left-[35%] md:bottom-[5vh] lg:bottom-[45vh] w-full sm:w-[60%] md:w-[65%] lg:w-[65%] z-50 transition-all ease-in-out duration-300 hover:-translate-y-1 hover:bg-gray-600"
             initial={{ opacity: 0, x: 100 }}
             animate={upperInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 1.5, delay: 1 }}
           >
-            <div className="header flex relative w-fit  h-fit">
-              <p className="lg:text-6xl sm:text-2xl font-branding-medium p-2  text-left text-sky-900">
+            <div className="header flex relative w-full">
+              <p className="lg:text-6xl sm:text-3xl text-xl font-branding-medium p-2 text-left text-sky-900">
                 Every journey begins with a single step. Introducing the man
                 behind the legacy.
               </p>
             </div>
-            <br></br>
-            <br></br>
-            <p className="font-branding-medium p-2 lg:text-2xl text-white sm:text-md md: text-md">
-              {" "}
+            <br />
+            <br />
+            <p className="font-branding-medium p-2 lg:text-2xl text-white sm:text-lg text-md">
               Shri. J. V. Patel, or Jethabhai as he was fondly called, grew up
               in an India that was not industrially advanced. The lack of
               external inspiration only dared him to dream big and become an
@@ -156,9 +154,9 @@ const page = () => {
               transformed and strengthened the backbone of the changed Indian
               industry.
             </p>
-            <br></br>
-            <br></br>
-            <p className="font-branding-medium text-white p-2 lg:text-2xl sm:text-md md: text-md">
+            <br />
+            <br />
+            <p className="font-branding-medium text-white p-2 lg:text-2xl sm:text-lg text-md">
               The Standard Engineering Company was in fact founded on his belief
               in ‘indigenous’ growth. He also took several sick companies under
               his wing, which is why he was often known as the ‘Doctor of Sick
@@ -170,14 +168,13 @@ const page = () => {
 
         <div ref={bottomObserver}>
           <motion.div
-            className="bottomContentDiv w-fit md:w-[75%] lg:bottom-[20vh] ml-auto text-gray-500 p-4 pt-6 transition-all 
-                ease-in-out duration-300 hover:-translate-y-1 mt-6 flex flex-col md:flex-row relative"
+            className="bottomContentDiv w-fit md:w-[75%] lg:bottom-[20vh] ml-auto text-gray-500 p-4 pt-6 transition-all ease-in-out duration-300 hover:-translate-y-1 mt-6 flex flex-col md:flex-row relative"
             initial={{ opacity: 0, y: 50 }}
             animate={bottomInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 1, delay: 0.5 }}
           >
             <motion.div
-              className="imgDiv w-fit justify-left z-50"
+              className="imgDiv0 lg:w-fit justify-left z-50 w-full md:w-auto"
               initial={{ opacity: 0, x: -50 }}
               animate={bottomInView ? { opacity: 1, x: 0 } : {}}
               transition={{ duration: 1, delay: 0.8 }}
@@ -187,17 +184,17 @@ const page = () => {
                 alt="Mid Image"
                 width={300}
                 height={200}
-                className="md:w-[95%] lg:w-[90%] h-auto object-cover relative"
+                className="md:w-[95%] lg:w-[90%] h-auto object-cover relative w-full sm:w-auto"
               />
             </motion.div>
 
             <motion.div
-              className="textDiv flex flex-col relative w-[50%] m-2 items-center justify-center left-[4%]"
+              className="textDiv flex flex-col relative w-full md:w-[50%] m-2 items-center justify-center md:left-[4%]"
               initial={{ opacity: 0, x: 50 }}
               animate={bottomInView ? { opacity: 1, x: 0 } : {}}
               transition={{ duration: 1, delay: 1 }}
             >
-              <p className="md:text-2xl lg:text-4xl font-branding-semibold text-center p-2">
+              <p className="md:text-2xl lg:text-4xl sm:text-xl text-lg font-branding-semibold text-center p-2">
                 ‘Your right is in action, never to its fruits, let not the
                 fruits of action be your motive.’
               </p>
@@ -242,6 +239,8 @@ const page = () => {
         <Year2019 />
 
         <Year2023 />
+
+       
       </div>
     </div>
   );

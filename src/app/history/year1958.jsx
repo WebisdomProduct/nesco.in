@@ -1,4 +1,3 @@
-// components/historyYears/Year1958.js
 "use client";
 import React from "react";
 import { motion } from "framer-motion";
@@ -16,7 +15,7 @@ const Year1958 = () => {
   return (
     <motion.div
       ref={year1958Observer}
-      className="year1958 mt-16 flex flex-col gap-2 relative items-center justify-center w-fit m-auto"
+      className="year1958 mt-16 flex flex-col gap-4 relative items-center justify-center w-full max-w-4xl m-auto"
       data-year="1958"
       initial={{ opacity: 0, y: 50 }}
       animate={year1958InView ? { opacity: 1, y: 0 } : {}}
@@ -29,17 +28,18 @@ const Year1958 = () => {
         transition={{ duration: 0.6, delay: 0.3 }}
         className="topDiv flex relative items-center justify-center m-4 border-b-2 border-cyan-300 w-full"
       >
-        <p className="text-[80px] text-cyan-400">1958</p>
+        <p className="text-[60px] sm:text-[70px] md:text-[80px] lg:text-[100px] text-cyan-400 font-bold">
+          1958
+        </p>
       </motion.div>
       <motion.div
         animate={year1958InView ? { opacity: 1, y: 0 } : {}}
         initial={{ opacity: 0, y: 20 }}
         transition={{ duration: 0.7, delay: 0.5 }}
-        className="bottomDiv m-4 flex"
+        className="bottomDiv m-4 flex flex-col sm:flex-row items-center justify-center"
       >
-        <p className="sm:text-lg md:text-xl lg:text-xl leading-relaxed max-w-xs text-center text-gray-400">
-          The Company launches its public issue, which is quickly
-          oversubscribed.
+        <p className="text-center sm:text-left sm:text-lg md:text-xl lg:text-2xl leading-relaxed text-gray-400 max-w-lg">
+          The Company launches its public issue, which is quickly oversubscribed.
         </p>
       </motion.div>
     </motion.div>

@@ -21,14 +21,14 @@ const Year2013 = () => {
       initial={{ opacity: 0, y: 50 }}
       animate={year2013InView ? { opacity: 1, x: 0 } : {}}
       transition={{ duration: 0.8, ease: "easeOut" }}
-      className="year2013 flex flex-col relative"
+      className="year2013 flex flex-col relative  mt-[40%] md:mt-[2%] lg:mt-[2%]"
       data-year="2013"
     >
       <motion.div
         initial={{ opacity: 0, x: -50 }}
         animate={year2013InView ? { opacity: 1, x: 0 } : {}}
         transition={{ duration: 0.7 }}
-        className="contentDiv bg-[#001F9C] flex relative w-[50%] md:w-[55%] left-[8%] md:top-[5vh] lg:top-[50vh] text-left p-4 sm:h-[50vh] md:h-[50vh] lg:h-[60vh]"
+        className="contentDiv bg-[#001F9C] flex relative w-[50%] md:w-[55%] left-[8%] sm:top-[0vh] md:top-[5vh] lg:top-[50vh] text-left p-4 sm:h-[50vh] md:h-[50vh] lg:h-[60vh]"
       >
         <motion.div
           initial={{ opacity: 0, scale: 0.8 }}
@@ -45,7 +45,7 @@ const Year2013 = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={year2013InView ? { opacity: 1, x: 0 } : {}}
           transition={{ duration: 0.7, delay: 1 }}
-          className="textDiv flex relative w-full h-fit md:top-[30vh] lg:top-[45vh] sm:right-[40%] md:right-[40%] lg:right-[26%] p-2"
+          className="textDiv flex relative w-full h-fit md:top-[30vh] lg:top-[45vh] sm:right-[40%] md:right-[35%] lg:right-[26%] p-2"
         >
           <p className="sm:text-md md:text-lg lg:text-xl text-white">
             Launched Nesco IT Park,<br></br> Tower 03 (6.6 lakh sq. ft. area

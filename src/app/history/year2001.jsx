@@ -21,7 +21,7 @@ const Year2001 = () => {
       initial={{ opacity: 0, y: 50 }}
       animate={year2001InView ? { opacity: 1, x: 0 } : {}}
       transition={{ duration: 0.8, ease: "easeOut" }}
-      className="year2001 flex flex-col relative justify-center"
+      className="year2001 flex flex-col relative justify-center "
       data-year="2001"
     >
       <motion.div

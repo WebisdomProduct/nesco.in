@@ -16,14 +16,14 @@ const Year1952 = () => {
   return (
     <motion.div
       ref={year1952Observer}
-      className="1952Div mt-[3%] w-fit relative p-4 ml-auto  h-fit flex flex-col md:flex-row justify-center items-center  transition-all ease-in-out duration-300 hover:translate-y-1   "
+      className="1952Div mt-[3%] w-full max-w-[1200px] mx-auto relative p-4 md:flex md:flex-row justify-center items-center transition-all ease-in-out duration-300 hover:translate-y-1"
       data-year="1952"
       initial={{ opacity: 0, y: 50 }}
       animate={year1952InView ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 1 }}
     >
       <motion.div
-        className="contentDiv p-4 sm:p-6 md:p-8 m-2 flex flex-col items-left relative h-fit"
+        className="contentDiv p-4 sm:p-6 md:p-8 m-2 flex flex-col items-start relative w-full md:w-1/2"
         initial={{ opacity: 0, x: -100 }}
         animate={year1952InView ? { opacity: 1, x: 0 } : {}}
         transition={{ duration: 1.2, delay: 0.2 }}
@@ -50,19 +50,19 @@ const Year1952 = () => {
       </motion.div>
 
       <motion.div
-        className="iconDiv ml-auto flex items-center justify-center relative w-fit"
+        className="iconDiv flex items-center justify-center relative w-full md:w-1/2 mt-8 md:mt-0"
         initial={{ opacity: 0, x: 100 }}
         animate={year1952InView ? { opacity: 1, x: 0 } : {}}
         transition={{ duration: 1.2, delay: 0.4 }}
       >
         <IoEllipseOutline
-          className="w-[80px] h-[80px] sm:w-[200px] sm:h-[200px] md:w-[400px] md:h-[400px] lg:w-[600px] lg:h-[600px]"
+          className="w-[150px] h-[150px] sm:w-[200px] sm:h-[200px] md:w-[400px] md:h-[400px] lg:w-[400px] lg:h-[400px] xl:w-[500px] xl:h-[500px] 2xl:w-[600px] 2xl:h-[600px]"
           color="cyan"
           strokeWidth={1}
         />
-        <span className="absolute text-blue-600 text-center w-fit flex flex-col items-center">
+        <span className="absolute text-blue-600 text-center w-fit flex flex-col items-center px-4 py-2 sm:px-6 sm:py-4 md:px-8 md:py-6">
           <motion.p
-            className="text-4xl sm:text-5xl md:text-6xl lg:text-8xl"
+            className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl"
             initial={{ opacity: 0, scale: 0.8 }}
             animate={year1952InView ? { opacity: 1, scale: 1 } : {}}
             transition={{ duration: 1.2, delay: 0.6 }}
@@ -70,7 +70,7 @@ const Year1952 = () => {
             1952
           </motion.p>
           <motion.p
-            className="w-60 sm:w-72 md:w-80 lg:w-96 p-2 sm:p-4"
+            className="w-48 sm:w-56 md:w-72 lg:w-80 xl:w-96 p-2 sm:p-4 text-sm sm:text-base md:text-lg lg:text-xl"
             initial={{ opacity: 0, y: 20 }}
             animate={year1952InView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 1.2, delay: 0.8 }}
