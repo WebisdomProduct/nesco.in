@@ -7,7 +7,7 @@ function LeadershipMentor() {
     <section className="header_white goal-section1 bg-primary text-white flex justify-center items-center pb-20 xl:pb-0 xl:pt-20 pt-[10rem] xl:h-screen ">
       <div className="flex flex-col lg:flex-row w-[90%] xl:justify-center justify-between gap-10 items-center lg:items-start">
         <div className="lg:w-[55%]">
-          <p className="md:text-2xl text-xl font-branding-medium xl:leading-[3rem] text-justify">
+          <p className="md:text-2xl text-xl font-branding-medium xl:leading-[3rem] text-justify md:-mt-4">
             A fearless pioneer, Sumant Patels crystal-clear vision had been
             instrumental in shaping the Nesco Group. A mechanical engineer from
             the University of Pennsylva nia, USA and a business graduate from

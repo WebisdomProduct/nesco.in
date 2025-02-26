@@ -28,8 +28,8 @@ function LeadershipMentor2() {
           </div>
         </div>
         <div className="lg:w-[55%]">
-          <p className="md:text-2xl text-xl font-branding-medium xl:leading-[3rem] leading-7 text-justify">
-            A dynamic peoples leader, Krishna Patel is adept at spot-ting and
+          <p className="md:text-2xl text-xl font-branding-medium xl:leading-[3rem] md:-mt-4 leading-7 text-justify">
+            A dynamic peoples leader, Krishna Patel is adept at spotting and
             implementing future trends in any industry even as he hones in on
             new business opportunities and verticals. An alumnus of The
             Pennsylvania State Universi ty, USA and Kingston University, UK, he
