@@ -27,7 +27,7 @@ function LeadershipBanner() {
         <div className="absolute md:right-20 text-center text-white z-20 xl:w-[40%] lg:w-[50%] flex flex-col gap-5 px-3">
           <p className="md:text-7xl text-6xl relative font-branding-bold md:leading-[5.4rem] mx-10">
             कर्मण्येवाधिकारस्ते मा फलेषु कदाचन{" "}
-            <div className="absolute -top-[2.5rem] transform -translate-y-1/2 -left-5">
+            <div className="absolute -top-[3rem] transform -translate-y-1/2 -left-9">
               <Image
                 src={featherImage}
                 alt="Peacock feather"
