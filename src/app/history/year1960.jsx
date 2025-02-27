@@ -38,7 +38,7 @@ const Year1960 = () => {
               initial={{ opacity: 0, y: -20 }}
               animate={year1960InView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, delay: 0.5 }}
-              className=" h-fit w-fit relative sm:text-6xl md:text-7xl lg:text-8xl text-cyan-500 left-2 sm:left-0 top-2 sm:top-0 m-2"
+              className=" h-fit w-fit relative text-6xl md:text-7xl lg:text-8xl text-cyan-500 left-2 sm:left-0 top-2 sm:top-0 m-2"
             >
               1960
             </motion.p>
