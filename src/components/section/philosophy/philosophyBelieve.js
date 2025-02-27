@@ -30,11 +30,15 @@ function PhilosophyBelieve() {
         );
       }
       if (showContent1) {
-        gsap.fromTo(".content", { width: 0 }, { width: "100%", duration: 3 });
+        gsap.fromTo(
+          ".content",
+          { width: 0, opacity: 0 },
+          { width: "100%", opacity: 1, duration: 2 }
+        );
         gsap.fromTo(
           ".content2",
           { x: 2000, opacity: 0 },
-          { x: 0, opacity: 1, duration: 3 }
+          { x: 0, opacity: 1, duration: 2 }
         );
       }
     });
@@ -66,8 +70,8 @@ function PhilosophyBelieve() {
             <div className="h-full w-[900px] bg-[#101485] opacity-80"></div>
           </div>
           {showContent1 && (
-            <div className=" relative w-full h-full flex xl:flex-row flex-col gap-10 items-center overflow-hidden ">
-              <div className="content relative xl:w-[70%] w-full h-[75%] flex justify-center items-center">
+            <div className="content absolute left-0 w-full h-full flex xl:flex-row flex-col gap-10 items-center overflow-hidden ">
+              <div className=" relative xl:w-[75%] w-full h-[75%] flex justify-center items-center">
                 <div className="absolute md:leading-[18rem] leading-[10rem] lg:text-[20rem] md:text-[15rem] text-[10rem] font-branding-bold text-white lg:left-[10%] md:left-[1%] left-0 z-20">
                   <span className="lg:mx-10 mx-3 absolute -top-1/2 transform -translate-y-[90%] lg:left-[16.8rem] md:left-[16rem] left-[8rem]">
                     E
@@ -106,7 +110,7 @@ function PhilosophyBelieve() {
                   <span className="lg:mx-10 mx-3 relative opacity-0">E</span>
                 </p>
               </div>
-              <div className="text-left xl:h-full xl:w-[30%] w-full">
+              <div className="text-left xl:h-full xl:w-[25%] w-full">
                 <p className="z-30 text-[#01aeec] w-60 relative xl:top-[58%] text-xl content2">
                   A whole universe stands waiting to be explored. And yet it may
                   remain undiscovered, unless you believe in taking the first
