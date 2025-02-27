@@ -1,0 +1,12 @@
+.constent2 {
+  animation: anime 2s ease-in-out;
+  animation-fill-mode: both;
+}
+@keyframes anime {
+  0% {
+    width: 0%;
+  }
+  100% {
+    width: 100%;
+  }
+}
