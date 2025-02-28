@@ -119,7 +119,7 @@ const Year1992 = () => {
           transition={{ duration: 0.7, delay: 0.3 }}
           className="leftDiv flex flex-col sm:w-full md:w-[50%] lg:w-[50%] relative "
         >
-          <div className="contentDiv flex flex-col relative gap-4 bg-[#001F9C] p-12 sm:left-0 md:left-[15%] lg:left-[20%] lg:h-[70vh] md:top-[3vh] lg:top-[10vh]">
+          <div className="contentDiv flex flex-col relative gap-4 bg-[#001F9C] p-12 sm:left-0 md:left-[15%] lg:left-[20%] lg:h-[70vh] md:top-[3vh] lg:top-[10vh] transition-shadow duration-300 hover:shadow-lg hover:shadow-blue-500/50">
             {/* Year Heading */}
             <motion.p
               initial={{ opacity: 0, y: -20 }}
@@ -128,6 +128,12 @@ const Year1992 = () => {
               className=" h-fit w-fit relative text-6xl md:text-7xl lg:text-8xl text-cyan-500 left-2 sm:left-0 top-2 sm:top-0 lg:top-10 m-2"
             >
               1992
+              <motion.div
+                initial={{ opacity: 0, width: 0 }}
+                animate={year1992InView ? { opacity: 1, width: "90%" } : {}}
+                transition={{ duration: 0.6, delay: 0.6 }}
+                className="mt-2 h-[2px] bg-cyan-500 w-full"
+              ></motion.div>
             </motion.p>
 
             {/* Icon Image */}
@@ -164,7 +170,7 @@ const Year1992 = () => {
 
         {/* Right Image */}
         <motion.div
-          className="imgDiv flex relative z-20 sm:mt-6  right-0 flex-col sm:w-full md:w-[50%] lg:w-[50%] "
+          className="imgDiv flex relative z-20 sm:mt-6  right-0 flex-col sm:w-full md:w-[50%] lg:w-[50%]  "
           initial={{ opacity: 0, x: 50 }}
           animate={year1992InView ? { opacity: 1, x: 0 } : {}}
           transition={{ duration: 0.8, delay: 0.9 }}
@@ -174,7 +180,7 @@ const Year1992 = () => {
             alt="Historic Event"
             width={700}
             height={500}
-            className="w-full h-auto object-cover"
+            className="w-full h-auto object-cover transition-shadow duration-300 hover:shadow-lg hover:shadow-gray-700/50"
           />
         </motion.div>
       </div>

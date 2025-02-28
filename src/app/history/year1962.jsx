@@ -1,11 +1,9 @@
-
 "use client";
-import {React,useState} from "react";
+import { React, useState } from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import historySeven from "@/assests/history/historySeven.jpg";
-
 
 const Year1962 = () => {
   const [year1962InView, setYear1962InView] = useState(false);
@@ -23,10 +21,9 @@ const Year1962 = () => {
       animate={year1962InView ? { opacity: 1, x: 0 } : {}}
       transition={{ duration: 0.8, ease: "easeOut" }}
       whileHover={{ scale: 1.02, y: -5 }}
-      data-year = "1962"
+      data-year="1962"
     >
       <div className="container flex flex-col sm:flex-col md:flex-row lg:flex-row relative m-auto mt-4 mb-4  p-4">
-        
         <motion.div
           className="imgDiv flex relative md:left-[15vh] lg:left-[15vh] z-20 sm:mt-6 md:top-[10vh] lg:top-[15vh] right-0 flex-col sm:w-full md:w-[50%] lg:w-[50%] "
           initial={{ opacity: 0, x: 50 }}
@@ -38,7 +35,7 @@ const Year1962 = () => {
             alt="Historic Event"
             width={700}
             height={500}
-            className="w-full h-auto object-cover"
+            className="w-full h-auto object-cover transition-shadow duration-300 hover:shadow-lg hover:shadow-gray-400/50"
           />
         </motion.div>
 
@@ -48,7 +45,7 @@ const Year1962 = () => {
           transition={{ duration: 0.7, delay: 0.3 }}
           className="leftDiv flex flex-col sm:w-full md:w-[50%] lg:w-[50%] relative "
         >
-          <div className="contentDiv flex flex-col relative gap-10 bg-[#001F9C] p-12 sm:left-0 md:left-[15%] lg:left-[0vh]">
+          <div className="contentDiv flex flex-col relative gap-10 bg-[#001F9C] p-12 sm:left-0 md:left-[15%] lg:left-[0vh] transition-shadow duration-300 hover:shadow-lg hover:shadow-blue-400/50">
             {/* Year Heading */}
             <motion.p
               initial={{ opacity: 0, y: -20 }}
@@ -57,10 +54,13 @@ const Year1962 = () => {
               className=" h-fit w-fit relative text-6xl md:text-8xl font-branding-bold lg:text-9xl text-white  sm:left-0 md:left-1/4 lg:left-1/2  sm:top-0  m-2"
             >
               1962
+              <motion.div
+                initial={{ opacity: 0, width: 0 }}
+                animate={year1962InView ? { opacity: 1, width: "90%" } : {}}
+                transition={{ duration: 0.6, delay: 0.6 }}
+                className="mt-2 h-[2px] bg-white w-full"
+              ></motion.div>
             </motion.p>
-
-            
-            
 
             {/* Description Text */}
             <motion.div
@@ -70,20 +70,18 @@ const Year1962 = () => {
               className="bottomText flex relative sm:w-full md:w-[70%]  sm:left-0 md:left-1/3 lg:left-1/4   p-2"
             >
               <p className="text-sm sm:text-lg md:text-lg lg:text-xl text-white font-poppins">
-              The New Standard Engineering Company is known to have the largest
-             foundry in the private sector, making specialised castings for the
-             company's forging equipment product line.
+                The New Standard Engineering Company is known to have the
+                largest foundry in the private sector, making specialised
+                castings for the company's forging equipment product line.
               </p>
             </motion.div>
           </div>
         </motion.div>
 
         {/* Right Image */}
-       
       </div>
     </motion.div>
   );
 };
-
 
 export default Year1962;

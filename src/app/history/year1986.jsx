@@ -23,9 +23,10 @@ const Year1986 = () => {
       initial={{ opacity: 0, y: 50 }}
       animate={year1986InView ? { opacity: 1, x: 0 } : {}}
       transition={{ duration: 0.8, ease: "easeOut" }}
+      whileHover={{ scale: 1.02, y: -2 }}
     >
       {/* Blue Background Strip */}
-      <div className="absolute top-[3%] md:left-4 lg:left-10 w-[90%] h-[70%] bg-blue-800 z-0 m-4" />
+      <div className="absolute top-[3%] md:left-4 lg:left-10 w-[90%] h-[70%] bg-blue-800 transition-shadow duration-300 hover:shadow-lg hover:shadow-blue-500/50 z-0 m-4" />
       
       {/* Image Container */}
       <motion.div 
@@ -40,7 +41,7 @@ const Year1986 = () => {
           layout="responsive" 
           width={400} 
           height={300} 
-          className="w-full max-w-full object-cover"
+          className="w-full max-w-full object-cover transition-shadow duration-300 hover:shadow-lg hover:shadow-gray-700/50"
         />
       </motion.div>
       

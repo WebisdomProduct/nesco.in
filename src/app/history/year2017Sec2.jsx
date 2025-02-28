@@ -35,7 +35,7 @@ const Year2017Sec2 = () => {
             alt="Historic Event"
             width={700}
             height={500}
-            className="w-full h-auto object-cover"
+            className="w-full h-auto object-cover transition-shadow duration-300 hover:shadow-lg hover:shadow-gray-700/50"
           />
         </motion.div>
 
@@ -45,7 +45,7 @@ const Year2017Sec2 = () => {
           transition={{ duration: 0.7, delay: 0.3 }}
           className="leftDiv flex flex-col sm:w-full md:w-[50%] lg:w-[50%] relative "
         >
-          <div className="contentDiv flex flex-col relative gap-10 bg-[#001F9C] md:top-[10vh] lg:top-[25vh] p-12 sm:left-0 md:left-[15%] lg:left-[0vh] lg:h-[60vh]">
+          <div className="contentDiv flex flex-col relative gap-10 bg-[#001F9C] md:top-[10vh] lg:top-[25vh] p-12 sm:left-0 md:left-[15%] lg:left-[0vh] lg:h-[60vh] transition-shadow duration-300 hover:shadow-lg hover:shadow-blue-500/50">
             {/* Year Heading */}
             <motion.p
               initial={{ opacity: 0, y: -20 }}
@@ -54,6 +54,12 @@ const Year2017Sec2 = () => {
               className=" h-fit w-fit relative text-6xl md:text-8xl font-branding-bold lg:text-9xl text-white  sm:left-0 md:left-1/4 lg:left-1/2  sm:top-0 lg:top-[20vh]  m-2"
             >
               2017
+              <motion.div
+                initial={{ opacity: 0, width: 0 }}
+                animate={Year2017Sec2InView ? { opacity: 1, width: "90%" } : {}}
+                transition={{ duration: 0.6, delay: 0.6 }}
+                className="mt-2 h-[2px] bg-white w-full"
+              ></motion.div>
             </motion.p>
 
             {/* Description Text */}

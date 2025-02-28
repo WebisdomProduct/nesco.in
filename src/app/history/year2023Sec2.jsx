@@ -1,12 +1,11 @@
 "use client";
-import {React, useState} from "react";
+import { React, useState } from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 
 import XX from "@/assests/history/XX.jpg";
 import XXI from "@/assests/history/XXI.png";
-
 
 const Year2023Sec2 = () => {
   const [Year2023Sec2InView, setYear2023Sec2InView] = useState(false);
@@ -34,7 +33,7 @@ const Year2023Sec2 = () => {
           transition={{ duration: 0.7, delay: 0.3 }}
           className="leftDiv flex flex-col sm:w-full md:w-[50%] lg:w-[50%] lg:top-[40vh]  relative "
         >
-          <div className="contentDiv flex flex-col relative gap-4 bg-[#001F9C] p-12 sm:left-0 md:left-[15%] lg:left-[20%] lg:h-[60vh]">
+          <div className="contentDiv flex flex-col relative gap-4 bg-[#001F9C] p-12 sm:left-0 md:left-[15%] lg:left-[20%] lg:h-[60vh] transition-shadow duration-300 hover:shadow-lg hover:shadow-blue-500/50">
             {/* Year Heading */}
             <motion.p
               initial={{ opacity: 0, y: -20 }}
@@ -43,6 +42,12 @@ const Year2023Sec2 = () => {
               className=" h-fit w-fit relative text-6xl md:text-8xl lg:text-9xl font-poppins  text-cyan-500 left-2 sm:left-0  sm:top-0 lg:top-[20vh] m-2"
             >
               2023
+              <motion.div
+                initial={{ opacity: 0, width: 0 }}
+                animate={Year2023Sec2InView ? { opacity: 1, width: "90%" } : {}}
+                transition={{ duration: 0.6, delay: 0.6 }}
+                className="mt-2 h-[2px] bg-cyan-500 w-full"
+              ></motion.div>
             </motion.p>
 
             {/* Description Text */}
@@ -72,7 +77,7 @@ const Year2023Sec2 = () => {
             alt="Historic Event"
             width={700}
             height={500}
-            className="w-full h-auto object-cover"
+            className="w-full h-auto object-cover transition-shadow duration-300 hover:shadow-lg hover:shadow-gray-700/50"
           />
         </motion.div>
       </div>
@@ -80,4 +85,4 @@ const Year2023Sec2 = () => {
   );
 };
 
-  export default Year2023Sec2;
+export default Year2023Sec2;
