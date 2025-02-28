@@ -9,14 +9,17 @@ function SocialFocus() {
     {
       image: InternshipLogo,
       title: "Education",
+      link: "#education",
     },
     {
       image: GraduatesLogo,
       title: "Infrastrucutre",
+      link: "#infra",
     },
     {
       image: ProfessionalLogo,
       title: "Healthcare",
+      link: "#healthcare",
     },
   ];
 
@@ -37,16 +40,21 @@ function SocialFocus() {
               key={index}
               className="flex flex-col justify-center items-center"
             >
-              <div className="md:w-[70%] w-[90%] p-3 border-2 border-gray-300">
-                <Image
-                  src={data.image}
-                  alt={data.title}
-                  className="w-full h-[18rem] object-cover"
-                />
-              </div>
-              <p className="mt-5 text-center text-xl xl:text-white text-black">
-                {data.title}
-              </p>
+              <a
+                href={data.link}
+                className="md:w-[70%] w-[90%] flex flex-col justify-center items-center"
+              >
+                <div className=" p-3 border-2 border-gray-300 hover:p-0 hover:scale-105 transition-all duration-150">
+                  <Image
+                    src={data.image}
+                    alt={data.title}
+                    className="w-full h-[18rem] object-cover"
+                  />
+                </div>
+                <p className="mt-5 text-center text-xl xl:text-white text-black">
+                  {data.title}
+                </p>
+              </a>
             </div>
           ))}
         </div>

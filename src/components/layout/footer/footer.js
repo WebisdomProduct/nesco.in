@@ -126,7 +126,7 @@ function Footer() {
   const FooterData2 = [
     {
       title: "Life At Nesco",
-      link: "",
+      link: "/careers",
     },
     // {
     //   title: "Contact",
@@ -159,7 +159,7 @@ function Footer() {
             </div>
           ))}
         </div>
-        <div className="flex flex-col gap-5 xl:w-[17%] xl:items-start xl:mt-0 mt-10 items-center justify-between font-branding-semibold">
+        <div className="flex flex-col gap-5 xl:w-[17%] xl:items-start xl:mt-0 mt-10 items-center font-branding-semibold">
           {FooterData2.map((data, index) => (
             <p
               className="text-[#246F8E] text-4xl xl:text-end text-center"
@@ -168,13 +168,13 @@ function Footer() {
               <Link href={data.link}> {data.title}</Link>
             </p>
           ))}
-          <div className="flex w-full justify-between">
+          <div className="flex w-full gap-8 justify-center mt-6">
             <div className="relative">
               <Link href="/contact-us">
                 <Image
                   src={ContactIcon}
                   alt="Linkdein Icon"
-                  className="w-12 h-12 object-contain"
+                  className="w-10 h-10 object-contain"
                 />
               </Link>
             </div>
@@ -182,14 +182,14 @@ function Footer() {
               <Image
                 src={LinkdeinIcon}
                 alt="Linkdein Icon"
-                className="w-12 h-12"
+                className="w-10 h-10"
               />
             </div>
             <div className="relative">
               <Image
                 src={InstagramIcon}
                 alt="Instagram Icon"
-                className="w-12 h-12"
+                className="w-10 h-10"
               />
             </div>
           </div>

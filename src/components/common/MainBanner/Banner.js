@@ -19,7 +19,7 @@ function Banner({ SliderData, onSlideChange, filter, heightClassName }) {
   const PrevArrow = ({ onClick }) => (
     <button
       onClick={onClick}
-      className="absolute left-4 top-[60%] transform -translate-y-1/2 text-gray-200 p-3 rounded-full z-10"
+      className="buttonColor absolute left-4 top-[60%] transform -translate-y-1/2 text-[#06A7E5] p-3 rounded-full z-10"
     >
       <FaAngleLeft size={40} />
     </button>
@@ -28,7 +28,7 @@ function Banner({ SliderData, onSlideChange, filter, heightClassName }) {
   const NextArrow = ({ onClick }) => (
     <button
       onClick={onClick}
-      className="absolute right-4 top-[60%] transform -translate-y-1/2 text-gray-200 p-3 rounded-full z-10"
+      className="buttonColor absolute right-4 top-[60%] transform -translate-y-1/2 text-[#06A7E5] p-3 rounded-full z-10"
     >
       <FaAngleRight size={40} />
     </button>
@@ -48,7 +48,7 @@ function Banner({ SliderData, onSlideChange, filter, heightClassName }) {
     slidesToShow: 1,
     slidesToScroll: 1,
     autoplay: true,
-    autoplaySpeed: 3000,
+    autoplaySpeed: 4000,
     swipeToSlide: true,
     arrows: true,
     prevArrow: <PrevArrow />, // Custom previous arrow

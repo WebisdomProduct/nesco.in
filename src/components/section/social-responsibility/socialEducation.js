@@ -27,7 +27,7 @@ function SocialEducation() {
   ];
 
   return (
-    <section className="goal-section1">
+    <section className="goal-section1" id="education">
       <SocialBanner1 SliderData={SliderData} title={title} />
     </section>
   );

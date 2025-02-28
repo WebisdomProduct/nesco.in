@@ -24,3 +24,18 @@
     left: 0%;
   }
 }
+
+.navbarAnimation {
+  animation: close 2s ease-out 0.5;
+  transition: all 1s;
+}
+@keyframes close {
+  0% {
+    top: -400%;
+    opacity: 0;
+  }
+  100% {
+    top: 200%;
+    opacity: 1;
+  }
+}

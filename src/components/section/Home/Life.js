@@ -46,7 +46,7 @@ function Life() {
             alt="background"
             className="absolute z-0 xl:w-[50%] w-[45%] right-10"
           />
-          <div className="absolute hidden lg:block z-0 xl:bottom-20 bottom-10 right-12 w-[140px]">
+          <div className="absolute hidden lg:block z-0 xl:bottom-20 bottom-10 right-12 h-[33%] w-[140px]">
             <div
               className="overflow-hidden lg:text-[2.3rem] text-2xl relative text-white bg-red-600 text-[2rem] leading-8 border-x-2 border-t-2 border-white p-3"
               style={{ fontFamily: "BrandingSemibold" }}
