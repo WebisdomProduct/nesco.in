@@ -67,6 +67,7 @@ const Year2023Sec3 = () => {
               className="bottomText flex relative sm:w-full md:w-[70%]  sm:left-0 md:left-1/3 lg:left-1/4 lg:top-[20vh]   p-2"
             >
               <p className="text-sm sm:text-lg md:text-lg lg:text-xl text-white font-poppins">
+                
               Food Connoisseurs India Awards – Best Customer Experience in Food
              Court
               </p>

@@ -53,15 +53,18 @@ const Timeline = ({ years }) => {
   }, []);
 
   return (
-    <div className="sideProgress flex flex-col fixed  items-center mt-[7%] ml-auto sm:w-auto md:w-auto lg:w-[13%] p-4 rounded-lg">
+    <div className="sideProgress flex flex-col items-center 
+      fixed top-[10%] right-2 md:left-auto md:right-auto md:w-auto 
+      lg:w-[13%] p-4 rounded-lg z-50 
+      hidden md:flex">
+      
       <ul className="relative pl-4">
         {years.map((year, index) => (
           <li key={index} className="relative flex items-center space-x-2 mb-4">
             <motion.span
-              className={`w-3 h-3 rounded-full relative z-10`}
+              className="w-3 h-3 rounded-full relative z-10"
               animate={{
-                backgroundColor:
-                  year.toString() === activeYear ? "#3B82F6" : "#6B7280",
+                backgroundColor: year.toString() === activeYear ? "#3B82F6" : "#6B7280",
                 scale: year.toString() === activeYear ? 1.5 : 1,
               }}
               transition={{ duration: 0.3, ease: "easeInOut" }}
@@ -91,6 +94,8 @@ const Timeline = ({ years }) => {
   );
 };
 
+
+
 const page = () => {
   const years = [
     1939, 1952, 1956, 1957, 1958, 1960, 1962, 1964, 1966, 1986, 1992, 2001,
@@ -113,7 +118,7 @@ const page = () => {
   });
 
   return (
-    <div className="historyDiv max-w-full m-2 flex flex-col overflow-x-hidden overflow-y-auto">
+    <div className="historyDiv max-w-full m-2 flex flex-col overflow-x-hidden overflow-y-hidden">
       <Navbar />
       <Timeline years={years} />
 

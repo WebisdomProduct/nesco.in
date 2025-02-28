@@ -56,7 +56,7 @@ const Year1952 = () => {
         transition={{ duration: 1.2, delay: 0.4 }}
       >
         <IoEllipseOutline
-          className="w-[150px] h-[150px] sm:w-[200px] sm:h-[200px] md:w-[400px] md:h-[400px] lg:w-[400px] lg:h-[400px] xl:w-[500px] xl:h-[500px] 2xl:w-[600px] 2xl:h-[600px]"
+          className="w-[250px] h-[250px] sm:w-[200px] sm:h-[200px] md:w-[400px] md:h-[400px] lg:w-[400px] lg:h-[400px] xl:w-[500px] xl:h-[500px] 2xl:w-[600px] 2xl:h-[600px]"
           color="cyan"
           strokeWidth={1}
         />

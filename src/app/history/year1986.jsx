@@ -18,7 +18,7 @@ const Year1986 = () => {
   return (
     <motion.div
       ref={year1986Observer}
-      className="relative flex flex-col md:flex-row-reverse items-center md:items-start w-full mt-[10vh]"
+      className="relative flex flex-col md:flex-row-reverse items-center md:items-start w-full mt-[4vh]"
       data-year="1986"
       initial={{ opacity: 0, y: 50 }}
       animate={year1986InView ? { opacity: 1, x: 0 } : {}}
@@ -38,9 +38,9 @@ const Year1986 = () => {
           src={historyTen} 
           alt="Historic Event" 
           layout="responsive" 
-          width={500} 
+          width={400} 
           height={300} 
-          className="object-cover"
+          className="w-full max-w-full object-cover"
         />
       </motion.div>
       

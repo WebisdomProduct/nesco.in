@@ -17,33 +17,35 @@ const Year1957 = () => {
   return (
     <motion.div
       ref={year1957Observer}
-      className="year1957Div mt-[3%] w-full relative p-4 flex flex-col sm:flex-row-reverse m-4 transition-all ease-in-out duration-300 hover:translate-y-1"
+      className="year1957Div w-full flex flex-col-reverse sm:flex-row-reverse justify-center items-center gap-8 px-4 sm:px-10 lg:px-20 py-6 relative transition-all ease-in-out duration-300 hover:translate-y-1"
       data-year="1957"
       initial={{ opacity: 0, y: 50 }}
       animate={year1957InView ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.8, ease: "easeOut" }}
       whileHover={{ scale: 1.02, y: -5 }}
     >
+      {/* Image Container */}
       <motion.div
-        className="iconDiv h-fit w-full sm:w-1/2 mt-4 sm:m-6 relative flex justify-center"
+        className="iconDiv w-full sm:w-1/2 flex justify-center items-center relative"
         initial={{ scale: 0.8, opacity: 0 }}
         animate={year1957InView ? { opacity: 1, y: 0 } : {}}
         transition={{ duration: 0.6, delay: 0.3 }}
       >
         <Image
           src={historyFour}
-          alt="Top Image"
+          alt="Historical Image"
           width={1000}
           height={500}
-          className="w-full h-auto max-w-[1000px]"
+          className="w-full  sm:max-w-[80%] md:[70%] lg:w-[90%] h-auto object-cover transition-transform duration-300 ease-in-out hover:scale-105"
           priority
         />
 
+        {/* Year Display */}
         <motion.div
           initial={{ opacity: 0, y: -20 }}
           animate={year1957InView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6, delay: 0.5 }}
-          className="year absolute z-50 top-1/2 sm:left-[8vh] md:left-1/3 transform -translate-x-1/2 -translate-y-1/2 flex flex-row w-fit m-2"
+          className="year absolute top-1/2 left-1/3 md:left-1/4  transform -translate-x-1/2 -translate-y-1/2 flex flex-row"
         >
           <p className="text-6xl sm:text-7xl md:text-8xl lg:text-[100px] text-white font-branding-bold">
             19
@@ -54,26 +56,28 @@ const Year1957 = () => {
         </motion.div>
       </motion.div>
 
+      {/* Content Container */}
       <motion.div
-        initial={{ opacity: 0, x: 50 }}
-        animate={year1957InView ? { opacity: 1, y: 0 } : {}}
-        transition={{ duration: 0.7, delay: 0.5 }}
-        className="contentDiv flex-1 flex flex-col sm:flex-row justify-center items-center p-2"
-      >
-        <motion.div
-          initial={{ opacity: 0, x: 30 }}
-          animate={year1957InView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6, delay: 0.7 }}
-          className="rightContent flex relative  text-left sm:text-center w-full max-w-md p-8  sm:w-[90%] "
-        >
-          <p className="text-right sm:text-center text-gray-600 text-lg sm:text-xl md:text-2xl leading-relaxed">
-            New Standard Engineering collaborates with B&S Massey Ltd to
-            become the first manufacturer in India for forging hammers & presses.
-          </p>
-        </motion.div>
-      </motion.div>
+  initial={{ opacity: 0, x: 50 }}
+  animate={year1957InView ? { opacity: 1, x: 0 } : {}}
+  transition={{ duration: 0.7, delay: 0.5 }}
+  className="contentDiv w-full sm:w-full md:w-1/2 flex justify-center items-center px-4 sm:px-8 lg:px-12"
+>
+  <motion.div
+    initial={{ opacity: 0, x: 30 }}
+    animate={year1957InView ? { opacity: 1, x: 0 } : {}}
+    transition={{ duration: 0.6, delay: 0.7 }}
+    className="w-full  p-6 sm:p-8  transition-all duration-300"
+  >
+    <p className="text-center text-gray-700 text-lg sm:text-xl md:text-2xl leading-relaxed">
+      <strong>New Standard Engineering</strong> collaborates with <strong>B&S Massey Ltd</strong> to become the first manufacturer in India for forging hammers & presses.
+    </p>
+  </motion.div>
+</motion.div>
+
     </motion.div>
   );
 };
+
 
 export default Year1957;
