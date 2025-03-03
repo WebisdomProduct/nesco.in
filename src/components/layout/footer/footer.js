@@ -126,7 +126,7 @@ function Footer() {
   const FooterData2 = [
     {
       title: "Life At Nesco",
-      link: "/careers",
+      link: "life-at-nesco ",
     },
     // {
     //   title: "Contact",
@@ -135,7 +135,7 @@ function Footer() {
   ];
 
   return (
-    <div className="footer_section bg-[#081422] text-white flex justify-center font-branding-medium py-10 z-50 relative ">
+    <div className="footer_section bg-[#081422] text-white flex flex-col justify-center font-branding-medium py-10 z-50 relative ">
       <div className="w-[90%] xl:flex">
         <div className="md:flex justify-between xl:w-[83%] w-full md:gap-6 xl:gap-0">
           {FooterData.map((data, index) => (
@@ -194,6 +194,11 @@ function Footer() {
             </div>
           </div>
         </div>
+      </div>
+      <div className="mt-5 border-t-2 ">
+        <p className="pt-8 pb-3 flex justify-center items-center">
+          &copy; 2025 NESCO. ALL RIGHTS RESERVED
+        </p>
       </div>
     </div>
   );

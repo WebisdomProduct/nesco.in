@@ -4,7 +4,7 @@ import GraduatesLogo from "@/assests/careers/graduates.png";
 import ProfessionalLogo from "@/assests/careers/professional.png";
 import Image from "next/image";
 
-function CareerJoin() {
+function LifeJoin() {
   const careerCard = [
     {
       image: InternshipLogo,
@@ -58,4 +58,4 @@ function CareerJoin() {
   );
 }
 
-export default CareerJoin;
+export default LifeJoin;

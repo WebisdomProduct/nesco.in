@@ -61,7 +61,7 @@ function PhilosophyForUs() {
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
-    }, 4000); // Change image every 1.5 seconds
+    }, 3700); // Change image every 1.5 seconds
 
     return () => clearInterval(interval); // Cleanup interval on unmount
   }, []);
@@ -130,7 +130,7 @@ function PhilosophyForUs() {
           <div
             className={`letterAnimation text-[30rem] text-white flex justify-center items-center`}
           >
-            <div className="leading-0 rotate-[-140deg] w-[70%] relative mt-12 transition-all duration-1000 ease-in-out">
+            <div className="leading-0 rotate-[-136deg] w-[70%] relative mt-12 transition-all duration-1000 ease-in-out">
               <Image
                 key={currentIndex}
                 src={images[currentIndex]}

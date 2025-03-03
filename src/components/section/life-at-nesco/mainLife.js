@@ -2,25 +2,25 @@
 import React from "react";
 import Pagewrapper from "@/components/layout/pagewrapper";
 import ScrollSnip from "@/components/layout/scrollSnipEffect/scrollSnip";
-import CareerBanner from "./careerBanner";
-import CareerPassion from "./careerPassion";
-import CareerCulture from "./CareerCulture";
-import CareerCommitment from "./careerCommitment";
-import CareerTeam from "./CareerTeam";
-import CareerVoice from "./careerVoice";
-import CareerJoin from "./careerJoin";
 import AnimateOnScroll from "@/components/common/animateContent/animation";
+import LifeBanner from "./lifeBanner";
+import LifePassion from "./lifePassion";
+import LifeCulture from "./lifeCulture";
+import LifeCommitment from "./lifeCommitment";
+import LifeTeam from "./lifeTeam";
+import LifeVoice from "./lifeVoice";
+import LifeJoin from "./lifeJoin";
 
-function MainCareers() {
+function MainLife() {
   const Children = [
     {
-      comp: <CareerBanner />,
+      comp: <LifeBanner />,
       classCss: "section",
     },
     {
       comp: (
         <AnimateOnScroll>
-          <CareerPassion />
+          <LifePassion />
         </AnimateOnScroll>
       ),
       classCss: "section header_color_black pt-0 lg:pt-10",
@@ -28,7 +28,7 @@ function MainCareers() {
     {
       comp: (
         <AnimateOnScroll>
-          <CareerCulture />
+          <LifeCulture />
         </AnimateOnScroll>
       ),
       classCss: "section",
@@ -36,7 +36,7 @@ function MainCareers() {
     {
       comp: (
         <AnimateOnScroll>
-          <CareerCommitment />
+          <LifeCommitment />
         </AnimateOnScroll>
       ),
       classCss: "section",
@@ -44,7 +44,7 @@ function MainCareers() {
     {
       comp: (
         <AnimateOnScroll>
-          <CareerTeam />
+          <LifeTeam />
         </AnimateOnScroll>
       ),
       classCss: "section",
@@ -52,7 +52,7 @@ function MainCareers() {
     {
       comp: (
         <AnimateOnScroll>
-          <CareerVoice />
+          <LifeVoice />
         </AnimateOnScroll>
       ),
       classCss: "section",
@@ -60,7 +60,7 @@ function MainCareers() {
     {
       comp: (
         <AnimateOnScroll>
-          <CareerJoin />
+          <LifeJoin />
         </AnimateOnScroll>
       ),
       classCss: "section",
@@ -74,4 +74,4 @@ function MainCareers() {
   );
 }
 
-export default MainCareers;
+export default MainLife;

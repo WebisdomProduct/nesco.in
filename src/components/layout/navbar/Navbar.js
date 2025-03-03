@@ -55,7 +55,7 @@ function Navbar({ activeSlide }) {
         { title: "Sustainability", route: "/sustainability" },
       ],
     },
-    { title: "Life at Nesco", route: "/careers", subMenu: [] },
+    { title: "Life at Nesco", route: "/life-at-nesco", subMenu: [] },
     { title: "Contact", route: "/contact-us", subMenu: [] },
   ];
 

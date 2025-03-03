@@ -1,31 +1,22 @@
 import React from "react";
-import CultureImage from "@/assests/careers/culture.png";
+import CommitmentImage from "@/assests/careers/commitment.png";
 import Image from "next/image";
 
-function CareerCulture() {
+function LifeCommitment() {
   return (
-    <section className="goal-section1 header_color_black w-full lg:h-screen h-full bg-secondary pb-10 flex flex-col justify-center">
-      <div className="grid md:grid-cols-2 justify-between gap-10 pt-24 xl:items-start items-center w-[90%] mx-auto ">
-        <div className="relative h-[300px] md:h-[650px]">
-          <Image
-            src={CultureImage}
-            alt="Three people discuss about their work"
-            fill
-            className="object-cover"
-            priority
-          />
-        </div>
+    <section className="header_color_black goal-section1 w-full lg:h-screen h-full pb-10 flex flex-col justify-center">
+      <div className="grid md:grid-cols-2 justify-between gap-10 pt-24 xl:items-start items-center w-[90%] mx-auto">
         <div className="">
           <div className="">
             <h2
               style={{ fontFamily: "BrandingSemibold" }}
               className="text-[#1e3a8a] text-2xl md:text-5xl lg:text-6xl font-branding-semibold font-bold"
             >
-              Our Culture
+              Our Commitment
             </h2>
           </div>
           <div className="space-y-4 mt-8">
-            <p className="md:text-3xl text-xl text-justify font-branding-medium ">
+            <p className="md:text-3xl text-xl text-justify font-branding-medium">
               At Nesco, our mission is to enhance and enrich lives through every
               product, service, and experience we create. This commitment
               extends to our employees as well, where we provide meaningful work
@@ -40,9 +31,18 @@ function CareerCulture() {
             </p>
           </div>
         </div>
+        <div className="relative h-[300px] md:h-[650px]">
+          <Image
+            src={CommitmentImage}
+            alt="Two People shaking hand"
+            fill
+            className="object-cover"
+            priority
+          />
+        </div>
       </div>
     </section>
   );
 }
 
-export default CareerCulture;
+export default LifeCommitment;

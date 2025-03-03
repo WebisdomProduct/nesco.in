@@ -3,7 +3,7 @@ import Banner from "@/components/common/MainBanner/Banner";
 import React, { useState } from "react";
 import bannerImage from "@/assests/careers/73-1.png";
 import Navbar from "@/components/layout/navbar/Navbar";
-function CareerBanner() {
+function LifeBanner() {
   const [activeSlide, setActiveSlide] = useState(0);
 
   const handleSlideChange = () => {
@@ -37,4 +37,4 @@ function CareerBanner() {
   );
 }
 
-export default CareerBanner;
+export default LifeBanner;

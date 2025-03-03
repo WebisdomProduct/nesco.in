@@ -1,6 +1,6 @@
 import React from "react";
 
-function CareerPassion() {
+function LifePassion() {
   return (
     <section className="goal-section1 flex flex-col justify-center items-center py-20">
       <div className="w-[90%] font-branding-medium text-justify">
@@ -23,4 +23,4 @@ function CareerPassion() {
   );
 }
 
-export default CareerPassion;
+export default LifePassion;

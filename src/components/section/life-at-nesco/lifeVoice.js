@@ -1,7 +1,7 @@
 import VideoBanner from "@/components/common/videoBanner/videoBanner";
 import React from "react";
 // import SampleVideo from "@/assests/careers/sample.mp4";
-function CareerVoice() {
+function LifeVoice() {
   const SliderData = [
     {
       video: "/sample.mp4",
@@ -45,4 +45,4 @@ function CareerVoice() {
   );
 }
 
-export default CareerVoice;
+export default LifeVoice;
