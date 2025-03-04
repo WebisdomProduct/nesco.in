@@ -1,5 +1,5 @@
 "use client";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import Navbar from "@/components/layout/navbar/Navbar";
 import React from "react";
 import Image from "next/image";
@@ -30,7 +30,7 @@ import Year2023Sec2 from "./year2023Sec2";
 import Year2023Sec3 from "./year2023Sec3";
 import Footer from "@/components/layout/footer/footer";
 
-const Timeline = ({ years }) => {
+const Timeline = ({ years, isFooterVisible }) => {
   const [activeYear, setActiveYear] = useState(years[0]);
 
   useEffect(() => {
@@ -54,10 +54,12 @@ const Timeline = ({ years }) => {
 
   return (
     <div
-      className="sideProgress flex flex-col items-center 
-      fixed top-[10%] right-2 md:left-auto md:right-auto md:w-auto 
-      lg:w-[13%] p-4 rounded-lg z-50 
-      hidden md:flex"
+      className={`sideProgress  flex-col items-center 
+        fixed top-[10%] right-2 md:left-auto md:right-auto md:w-auto 
+        lg:w-[13%] p-4 rounded-lg z-50 hidden
+        md:flex transition-opacity duration-500 ${
+          isFooterVisible ? "opacity-0 pointer-events-none" : "opacity-100"
+        }`}
     >
       <ul className="relative pl-4">
         {years.map((year, index) => (
@@ -105,6 +107,15 @@ const page = () => {
   const [upperInView, setUpperInView] = useState(false);
   const [bottomInView, setBottomInView] = useState(false);
 
+  const [isFooterVisible, setIsFooterVisible] = useState(false);
+  const footerRef = useRef(null);
+
+  const { ref: footerObserver } = useInView({
+    threshold: 0.1, // Adjust threshold if needed
+    triggerOnce: false,
+    onChange: (inView) => setIsFooterVisible(inView),
+  });
+
   const { ref: upperObserver } = useInView({
     threshold: 0.4,
     triggerOnce: true,
@@ -121,7 +132,7 @@ const page = () => {
     <>
       <Navbar />
       <div className="historyDiv header_purple max-w-full flex flex-col overflow-x-hidden overflow-y-hidden">
-        <Timeline years={years} />
+        <Timeline years={years} isFooterVisible={isFooterVisible} />
 
         <div className="rightSectionContainer w-fit h-fit my-[11%] m-2  lg:ml-[15%]">
           <div
@@ -260,7 +271,9 @@ const page = () => {
           <Year2023Sec3 />
         </div>
       </div>
-      <Footer />
+      <div ref={footerObserver}>
+        <Footer />
+      </div>
     </>
   );
 };
