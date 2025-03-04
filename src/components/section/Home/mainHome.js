@@ -22,7 +22,7 @@ function MainHome() {
           <Goal />
         </AnimateOnScroll>
       ),
-      classCss: "section goal-section",
+      classCss: "section",
     },
     {
       comp: (

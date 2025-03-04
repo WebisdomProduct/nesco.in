@@ -1,7 +1,7 @@
 "use client";
 import Banner from "@/components/common/MainBanner/Banner";
 import React, { useState } from "react";
-import bannerImage from "@/assests/sebi/image.png";
+import bannerImage from "@/assests/shareHolder/banner.jpg";
 // import sebiImage from "@/assests/sebi/image.png";
 import Navbar from "@/components/layout/navbar/Navbar";
 function ShareBanner() {
@@ -15,14 +15,16 @@ function ShareBanner() {
     {
       image: bannerImage,
       data: (
-        <div className="absolute bg-blue-400 md:right-0 py-6 px-20 z-20">
-          <div className="innerContainer text-center">
-            <p className="text-white sm:text-xl md:text-4xl lg:text-6xl font-branding-semibold">
-              Shareholders
-            </p>
-            <p className="text-white sm:text-xl md:text-4xl lg:text-6xl font-branding-semibold">
-              Services
-            </p>
+        <div className="absolute h-full w-full">
+          <div className="absolute md:left-0 md:bottom-20 py-6 px-20 z-20">
+            <div className="innerContainer flex flex-col gap-3">
+              <p className="text-white text-4xl lg:text-6xl font-branding-medium">
+                Shareholders
+              </p>
+              <p className="text-4xl lg:text-6xl font-branding-medium text-[#45B7E2]">
+                Services
+              </p>
+            </div>
           </div>
         </div>
       ),

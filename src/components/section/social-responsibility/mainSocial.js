@@ -9,6 +9,7 @@ import SocialFocus from "./socialFocus";
 import SocialEducation from "./socialEducation";
 import SocialInfra from "./socialInfra";
 import SocialHealth from "./socialHealth";
+import AnimateOnScroll from "@/components/common/animateContent/animation";
 
 function MainSocial() {
   const Children = [
@@ -17,27 +18,51 @@ function MainSocial() {
       classCss: "section",
     },
     {
-      comp: <SocialPower />,
+      comp: (
+        <AnimateOnScroll>
+          <SocialPower />
+        </AnimateOnScroll>
+      ),
       classCss: "section",
     },
     {
-      comp: <SocialCSR />,
+      comp: (
+        <AnimateOnScroll>
+          <SocialCSR />
+        </AnimateOnScroll>
+      ),
       classCss: "section",
     },
     {
-      comp: <SocialFocus />,
+      comp: (
+        <AnimateOnScroll>
+          <SocialFocus />
+        </AnimateOnScroll>
+      ),
       classCss: "section",
     },
     {
-      comp: <SocialEducation />,
+      comp: (
+        <AnimateOnScroll>
+          <SocialEducation />
+        </AnimateOnScroll>
+      ),
       classCss: "section",
     },
     {
-      comp: <SocialInfra />,
+      comp: (
+        <AnimateOnScroll>
+          <SocialInfra />
+        </AnimateOnScroll>
+      ),
       classCss: "section",
     },
     {
-      comp: <SocialHealth />,
+      comp: (
+        <AnimateOnScroll>
+          <SocialHealth />
+        </AnimateOnScroll>
+      ),
       classCss: "section",
     },
   ];

@@ -2,7 +2,7 @@ import React from "react";
 
 function SocialPower() {
   return (
-    <section className="header_white flex flex-col justify-center items-center py-20 bg-[#21409A]">
+    <section className="goal-section1 header_white flex flex-col justify-center items-center py-20 bg-[#21409A]">
       <div className="w-[90%] font-branding-medium text-justify">
         <h1 className="flex flex-col text-secondary md:text-5xl text-2xl mb-5 text-center">
           <span className="font-branding-bold"> Believe you have the</span>
@@ -17,11 +17,9 @@ function SocialPower() {
           therefore, embedded into the very foundation of the company. His
           efforts to promote education and self-sustainability are still close
           to the heart of the organization and remain at the core of our
-          pioneering initiatives. Over the years, we have trans
-        </p>
-        <p className="mt-5 md:text-2xl text-white">
-          touch through our organized welfare initiatives, and as a result, we
-          are now one big family.
+          pioneering initiatives. Over the years, we have transtouch through our
+          organized welfare initiatives, and as a result, we are now one big
+          family.
         </p>
       </div>
     </section>

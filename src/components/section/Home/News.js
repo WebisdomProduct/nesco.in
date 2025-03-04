@@ -93,7 +93,7 @@ function News() {
             if (index === 3) {
               return (
                 <div key={index} className="">
-                  <div className="md:h-full h-[312px]  p-5 shadow-lg gap-2 relative overflow-hidden">
+                  <div className="h-[400px] md:h-[350px] sm:h-[400px] lg:h-[300px] p-5 shadow-lg gap-2 relative overflow-hidden">
                     <div className="absolute  top-0 left-0 w-full h-full z-0">
                       <img
                         src={data.svgImage.src}
@@ -101,7 +101,7 @@ function News() {
                         className="w-full h-full z-0 object-cover"
                       />
                     </div>
-                    <div className="flex flex-col my-2 px-10 z-10 items-center relative">
+                    <div className="flex flex-col my-2 md:px-10 z-10 items-center relative">
                       <p
                         className="text-2xl font-semibold mb-2 flex justify-between w-full"
                         style={{ color: data.color }}
@@ -135,7 +135,7 @@ function News() {
               return (
                 <div key={index}>
                   <div
-                    className=" p-5 shadow-lg gap-2 relative overflow-hidden md:h-full h-[312px]"
+                    className=" p-5 shadow-lg gap-2 relative overflow-hidden h-[400px] md:h-[350px] sm:h-[400px] lg:h-[300px]"
                     style={{ backgroundColor: data.backgroundcolor }}
                   >
                     <div className="absolute  top-0 left-0 w-full h-full z-0">
@@ -145,7 +145,7 @@ function News() {
                         className="w-full h-full z-0 object-cover"
                       />
                     </div>
-                    <div className="flex flex-col mt-5 w-[60%] justify-between h-full z-10 relative pb-2">
+                    <div className="flex flex-col mt-5 md:w-[60%] justify-between h-full z-10 relative ">
                       <div>
                         <p
                           className="text-[2rem] leading-[2.2rem] mb-2"
@@ -165,7 +165,7 @@ function News() {
                         </p>
                       </div>
 
-                      <div className="flex w-full ">
+                      <div className="flex w-full pb-3">
                         <button
                           className="w-[40px] h-[40px] rounded-full flex justify-center items-center"
                           style={{
@@ -190,7 +190,7 @@ function News() {
             return (
               <div key={index} className="">
                 <div
-                  className=" p-5 shadow-lg gap-1 relative overflow-hidden h-full"
+                  className=" p-5 shadow-lg gap-1 relative overflow-hidden  h-[400px] md:h-[350px] sm:h-[400px] lg:h-[300px]"
                   style={{ backgroundColor: data.backgroundcolor }}
                 >
                   <div className="absolute  top-0 left-0 w-full h-full z-0">
@@ -200,7 +200,7 @@ function News() {
                       className="w-full h-full z-0 object-cover"
                     />
                   </div>
-                  <div className="flex flex-col mt-2 w-[70%] md:w-[100%] justify-between h-full z-10 relative pb-2">
+                  <div className="flex flex-col mt-2 w-[100%] justify-between h-full z-10 relative">
                     <p
                       className="text-[2rem] leading-[2.2rem] mb-2"
                       style={{
@@ -212,7 +212,7 @@ function News() {
                     </p>
                     <p
                       // className="text-sm"
-                      className="text-left w-full text-[1.2rem] font-branding-medium leading-[1.6rem]"
+                      className="text-left w-full text-[1.2rem] font-branding-medium leading-[1.6rem] pb-2"
                     >
                       {data.description}
                     </p>

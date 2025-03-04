@@ -4,6 +4,7 @@ import Pagewrapper from "@/components/layout/pagewrapper";
 import ScrollSnip from "@/components/layout/scrollSnipEffect/scrollSnip";
 import AnnouncementBanner from "./announcementBanner";
 import AnnouncementFilter from "./announcementFilter";
+import AnimateOnScroll from "@/components/common/animateContent/animation";
 
 function MainAnnouncements() {
   const Children = [
@@ -12,7 +13,11 @@ function MainAnnouncements() {
       classCss: "",
     },
     {
-      comp: <AnnouncementFilter />,
+      comp: (
+        <AnimateOnScroll>
+          <AnnouncementFilter />
+        </AnimateOnScroll>
+      ),
       classCss: "",
     },
   ];

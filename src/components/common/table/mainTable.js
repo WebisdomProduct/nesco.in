@@ -2,46 +2,61 @@ import React from "react";
 import { Table } from "antd";
 import { createStyles } from "antd-style";
 
-const useStyle = createStyles(({ css, token }) => {
-  const { antCls } = token;
-  return {
-    customTable: css`
-      ${antCls}-table {
-        ${antCls}-table-container {
-          ${antCls}-table-body,
-          ${antCls}-table-content {
-            scrollbar-width: thin;
-            scrollbar-color: #eaeaea transparent;
-            scrollbar-gutter: stable;
+const MainTable = ({
+  tableData,
+  pagination,
+  textColor,
+  ClassCss,
+  ClassCss1,
+}) => {
+  const useStyle = createStyles(({ css, token }) => {
+    const { antCls } = token;
+    return {
+      customTable: css`
+        ${antCls}-table {
+          ${antCls}-table-container {
+            ${antCls}-table-body,
+            ${antCls}-table-content {
+              scrollbar-width: thin;
+              scrollbar-color: #eaeaea transparent;
+              scrollbar-gutter: stable;
+            }
           }
         }
-      }
 
-      /* Custom Table Header */
-      .ant-table-thead > tr > th {
-        background-color: #403092;
-        color: white;
-        font-weight: bold;
-      }
+        /* Custom Table Header */
+        .ant-table-thead > tr > th {
+          background-color: #272ad9;
+          color: white;
+          font-weight: 400;
+          background-color: #272ad9 !important;
+          border: none !important;
+          ${ClassCss1};
+        }
 
-      .ant-table {
-        font-family: "BrandingMedium", sans-serif !important;
-        letter-spacing: 0.2px;
-      }
+        .ant-table {
+          font-family: poppins !important;
+          letter-spacing: 0.2px;
+        }
 
-      .ant-table-thead > tr > th {
-        text-align: center !important;
-      }
+        .ant-table-thead > tr > th {
+          text-align: center !important;
+          border-radius: 0px !important;
+        }
 
-      .ant-table-tbody > tr {
-        text-align: center !important;
-        color: #403092;
-      }
-    `,
-  };
-});
+        .ant-table-tbody > tr {
+          text-align: center !important;
+          color: ${textColor ? textColor : "#5455B6"};
+          ${ClassCss};
+          font-weight: 500;
+        }
 
-const MainTable = ({ tableData, pagination }) => {
+        .ant-table-thead > tr > th::before {
+          display: none !important;
+        }
+      `,
+    };
+  });
   const { styles } = useStyle();
   if (!tableData || Object.keys(tableData).length === 0) return null;
 

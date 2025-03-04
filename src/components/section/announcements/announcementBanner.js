@@ -14,9 +14,9 @@ function AnnouncementBanner() {
     {
       image: bannerImage,
       data: (
-        <div className="absolute md:right-20 px-10 z-20">
+        <div className="absolute md:right-20 px-10 z-20 flex justify-center items-center h-[70vh] top-0">
           <div className="innerContainer text-center">
-            <p className="text-white text-4xl lg:text-5xl font-branding-medium">
+            <p className="text-white text-[3.5rem] lg:text-[5rem] font-branding-medium">
               Announcements
             </p>
           </div>
@@ -29,7 +29,11 @@ function AnnouncementBanner() {
     <div className="w-full">
       <Navbar activeSlide={activeSlide} />
       {/* <Banner SliderData={SliderData}  onSlideChange={handleSlideChange} /> */}
-      <Banner SliderData={SliderData} onSlideChange={handleSlideChange} />
+      <Banner
+        SliderData={SliderData}
+        onSlideChange={handleSlideChange}
+        heightClassName="h-[70vh] "
+      />
     </div>
   );
 }

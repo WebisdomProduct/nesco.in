@@ -6,7 +6,7 @@ import React, { useState } from "react";
 function Shares() {
   const [select, setSelect] = useState("bse");
 
-  const BseData = {
+  const NseData = {
     title: "CURRENCY",
     dataIndex: "currency",
     header: [
@@ -27,7 +27,7 @@ function Shares() {
       },
     ],
   };
-  const BseData2 = {
+  const NseData2 = {
     title: "TODAY'S OPEN",
     dataIndex: "todayOpen",
     header: [
@@ -48,7 +48,7 @@ function Shares() {
       },
     ],
   };
-  const NseData = {
+  const BseData = {
     title: "CURRENCY",
     dataIndex: "currency",
     header: [
@@ -69,7 +69,7 @@ function Shares() {
       },
     ],
   };
-  const NseData2 = {
+  const BseData2 = {
     title: "TODAY'S OPEN",
     dataIndex: "todayOpen",
     titleColData: "₹ 1,251.00",
@@ -82,7 +82,7 @@ function Shares() {
     ],
     rows: [
       {
-        todayOpen: "₹ 1,251.000000",
+        todayOpen: "₹ 1,251.00",
         previousClose: "₹ 1,264.60",
         intradayHigh: "₹ 1,253.95",
         intradayLow: "₹ 1,237.55",
@@ -98,14 +98,16 @@ function Shares() {
   };
 
   return (
-    <section className="pt-20 pb-10 font-branding-medium flex justify-center items-center flex-col">
-      <h2 className="text-5xl font-branding-bold text-primary text-center my-8">
+    <section className="header_purple goal-section1 pt-20 pb-10 font-branding-medium flex justify-center items-center flex-col">
+      <h2 className="text-6xl font-branding-semibold text-primary text-center my-8">
         Shares
       </h2>
       <div className="w-full flex justify-center items-center flex-col bg-secondary">
         <div className=" flex flex-col items-center justify-center py-5 w-[90%]">
           <div className="flex justify-between w-full items-center">
-            <span className="text-3xl text-primary">Stock Quote</span>
+            <span className="text-3xl text-[#21409A] font-branding-semibold">
+              Stock Quote
+            </span>
             <div className="flex gap-2 text-xl">
               <button
                 onClick={() => setSelect("nse")}
@@ -114,7 +116,7 @@ function Shares() {
               >
                 NSE
               </button>
-              |
+              <span className="text-[#21409A] font-branding-bold"> |</span>
               <button
                 onClick={() => setSelect("bse")}
                 className={select === "bse" ? "font-branding-bold" : ""}

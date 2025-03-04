@@ -2,19 +2,61 @@
 import React, { useEffect, useState } from "react";
 import { FaSearch, FaBars, FaTimes } from "react-icons/fa";
 import "./Navbar.css";
-import Nescologo from "@/assests/Home/nescoLogo1.png";
-import Nescologo2 from "@/assests/Home/nescoLogo2.png";
+import Nescologo from "@/assests/Home/logo-blue.png";
+import Nescologo2 from "@/assests/Home/logo-white.png";
 import Image from "next/image";
 import Link from "next/link";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 function Navbar({ activeSlide }) {
   const NavData = [
-    { title: "About", route: "" },
-    { title: "Businesses", route: "" },
-    { title: "Investors", route: "" },
-    { title: "Our Impact", route: "" },
-    { title: "Life at Nesco", route: "" },
-    { title: "Contact", route: "/contact-us" },
+    {
+      title: "About",
+      route: "",
+      subMenu: [
+        { title: "Overview", route: "/overview" },
+        { title: "Philosophy", route: "/philosophy" },
+        { title: "History", route: "/history" },
+        { title: "Leadership", route: "/leadership" },
+      ],
+    },
+    {
+      title: "Businesses",
+      route: "",
+      subMenu: [
+        { title: "Bombay Exhibition Center", route: "" },
+        { title: "Nesco Realty", route: "" },
+        { title: "Hospitality", route: "" },
+        { title: "Nesco Events", route: "" },
+        { title: "Engineering", route: "" },
+      ],
+    },
+    {
+      title: "Investors",
+      route: "",
+      subMenu: [
+        { title: "Announcements", route: "/announcements" },
+        { title: "Financials", route: "/financials" },
+        {
+          title:
+            "Disclosures under Regulation 46 of SEBI (LODR) Regulations, 2015 & Other statutory information Financials",
+          route: "/sebi",
+        },
+        { title: "Shareholder Services", route: "/shareholders" },
+        { title: "Stock Information", route: "/stock" },
+      ],
+    },
+    {
+      title: "Our Impact",
+      route: "",
+      subMenu: [
+        { title: "Corporate Social Responsibility", route: "/social" },
+        { title: "Sustainability", route: "/sustainability" },
+      ],
+    },
+    { title: "Life at Nesco", route: "/life-at-nesco", subMenu: [] },
+    { title: "Contact", route: "/contact-us", subMenu: [] },
   ];
 
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
@@ -23,8 +65,11 @@ function Navbar({ activeSlide }) {
   const [hoverStates, setHoverStates] = useState(
     Array(NavData.length).fill(false)
   );
-  const [activePurpleSection, setActivePurpleSection] = useState(null); // Track active purple section
+  const [activePurpleSection, setActivePurpleSection] = useState(null);
   const [isFooter, setIsFooter] = useState(false);
+  const [textBlack, setTextBlack] = useState(null);
+  const [isOpen, setIsOpen] = useState(null);
+  const [isClosed, setIsClosed] = useState(false);
 
   const logo = {
     imagePath: Nescologo,
@@ -39,6 +84,7 @@ function Navbar({ activeSlide }) {
       newStates[index] = true;
       return newStates;
     });
+    setIsOpen(index);
   };
 
   const handleMouseLeave = (index) => {
@@ -47,67 +93,96 @@ function Navbar({ activeSlide }) {
       newStates[index] = false;
       return newStates;
     });
+    // setIsOpen(null);
+  };
+
+  const handleMouseLeave1 = () => {
+    setIsClosed(false);
+    setIsOpen(null);
+  };
+  const handleMouseEnter1 = () => {
+    setIsClosed(true);
   };
 
   useEffect(() => {
-    const banner = document.querySelector(".banner-section");
-    const headerWhiteSection = document.querySelector(".header_white");
-    const footerSection = document.querySelector(".footer_section");
+    gsap.registerPlugin(ScrollTrigger);
 
-    const mainObserver = new IntersectionObserver(
-      ([entry]) => {
-        setIsScrolled(!entry.isIntersecting);
-      },
-      { threshold: 0.1 }
-    );
+    // Banner Section
+    ScrollTrigger.create({
+      trigger: ".banner-section",
+      start: "top top",
+      end: "bottom top",
+      onEnter: () => setIsScrolled(false),
+      onLeave: () => setIsScrolled(true),
+      onEnterBack: () => setIsScrolled(false),
+      onLeaveBack: () => setIsScrolled(true),
+    });
 
-    const headerObserver = new IntersectionObserver(
-      ([entry]) => {
-        setIsHeaderWhite(entry.isIntersecting);
-      },
-      { threshold: 0.5, rootMargin: "0px 0px 150px 0px" }
-    );
+    // Header White Section
+    ScrollTrigger.create({
+      trigger: ".header_white",
+      start: "top center",
+      end: "bottom center",
+      onEnter: () => setIsHeaderWhite(true),
+      onLeave: () => setIsHeaderWhite(false),
+      onEnterBack: () => setIsHeaderWhite(true),
+      onLeaveBack: () => setIsHeaderWhite(false),
+    });
 
-    // Observe all sections with the class "header_purple"
+    // Footer Section
+    ScrollTrigger.create({
+      trigger: ".footer_section",
+      start: "top bottom",
+      end: "bottom center",
+      // markers: true,
+      onEnter: () => setIsFooter(true),
+      onLeave: () => setIsFooter(false),
+      onEnterBack: () => setIsFooter(true),
+      onLeaveBack: () => setIsFooter(false),
+    });
+
+    // Purple Sections
     const purpleSections = document.querySelectorAll(".header_purple");
-    const purpleObserver = new IntersectionObserver(
-      (entries) => {
-        let isAnyPurpleActive = false;
+    purpleSections.forEach((section) => {
+      ScrollTrigger.create({
+        trigger: section,
+        start: "top center",
+        end: "bottom center",
 
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            isAnyPurpleActive = true;
-          }
-        });
+        onEnter: () => setActivePurpleSection(section),
+        onLeave: () => setActivePurpleSection(null),
+        onEnterBack: () => setActivePurpleSection(section),
+        onLeaveBack: () => setActivePurpleSection(null),
+      });
+    });
 
-        setActivePurpleSection(isAnyPurpleActive ? entries[0].target : null);
-      },
-      { threshold: 0.1, rootMargin: "0px 0px 150px 0px" }
-    );
+    // Purple Sections
+    const blackTextSections = document.querySelectorAll(".header_color_black");
+    blackTextSections.forEach((section) => {
+      ScrollTrigger.create({
+        trigger: section,
+        start: "top center",
+        end: "bottom center",
 
-    const FooterObserver = new IntersectionObserver(
-      ([entry]) => {
-        setIsFooter(entry.isIntersecting); // Update isPurple based on intersection
-      },
-      { threshold: 0.9, rootMargin: "0px 0px 150px 0px" } // Adjust rootMargin to detect footer earlier
-    );
+        onEnter: () => setTextBlack(section),
+        onLeave: () => setTextBlack(null),
+        onEnterBack: () => setTextBlack(section),
+        onLeaveBack: () => setTextBlack(null),
+      });
+    });
 
-    if (banner) mainObserver.observe(banner);
-    if (footerSection) FooterObserver.observe(footerSection);
-    if (headerWhiteSection) headerObserver.observe(headerWhiteSection);
-    purpleSections.forEach((section) => purpleObserver.observe(section));
-
+    // Cleanup
     return () => {
-      if (banner) mainObserver.unobserve(banner);
-      if (headerWhiteSection) headerObserver.unobserve(headerWhiteSection);
-      if (footerSection) FooterObserver.unobserve(footerSection);
-      purpleSections.forEach((section) => purpleObserver.unobserve(section));
+      ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
     };
   }, []);
 
   const getTextColor = () => {
     if (activePurpleSection) {
       return "text-white border-white"; // Apply white text for purple header
+    }
+    if (textBlack) {
+      return "text-black border-black";
     }
     if (isFooter) {
       return "text-white border-white"; // Apply white text for purple header
@@ -124,23 +199,35 @@ function Navbar({ activeSlide }) {
     return "text-white border-white";
   };
 
+  useEffect(() => {
+    const buttonColorElements = document.querySelectorAll(".buttonColor");
+    const color = activeSlide === 0 ? "#06A7E5" : "#FFFFFF";
+
+    buttonColorElements.forEach((element) => {
+      element.style.color = color;
+    });
+  }, [activeSlide]);
+
   const getLogoColorWork = () => {
     if (activePurpleSection) {
-      return "filter brightness-1"; // Apply brightness for purple header
+      return Nescologo2; // Apply brightness for purple header
+    }
+    if (textBlack) {
+      return Nescologo;
     }
     if (isFooter) {
-      return "filter brightness-1"; // Apply brightness for purple header
+      return Nescologo2; // Apply brightness for purple header
     }
     if (activeSlide === 0) {
-      return "filter brightness-0";
+      return Nescologo;
     }
     if (isHeaderWhite) {
-      return "filter brightness-1";
+      return Nescologo2;
     }
     if (isScrolled) {
-      return "filter brightness-0";
+      return Nescologo;
     }
-    return "filter brightness-1";
+    return Nescologo2;
   };
 
   const changeNavbar = () => {
@@ -157,26 +244,26 @@ function Navbar({ activeSlide }) {
 
   return (
     <nav
-      className={`py-6 md:px-6 px-8 flex items-center justify-between w-full z-[999] fixed transition-all duration-300 overflow-hidden ${changeNavbar()} ${changeNavbar1()}`}
+      className={`py-6 md:px-6 px-8 flex items-center justify-between w-full z-[999] fixed transition-all duration-300 ${changeNavbar()} ${changeNavbar1()}`}
     >
       {!isScrolled && (
         <div className="fixed top-0 left-0 py-6 md:px-16 px-8 w-full h-20"></div>
       )}
       {/* Logo */}
-      <div className="">
+      <div className="z-50 relative">
         <Link href={logo.link}>
           <span className="overflow-hidden absolute inline-block w-[180px] h-[60px] top-1/2 -translate-y-1/2">
             <Image
-              src={Nescologo}
+              src={getLogoColorWork()}
               alt="Nesco Logo"
-              className={`w-full h-full ${getLogoColorWork()}`}
+              className={`w-full h-full`}
             />
           </span>
         </Link>
       </div>
 
       {/* Desktop NavBar */}
-      <div className={`hidden xl:flex items-center z-10`}>
+      <div className={`hidden xl:flex items-center z-50 relative`}>
         <ul className="flex items-center ">
           {NavData.map((data, index) => (
             <li
@@ -244,6 +331,29 @@ function Navbar({ activeSlide }) {
           ))}
         </ul>
       </div>
+      {isOpen !== null
+        ? NavData.map((data, index) => {
+            if (index === isOpen && data.subMenu.length > 0) {
+              return (
+                <div
+                  className="absolute navbarAnimation top-0 pt-20 left-0 w-full  bg-black bg-opacity-90 z-40 hidden lg:flex"
+                  onMouseEnter={handleMouseEnter1}
+                  onMouseLeave={handleMouseLeave1}
+                >
+                  <div className="w-full h-full flex justify-end ">
+                    <ul className="flex flex-col gap-6 w-[60%] pl-10 pr-20 py-5 text-white">
+                      {data.subMenu.map((subData, subIndex) => (
+                        <li key={subIndex} className=" text-xl">
+                          <Link href={subData.route}>{subData.title}</Link>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+              );
+            }
+          })
+        : ""}
     </nav>
   );
 }

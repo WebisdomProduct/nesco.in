@@ -13,7 +13,7 @@ function Contact() {
         city: "Goregaon (East) Mumbai 400063",
         phone1: "7045029812",
         contact: "contact@bombayexhibitioncenter.in",
-        phone2: "02266450123",
+        phone2: "022 6645 0123",
       },
     },
     {
@@ -24,7 +24,7 @@ function Contact() {
         city: "Goregaon (East) Mumbai 400063",
         phone1: "7045029812",
         contact: "contact@bombayexhibitioncenter.in",
-        phone2: "02266450123",
+        phone2: "022 6645 0123",
       },
     },
     {
@@ -35,7 +35,7 @@ function Contact() {
         city: "Goregaon (East) Mumbai 400063",
         phone1: "7045029812",
         contact: "contact@bombayexhibitioncenter.in",
-        phone2: "02266450123",
+        phone2: "022 6645 0123",
       },
     },
     {
@@ -46,7 +46,7 @@ function Contact() {
         city: "Goregaon (East) Mumbai 400063",
         phone1: "7045029812",
         contact: "contact@bombayexhibitioncenter.in",
-        phone2: "02266450123",
+        phone2: "022 6645 0123",
       },
     },
     {
@@ -57,13 +57,13 @@ function Contact() {
         city: "Goregaon (East) Mumbai 400063",
         phone1: "7045029812",
         contact: "contact@bombayexhibitioncenter.in",
-        phone2: "02266450123",
+        phone2: "022 6645 0123",
       },
     },
   ];
 
   return (
-    <div className="bg-[#0A2B72] h-auto py-28 flex flex-col justify-between items-center relative overflow-hidden">
+    <div className="bg-[#0A2B72] lg:h-screen py-28 flex flex-col justify-between items-center relative overflow-hidden">
       <div className="absolute z-0 w-full h-full lg:top-0 md:top-[20%] top-[25%]">
         <Image
           src={WorldImage}

@@ -9,24 +9,26 @@ function Cards({ CardData }) {
         {CardData.map((data, index) => (
           <div
             key={index}
-            className="pb-5 pt-12 px-12 border-2 border-gray-500"
+            className=" py-10 px-10 border-2 border-gray-500 flex justify-center"
           >
-            <div className="flex flex-col gap-2 w-full h-full">
+            <div className="flex flex-col gap-2 w-[25rem] h-full items-center ">
               <Image
                 src={data.image}
                 alt="Mentor"
-                className="h-[70%] w-full object-cover filter grayscale contrast-125"
+                className="h-[23rem] w-[25rem] object-cover object-top filter grayscale contrast-125 hover:filter-none transition-all duration-300"
               />
 
-              <p className="flex justify-between">
-                <span className="font-branding-bold text-lg">{data.name}</span>
-                <span className="flex items-center">
-                  <button className="text-primary text-2xl">
+              <p className="flex justify-between mt-3 w-full">
+                <span className="font-branding-bold text-xl inline-block w-full text-left">
+                  {data.name}
+                </span>
+                <span className="flex items-center ">
+                  <button className="text-primary text-2xl mr-1">
                     <FaArrowRightLong />
                   </button>
                 </span>
               </p>
-              <p className="font-poppins">{data.position}</p>
+              <p className="font-poppins text-left w-full">{data.position}</p>
             </div>
           </div>
         ))}

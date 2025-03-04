@@ -7,6 +7,7 @@ import ShareInvestor from "./shareInvestor";
 import ShareCorner from "./ShareCorner";
 import ShareUnclaimed from "./shareUnclaimed";
 import ShareDetail from "./ShareDetail";
+import AnimateOnScroll from "@/components/common/animateContent/animation";
 
 function MainShareholder() {
   // const [activeSlide, setActiveSlide] = useState(0);
@@ -17,22 +18,38 @@ function MainShareholder() {
   const Children = [
     {
       comp: <ShareBanner />,
+      classCss: "section",
+    },
+    {
+      comp: (
+        <AnimateOnScroll>
+          <ShareInvestor />
+        </AnimateOnScroll>
+      ),
       classCss: "",
     },
     {
-      comp: <ShareInvestor />,
+      comp: (
+        <AnimateOnScroll>
+          <ShareCorner />
+        </AnimateOnScroll>
+      ),
       classCss: "",
     },
     {
-      comp: <ShareCorner />,
+      comp: (
+        <AnimateOnScroll>
+          <ShareUnclaimed />
+        </AnimateOnScroll>
+      ),
       classCss: "",
     },
     {
-      comp: <ShareUnclaimed />,
-      classCss: "",
-    },
-    {
-      comp: <ShareDetail />,
+      comp: (
+        <AnimateOnScroll>
+          <ShareDetail />
+        </AnimateOnScroll>
+      ),
       classCss: "",
     },
   ];

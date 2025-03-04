@@ -41,6 +41,46 @@ function Quote() {
         noOfTrades: "15527",
         tradedQuantity: "412707",
       },
+      {
+        date: "31-01-2025",
+        openPrice: "₹1,257.40",
+        highPrice: "₹1,266.00",
+        lowPrice: "₹1,249.50",
+        closePrice: "₹1,264.90",
+        tradedValue: "51.99",
+        noOfTrades: "15527",
+        tradedQuantity: "412707",
+      },
+      {
+        date: "31-01-2025",
+        openPrice: "₹1,257.40",
+        highPrice: "₹1,266.00",
+        lowPrice: "₹1,249.50",
+        closePrice: "₹1,264.90",
+        tradedValue: "51.99",
+        noOfTrades: "15527",
+        tradedQuantity: "412707",
+      },
+      {
+        date: "31-01-2025",
+        openPrice: "₹1,257.40",
+        highPrice: "₹1,266.00",
+        lowPrice: "₹1,249.50",
+        closePrice: "₹1,264.90",
+        tradedValue: "51.99",
+        noOfTrades: "15527",
+        tradedQuantity: "412707",
+      },
+      {
+        date: "31-01-2025",
+        openPrice: "₹1,257.40",
+        highPrice: "₹1,266.00",
+        lowPrice: "₹1,249.50",
+        closePrice: "₹1,264.90",
+        tradedValue: "51.99",
+        noOfTrades: "15527",
+        tradedQuantity: "412707",
+      },
       // Add more rows as needed
     ],
   };
@@ -56,120 +96,131 @@ function Quote() {
   const years = Array.from({ length: 20 }, (_, i) => 2020 + i);
 
   return (
-    <div className="flex flex-col justify-center items-center py-10 font-branding-medium">
-      <h2 className="text-5xl font-branding-bold text-primary text-center mb-10">
+    <div className="goal-section1 flex flex-col justify-center items-center py-10 font-branding-medium mt-0 lg:mt-10">
+      <h2 className="text-6xl font-branding-semibold text-primary text-center mb-10">
         Historical Stock Quote
       </h2>
-      <div className="flex lg:flex-row flex-col gap-10 bg-secondary p-4  w-[90%] justify-center items-center ">
-        {/* Exchange Selector */}
-        <div className="flex flex-col gap-2">
-          <p>Exchange: </p>
-          <select
-            value={exchange}
-            onChange={(e) => setExchange(e.target.value)}
-          >
-            <option value="BSE">BSE</option>
-            <option value="NSE">NSE</option>
-          </select>
-        </div>
-
-        {/* Start Date Selector */}
-        <div className="flex flex-col gap-2">
-          <p>Start Date: </p>
-          <div className="flex gap-3">
+      <div className=" flex justify-center  w-[90%]  ">
+        <div className="flex lg:flex-row flex-col gap-20 justify-center items-center bg-[#B8DFFC] p-4 w-[80%]">
+          {/* Exchange Selector */}
+          <div className="flex flex-col gap-2">
+            <p className="text-[#3460C6] font-branding-semibold">Exchange: </p>
             <select
-              value={startDate.day}
-              onChange={(e) =>
-                setStartDate({ ...startDate, day: Number(e.target.value) })
-              }
+              value={exchange}
+              onChange={(e) => setExchange(e.target.value)}
+              className="w-20 h-10 text-center text-[#857E7E]"
             >
-              {days.map((d) => (
-                <option key={d} value={d}>
-                  {d}
-                </option>
-              ))}
-            </select>
-            <select
-              value={startDate.month}
-              onChange={(e) =>
-                setStartDate({ ...startDate, month: Number(e.target.value) })
-              }
-            >
-              {months.map((m) => (
-                <option key={m} value={m}>
-                  {m}
-                </option>
-              ))}
-            </select>
-            <select
-              value={startDate.year}
-              onChange={(e) =>
-                setStartDate({ ...startDate, year: Number(e.target.value) })
-              }
-            >
-              {years.map((y) => (
-                <option key={y} value={y}>
-                  {y}
-                </option>
-              ))}
+              <option value="BSE">BSE</option>
+              <option value="NSE">NSE</option>
             </select>
           </div>
-        </div>
 
-        {/* End Date Selector */}
-        <div className="flex flex-col gap-2">
-          <p>End Date: </p>
-          <div className="flex gap-3">
-            <select
-              value={endDate.day}
-              onChange={(e) =>
-                setEndDate({ ...endDate, day: Number(e.target.value) })
-              }
-            >
-              {days.map((d) => (
-                <option key={d} value={d}>
-                  {d}
-                </option>
-              ))}
-            </select>
-            <select
-              value={endDate.month}
-              onChange={(e) =>
-                setEndDate({ ...endDate, month: Number(e.target.value) })
-              }
-            >
-              {months.map((m) => (
-                <option key={m} value={m}>
-                  {m}
-                </option>
-              ))}
-            </select>
-            <select
-              value={endDate.year}
-              onChange={(e) =>
-                setEndDate({ ...endDate, year: Number(e.target.value) })
-              }
-            >
-              {years.map((y) => (
-                <option key={y} value={y}>
-                  {y}
-                </option>
-              ))}
-            </select>
+          {/* Start Date Selector */}
+          <div className="flex flex-col gap-2">
+            <p className="text-[#3460C6] font-branding-semibold">
+              Start Date:{" "}
+            </p>
+            <div className="flex gap-3">
+              <select
+                value={startDate.day}
+                onChange={(e) =>
+                  setStartDate({ ...startDate, day: Number(e.target.value) })
+                }
+                className="w-20 h-10 text-center text-[#857E7E]"
+              >
+                {days.map((d) => (
+                  <option key={d} value={d}>
+                    {d}
+                  </option>
+                ))}
+              </select>
+              <select
+                value={startDate.month}
+                onChange={(e) =>
+                  setStartDate({ ...startDate, month: Number(e.target.value) })
+                }
+                className="w-20 h-10 text-center text-[#857E7E]"
+              >
+                {months.map((m) => (
+                  <option key={m} value={m}>
+                    {m}
+                  </option>
+                ))}
+              </select>
+              <select
+                value={startDate.year}
+                onChange={(e) =>
+                  setStartDate({ ...startDate, year: Number(e.target.value) })
+                }
+                className="w-20 h-10 text-center text-[#857E7E]"
+              >
+                {years.map((y) => (
+                  <option key={y} value={y}>
+                    {y}
+                  </option>
+                ))}
+              </select>
+            </div>
           </div>
-        </div>
 
-        {/* Search Button */}
-        <div>
-          <button
-            className="px-10 py-2 text-xl text-primary border-2 border-primary rounded-full"
-            onClick={handleSearch}
-          >
-            Search
-          </button>
+          {/* End Date Selector */}
+          <div className="flex flex-col gap-2">
+            <p className="text-[#3460C6] font-branding-semibold">End Date: </p>
+            <div className="flex gap-3">
+              <select
+                value={endDate.day}
+                onChange={(e) =>
+                  setEndDate({ ...endDate, day: Number(e.target.value) })
+                }
+                className="w-20 h-10 text-center text-[#857E7E]"
+              >
+                {days.map((d) => (
+                  <option key={d} value={d}>
+                    {d}
+                  </option>
+                ))}
+              </select>
+              <select
+                value={endDate.month}
+                onChange={(e) =>
+                  setEndDate({ ...endDate, month: Number(e.target.value) })
+                }
+                className="w-20 h-10 text-center text-[#857E7E]"
+              >
+                {months.map((m) => (
+                  <option key={m} value={m}>
+                    {m}
+                  </option>
+                ))}
+              </select>
+              <select
+                value={endDate.year}
+                onChange={(e) =>
+                  setEndDate({ ...endDate, year: Number(e.target.value) })
+                }
+                className="w-20 h-10 text-center text-[#857E7E]"
+              >
+                {years.map((y) => (
+                  <option key={y} value={y}>
+                    {y}
+                  </option>
+                ))}
+              </select>
+            </div>
+          </div>
+
+          {/* Search Button */}
+          <div>
+            <button
+              className="px-12 py-2 text-xl text-primary border-2 border-primary rounded-full font-branding-bold"
+              onClick={handleSearch}
+            >
+              Search
+            </button>
+          </div>
         </div>
       </div>
-      <div className="flex flex-col w-[90%] gap-4 mt-16 font-branding-bold">
+      <div className="flex flex-col w-[90%] gap-4 mt-16 font-branding-semibold text-gray-500">
         <p>
           <span> Exchange : {exchange}</span> |
           <span>
@@ -179,7 +230,13 @@ function Quote() {
           </span>
         </p>
         <div>
-          <MainTable tableData={BseData} pagination={true} />
+          <MainTable
+            tableData={BseData}
+            pagination={true}
+            textColor="#4b5563"
+            ClassCss="font-size: 14px"
+            ClassCss1="font-size:16px"
+          />
         </div>
         <div className="w-full font-branding-medium">
           <p>^Traded Value Rs. in Crores.</p>

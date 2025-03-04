@@ -11,43 +11,81 @@ import SustainabilityImage from "./sustainabilityImage";
 import Pagewrapper from "@/components/layout/pagewrapper";
 import ScrollSnip from "@/components/layout/scrollSnipEffect/scrollSnip";
 import SustainabilityBanner from "./sustainabilityBanner";
+import SustainablityStrategy from "./sustainablityStrategy";
+import AnimateOnScroll from "@/components/common/animateContent/animation";
 function MainSustainability() {
   const Children = [
     {
       comp: <SustainabilityBanner />,
-      classCss: "",
+      classCss: "section",
     },
     {
-      comp: <SustainabilityFeatures />,
-      classCss: "",
+      comp: (
+        <AnimateOnScroll>
+          <SustainabilityFeatures />
+        </AnimateOnScroll>
+      ),
+      classCss: "section header_purple",
     },
     {
-      comp: <SustainablityText />,
-      classCss: "",
+      comp: (
+        <AnimateOnScroll>
+          <SustainablityText />
+        </AnimateOnScroll>
+      ),
+      classCss: "section header_purple",
     },
     {
-      comp: <SustainabilityTerms />,
-      classCss: "",
+      comp: (
+        <AnimateOnScroll>
+          <SustainabilityTerms />
+        </AnimateOnScroll>
+      ),
+      classCss: "header_purple",
     },
     {
-      comp: <SustainabilityIssues />,
-      classCss: "",
+      comp: <SustainablityStrategy />,
+      classCss: "header_purple",
     },
     {
-      comp: <SustainabilityGovernance />,
-      classCss: "",
+      comp: (
+        <AnimateOnScroll>
+          <SustainabilityIssues />
+        </AnimateOnScroll>
+      ),
+      classCss: "header_purple",
     },
     {
-      comp: <SustainabilityPerformance />,
-      classCss: "",
+      comp: (
+        <AnimateOnScroll>
+          <SustainabilityGovernance />
+        </AnimateOnScroll>
+      ),
+      classCss: "header_purple",
     },
     {
-      comp: <SustainabilityPractices />,
-      classCss: "",
+      comp: (
+        <AnimateOnScroll>
+          <SustainabilityPerformance />
+        </AnimateOnScroll>
+      ),
+      classCss: "header_purple",
     },
     {
-      comp: <SustainabilityImage />,
-      classCss: "",
+      comp: (
+        <AnimateOnScroll>
+          <SustainabilityPractices />
+        </AnimateOnScroll>
+      ),
+      classCss: "header_purple",
+    },
+    {
+      comp: (
+        <AnimateOnScroll>
+          <SustainabilityImage />
+        </AnimateOnScroll>
+      ),
+      classCss: "header_purple",
     },
   ];
 

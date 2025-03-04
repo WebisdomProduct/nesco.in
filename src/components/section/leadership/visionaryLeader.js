@@ -1,8 +1,8 @@
 import Cards from "@/components/common/cards/Cards";
 import React from "react";
-import MentorImage from "@/assests/leadership/7.png";
-import MentorImage2 from "@/assests/leadership/26.png";
-import MentorImage3 from "@/assests/leadership/3.png";
+import MentorImage from "@/assests/leadership/7-1.jpg";
+import MentorImage2 from "@/assests/leadership/26-1.jpg";
+import MentorImage3 from "@/assests/leadership/3-1.jpg";
 
 function VisionaryLeader() {
   const CardData = [
@@ -27,7 +27,7 @@ function VisionaryLeader() {
   ];
 
   return (
-    <section className="py-16 bg-[#E6F5FC] header_purple">
+    <section className="py-16 bg-[#E6F5FC] header_purple goal-section1">
       <h3 className="text-center text-4xl font-branding-bold">
         Our Visionary Leaders
       </h3>

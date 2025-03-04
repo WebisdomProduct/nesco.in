@@ -1,118 +1,123 @@
 "use client";
-import React, { useEffect } from "react";
+
+import React, { useEffect, useRef, useState } from "react";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Footer from "../footer/footer";
 
+gsap.registerPlugin(ScrollTrigger);
+
 function ScrollSnip({ Children }) {
+  const containerRef = useRef(null);
+  const [isDesktop, setIsDesktop] = useState(false);
+
   useEffect(() => {
-    const container = document.querySelector(".container1");
-    let isScrolling = false;
-
-    const smoothScrollTo = (targetY, duration = 1000) => {
-      const start = container.scrollTop;
-      const change = targetY - start;
-      const startTime = performance.now();
-
-      const easeInOutQuad = (t) => (t < 0.5 ? 2 * t * t : -1 + (4 - 2 * t) * t);
-
-      const animateScroll = (currentTime) => {
-        const elapsedTime = currentTime - startTime;
-        const progress = Math.min(elapsedTime / duration, 1);
-        const easing = easeInOutQuad(progress);
-        container.scrollTop = start + change * easing;
-
-        if (progress < 1) {
-          requestAnimationFrame(animateScroll);
-        }
-      };
-
-      requestAnimationFrame(animateScroll);
+    // Check screen width on initial render and window resize
+    const checkScreenWidth = () => {
+      setIsDesktop(window.innerWidth >= 1024); // Adjust breakpoint as needed
     };
 
-    const handleScroll = (e) => {
-      if (isScrolling) return;
+    // Initial check
+    checkScreenWidth();
 
-      const delta = e.deltaY;
-      const sections = Array.from(document.querySelectorAll(".section"));
-      const currentScroll = container.scrollTop;
-      const viewportHeight = window.innerHeight;
+    // Add resize event listener
+    window.addEventListener("resize", checkScreenWidth);
 
-      // Find the current active section
-      let activeSectionIndex = -1;
-      for (let i = 0; i < sections.length; i++) {
-        const section = sections[i];
-        const sectionTop = section.offsetTop;
-        const sectionBottom = sectionTop + section.offsetHeight;
-
-        if (currentScroll >= sectionTop && currentScroll < sectionBottom) {
-          activeSectionIndex = i;
-          break;
-        }
-      }
-
-      if (activeSectionIndex === -1) return;
-
-      // Handle Goal section scrolling
-      const activeSection = sections[activeSectionIndex];
-      if (activeSection.classList.contains("goal-section")) {
-        const goalSectionBottom =
-          activeSection.offsetTop + activeSection.offsetHeight;
-        const isAtGoalSectionEnd =
-          currentScroll + viewportHeight >= goalSectionBottom - 10;
-
-        // Scroll down from Goal section to Mentor
-        if (delta > 0 && isAtGoalSectionEnd) {
-          const nextSection = sections[activeSectionIndex + 1];
-          if (nextSection) {
-            isScrolling = true;
-            smoothScrollTo(nextSection.offsetTop);
-            setTimeout(() => (isScrolling = false), 1000);
-          }
-          return;
-        }
-
-        // Scroll up from Goal section to HomeBanner
-        if (delta < 0 && currentScroll <= activeSection.offsetTop + 10) {
-          const prevSection = sections[activeSectionIndex - 1];
-          if (prevSection) {
-            isScrolling = true;
-            smoothScrollTo(prevSection.offsetTop);
-            setTimeout(() => (isScrolling = false), 1000);
-          }
-          return;
-        }
-
-        // Allow normal scrolling within Goal section
-        return;
-      }
-
-      // Handle scroll-snapping for other sections
-      isScrolling = true;
-
-      if (delta > 0) {
-        // Scroll down: Move to the next section
-        const nextSection = sections[activeSectionIndex + 1];
-        if (nextSection) smoothScrollTo(nextSection.offsetTop);
-      } else {
-        // Scroll up: Move to the previous section
-        const prevSection = sections[activeSectionIndex - 1];
-        if (prevSection) smoothScrollTo(prevSection.offsetTop);
-      }
-
-      setTimeout(() => (isScrolling = false), 1000);
+    // Cleanup resize event listener
+    return () => {
+      window.removeEventListener("resize", checkScreenWidth);
     };
-
-    container.addEventListener("wheel", handleScroll);
-    return () => container.removeEventListener("wheel", handleScroll);
   }, []);
 
+  useEffect(() => {
+    if (!isDesktop) return; // Exit if not on desktop
+
+    const container = containerRef.current;
+
+    // Get all sections (excluding the footer)
+    const sections = Array.from(container.querySelectorAll(".section"));
+
+    // Set up ScrollTrigger for each section (excluding the footer)
+    sections.forEach((section, index) => {
+      ScrollTrigger.create({
+        trigger: section,
+        start: "top top", // Start when the top of the section hits the top of the viewport
+        end: "bottom top", // End when the bottom of the section hits the top of the viewport
+        snap: {
+          snapTo: 1, // Snap to the closest section
+          duration: { min: 0.2, max: 0.6 }, // Smooth snapping duration
+          ease: "power1.inOut", // Easing function
+        },
+        // markers: true, // Debugging markers (can be removed in production)
+        // onEnter: () => {
+        //   // Change navbar color based on the section
+        //   const navbar = document.querySelector("nav");
+        //   if (section.classList.contains("goal-section")) {
+        //     navbar.style.backgroundColor = "#403092"; // Purple
+        //   } else {
+        //     navbar.style.backgroundColor = "transparent"; // Default
+        //   }
+        // },
+        // onEnterBack: () => {
+        //   // Change navbar color when scrolling back
+        //   const navbar = document.querySelector("nav");
+        //   if (section.classList.contains("goal-section")) {
+        //     navbar.style.backgroundColor = "#403092"; // Purple
+        //   } else {
+        //     navbar.style.backgroundColor = "transparent"; // Default
+        //   }
+        // },
+      });
+    });
+
+    // Detect when the last section is reached and disable scroll-snapping
+    const lastSection = sections[sections.length - 1];
+    ScrollTrigger.create({
+      trigger: lastSection,
+      start: "bottom bottom", // Start when the bottom of the last section hits the bottom of the viewport
+      end: "bottom top", // End when the bottom of the last section hits the top of the viewport
+      onEnter: () => {
+        // Disable scroll-snapping when the last section is reached
+        ScrollTrigger.getAll().forEach((trigger) => {
+          if (trigger.vars.snap) {
+            trigger.kill(); // Kill the snap functionality
+          }
+        });
+      },
+      onLeaveBack: () => {
+        // Re-enable scroll-snapping when scrolling back up to the last section
+        sections.forEach((section, index) => {
+          ScrollTrigger.create({
+            trigger: section,
+            start: "top top",
+            end: "bottom top",
+            snap: {
+              snapTo: 1,
+              duration: { min: 0.2, max: 0.6 },
+              ease: "power1.inOut",
+            },
+          });
+        });
+      },
+    });
+
+    // Cleanup ScrollTrigger instances on unmount
+    return () => {
+      ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
+    };
+  }, [isDesktop]); // Re-run effect when isDesktop changes
+
   return (
-    <div className="container1 font-branding-medium">
+    <div className="container1 font-branding-medium" ref={containerRef}>
       {Children.map((data, index) => (
-        <div className={`${data.classCss}`} key={index}>
+        <div className={`overflow-hidden ${data.classCss}`} key={index}>
           {data.comp}
         </div>
       ))}
-      <Footer />
+      {/* Footer (not part of scroll-snapping) */}
+      {/* <div className="">
+        <Footer />
+      </div> */}
     </div>
   );
 }

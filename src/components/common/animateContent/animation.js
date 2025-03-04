@@ -4,7 +4,7 @@ import { motion, useInView } from "framer-motion";
 
 function AnimateOnScroll({ children }) {
   const ref = useRef(null);
-  const inView = useInView(ref, { once: false, margin: "-30% 0px -80% 0px" });
+  const inView = useInView(ref, { once: false, margin: "-30% 0px -20% 0px" });
 
   useEffect(() => {
     const elements = ref.current?.querySelectorAll(".goal-section1");

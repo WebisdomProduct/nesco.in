@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { MdKeyboardArrowRight } from "react-icons/md";
 
 function SlidedownCard({ data }) {
-  const [openIndex, setOpenIndex] = useState(0);
+  const [openIndex, setOpenIndex] = useState(null);
 
   return (
     <div className="w-full flex flex-col md:items-center px-5 md:px-0">
