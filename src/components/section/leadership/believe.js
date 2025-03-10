@@ -12,7 +12,7 @@ function believe() {
             style={{ fontFamily: "BrandingSemibold" }}
             className="text-[#1e3a8a] text-4xl md:text-5xl font-branding-semibold font-bold text-center xl:w-[50%] lg:w-[70%] md:w-[80%]"
           >
-            We believe in people & people believe in us.
+            We believe in people <br></br> & people believe in us.
           </p>
         </div>
         <div className="flex relative mt-10">

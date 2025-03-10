@@ -8,7 +8,7 @@ function SustainabilityGovernance() {
   return (
     <div className="goal-section1 flex justify-center mt-20">
       <div className="text-center w-[90%]">
-        <h1 className="text-3xl text-[#39c2ab] mb-8 font-branding-semibold">
+        <h1 className="text-3xl text-[#39c2ab] mb-8 font-branding-bold">
           ESG Governance Structure
         </h1>
         <p className="lg:text-[21px] md:text-[16px] text-[14px] text-justify font-medium text-black mb-20">
@@ -27,9 +27,9 @@ function SustainabilityGovernance() {
         <div className="grid xl:grid-cols-3 lg:grid-cols-2 grid-cols-1 mb-14 xl:gap-10 gap-20">
           <div className=" relative">
             <div className="py-8 bg-[#9ACC5B] w-full px-2 rounded-full transform -translate-y-1/2 absolute overflow-hidden">
-              <p className="text-2xl text-white">Environment</p>
+              <p className="text-2xl text-white font-branding-bold">Environment</p>
               <div className="absolute transform -translate-y-1/2 top-1/2 w-20 h-20  rounded-full flex justify-center items-center border-2 border-white">
-                <div className="w-16 h-16 rounded-full flex justify-center items-center text-5xl text-[#9ACC5B] bg-white font-branding-bold">
+                <div className="w-16 h-16 rounded-full flex justify-center items-center text-5xl text-[#9ACC5B] bg-white font-branding-semibold">
                   E
                 </div>
               </div>
@@ -37,7 +37,7 @@ function SustainabilityGovernance() {
                 <Image
                   src={Icon1}
                   alt="icon1"
-                  className="w-20 h-20 object-cover"
+                  className="w-16 h-16 object-cover"
                 />
               </div>
             </div>
@@ -50,14 +50,14 @@ function SustainabilityGovernance() {
                   energy efficiency, and ensure compliance with environmental
                   regulations to foster sustainability across our operations.
                 </p>
-                <p className=" absolute bottom-8 w-[100px] h-[8px] bg-[#48cfde] rounded-full my-5"></p>
+                <p className=" absolute bottom-8 w-[100px] h-[8px] bg-[#8BBC53] rounded-full my-5"></p>
                 <p className=" w-[100px] h-[8px] rounded-full my-5"></p>
               </div>
             </div>
           </div>
           <div className=" relative ">
             <div className="py-8 bg-[#69bbef] w-full px-2 rounded-full transform -translate-y-1/2 absolute overflow-hidden">
-              <p className="text-2xl text-white">Social</p>
+              <p className="text-2xl text-white font-branding-bold">Social</p>
               <div className="absolute transform -translate-y-1/2 top-1/2 w-20 h-20  rounded-full flex justify-center items-center border-2 border-white">
                 <div className="w-16 h-16 rounded-full flex justify-center items-center text-5xl text-[#69bbef] bg-white font-branding-bold">
                   S
@@ -67,7 +67,7 @@ function SustainabilityGovernance() {
                 <Image
                   src={Icon3}
                   alt="icon3"
-                  className="w-20 h-20 object-cover"
+                  className="w-16 h-16 object-cover"
                 />
               </div>
             </div>
@@ -87,7 +87,7 @@ function SustainabilityGovernance() {
           </div>
           <div className=" relative">
             <div className="py-8 bg-[#3F89B0] w-full px-2 rounded-full transform -translate-y-1/2 absolute overflow-hidden">
-              <p className="text-2xl text-white">Governance</p>
+              <p className="text-2xl text-white font-branding-bold">Governance</p>
               <div className="absolute transform -translate-y-1/2 top-1/2 w-20 h-20  rounded-full flex justify-center items-center border-2 border-white">
                 <div className="w-16 h-16 rounded-full flex justify-center items-center text-5xl text-[#3F89B0] bg-white font-branding-bold">
                   G
@@ -97,7 +97,7 @@ function SustainabilityGovernance() {
                 <Image
                   src={Icon2}
                   alt="icon2"
-                  className="w-20 h-20 object-cover"
+                  className="w-16 h-16 object-cover"
                 />
               </div>
             </div>
@@ -111,7 +111,7 @@ function SustainabilityGovernance() {
                   clear policies to mitigate risks and maintain stakeholder
                   trust.
                 </p>
-                <p className=" absolute bottom-8 w-[100px] h-[8px] bg-[#48cfde] rounded-full my-5"></p>
+                <p className=" absolute bottom-8 w-[100px] h-[8px] bg-[#3F89B0] rounded-full my-5"></p>
                 <p className=" w-[100px] h-[8px] rounded-full my-5"></p>
               </div>
             </div>

@@ -6,7 +6,7 @@ function SustainabilityPerformance() {
   return (
     <>
       <div className="goal-section1 relative flex flex-col justify-center items-center mt-0 lg:mt-10">
-        <div className="absolute bg-gray-300 w-full xl:h-[20%] md:h-[25%] sm:h-[15%] h-[10%] z-0 top-0"></div>
+        <div className="absolute bg-[#EEF2F2] w-full xl:h-[20%] md:h-[25%] sm:h-[15%] h-[10%] z-0 top-0"></div>
         <div className=" pt-16 lg:flex z-10 relative w-[90%]">
           <div className="basis-[60%] text-center">
             <Image

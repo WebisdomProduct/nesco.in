@@ -13,14 +13,15 @@ function FinancialsBanner() {
   const SliderData = [
     {
       image: bannerImage,
+      isOpacity:true,
       data: (
         <div className="absolute z-20 md:top-[30%] left-[10%]">
           <div className="innerContainer text-center">
-            <p className="text-[#E1FB80] md:text-[5rem] text-5xl font-branding-medium  text-left ">
+            <p className="text-[#E1FB80] md:text-[4rem] text-5xl font-branding-medium  text-left ">
               Our numbers
             </p>
 
-            <p className="md:text-[5rem] text-5xl text-white text-left font-branding-medium">
+            <p className="md:text-[4rem] text-5xl text-white text-left font-branding-medium">
               {" "}
               tell our story
             </p>

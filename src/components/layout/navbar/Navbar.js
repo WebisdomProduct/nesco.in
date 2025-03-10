@@ -8,6 +8,7 @@ import Image from "next/image";
 import Link from "next/link";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { GoSearch } from "react-icons/go";
 
 function Navbar({ activeSlide }) {
   const NavData = [
@@ -265,7 +266,7 @@ function Navbar({ activeSlide }) {
       {/* Logo */}
       <div className="z-50 relative">
         <Link href={logo.link}>
-          <span className="overflow-hidden absolute inline-block w-[180px] h-[60px] top-1/2 -translate-y-1/2">
+          <span className="overflow-hidden absolute inline-block w-[150px] h-[50px] top-1/2 -translate-y-1/2">
             <Image
               src={getLogoColorWork()}
               alt="Nesco Logo"
@@ -303,7 +304,8 @@ function Navbar({ activeSlide }) {
           <span
             className={`inline-block cursor-pointer absolute top-1/2 ${getTextColor()} -translate-y-1/2 right-5`}
           >
-            <FaSearch className="text-[20px]" />
+            <GoSearch className="text-[20px] "
+            strokeWidth={1} />
           </span>
         </div>
       </div>
@@ -357,7 +359,7 @@ function Navbar({ activeSlide }) {
                     <ul className="flex flex-col gap-6 w-[60%] pl-10 pr-20 py-5 text-white">
                       {data.subMenu.map((subData, subIndex) => (
                         <li key={subIndex} className=" text-xl">
-                          <Link href={subData.route}>{subData.title}</Link>
+                          <Link href={subData.route} className="hover:text-secondary text-white transition-all duration-200">{subData.title}</Link>
                         </li>
                       ))}
                     </ul>

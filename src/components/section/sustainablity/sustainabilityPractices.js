@@ -79,7 +79,7 @@ function SustainabilityPractices() {
                   style={{ backgroundColor: data.color }}
                 />
               </div>
-              <p className="text-xl font-branding-semibold w-[50%] h-[80%] mt-5">
+              <p className="text-xl font-branding-semibold w-[57%] h-[80%] mt-5">
                 {data.title}
               </p>
             </div>
