@@ -19,6 +19,7 @@ function Banner({ SliderData, onSlideChange, filter, heightClassName }) {
   const PrevArrow = ({ onClick }) => (
     <button
       onClick={onClick}
+      strokeWidth = {1}
       className="buttonColor absolute left-4 top-[60%] transform -translate-y-1/2 text-[#06A7E5] p-3 rounded-full z-10"
     >
       <FaAngleLeft size={40} />
@@ -141,19 +142,19 @@ function Banner({ SliderData, onSlideChange, filter, heightClassName }) {
                           className="text-black font-poppins absolute bottom-40 md:left-48 left-16 z-20"
                         >
                           <h1
-                            className="lg:text-[4.5rem] text-5xl font-bold text-primary md:pb-3 mt-4"
+                            className="lg:text-[7rem] text-5xl font-bold text-primary md:pb-3 mt-4"
                             style={{ fontFamily: "BrandingSemibold" }}
                           >
                             Believe.
                           </h1>
                           <h2
-                            className="md:text-[2.2rem] text-2xl mt-4 font-bold my-4"
+                            className="md:text-[2.5rem] text-2xl mt-4 font-bold my-4"
                             style={{ fontFamily: "BrandingSemibold" }}
                           >
                             The possibilities
                           </h2>
                           <h3
-                            className="md:text-[2.2rem] text-2xl mt-4 font-bold my-4"
+                            className="md:text-[2.5rem] text-2xl mt-4 font-bold my-4"
                             style={{ fontFamily: "BrandingSemibold" }}
                           >
                             are endless

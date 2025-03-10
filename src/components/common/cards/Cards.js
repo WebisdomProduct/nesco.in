@@ -19,7 +19,7 @@ function Cards({ CardData }) {
               />
 
               <p className="flex justify-between mt-3 w-full">
-                <span className="font-branding-bold text-xl inline-block w-full text-left">
+                <span className="font-branding-semibold text-xl inline-block w-full text-left">
                   {data.name}
                 </span>
                 <span className="flex items-center ">

@@ -7,7 +7,7 @@ function SustainabilityTerms() {
     <div className="goal-section1 flex justify-center items-center flex-col mt-0 lg:mt-10">
       <div className="my-10 text-center w-[90%]">
         <div className="text-right md:mr-24">
-          <h1 className="text-3xl font-bold px-5 py-3 bg-[#c2ddf7] text-gray-900 inline-block text-center ">
+          <h1 className="text-3xl font-bold px-5 py-3 bg-[#C7E6F3] text-gray-900 inline-block text-center ">
             {" "}
             Stakeholder Engagement & Management
           </h1>

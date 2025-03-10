@@ -4,10 +4,11 @@
 .boxAnimation::after {
   content: "";
   position: absolute;
-  bottom: 0;
+  
+  bottom: -2px;
   left: 0;
   width: 100%;
-  height: 5px;
+  height: 3px;
   border-radius: 0 5px 5px 0;
   /* background-color: #cfa866; */
   background-color: rgb(187, 223, 252);
