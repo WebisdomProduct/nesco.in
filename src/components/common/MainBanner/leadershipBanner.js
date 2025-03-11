@@ -2,6 +2,9 @@
 import React, { useEffect, useState } from "react";
 import Slider from "react-slick";
 import { FaAngleLeft, FaAngleRight } from "react-icons/fa";
+import { IoIosArrowBack } from "react-icons/io";
+import { IoIosArrowForward } from "react-icons/io";
+
 
 // Import Slick CSS
 import "slick-carousel/slick/slick.css";
@@ -26,7 +29,7 @@ function LeadershipBanner1({
       onClick={onClick}
       className="absolute left-4 top-[60%] transform -translate-y-1/2 text-gray-200 p-3 rounded-full z-10"
     >
-      <FaAngleLeft size={40} />
+      <IoIosArrowBack size={40} />
     </button>
   );
 
@@ -35,7 +38,7 @@ function LeadershipBanner1({
       onClick={onClick}
       className="absolute right-4 top-[60%] transform -translate-y-1/2 text-gray-200 p-3 rounded-full z-10"
     >
-      <FaAngleRight size={40} />
+      <IoIosArrowForward size={40} />
     </button>
   );
 

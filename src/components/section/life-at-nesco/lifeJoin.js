@@ -42,11 +42,11 @@ function LifeJoin() {
               key={index}
               className="flex flex-col justify-center items-center"
             >
-              <div className="md:w-[70%] w-[60%]">
+              <div className="md:w-[20rem] md:h-[20rem] w-[60%] overflow-hidden">
                 <Image
                   src={data.image}
                   alt={data.title}
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-cover -mt-1"
                 />
               </div>
               <p className="mt-5 text-center text-xl">{data.title}</p>

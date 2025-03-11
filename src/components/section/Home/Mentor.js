@@ -1,11 +1,32 @@
-import React from "react";
+"use client"
+import React, { useEffect } from "react";
 import MentorImage from "@/assests/Home/SirImage.png";
 import backgroundImage from "@/assests/Home/N-2.png";
 import Image from "next/image";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 function Mentor() {
+
+  useEffect(()=>{
+    gsap.registerPlugin(ScrollTrigger);
+
+    gsap.fromTo('.backgroundAnimation' , {
+      width:0
+    }, {width:"100%", duration:4,
+      scrollTrigger: {
+        trigger: '.sectionReveal',
+        start: 'top 80%',
+        end: 'bottom top',
+        once: true,
+      }
+    })
+    return () => {
+      gsap.kill();
+    };
+  }, []);
   return (
-    <section className="bg-[#cbe0e7] flex flex-col items-center justify-center relative w-full xl:h-auto h-full overflow-hidden pt-8 md:pt-0 pb-10">
+    <section className="bg-[#D5EFFF] flex flex-col items-center justify-center relative w-full xl:h-auto h-full overflow-hidden sectionReveal">
       {/* Content */}
       <div className="z-20 relative w-[90%] flex flex-col items-center justify-center mx-auto mt-12 mb-10 md:h-screen goal-section1">
         <div className="flex md:flex-row flex-col items-start md:gap-20 gap-10">
@@ -22,13 +43,13 @@ function Mentor() {
                 Director and Mentor
               </h3>
               <div className="space-y-4 mt-7 text-gray-700 text-justify">
-                <p className="lg:text-3xl text-2xl font-branding-medium leading-9">
+                <p className="lg:text-3xl text-2xl font-branding-medium lg:leading-[2.7rem] drop-shadow-xl">
                   In the last eight decades, Nesco has come a long way. We see
                   our present success as only the start to newer and bolder
                   initiatives. This is an affirmation that as we continue to
                   grow, we add to the growth of our country.
                 </p>
-                <p className="lg:text-3xl text-2xl font-branding-medium leading-9">
+                <p className="lg:text-3xl text-2xl font-branding-medium lg:leading-[2.7rem] drop-shadow-xl pt-10">
                   Our teams are motivated to set new benchmarks across
                   industries through perseverance and innovation. The world we
                   live in is rapidly evolving and at Nesco we are prepared to
@@ -37,13 +58,13 @@ function Mentor() {
               </div>
             </div>
             {/* Background Image */}
-            <div className="w-full h-full z-0 absolute top-16">
+            <div className="w-full h-full z-0 absolute top-16 opacity-40">
               <div className="relative w-full h-full flex justify-center items-center">
                 <Image
                   src={backgroundImage}
                   alt="background image"
                   objectFit="cover"
-                  className="w-full xl:scale-[1] lg:scale-[1.7] md:scale-[1.7] scale-[1.5]"
+                  className="w-full xl:scale-[1] lg:scale-[1.7] md:scale-[1.7] scale-[1.5]  backgroundAnimation"
                 />
               </div>
             </div>
@@ -52,7 +73,7 @@ function Mentor() {
           {/* Mentor Image and Name */}
           <div className="flex flex-col md:w-[45%] w-full h-full md:items-end items-center justify-center z-10 relative">
             <div className="w-full">
-              <div className="w-full max-w-[650px]">
+              <div className="w-full max-w-[650px] border-[10px] border-primary">
                 <Image
                   src={MentorImage}
                   alt="Mentor"

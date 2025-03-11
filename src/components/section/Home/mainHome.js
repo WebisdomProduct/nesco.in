@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
 import Pagewrapper from "@/components/layout/pagewrapper";
 import HomeBanner from "./HomeBanner";
 import Goal from "./Goal";
@@ -11,9 +11,11 @@ import ScrollSnip from "@/components/layout/scrollSnipEffect/scrollSnip";
 import AnimateOnScroll from "../../common/animateContent/animation";
 
 function MainHome() {
+  const [activeSlide, setActiveSlide] = useState(0);
+
   const Children = [
     {
-      comp: <HomeBanner />,
+      comp: <HomeBanner activeSlide={activeSlide} setActiveSlide={setActiveSlide} />,
       classCss: "section ",
     },
     {
@@ -59,7 +61,7 @@ function MainHome() {
   ];
 
   return (
-    <Pagewrapper>
+    <Pagewrapper activeSlide={activeSlide}>
       <ScrollSnip Children={Children} />
     </Pagewrapper>
   );

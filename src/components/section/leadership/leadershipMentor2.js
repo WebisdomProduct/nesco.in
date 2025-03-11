@@ -6,9 +6,9 @@ function LeadershipMentor2() {
   return (
     <section className="header_white goal-section1 bg-secondary flex justify-center items-center pb-20 xl:pb-0 xl:pt-20 pt-[10rem] xl:h-screen ">
       <div className="flex flex-col lg:flex-row w-[90%] xl:justify-center justify-between gap-10 items-center lg:items-start">
-        <div className="flex flex-col h-full lg:items-end items-center justify-center lg:w-[45%]">
+        <div className="flex flex-col h-full lg:items-start items-center justify-center lg:w-[45%]">
           <div>
-            <div className="w-full max-w-[650px]">
+            <div className="w-full max-w-[650px] border-primary border-[10px]">
               <Image
                 src={MentorImage}
                 alt="Mentor"
@@ -39,7 +39,7 @@ function LeadershipMentor2() {
             a services backbone. He has guided the corporate expansion of Bombay
             Exhibition Center and introduced the fast-gaining service verticals
             of hospitality and events. A technology enthusiast, Krish na keeps
-            up-to-date with the latest industry trends, in-troducing new
+            up-to-date with the latest industry trends, introducing new
             technologies and global industry norms to ourworld at Nesco.
           </p>
         </div>

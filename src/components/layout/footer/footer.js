@@ -135,22 +135,22 @@ function Footer() {
   ];
 
   return (
-    <div className="footer_section bg-[#081422] text-white flex flex-col justify-center items-center font-branding-medium py-10 z-50 relative ">
+    <div className="footer_section bg-[#081422] text-white flex flex-col justify-center items-center font-branding-medium pt-10 pb-5 z-50 relative ">
       <div className="w-[90%] xl:flex">
         <div className="md:flex justify-between xl:w-[83%] w-full md:gap-6 xl:gap-0">
           {FooterData.map((data, index) => (
             <div className="lg:max-w-[28%] md:max-w-[25%] mt-10 md:mt-0 text-left">
               <Link
                 href={data.titleLink}
-                className="text-[#246F8E] text-4xl lg:px-5 font-branding-semibold"
+                className="text-[#246F8E] text-2xl lg:px-5 font-branding-semibold"
               >
                 {data.title}
               </Link>
-              <div className="mt-10 flex flex-col gap-3 text-left">
+              <div className="mt-6 flex flex-col gap-3 text-left">
                 {data.category.map((d, h) => (
                   <Link
                     href={d.link}
-                    className="text-2xl text-white font-branding-medium transition-all lg:mx-5"
+                    className="text-lg text-white font-branding-medium transition-all lg:mx-5"
                   >
                     {d.title}
                   </Link>
@@ -159,16 +159,16 @@ function Footer() {
             </div>
           ))}
         </div>
-        <div className="flex flex-col gap-5 xl:w-[17%] xl:items-start xl:mt-0 mt-10 items-center font-branding-semibold">
+        <div className="flex flex-col gap-5 xl:w-[17%] xl:mt-0 mt-10 items-center font-branding-semibold">
           {FooterData2.map((data, index) => (
             <p
-              className="text-[#246F8E] text-4xl xl:text-end text-center"
+              className="text-[#246F8E] text-2xl xl:text-end text-center"
               key={index}
             >
               <Link href={data.link}> {data.title}</Link>
             </p>
           ))}
-          <div className="flex w-full gap-8 justify-center mt-6">
+          <div className="flex w-full gap-4 justify-center mt-2">
             <div className="relative">
               <Link href="/contact-us">
                 <Image
@@ -196,7 +196,7 @@ function Footer() {
         </div>
       </div>
       <div className="mt-5 border-t-2 w-full">
-        <p className="pt-8 pb-3 flex justify-center items-center">
+        <p className="pt-5 flex justify-center items-center leading-3">
           &copy; 2025 NESCO. ALL RIGHTS RESERVED
         </p>
       </div>

@@ -3,121 +3,100 @@
 import React, { useEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import Footer from "../footer/footer";
 
 gsap.registerPlugin(ScrollTrigger);
 
 function ScrollSnip({ Children }) {
   const containerRef = useRef(null);
   const [isDesktop, setIsDesktop] = useState(false);
+  
+  // Smoother snap configuration
+  const snapConfig = {
+    snapTo: 1,
+    duration: { min: 0.1, max: 2 }, // Variable duration based on scroll speed
+    ease: "expo.out", // Smoother easing function
+    inertia: true, // Add momentum-based movement
+    delay: 0, // No additional delay
+  };
 
   useEffect(() => {
-    // Check screen width on initial render and window resize
     const checkScreenWidth = () => {
-      setIsDesktop(window.innerWidth >= 1024); // Adjust breakpoint as needed
+      setIsDesktop(window.innerWidth >= 1024);
     };
 
-    // Initial check
     checkScreenWidth();
-
-    // Add resize event listener
     window.addEventListener("resize", checkScreenWidth);
-
-    // Cleanup resize event listener
-    return () => {
-      window.removeEventListener("resize", checkScreenWidth);
-    };
+    return () => window.removeEventListener("resize", checkScreenWidth);
   }, []);
 
   useEffect(() => {
-    if (!isDesktop) return; // Exit if not on desktop
+    if (!isDesktop) return;
 
     const container = containerRef.current;
-
-    // Get all sections (excluding the footer)
     const sections = Array.from(container.querySelectorAll(".section"));
+    let triggers = [];
 
-    // Set up ScrollTrigger for each section (excluding the footer)
-    sections.forEach((section, index) => {
-      ScrollTrigger.create({
+    // Prefer CSS transforms for smoother animations
+    gsap.set(sections, { willChange: "transform" });
+
+    sections.forEach((section) => {
+      const trigger = ScrollTrigger.create({
         trigger: section,
-        start: "top top", // Start when the top of the section hits the top of the viewport
-        end: "bottom top", // End when the bottom of the section hits the top of the viewport
-        snap: {
-          snapTo: 1, // Snap to the closest section
-          duration: { min: 0.1, max: 0.3 }, // Smooth snapping duration
-          ease: "power1.inOut", // Easing function
-        },
-        // markers: true, // Debugging markers (can be removed in production)
-        // onEnter: () => {
-        //   // Change navbar color based on the section
-        //   const navbar = document.querySelector("nav");
-        //   if (section.classList.contains("goal-section")) {
-        //     navbar.style.backgroundColor = "#403092"; // Purple
-        //   } else {
-        //     navbar.style.backgroundColor = "transparent"; // Default
-        //   }
-        // },
-        // onEnterBack: () => {
-        //   // Change navbar color when scrolling back
-        //   const navbar = document.querySelector("nav");
-        //   if (section.classList.contains("goal-section")) {
-        //     navbar.style.backgroundColor = "#403092"; // Purple
-        //   } else {
-        //     navbar.style.backgroundColor = "transparent"; // Default
-        //   }
-        // },
+        start: "top top",
+        end: "bottom top",
+        snap: snapConfig,
+        onEnter: () => smoothNavbar(section),
+        onEnterBack: () => smoothNavbar(section),
       });
+      triggers.push(trigger);
     });
 
-    // Detect when the last section is reached and disable scroll-snapping
+    // Last section handling
     const lastSection = sections[sections.length - 1];
-    ScrollTrigger.create({
+    const lastTrigger = ScrollTrigger.create({
       trigger: lastSection,
-      start: "bottom bottom", // Start when the bottom of the last section hits the bottom of the viewport
-      end: "bottom top", // End when the bottom of the last section hits the top of the viewport
-      onEnter: () => {
-        // Disable scroll-snapping when the last section is reached
-        ScrollTrigger.getAll().forEach((trigger) => {
-          if (trigger.vars.snap) {
-            trigger.kill(); // Kill the snap functionality
-          }
-        });
-      },
+      start: "bottom bottom",
+      end: "bottom top",
+      onEnter: () => triggers.forEach(t => t.kill()),
       onLeaveBack: () => {
-        // Re-enable scroll-snapping when scrolling back up to the last section
-        sections.forEach((section, index) => {
+        triggers = sections.map(section => 
           ScrollTrigger.create({
             trigger: section,
             start: "top top",
             end: "bottom top",
-            snap: {
-              snapTo: 1,
-              duration: { min: 0.1, max: 0.3 },
-              ease: "power1.inOut",
-            },
-          });
-        });
+            snap: snapConfig,
+          })
+        );
       },
     });
 
-    // Cleanup ScrollTrigger instances on unmount
     return () => {
-      ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
+      triggers.forEach(t => t.kill());
+      lastTrigger.kill();
     };
-  }, [isDesktop]); // Re-run effect when isDesktop changes
+  }, [isDesktop]);
+
+  // Smoother navbar transition
+  // const smoothNavbar = (section) => {
+  //   gsap.to("nav", {
+  //     // backgroundColor: section.classList.contains("goal-section") ? "#403092" : "transparent",
+  //     // text:section.classList.contains("banner-section") ? "black" : "white"
+  //     duration: 0.5,
+  //     ease: "power2.out"
+  //   });
+  // };
 
   return (
     <div className="container1 font-branding-medium" ref={containerRef}>
       {Children.map((data, index) => (
-        <div className={`overflow-hidden ${data.classCss}`} key={index}>
+        <div 
+          className={` overflow-hidden ${data.classCss}`} 
+          key={index}
+          style={{ transform: "translateZ(0)" }} // Boost performance
+        >
           {data.comp}
         </div>
       ))}
-      {/* Footer (not part of scroll-snapping) */}
-      {/* <div className="">
-        <Footer />
-      </div> */}
     </div>
   );
 }

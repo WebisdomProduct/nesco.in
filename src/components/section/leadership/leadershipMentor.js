@@ -24,7 +24,7 @@ function LeadershipMentor() {
         </div>
         <div className="flex flex-col h-full lg:items-end items-center justify-center lg:w-[45%]">
           <div>
-            <div className="w-full max-w-[650px]">
+            <div className="w-full max-w-[650px] border-[#CAECFF] border-[10px]">
               <Image
                 src={MentorImage}
                 alt="Mentor"

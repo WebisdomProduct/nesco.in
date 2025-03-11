@@ -15,7 +15,7 @@ function OverviewBanner() {
     {
       image: bannerImage,
       data: (
-        <div className=" bg-violet-900 z-20 absolute left-0 bg-opacity-70">
+        <div className=" bg-[#4C4C9C] z-20 absolute left-0 bg-opacity-70">
           <div className="text-center px-10 py-4">
             <p className="text-white sm:text-xl md:text-2xl font-branding-medium ">
               To be constantly

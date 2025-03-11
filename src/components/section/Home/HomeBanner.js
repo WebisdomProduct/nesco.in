@@ -18,8 +18,7 @@ import hexaLogo4 from "@/assests/mainBanner/i11.png";
 import hexaLogo5 from "@/assests/mainBanner/r1.png";
 import Navbar from "@/components/layout/navbar/Navbar";
 
-function HomeBanner() {
-  const [activeSlide, setActiveSlide] = useState(0);
+function HomeBanner({activeSlide, setActiveSlide}) {
 
   const handleSlideChange = (index) => {
     setActiveSlide(index);
@@ -70,7 +69,7 @@ function HomeBanner() {
 
   return (
     <div className="w-full">
-      <Navbar activeSlide={activeSlide} />
+      {/* <Navbar activeSlide={activeSlide} /> */}
       {/* <Banner SliderData={SliderData}  onSlideChange={handleSlideChange} /> */}
       <Banner SliderData={SliderData} onSlideChange={handleSlideChange} />
     </div>

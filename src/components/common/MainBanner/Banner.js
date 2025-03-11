@@ -1,8 +1,9 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import Slider from "react-slick";
-import { FaAngleLeft, FaAngleRight } from "react-icons/fa";
 
+import { IoIosArrowForward } from "react-icons/io";
+import { IoIosArrowBack } from "react-icons/io";
 // Import Slick CSS
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -19,10 +20,10 @@ function Banner({ SliderData, onSlideChange, filter, heightClassName }) {
   const PrevArrow = ({ onClick }) => (
     <button
       onClick={onClick}
-      strokeWidth = {1}
+      strokeWidth={1}
       className="buttonColor absolute left-4 top-[60%] transform -translate-y-1/2 text-[#06A7E5] p-3 rounded-full z-10"
     >
-      <FaAngleLeft size={40} />
+      <IoIosArrowBack size={40} />
     </button>
   );
 
@@ -31,7 +32,7 @@ function Banner({ SliderData, onSlideChange, filter, heightClassName }) {
       onClick={onClick}
       className="buttonColor absolute right-4 top-[60%] transform -translate-y-1/2 text-[#06A7E5] p-3 rounded-full z-10"
     >
-      <FaAngleRight size={40} />
+      <IoIosArrowForward size={40} />
     </button>
   );
 
@@ -148,7 +149,7 @@ function Banner({ SliderData, onSlideChange, filter, heightClassName }) {
                             Believe.
                           </h1>
                           <h2
-                            className="md:text-[2.5rem] text-2xl mt-4 font-bold my-4"
+                            className="md:text-[2.5rem] text-2xl mt-2 font-bold my-4"
                             style={{ fontFamily: "BrandingSemibold" }}
                           >
                             The possibilities

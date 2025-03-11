@@ -1,8 +1,10 @@
-import React from "react";
+"use client"
+import React, { useState } from "react";
 import Navbar from "./navbar/Navbar";
 import Footer from "./footer/footer";
 
-function Pagewrapper({ children, activeSlide }) {
+function Pagewrapper({children, activeSlide}) {
+
   return (
     <div>
       <Navbar activeSlide={activeSlide} />

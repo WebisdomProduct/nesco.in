@@ -27,7 +27,7 @@ function SustainabilityGovernance() {
         <div className="grid xl:grid-cols-3 lg:grid-cols-2 grid-cols-1 mb-14 xl:gap-10 gap-20">
           <div className=" relative">
             <div className="py-8 bg-[#9ACC5B] w-full px-2 rounded-full transform -translate-y-1/2 absolute overflow-hidden">
-              <p className="text-2xl text-white font-branding-bold">Environment</p>
+              <p className="text-3xl text-white font-branding-bold">Environment</p>
               <div className="absolute transform -translate-y-1/2 top-1/2 w-20 h-20  rounded-full flex justify-center items-center border-2 border-white">
                 <div className="w-16 h-16 rounded-full flex justify-center items-center text-5xl text-[#9ACC5B] bg-white font-branding-semibold">
                   E
@@ -57,7 +57,7 @@ function SustainabilityGovernance() {
           </div>
           <div className=" relative ">
             <div className="py-8 bg-[#69bbef] w-full px-2 rounded-full transform -translate-y-1/2 absolute overflow-hidden">
-              <p className="text-2xl text-white font-branding-bold">Social</p>
+              <p className="text-3xl text-white font-branding-bold">Social</p>
               <div className="absolute transform -translate-y-1/2 top-1/2 w-20 h-20  rounded-full flex justify-center items-center border-2 border-white">
                 <div className="w-16 h-16 rounded-full flex justify-center items-center text-5xl text-[#69bbef] bg-white font-branding-bold">
                   S
@@ -87,7 +87,7 @@ function SustainabilityGovernance() {
           </div>
           <div className=" relative">
             <div className="py-8 bg-[#3F89B0] w-full px-2 rounded-full transform -translate-y-1/2 absolute overflow-hidden">
-              <p className="text-2xl text-white font-branding-bold">Governance</p>
+              <p className="text-3xl text-white font-branding-bold">Governance</p>
               <div className="absolute transform -translate-y-1/2 top-1/2 w-20 h-20  rounded-full flex justify-center items-center border-2 border-white">
                 <div className="w-16 h-16 rounded-full flex justify-center items-center text-5xl text-[#3F89B0] bg-white font-branding-bold">
                   G

@@ -71,6 +71,7 @@ function Navbar({ activeSlide }) {
   const [textBlack, setTextBlack] = useState(null);
   const [isOpen, setIsOpen] = useState(null);
   const [isClosed, setIsClosed] = useState(false);
+  const [textWhite, setTextWhite] = useState(false);
 
   const logo = {
     imagePath: Nescologo,
@@ -86,6 +87,7 @@ function Navbar({ activeSlide }) {
       return newStates;
     });
     setIsOpen(index);
+    setTextWhite(true)
   };
 
   const handleMouseLeave = (index) => {
@@ -95,6 +97,8 @@ function Navbar({ activeSlide }) {
       return newStates;
     });
     // setIsOpen(null);
+    setTextWhite(false)
+
   };
 
   const handleMouseLeave1 = () => {
@@ -185,6 +189,13 @@ function Navbar({ activeSlide }) {
     if (textBlack) {
       return "text-black border-black";
     }
+    if( textWhite === true && !(isOpen === 4 || isOpen === 5)){
+      return "text-white border-white";
+    }
+    if(isClosed){
+      return "text-white border-white";
+    }
+    
     if (isFooter) {
       return "text-white border-white"; // Apply white text for purple header
     }
@@ -222,6 +233,12 @@ function Navbar({ activeSlide }) {
     }
     if (textBlack) {
       return Nescologo;
+    }
+    if( textWhite === true && !(isOpen === 4 || isOpen === 5)){
+      return Nescologo2;
+    }
+    if(isClosed){
+      return Nescologo2;
     }
     if (isFooter) {
       return Nescologo2; // Apply brightness for purple header
