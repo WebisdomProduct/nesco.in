@@ -177,7 +177,7 @@ function AnnouncementFilter() {
             <table className="table-auto border-separate text-left w-full ">
               <thead>
                 <tr>
-                  <th className="bg-primary text-gray-200 shadow-sm pl-8 py-3 text-3xl ">
+                  <th className="bg-[#2b2a76] text-gray-200 shadow-sm pl-8 py-3 text-3xl">
                     Title
                   </th>
                 </tr>

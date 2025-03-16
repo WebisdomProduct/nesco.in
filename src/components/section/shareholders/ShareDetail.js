@@ -10,7 +10,7 @@ function ShareDetail() {
   const [enter, setEnter] = useState(null);
 
   return (
-    <div className="goal-section1 relative flex justify-center items-center py-20 ">
+    <div className="goal-section1 relative flex justify-center items-center py-20 cursor-pointer">
       {/* Background Div */}
       <div className="absolute inset-0 bg-white h-3/4"></div>
       <div className="absolute inset-0 bg-blue-200 h-1/4 top-[75%] "></div>

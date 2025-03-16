@@ -34,7 +34,7 @@ function SebiBanner() {
       <Banner
         SliderData={SliderData}
         onSlideChange={handleSlideChange}
-        heightClassName="h-[90vh] "
+        heightClassName="h-[100vh] "
         filter={filter}
       />
     </div>

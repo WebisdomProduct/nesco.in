@@ -32,6 +32,7 @@ function SustainabilityBanner() {
         SliderData={SliderData}
         onSlideChange={handleSlideChange}
         filter={filter}
+        apperentClassName="absolute bg-black opacity-0 z-10"
       />
     </div>
   );

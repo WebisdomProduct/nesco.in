@@ -1,5 +1,4 @@
 "use client";
-
 import React, { useEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -13,10 +12,10 @@ function ScrollSnip({ Children }) {
   // Smoother snap configuration
   const snapConfig = {
     snapTo: 1,
-    duration: { min: 0.1, max: 2 }, // Variable duration based on scroll speed
-    ease: "expo.out", // Smoother easing function
-    inertia: true, // Add momentum-based movement
-    delay: 0, // No additional delay
+    // duration: { min: 0.1, max: 1 },
+    ease:"expo.out",
+    inertia: true,
+    delay: 0, 
   };
 
   useEffect(() => {
