@@ -50,7 +50,7 @@ function Banner({ SliderData, onSlideChange, filter, heightClassName }) {
     slidesToShow: 1,
     slidesToScroll: 1,
     autoplay: true,
-    autoplaySpeed: 4000,
+    autoplaySpeed: 3000,
     swipeToSlide: true,
     arrows: true,
     prevArrow: <PrevArrow />, // Custom previous arrow

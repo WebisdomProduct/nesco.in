@@ -1,7 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
-import { FaLinkedin } from "react-icons/fa6";
 import InstagramIcon from "@/assests/footer/i1.png";
 import LinkdeinIcon from "@/assests/footer/f2.png";
 import ContactIcon from "@/assests/footer/p1.png";
@@ -28,10 +27,6 @@ function Footer() {
           title: "Leadership",
           link: "/leadership",
         },
-        // {
-        //   title: "Sustainability",
-        //   link: "",
-        // },
       ],
     },
     {
@@ -46,10 +41,6 @@ function Footer() {
           title: "Nesco Realty",
           link: "",
         },
-        // {
-        //   title: "Events ",
-        //   link: "",
-        // },
         {
           title: "Hospitality ",
           link: "",
@@ -68,14 +59,6 @@ function Footer() {
       title: "Investors",
       titleLink: "",
       category: [
-        // {
-        //   title: "Overview",
-        //   link: "",
-        // },
-        // {
-        //   title: "Social Responsibility ",
-        //   link: "",
-        // },
         {
           title: "Announcements ",
           link: "/announcements",
@@ -103,14 +86,6 @@ function Footer() {
       title: "Our Impact",
       titleLink: "",
       category: [
-        // {
-        //   title: "Overview",
-        //   link: "",
-        // },
-        // {
-        //   title: "Social Responsibility ",
-        //   link: "",
-        // },
         {
           title: "Corporate Social Responsibility",
           link: "/social-responsibility",
@@ -128,33 +103,29 @@ function Footer() {
       title: "Life At Nesco",
       link: "life-at-nesco ",
     },
-    // {
-    //   title: "Contact",
-    //   link: "/contact-us",
-    // },
   ];
 
   return (
-    <div className="footer_section bg-[#081422] text-white flex flex-col justify-center items-center font-branding-medium pt-10 pb-5 z-50 relative ">
+    <div className="footer_section bg-[#081422] text-white flex flex-col justify-center items-center font-branding-medium pt-7 pb-2 z-50 relative ">
       <div className="w-[90%] xl:flex">
-        <div className="md:flex justify-between xl:w-[83%] w-full md:gap-6 xl:gap-0">
+        <div className="md:flex justify-between xl:w-[83%] w-full md:gap-4 xl:gap-0">
           {FooterData.map((data, index) => (
             <div
               key={index}
-              className="lg:max-w-[28%] md:max-w-[25%] mt-10 md:mt-0 text-left"
+              className="lg:max-w-[28%] md:max-w-[25%] mt-5 md:mt-0 text-left"
             >
               <Link
                 href={data.titleLink}
-                className="text-[#246F8E] text-2xl lg:px-5 font-branding-semibold"
+                className="text-[#06a7e2] text-lg lg:px-3 font-branding-semibold"
               >
                 {data.title}
               </Link>
-              <div className="mt-6 flex flex-col gap-3 text-left">
+              <div className="mt-3 flex flex-col gap-1.5 text-left">
                 {data?.category?.map((d, h) => (
                   <Link
                     key={"key" + h}
                     href={d.link}
-                    className="text-lg text-white font-branding-medium transition-all lg:mx-5"
+                    className="text-base text-white font-branding-medium transition-all lg:mx-3"
                   >
                     {d.title}
                   </Link>
@@ -163,45 +134,45 @@ function Footer() {
             </div>
           ))}
         </div>
-        <div className="flex flex-col gap-5 xl:w-[17%] xl:mt-0 mt-10 items-center font-branding-semibold">
+        <div className="flex flex-col gap-2 xl:w-[17%] xl:mt-0 mt-5 items-center font-branding-semibold">
           {FooterData2.map((data, index) => (
             <p
-              className="text-[#246F8E] text-2xl xl:text-end text-center"
+              className="text-[#06a7e2] text-lg xl:text-end text-center"
               key={index}
             >
               <Link href={data.link}> {data.title}</Link>
             </p>
           ))}
-          <div className="flex w-full gap-4 justify-center mt-2">
+          <div className="flex w-full gap-3 justify-center mt-1">
             <div className="relative">
               <Link href="/contact-us">
                 <Image
                   src={ContactIcon}
-                  alt="Linkdein Icon"
-                  className="w-10 h-10 object-contain"
+                  alt="Contact Icon"
+                  className="w-9 h-9 object-contain"
                 />
               </Link>
             </div>
             <div className="relative">
               <Image
                 src={LinkdeinIcon}
-                alt="Linkdein Icon"
-                className="w-10 h-10"
+                alt="LinkedIn Icon"
+                className="w-9 h-9"
               />
             </div>
             <div className="relative">
               <Image
                 src={InstagramIcon}
                 alt="Instagram Icon"
-                className="w-10 h-10"
+                className="w-9 h-9"
               />
             </div>
           </div>
         </div>
       </div>
-      <div className="mt-5 border-t-2 w-full">
-        <p className="pt-5 flex justify-center items-center leading-3">
-          &copy; 2025 NESCO. ALL RIGHTS RESERVED
+      <div className="mt-2 border-t-2 w-full">
+        <p className="pt-2 flex justify-center items-center leading-3 text-sm">
+          © 2025 NESCO. ALL RIGHTS RESERVED
         </p>
       </div>
     </div>

@@ -15,46 +15,48 @@ function MainHome() {
 
   const Children = [
     {
-      comp: <HomeBanner activeSlide={activeSlide} setActiveSlide={setActiveSlide} />,
+      comp: (
+        <HomeBanner activeSlide={activeSlide} setActiveSlide={setActiveSlide} />
+      ),
       classCss: "section ",
     },
     {
       comp: (
-        <AnimateOnScroll>
+        // <AnimateOnScroll>
           <Goal />
-        </AnimateOnScroll>
+        // </AnimateOnScroll>
       ),
       classCss: "section",
     },
     {
       comp: (
-        <AnimateOnScroll>
+        // <AnimateOnScroll>
           <Mentor />
-        </AnimateOnScroll>
+        // </AnimateOnScroll>
       ),
       classCss: "section",
     },
     {
       comp: (
-        <AnimateOnScroll>
+        // <AnimateOnScroll>
           <Service />
-        </AnimateOnScroll>
+        // </AnimateOnScroll>
       ),
       classCss: "section",
     },
     {
       comp: (
-        <AnimateOnScroll>
+        // <AnimateOnScroll>
           <Life />
-        </AnimateOnScroll>
+        // </AnimateOnScroll>
       ),
       classCss: "section",
     },
     {
       comp: (
-        <AnimateOnScroll>
+        // <AnimateOnScroll>
           <News />
-        </AnimateOnScroll>
+        // </AnimateOnScroll>
       ),
       classCss: "section ",
     },

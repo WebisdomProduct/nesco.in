@@ -45,8 +45,8 @@ function ScrollSnip({ Children }) {
         start: "top top",
         end: "bottom top",
         snap: snapConfig,
-        onEnter: () => smoothNavbar(section),
-        onEnterBack: () => smoothNavbar(section),
+        // onEnter: () => smoothNavbar(section),
+        // onEnterBack: () => smoothNavbar(section),
       });
       triggers.push(trigger);
     });

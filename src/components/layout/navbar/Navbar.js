@@ -263,18 +263,21 @@ function Navbar({ activeSlide }) {
 
   const changeNavbar = () => {
     if (activePurpleSection) {
-      return "bg-[#403092]"; // Apply purple background when a purple section is active
+      // return "bg-[#403092]"; // Apply purple background when a purple section is active
+      return "bg-[#2b2a76]"
     }
     return ""; // Return empty string for other cases
   };
   const changeNavbar1 = () => {
     if (isFooter) {
-      return "bg-[#403092]"; // Apply purple background when isPurple is true
+      // return "bg-[#403092]"; // Apply purple background when isPurple is true
+      return "bg-[#2b2a76]"
     }
   };
 
   return (
     <nav
+       key={activeSlide}
       className={`py-6 md:px-6 px-8 flex items-center justify-between w-full z-[999] fixed transition-all duration-300 ${changeNavbar()} ${changeNavbar1()}`}
     >
       {!isScrolled && (
