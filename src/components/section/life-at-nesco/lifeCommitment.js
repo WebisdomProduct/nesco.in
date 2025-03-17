@@ -31,7 +31,7 @@ function LifeCommitment() {
             </p>
           </div>
         </div>
-        <div className="relative h-[300px] md:h-[650px]">
+        <div className="relative h-[200px]  sm:h-[300px] md:h-[500px] lg:h-[650px] xl:h-[750px] w-full max-w-full aspect-[16/9]">
           <Image
             src={CommitmentImage}
             alt="Two People shaking hand"

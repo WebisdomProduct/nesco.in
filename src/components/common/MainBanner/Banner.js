@@ -8,7 +8,7 @@ import { IoIosArrowBack } from "react-icons/io";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
-function Banner({ SliderData, onSlideChange, filter, heightClassName,apperentClassName="absolute bg-black opacity-60 z-10" }) {
+function Banner({ SliderData, onSlideChange, filter, heightClassName,apperentClassName="absolute bg-black opacity-15 z-10" }) {
   const sliderRef = React.useRef(null);
   const [activeIndex, setActiveIndex] = useState(0);
 
