@@ -10,8 +10,7 @@ function LifeTeam() {
           <Image
             src={TeamImage}
             alt="Four People standing in a line and all of them looking forward"
-            
-            className="md:w-full md:h-full"
+            className="md:w-full md:h-full aspect-square"
             priority
           />
         </div>
