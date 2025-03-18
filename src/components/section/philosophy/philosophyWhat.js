@@ -101,15 +101,15 @@ function PhilosophyWhat() {
       ref={sectionRef}
       className="w-full md:h-screen relative flex justify-center items-center py-20"
     >
-      <div className="w-full h-full flex md:flex-row flex-col justify-start items-center gap-10 md:gap-0">
+      <div className="w-full h-fit flex md:flex-row flex-col justify-start items-center md:gap-0">
         <div
-          className="xl:w-[70%] md:w-[80%] sm:w-[50%] md:h-1/2 h-[12rem] flex flex-col z-0 relative"
+          className="xl:w-[70%] md:w-[80%] sm:w-[50%] flex flex-col z-0 relative"
           ref={textContainerRef}
         >
           {text[currentText].split(".").map((word, index) => (
             <p
               key={index}
-              className={`xl:text-8xl lg:text-6xl md:text-5xl text-3xl font-branding-bold text-[#0F0D9F] text-right md:leading-[5rem] leading-[3rem] uppercase ${
+              className={`xl:text-7xl lg:text-6xl md:text-5xl text-3xl font-branding-bold text-[#0F0D9F] text-right uppercase ${
                 index === 1 ? "md:pr-10 pr-5" : ""
               } ${index === 2 ? "md:pr-20 pr-10" : ""} ${
                 index === 3 ? "md:pr-32 pr-16" : ""
@@ -119,12 +119,12 @@ function PhilosophyWhat() {
             </p>
           ))}
         </div>
-        <div className="xl:w-[30%] md:w-[20%] w-full h-1/2 flex md:items-end justify-center z-20 relative bg-white">
+        <div className="relative bottom-[-20px] md:bottom-[-100px] lg:bottom-[-100px] xl:bottom-[-100px] xl:w-[30%] md:w-[20%] w-full lg:self-end xl:self-end md:self-end flex md:items-end justify-center z-20 bg-white">
           <p
             ref={headerRef}
-            className="xl:text-6xl lg:text-5xl md:text-4xl text-2xl text-[#00B6F1] font-branding-semibold xl:-ml-40 xl:-mb-10"
+            className="xl:text-5xl lg:text-5xl md:text-4xl text-2xl text-[#00B6F1] font-branding-semibold xl:-ml-40"
           >
-            What We  
+            What We
             <br /> Do Is Believe
           </p>
         </div>
