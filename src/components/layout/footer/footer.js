@@ -154,18 +154,22 @@ function Footer() {
               </Link>
             </div>
             <div className="relative">
-              <Image
-                src={LinkdeinIcon}
-                alt="LinkedIn Icon"
-                className="w-9 h-9"
-              />
+              <Link href="https://www.linkedin.com/company/nesco-ltd/">
+                <Image
+                  src={LinkdeinIcon}
+                  alt="LinkedIn Icon"
+                  className="w-9 h-9"
+                />
+              </Link>
             </div>
             <div className="relative">
-              <Image
-                src={InstagramIcon}
-                alt="Instagram Icon"
-                className="w-9 h-9"
-              />
+              <Link href="https://www.instagram.com/_nesco_ltd?igsh=MW5weWhpN2FzdGd0ZA==">
+                <Image
+                  src={InstagramIcon}
+                  alt="Instagram Icon"
+                  className="w-9 h-9"
+                />
+              </Link>
             </div>
           </div>
         </div>
