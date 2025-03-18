@@ -1,99 +1,79 @@
 "use client";
 import MainTable from "@/components/common/table/mainTable";
 import Link from "next/link";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 function Quote() {
   const [exchange, setExchange] = useState("BSE");
   const [startDate, setStartDate] = useState({ day: 3, month: 1, year: 2025 });
   const [endDate, setEndDate] = useState({ day: 3, month: 1, year: 2025 });
+  const [historicalData, setHistoricalData] = useState(null);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
 
-  const BseData = {
-    title: "DATE",
-    dataIndex: "date",
-    header: [
-      { title: "OPEN PRICE", dataIndex: "openPrice" },
-      { title: "HIGH PRICE", dataIndex: "highPrice" },
-      { title: "LOW PRICE", dataIndex: "lowPrice" },
-      { title: "CLOSE PRICE", dataIndex: "closePrice" },
-      { title: "TRADED VALUE", dataIndex: "tradedValue" },
-      { title: "NO. OF TRADES", dataIndex: "noOfTrades" },
-      { title: "TRADED QUANTITY", dataIndex: "tradedQuantity" },
-    ],
-    rows: [
-      {
-        date: "01-02-2025",
-        openPrice: "₹1,265.00",
-        highPrice: "₹1,269.95",
-        lowPrice: "₹1,241.50",
-        closePrice: "₹1,264.65",
-        tradedValue: "33.54",
-        noOfTrades: "6933",
-        tradedQuantity: "266300",
-      },
-      {
-        date: "31-01-2025",
-        openPrice: "₹1,257.40",
-        highPrice: "₹1,266.00",
-        lowPrice: "₹1,249.50",
-        closePrice: "₹1,264.90",
-        tradedValue: "51.99",
-        noOfTrades: "15527",
-        tradedQuantity: "412707",
-      },
-      {
-        date: "31-01-2025",
-        openPrice: "₹1,257.40",
-        highPrice: "₹1,266.00",
-        lowPrice: "₹1,249.50",
-        closePrice: "₹1,264.90",
-        tradedValue: "51.99",
-        noOfTrades: "15527",
-        tradedQuantity: "412707",
-      },
-      {
-        date: "31-01-2025",
-        openPrice: "₹1,257.40",
-        highPrice: "₹1,266.00",
-        lowPrice: "₹1,249.50",
-        closePrice: "₹1,264.90",
-        tradedValue: "51.99",
-        noOfTrades: "15527",
-        tradedQuantity: "412707",
-      },
-      {
-        date: "31-01-2025",
-        openPrice: "₹1,257.40",
-        highPrice: "₹1,266.00",
-        lowPrice: "₹1,249.50",
-        closePrice: "₹1,264.90",
-        tradedValue: "51.99",
-        noOfTrades: "15527",
-        tradedQuantity: "412707",
-      },
-      {
-        date: "31-01-2025",
-        openPrice: "₹1,257.40",
-        highPrice: "₹1,266.00",
-        lowPrice: "₹1,249.50",
-        closePrice: "₹1,264.90",
-        tradedValue: "51.99",
-        noOfTrades: "15527",
-        tradedQuantity: "412707",
-      },
-      // Add more rows as needed
-    ],
+  const API_ENDPOINT_HISTORICAL = "/api/historical-quote"; // Next.js API route
+
+  const handleSearch = async () => {
+    setLoading(true);
+    setError(null);
+    setHistoricalData(null); // Clear previous data
+
+    const startDateStr = `${startDate.year}-${String(startDate.month).padStart(2, '0')}-${String(startDate.day).padStart(2, '0')}`;
+    const endDateStr = `${endDate.year}-${String(endDate.month).padStart(2, '0')}-${String(endDate.day).padStart(2, '0')}`;
+
+    try {
+      const response = await fetch(
+        `${API_ENDPOINT_HISTORICAL}?exchange=${exchange}&startDate=${startDateStr}&endDate=${endDateStr}`
+      );
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      const apiData = await response.json();
+      setHistoricalData(transformHistoricalData(apiData));
+    } catch (e) {
+      console.error("Error fetching historical data:", e);
+      setError("Failed to load historical stock data. Please try again later.");
+    } finally {
+      setLoading(false);
+    }
   };
 
-  const handleSearch = () => {
-    console.log("Selected Exchange:", exchange);
-    console.log("Start Date:", startDate);
-    console.log("End Date:", endDate);
+  const transformHistoricalData = (apiData) => {
+    if (!apiData || !Array.isArray(apiData)) {
+      return null; // Handle cases where API data is missing or not an array
+    }
+
+    const rows = apiData.map(item => ({
+      date: item.date || "-", // Assuming API returns 'date' field
+      openPrice: item.openPrice ? `₹${parseFloat(item.openPrice).toFixed(2)}` : "-", // Format price
+      highPrice: item.highPrice ? `₹${parseFloat(item.highPrice).toFixed(2)}` : "-",
+      lowPrice: item.lowPrice ? `₹${parseFloat(item.lowPrice).toFixed(2)}` : "-",
+      closePrice: item.closePrice ? `₹${parseFloat(item.closePrice).toFixed(2)}` : "-",
+      tradedValue: item.tradedValue || "-", // You might need to format traded value
+      noOfTrades: item.noOfTrades || "-",
+      tradedQuantity: item.tradedQuantity || "-",
+    }));
+
+    return {
+      title: "DATE",
+      dataIndex: "date",
+      header: [
+        { title: "OPEN PRICE", dataIndex: "openPrice" },
+        { title: "HIGH PRICE", dataIndex: "highPrice" },
+        { title: "LOW PRICE", dataIndex: "lowPrice" },
+        { title: "CLOSE PRICE", dataIndex: "closePrice" },
+        { title: "TRADED VALUE", dataIndex: "tradedValue" },
+        { title: "NO. OF TRADES", dataIndex: "noOfTrades" },
+        { title: "TRADED QUANTITY", dataIndex: "tradedQuantity" },
+      ],
+      rows: rows,
+    };
   };
+
 
   const days = Array.from({ length: 31 }, (_, i) => i + 1);
   const months = Array.from({ length: 12 }, (_, i) => i + 1);
-  const years = Array.from({ length: 20 }, (_, i) => 2020 + i);
+  const years = Array.from({ length: 20 }, (_, i) => 2005 + i); // Adjusted year range
 
   return (
     <div className="goal-section1 flex flex-col justify-center items-center py-10 font-branding-medium mt-0 lg:mt-10">
@@ -214,8 +194,9 @@ function Quote() {
             <button
               className="px-12 py-2 text-xl text-primary border-2 border-primary rounded-full font-branding-bold"
               onClick={handleSearch}
+              disabled={loading}
             >
-              Search
+              {loading ? "Searching..." : "Search"}
             </button>
           </div>
         </div>
@@ -230,13 +211,18 @@ function Quote() {
           </span>
         </p>
         <div>
-          <MainTable
-            tableData={BseData}
-            pagination={true}
-            textColor="#4b5563"
-            ClassCss="font-size: 14px"
-            ClassCss1="font-size:16px"
-          />
+          {loading && <p>Loading historical data...</p>}
+          {error && <p className="text-red-500">{error}</p>}
+          {historicalData && (
+            <MainTable
+              tableData={historicalData}
+              pagination={true}
+              textColor="#4b5563"
+              ClassCss="font-size: 14px"
+              ClassCss1="font-size:16px"
+            />
+          )}
+          {!loading && !error && !historicalData && <p>No historical data found for the selected period.</p>}
         </div>
         <div className="w-full font-branding-medium">
           <p>^Traded Value Rs. in Crores.</p>

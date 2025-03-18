@@ -1,73 +1,81 @@
 "use client";
 import LineChart from "@/components/common/LineChart/line";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 function Chart1() {
   const [select, setSelect] = useState("nse");
   const [selectMonth, setSelectMonth] = useState("Today");
+  const [chartData, setChartData] = useState(null);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
 
-  const NseGraphData = {
-    labels: [
-      "09:24",
-      "09:29",
-      "09:34",
-      "09:39",
-      "09:44",
-      "09:49",
-      "09:54",
-      "09:59",
-      "10:04",
-      "10:09",
-      "10:14",
-      "10:19",
-      "10:24",
-      "10:29",
-      "10:34",
-      "10:39",
-      "10:44",
-    ],
+  const API_ENDPOINT_CHART = "/api/chart-data"; // Next.js API route for chart data
 
-    stockPrices: [
-      1248, 1250, 1249, 1247, 1245, 1242, 1240, 1239, 1240, 1241, 1241, 1240,
-      1241, 1243, 1245, 1247, 1249,
-    ],
+  useEffect(() => {
+    const fetchChartData = async () => {
+      setLoading(true);
+      setError(null);
+      setChartData(null); // Clear previous data while loading
 
-    volumes: [
-      600000, 150000, 120000, 130000, 180000, 140000, 160000, 150000, 170000,
-      140000, 160000, 150000, 170000, 160000, 170000, 190000, 200000,
-    ],
+      try {
+        const response = await fetch(
+          `${API_ENDPOINT_CHART}?exchange=${select}&monthRange=${selectMonth}` // Pass exchange and monthRange
+        );
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        const apiData = await response.json();
+        setChartData(transformChartData(apiData)); // Transform API data
+      } catch (e) {
+        console.error("Error fetching chart data:", e);
+        setError("Failed to load chart data. Please try again later.");
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchChartData();
+  }, [select, selectMonth]); // Fetch data when select or selectMonth changes
+
+  const transformChartData = (apiData) => {
+    if (!apiData || !apiData.labels || !apiData.stockPrices || !apiData.volumes) {
+      return null; // Handle cases where API data is missing or in incorrect format
+    }
+
+    return {
+      labels: apiData.labels,
+      stockPrices: apiData.stockPrices,
+      volumes: apiData.volumes,
+    };
   };
-  const BseGraphData = {
-    labels: [
-      "09:24",
-      "09:29",
-      "09:34",
-      "09:39",
-      "09:44",
-      "09:49",
-      "09:54",
-      "09:59",
-      "10:04",
-      "10:09",
-      "10:14",
-      "10:19",
-      "10:24",
-      "10:29",
-      "10:34",
-      "10:39",
-      "10:44",
-    ],
 
-    stockPrices: [
-      1250, 1230, 1211, 1235, 1240, 1247, 1240, 1239, 1240, 1241, 1241, 1240,
-      1241, 1243, 1245, 1247, 1249,
-    ],
+  const graphDataToUse = chartData; // Directly use transformed chartData
 
-    volumes: [
-      600000, 250000, 20000, 130000, 180000, 140000, 160000, 150000, 170000,
-      140000, 160000, 150000, 170000, 160000, 170000, 190000, 200000,
-    ],
-  };
+  if (loading) {
+    return (
+      <div className="goal-section1 pb-10 py-20 bg-white shadow-md rounded-lg  flex justify-center">
+        <div className="flex flex-col w-[90%] items-center">
+          <h1 className="text-6xl font-branding-semibold text-[#2C4AA0] text-center mb-10">
+            Stock Chart
+          </h1>
+          <p>Loading chart data...</p>
+        </div>
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="goal-section1 pb-10 py-20 bg-white shadow-md rounded-lg  flex justify-center">
+        <div className="flex flex-col w-[90%] items-center">
+          <h1 className="text-6xl font-branding-semibold text-[#2C4AA0] text-center mb-10">
+            Stock Chart
+          </h1>
+          <p className="text-red-500">{error}</p>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="goal-section1 pb-10 py-20 bg-white shadow-md rounded-lg  flex justify-center">
@@ -109,9 +117,8 @@ function Chart1() {
             "3 Years",
             "Custom",
           ].map((tab) => (
-            <div className="border-r-2 pr-2">
+            <div className="border-r-2 pr-2" key={tab}>
               <button
-                key={tab}
                 className={` whitespace-nowrap px-4 py-2 ${
                   selectMonth === tab
                     ? " bg-white text-primary rounded-lg"
@@ -126,10 +133,10 @@ function Chart1() {
           ))}
         </div>
         <div className="w-full ">
-          {select === "bse" ? (
-            <LineChart GraphData={BseGraphData} />
+          {graphDataToUse ? (
+            <LineChart GraphData={graphDataToUse} />
           ) : (
-            <LineChart GraphData={NseGraphData} />
+            <p>No chart data available.</p>
           )}
         </div>
       </div>

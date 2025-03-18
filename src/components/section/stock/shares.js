@@ -1,101 +1,153 @@
 "use client";
-import LineChart from "@/components/common/LineChart/line";
 import MainTable from "@/components/common/table/mainTable";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 function Shares() {
   const [select, setSelect] = useState("bse");
+  const [stockData, setStockData] = useState(null); // Store raw API data
+  const [nseDisplayData, setNseDisplayData] = useState(null); // Data for NSE tables
+  const [bseDisplayData, setBsetDisplayData] = useState(null); // Data for BSE tables
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
+  const [timing, setTiming] = useState({
+    delay: "...",
+    lastUpdated: "...",
+  });
 
-  const NseData = {
-    title: "CURRENCY",
-    dataIndex: "currency",
-    header: [
-      { title: "PRICE", dataIndex: "price" },
-      { title: "BID", dataIndex: "bid" },
-      { title: "OFFER", dataIndex: "offer" },
-      { title: "CHANGE IN (%)", dataIndex: "change" },
-      { title: "VOLUME", dataIndex: "volume" },
-    ],
-    rows: [
-      {
-        currency: "Rupees",
-        price: "₹ 1,248.55000",
-        bid: "₹ 1,248.55",
-        offer: "₹ 1,248.60",
-        change: "-1.27%",
-        volume: "3,130,810",
+  const API_ENDPOINT = "/api/stock-data"; // Next.js API route - adjust if needed
+
+  useEffect(() => {
+    const fetchStockData = async () => {
+      setLoading(true);
+      setError(null);
+      try {
+        const response = await fetch(API_ENDPOINT); // No exchange param needed now, API returns both
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        const data = await response.json();
+        setStockData(data); // Store the raw data
+        setTiming({
+          delay: "15", // Assuming realtime data from this API
+          lastUpdated: new Date().toLocaleString(), // Update timestamp
+        });
+      } catch (e) {
+        console.error("Error fetching stock data:", e);
+        setError("Failed to load stock data. Please try again later.");
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchStockData();
+  }, []); // Fetch data once on component mount
+
+  useEffect(() => {
+    if (stockData) {
+      // Transform data whenever raw stockData changes
+      setNseDisplayData(transformStockData("nse", stockData));
+      setBsetDisplayData(transformStockData("bse", stockData));
+    }
+  }, [stockData]); // Re-transform data when stockData updates
+
+  const transformStockData = (exchange, rawData) => {
+    if (!rawData) return null;
+
+    const exchangeData = rawData[exchange]; // e.g., rawData['nse'] or rawData['bse']
+    const bidPrice = rawData[`${exchange}_bid_price`] || "-";
+    const offerPrice = rawData[`${exchange}_offer_price`] || "-";
+    const closePrice = rawData[`${exchange}_close`] || "-";
+    const currentPrice = rawData[exchange] || "-";
+    const volume = rawData[`${exchange}_volume`] || "-";
+    const openPrice = rawData[`${exchange}_open`] || "-";
+
+    let changePercent = "-";
+    let changeValue = "-";
+
+    if (currentPrice !== "-" && closePrice !== "-") {
+      changeValue = (parseFloat(currentPrice) - parseFloat(closePrice)).toFixed(2);
+      changePercent = ((parseFloat(changeValue) / parseFloat(closePrice)) * 100).toFixed(2) + "%";
+    }
+
+
+    return {
+      NseData: { // Reusing NseData for both NSE and BSE display structure
+        title: "CURRENCY",
+        dataIndex: "currency",
+        header: [
+          { title: "PRICE", dataIndex: "price" },
+          { title: "BID", dataIndex: "bid" },
+          { title: "OFFER", dataIndex: "offer" },
+          { title: "CHANGE IN (%)", dataIndex: "change" },
+          { title: "VOLUME", dataIndex: "volume" },
+        ],
+        rows: [
+          {
+            currency: "Rupees", // Assuming currency is always Rupees
+            price: `₹ ${currentPrice}`,
+            bid: `₹ ${bidPrice}`,
+            offer: `₹ ${offerPrice}`,
+            change: `${changeValue} (${changePercent})`,
+            volume: volume,
+          },
+        ],
       },
-    ],
-  };
-  const NseData2 = {
-    title: "TODAY'S OPEN",
-    dataIndex: "todayOpen",
-    header: [
-      { title: "PREVIOUS CLOSE", dataIndex: "previousClose" },
-      { title: "INTRADAY HIGH", dataIndex: "intradayHigh" },
-      { title: "INTRADAY LOW", dataIndex: "intradayLow" },
-      { title: "52 WEEK HIGH", dataIndex: "weekHigh" },
-      { title: "52 WEEK LOW", dataIndex: "weekLow" },
-    ],
-    rows: [
-      {
-        todayOpen: "₹ 1,251.00",
-        previousClose: "₹ 1,264.60",
-        intradayHigh: "₹ 1,253.95",
-        intradayLow: "₹ 1,237.55",
-        weekHigh: "₹ 1,608.80",
-        weekLow: "₹ 1,201.50",
+      NseData2: { // Reusing NseData2 for both NSE and BSE display structure
+        title: "TODAY'S OPEN",
+        dataIndex: "todayOpen",
+        header: [
+          { title: "PREVIOUS CLOSE", dataIndex: "previousClose" },
+          { title: "TODAY'S OPEN", dataIndex: "todayOpen" }, // Changed header to "TODAY'S OPEN"
+          { title: "INTRADAY HIGH", dataIndex: "intradayHigh" },
+          { title: "INTRADAY LOW", dataIndex: "intradayLow" },
+          { title: "52 WEEK HIGH", dataIndex: "weekHigh" },
+          { title: "52 WEEK LOW", dataIndex: "weekLow" },
+        ],
+        rows: [
+          {
+            todayOpen: `₹ ${openPrice}`,
+            previousClose: `₹ ${closePrice}`,
+            intradayHigh: "-", // Not in API response
+            intradayLow: "-",  // Not in API response
+            weekHigh: "-",     // Not in API response
+            weekLow: "-",      // Not in API response
+          },
+        ],
       },
-    ],
-  };
-  const BseData = {
-    title: "CURRENCY",
-    dataIndex: "currency",
-    header: [
-      { title: "PRICE", dataIndex: "price" },
-      { title: "BID", dataIndex: "bid" },
-      { title: "OFFER", dataIndex: "offer" },
-      { title: "CHANGE IN (%)", dataIndex: "change" },
-      { title: "VOLUME", dataIndex: "volume" },
-    ],
-    rows: [
-      {
-        currency: "Rupees",
-        price: "₹ 1,248.55",
-        bid: "₹ 1,248.55",
-        offer: "₹ 1,248.60",
-        change: "-1.27%",
-        volume: "3,130,810",
-      },
-    ],
-  };
-  const BseData2 = {
-    title: "TODAY'S OPEN",
-    dataIndex: "todayOpen",
-    titleColData: "₹ 1,251.00",
-    header: [
-      { title: "PREVIOUS CLOSE", dataIndex: "previousClose" },
-      { title: "INTRADAY HIGH", dataIndex: "intradayHigh" },
-      { title: "INTRADAY LOW", dataIndex: "intradayLow" },
-      { title: "52 WEEK HIGH", dataIndex: "weekHigh" },
-      { title: "52 WEEK LOW", dataIndex: "weekLow" },
-    ],
-    rows: [
-      {
-        todayOpen: "₹ 1,251.00",
-        previousClose: "₹ 1,264.60",
-        intradayHigh: "₹ 1,253.95",
-        intradayLow: "₹ 1,237.55",
-        weekHigh: "₹ 1,608.80",
-        weekLow: "₹ 1,201.50",
-      },
-    ],
+    };
   };
 
-  const timing = {
-    delay: "15",
-    lastUpdated: "03/02/2025 10:39 AM",
-  };
+  const currentDisplayData = select === "nse" ? nseDisplayData : bseDisplayData;
+
+  if (loading) {
+    return (
+      <section className="header_purple goal-section1 pt-20 pb-10 font-branding-medium flex justify-center items-center flex-col">
+        <h2 className="text-6xl font-branding-semibold text-primary text-center my-8">
+          Shares
+        </h2>
+        <div className="w-full flex justify-center items-center flex-col bg-secondary">
+          <div className=" flex flex-col items-center justify-center py-5 w-[90%]">
+            <p>Loading stock data...</p>
+          </div>
+        </div>
+      </section>
+    );
+  }
+
+  if (error) {
+    return (
+      <section className="header_purple goal-section1 pt-20 pb-10 font-branding-medium flex justify-center items-center flex-col">
+        <h2 className="text-6xl font-branding-semibold text-primary text-center my-8">
+          Shares
+        </h2>
+        <div className="w-full flex justify-center items-center flex-col bg-secondary">
+          <div className=" flex flex-col items-center justify-center py-5 w-[90%]">
+            <p className="text-red-500">{error}</p>
+          </div>
+        </div>
+      </section>
+    );
+  }
 
   return (
     <section className="header_purple goal-section1 pt-20 pb-10 font-branding-medium flex justify-center items-center flex-col">
@@ -104,7 +156,7 @@ function Shares() {
       </h2>
       <div className="w-full flex justify-center items-center flex-col bg-secondary">
         <div className=" flex flex-col items-center justify-center py-5 w-[90%]">
-          <div className="flex justify-between w-full items-center">
+          <div className=" flex justify-between w-full items-center">
             <span className="text-3xl text-[#21409A] font-branding-semibold">
               Stock Quote
             </span>
@@ -128,15 +180,16 @@ function Shares() {
           </div>
           <div className=" bg-white w-full flex flex-col items-center my-10">
             <div className=" w-[90%] my-10">
-              {select === "bse" ? (
+              {currentDisplayData && (
                 <div className="flex flex-col gap-10">
-                  <MainTable tableData={BseData} pagination={false} />
-                  <MainTable tableData={BseData2} pagination={false} />
-                </div>
-              ) : (
-                <div className="flex flex-col gap-10">
-                  <MainTable tableData={NseData} pagination={false} />
-                  <MainTable tableData={NseData2} pagination={false} />
+                  <MainTable
+                    tableData={currentDisplayData.NseData}
+                    pagination={false}
+                  />
+                  <MainTable
+                    tableData={currentDisplayData.NseData2}
+                    pagination={false}
+                  />
                 </div>
               )}
             </div>
