@@ -40,7 +40,7 @@ export const MentorModal = ({ isOpen, onClose, data }) => {
       {" "}
       {/* Added onClick to the backdrop to also close modal if clicked on backdrop */}
       <div
-        className="bg-white p-6 rounded-lg shadow-xl max-w-6xl w-full"
+        className="bg-white p-6 rounded-lg shadow-xl max-w-6xl w-full relative"
         ref={modalRef}
         onClick={(e) => e.stopPropagation()}
       >
@@ -48,9 +48,9 @@ export const MentorModal = ({ isOpen, onClose, data }) => {
         {/* Added ref to the modal content and stopPropagation to prevent backdrop click from closing when clicking inside modal */}
         <button
           onClick={onClose}
-          className="absolute top-2 right-2 text-gray-500 hover:text-gray-700"
+          className="absolute top-2git right-3 text-gray-500 hover:text-gray-700 text-2xl font-bold"
         >
-          <p>x</p>
+          &times;
         </button>
         <div
           className={`grid gap-8 ${
