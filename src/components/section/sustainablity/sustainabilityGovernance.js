@@ -1,7 +1,7 @@
 import React from "react";
-import Icon1 from "@/assests/sustainability/icon1.png";
-import Icon2 from "@/assests/sustainability/icon2.png";
-import Icon3 from "@/assests/sustainability/icon3.png";
+import Icon1 from "@/assests/sustainability/icon11.png";
+import Icon2 from "@/assests/sustainability/icon22.png";
+import Icon3 from "@/assests/sustainability/icon33.png";
 import Image from "next/image";
 
 function SustainabilityGovernance() {

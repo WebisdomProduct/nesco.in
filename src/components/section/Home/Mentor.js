@@ -1,7 +1,7 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import MentorImage from "@/assests/Home/SirImage.png";
-import backgroundImage from "@/assests/Home/N2.png";
+import backgroundImage from "@/assests/Home/N-3.png";
 import Image from "next/image";
 
 function Mentor() {

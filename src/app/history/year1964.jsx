@@ -55,7 +55,7 @@ const Year1964 = () => {
               initial={{ opacity: 0, y: -20 }}
               animate={year1964InView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, delay: 0.5 }}
-              className=" h-fit w-fit relative text-6xl md:text-7xl lg:text-9xl font-branding-bold text-blue-700 left-2 sm:left-0  sm:top-0 lg:top-[5vh] m-2"
+              className=" h-fit w-fit relative text-6xl md:text-7xl lg:text-9xl font-branding-bold text-blue-700 left-2 sm:left-0  sm:top-0 lg:top-[1vh]  m-2"
             >
               {count}
               <motion.div
@@ -71,7 +71,7 @@ const Year1964 = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={year1964InView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.7, delay: 0.7 }}
-              className="bottomText flex relative sm:w-full md:w-[70%]  lg:top-[8vh] left-0 sm:left-0  p-2"
+              className="bottomText flex relative sm:w-full md:w-[70%]  lg:top-[1vh] left-0 sm:left-0  p-2"
             >
               <p className="text-sm sm:text-lg md:text-lg lg:text-xl text-white font-poppins">
                 Indabrator is born, on the basis

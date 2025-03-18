@@ -57,7 +57,7 @@ const Year1992 = () => {
               initial={{ opacity: 0, y: -20 }}
               animate={year1992InView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, delay: 0.5 }}
-              className=" h-fit w-fit relative text-6xl md:text-7xl lg:text-8xl text-cyan-500 left-2 sm:left-0 top-2 sm:top-0 lg:top-10 m-2"
+              className=" h-fit w-fit relative text-6xl md:text-7xl lg:text-8xl text-cyan-500 left-2 sm:left-0 top-2 sm:top-0 lg:top-[2vh] m-2"
             >
               {count}
               <motion.div
@@ -73,7 +73,7 @@ const Year1992 = () => {
               initial={{ opacity: 0, scale: 0.9 }}
               animate={year1992InView ? { opacity: 1, scale: 1 } : {}}
               transition={{ duration: 0.7, delay: 0.6 }}
-              className="iconDiv relative  flex w-full sm:w-[70%] md:w-[70%] lg:w-[50%]  sm:left-0 lg:top-[10vh] left-4"
+              className="iconDiv relative  flex w-full sm:w-[70%] md:w-[70%] lg:w-[50%]  sm:left-0 lg:top-[5vh] left-4"
             >
               <Image
                 src={historyEleven}
@@ -89,7 +89,7 @@ const Year1992 = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={year1992InView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.7, delay: 0.7 }}
-              className="bottomText flex relative sm:w-full md:w-[80%] left-0 sm:left-0 lg:top-[15vh] p-2"
+              className="bottomText flex relative sm:w-full md:w-[80%] left-0 sm:left-0 lg:top-[10vh] p-2"
             >
               <p className="text-sm sm:text-lg md:text-lg lg:text-xl text-white font-poppins">
                 The 200,000 square feet Bombay Exhibition Center develops into

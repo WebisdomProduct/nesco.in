@@ -68,7 +68,7 @@ const Year1962 = () => {
               initial={{ opacity: 0, y: -20 }}
               animate={year1962InView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, delay: 0.5 }}
-              className=" h-fit w-fit relative text-6xl md:text-8xl font-branding-bold lg:text-9xl text-white  sm:left-0 md:left-1/4 lg:left-1/2  sm:top-0  m-2"
+              className=" h-fit w-fit relative text-6xl md:text-8xl font-branding-bold lg:text-9xl text-white  sm:left-0 md:left-1/4 lg:left-1/4  sm:top-0  m-2"
             >
               {count}
               <motion.div

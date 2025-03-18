@@ -137,7 +137,7 @@ const page = () => {
         <div className="rightSectionContainer w-fit h-fit m-2  lg:ml-[15%]">
           <div
             ref={upperObserver}
-            className="upperDiv w-fit md:w-[87%] flex flex-col relative md:left-2 lg:left-[2%] ml-auto"
+            className="upperDiv w-fit md:w-[87%] flex flex-col relative md:left-2 lg:left-[2%] ml-auto  mt-[15vh]"
           >
             <motion.div
               initial={{ opacity: 0, scale: 0.9 }}
