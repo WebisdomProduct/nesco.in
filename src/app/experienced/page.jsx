@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { Form, Input, Button, Upload, message, Card, Row, Col } from "antd";
 import { InboxOutlined } from "@ant-design/icons";
 import Image from "next/image";
@@ -26,9 +26,9 @@ const ExperiencedForm = () => {
   return (
     <>
       <Navbar activeSlide={activeSlide} />
-      <div className="banner-section flex justify-center items-center min-h-screen bg-gray-100 p-6">
+      <div className="flex justify-center items-center min-h-screen bg-gray-100 p-6">
         <Card
-          className="w-full md:w-[1400px] bg-white rounded-xl overflow-hidden" // Increased width to 1400px
+          className="w-full md:w-[1400px] bg-white rounded-xl overflow-hidden"
           bodyStyle={{ padding: 0 }}
         >
           <div className="flex flex-col md:flex-row">
@@ -73,7 +73,7 @@ const ExperiencedForm = () => {
                     </Form.Item>
                   </Col>
 
-                  {/* Email */}
+                  {/* Email Address */}
                   <Col xs={24} sm={24} md={12}>
                     <Form.Item
                       label="Email Address"
@@ -87,59 +87,27 @@ const ExperiencedForm = () => {
                     </Form.Item>
                   </Col>
 
-                  {/* Mobile Number */}
+                  {/* Phone Number */}
                   <Col xs={24} sm={24} md={12}>
                     <Form.Item
-                      label="Mobile Number"
-                      name="mobile"
+                      label="Phone Number"
+                      name="phone"
                       rules={[
                         {
                           required: true,
-                          message: "Please enter your mobile number",
+                          message: "Please enter your phone number",
                         },
                         {
                           pattern: /^[0-9]{10}$/,
-                          message: "Invalid mobile number",
+                          message: "Invalid phone number",
                         },
                       ]}
                     >
-                      <Input placeholder="Enter your mobile number" />
+                      <Input placeholder="Enter your phone number" />
                     </Form.Item>
                   </Col>
 
-                  {/* Current Company */}
-                  <Col xs={24} sm={24} md={12}>
-                    <Form.Item
-                      label="Current Company"
-                      name="company"
-                      rules={[
-                        {
-                          required: true,
-                          message: "Please enter your current company",
-                        },
-                      ]}
-                    >
-                      <Input placeholder="Enter your current company name" />
-                    </Form.Item>
-                  </Col>
-
-                  {/* Position */}
-                  <Col xs={24} sm={24} md={12}>
-                    <Form.Item
-                      label="Position"
-                      name="position"
-                      rules={[
-                        {
-                          required: true,
-                          message: "Please enter your current position",
-                        },
-                      ]}
-                    >
-                      <Input placeholder="Enter your current position" />
-                    </Form.Item>
-                  </Col>
-
-                  {/* Experience (in years) */}
+                  {/* Total Experience (in years) */}
                   <Col xs={24} sm={24} md={12}>
                     <Form.Item
                       label="Total Experience (in years)"
@@ -156,6 +124,23 @@ const ExperiencedForm = () => {
                       ]}
                     >
                       <Input placeholder="Enter your total experience (e.g., 5)" />
+                    </Form.Item>
+                  </Col>
+
+                  {/* Current/Most Recent Job Title & Company */}
+                  <Col xs={24}>
+                    <Form.Item
+                      label="Current/Most Recent Job Title & Company"
+                      name="jobDetails"
+                      rules={[
+                        {
+                          required: true,
+                          message:
+                            "Please enter your job title and company name",
+                        },
+                      ]}
+                    >
+                      <Input placeholder="e.g., Software Engineer at Google" />
                     </Form.Item>
                   </Col>
 

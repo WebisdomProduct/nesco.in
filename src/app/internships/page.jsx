@@ -29,7 +29,7 @@ const InternshipForm = () => {
 
       <div className="flex justify-center items-center min-h-screen bg-gray-100 lg:py-8">
         <Card
-          className="w-full md:w-[1500px] bg-white rounded-xl overflow-hidden" // Increased width to 1500px
+          className="w-full md:w-[1500px] bg-white rounded-xl overflow-hidden"
           bodyStyle={{ padding: 0 }}
         >
           <div className="flex flex-col md:flex-row">
@@ -91,24 +91,66 @@ const InternshipForm = () => {
                     </Form.Item>
                   </Col>
 
-                  {/* Mobile Number */}
+                  {/* Phone Number */}
                   <Col xs={24} sm={24} md={12}>
                     <Form.Item
-                      label="Mobile Number"
-                      name="mobile"
+                      label="Phone Number"
+                      name="phone"
                       rules={[
                         {
                           required: true,
-                          message: "Please enter your mobile number",
+                          message: "Please enter your phone number",
                         },
                         {
                           pattern: /^[0-9]{10}$/,
-                          message: "Invalid mobile number",
+                          message: "Invalid phone number",
                         },
                       ]}
                     >
                       <Input
-                        placeholder="Enter your mobile number"
+                        placeholder="Enter your phone number"
+                        className="p-2"
+                      />
+                    </Form.Item>
+                  </Col>
+
+                  {/* University & Degree */}
+                  <Col xs={24} sm={24} md={12}>
+                    <Form.Item
+                      label="University & Degree"
+                      name="university"
+                      rules={[
+                        {
+                          required: true,
+                          message: "Please enter your university and degree",
+                        },
+                      ]}
+                    >
+                      <Input
+                        placeholder="Enter your university and degree"
+                        className="p-2"
+                      />
+                    </Form.Item>
+                  </Col>
+
+                  {/* Expected Graduation Year */}
+                  <Col xs={24} sm={24} md={12}>
+                    <Form.Item
+                      label="Expected Graduation Year"
+                      name="graduationYear"
+                      rules={[
+                        {
+                          required: true,
+                          message: "Please enter your expected graduation year",
+                        },
+                        {
+                          pattern: /^[0-9]{4}$/,
+                          message: "Invalid year format (e.g., 2025)",
+                        },
+                      ]}
+                    >
+                      <Input
+                        placeholder="Enter expected graduation year"
                         className="p-2"
                       />
                     </Form.Item>

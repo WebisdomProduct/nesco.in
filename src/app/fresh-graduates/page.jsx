@@ -29,7 +29,7 @@ const GraduateForm = () => {
 
       <div className="flex justify-center items-center min-h-screen bg-gray-100 lg:py-8">
         <Card
-          className="w-full md:w-[1500px] bg-white rounded-xl overflow-hidden" // Increased width to 1500px
+          className="w-full md:w-[1500px] bg-white rounded-xl overflow-hidden"
           bodyStyle={{ padding: 0 }}
         >
           <div className="flex flex-col md:flex-row">
@@ -91,59 +91,63 @@ const GraduateForm = () => {
                     </Form.Item>
                   </Col>
 
-                  {/* Mobile Number */}
+                  {/* Phone Number */}
                   <Col xs={24} sm={24} md={12}>
                     <Form.Item
-                      label="Mobile Number"
-                      name="mobile"
+                      label="Phone Number"
+                      name="phone"
                       rules={[
                         {
                           required: true,
-                          message: "Please enter your mobile number",
+                          message: "Please enter your phone number",
                         },
                         {
                           pattern: /^[0-9]{10}$/,
-                          message: "Invalid mobile number",
+                          message: "Invalid phone number",
                         },
                       ]}
                     >
                       <Input
-                        placeholder="Enter your mobile number"
+                        placeholder="Enter your phone number"
                         className="p-2"
                       />
                     </Form.Item>
                   </Col>
 
-                  {/* University */}
+                  {/* Degree & Graduation Year */}
                   <Col xs={24} sm={24} md={12}>
                     <Form.Item
-                      label="University Name"
-                      name="university"
+                      label="Degree & Graduation Year"
+                      name="degree"
                       rules={[
                         {
                           required: true,
-                          message: "Please enter your university name",
+                          message:
+                            "Please enter your degree and graduation year",
                         },
                       ]}
                     >
                       <Input
-                        placeholder="Enter your university name"
+                        placeholder="e.g., B.Tech in CSE, 2025"
                         className="p-2"
                       />
                     </Form.Item>
                   </Col>
 
-                  {/* Degree */}
+                  {/* Preferred Job Role */}
                   <Col xs={24} sm={24} md={12}>
                     <Form.Item
-                      label="Degree"
-                      name="degree"
+                      label="Preferred Job Role"
+                      name="jobRole"
                       rules={[
-                        { required: true, message: "Please enter your degree" },
+                        {
+                          required: true,
+                          message: "Please enter your preferred job role",
+                        },
                       ]}
                     >
                       <Input
-                        placeholder="Enter your degree (e.g., B.Tech in CSE)"
+                        placeholder="e.g., Frontend Developer"
                         className="p-2"
                       />
                     </Form.Item>
