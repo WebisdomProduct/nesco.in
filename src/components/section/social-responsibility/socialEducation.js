@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import bannerImage from "@/assests/social/34.png";
 import SocialBanner1 from "@/components/common/SocialBanner/SocialBanner";
 import { MentorModal } from "@/components/common/cards/Cards";
+import { createPortal } from "react-dom";
+
 
 function SocialEducation() {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -121,6 +123,7 @@ function SocialEducation() {
           onClose={closeModal}
           data={selectedCard}
         />
+        
       )}
     </section>
   );

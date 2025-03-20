@@ -58,7 +58,7 @@ const Year1952 = () => {
         ].map((text, index) => (
           <motion.p
             key={index}
-            className="bg-blue-700 m-2 p-2 sm:p-3 md:p-4 text-lg sm:text-xl md:text-2xl text-white font-poppins rounded-md max-w-lg"
+            className="bg-[#0F0E80] m-2 p-2 sm:p-3 md:p-4 text-lg sm:text-xl md:text-2xl text-white font-branding-semibold rounded-md max-w-lg"
             initial={{ opacity: 0, x: -50 }}
             animate={year1952InView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.5, delay: index * 0.2 }}
@@ -79,9 +79,9 @@ const Year1952 = () => {
           color="cyan"
           strokeWidth={1}
         />
-        <span className="absolute text-blue-600 text-center w-fit flex flex-col items-center px-4 py-2 sm:px-6 sm:py-4 md:px-8 md:py-6">
+        <span className="absolute text-sky-400 text-center w-fit flex flex-col items-center px-4 py-2 sm:px-6 sm:py-4 md:px-8 md:py-6">
           <motion.p
-            className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl"
+            className="text-2xl sm:text-3xl md:text-6xl lg:text-5xl 2xl:text-9xl font-branding-bold"
             initial={{ opacity: 0, scale: 0.8 }}
             animate={year1952InView ? { opacity: 1, scale: 1 } : {}}
             transition={{ duration: 1.2, delay: 0.6 }}

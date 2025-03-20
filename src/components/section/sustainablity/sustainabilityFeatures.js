@@ -42,7 +42,7 @@ function SustainabilityFeatures() {
           <p className="text-gray-600 text-lg text-justify ml-20 mr-4">
             {" "}
             Nesco sees sustainability as a catalyst for continuous improvement
-            for its busi nesses. We set ambitious and progres sive goals
+            for its businesses. We set ambitious and progressive goals
             supported by financial and people resources to deliver improving
             positive outcomes. We foster innovation and efficiency with a focus
             on minimizing mizing positive impacts on society.

@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 
+
 import bannerImage from "@/assests/social/12.png";
 import SocialBanner1 from "@/components/common/SocialBanner/SocialBanner";
 import { MentorModal } from "@/components/common/cards/Cards";
+import { createPortal } from "react-dom";
 // import Cards from "@/components/common/cards/Cards";
 
 function SocialInfra() {

@@ -10,53 +10,50 @@ import MentorImage6 from "@/assests/leadership/28-1.jpg";
 
 // Modal Component
 export const MentorModal = ({ isOpen, onClose, data }) => {
-  const modalRef = useRef(null); // Create a ref for the modal
+  const modalRef = useRef(null);
 
   useEffect(() => {
     function handleClickOutside(event) {
       if (modalRef.current && !modalRef.current.contains(event.target)) {
-        onClose(); // Close the modal if clicked outside
+        onClose();
       }
     }
 
     if (isOpen) {
-      document.addEventListener("mousedown", handleClickOutside); // Use mousedown for clicks
+      document.addEventListener("mousedown", handleClickOutside);
+     
     }
 
     return () => {
-      document.removeEventListener("mousedown", handleClickOutside); // Cleanup event listener
+      document.removeEventListener("mousedown", handleClickOutside);
+      // ✅ Re-enable scrolling when closed
+      document.body.style.overflow = "unset";
     };
-  }, [isOpen, onClose]); // Re-run effect when isOpen or onClose changes
+  }, [isOpen, onClose]);
 
-  if (!isOpen || !data) {
-    return null;
-  }
+  if (!isOpen || !data) return null;
 
   return (
     <div
-      className="fixed inset-0 bg-black bg-opacity-50 backdrop-blur-sm flex justify-center items-center"
+      className="fixed inset-0 bg-black bg-opacity-50 backdrop-blur-sm flex justify-center items-center z-50 pointer-events-none"
       onClick={onClose}
     >
-      {" "}
-      {/* Added onClick to the backdrop to also close modal if clicked on backdrop */}
       <div
-        className="bg-white p-6 rounded-lg shadow-xl max-w-6xl w-full relative"
+        className="bg-white p-6 rounded-lg shadow-xl max-w-6xl w-full sm:w-[90%] md:w-[70%] lg:w-[60%] xl:w-[50%] 
+                   relative z-50 pointer-events-auto"
         ref={modalRef}
         onClick={(e) => e.stopPropagation()}
       >
-        {" "}
-        {/* Added ref to the modal content and stopPropagation to prevent backdrop click from closing when clicking inside modal */}
+        {/* ✅ Close Button */}
         <button
           onClick={onClose}
           className="absolute top-2 right-3 text-gray-500 hover:text-gray-700 text-2xl font-bold"
         >
           &times;
         </button>
-        <div
-          className={`grid gap-8 ${
-            data.image ? "grid-cols-1 md:grid-cols-2" : "grid-cols-1"
-          }`}
-        >
+
+        {/* ✅ Content */}
+        <div className={`grid gap-8 ${data.image ? "grid-cols-1 md:grid-cols-2" : "grid-cols-1"}`}>
           <div className="flex flex-col gap-4">
             <h2 className="text-2xl font-branding-semibold">{data.name}</h2>
             <p className="text-gray-700">{data.position}</p>
@@ -65,7 +62,7 @@ export const MentorModal = ({ isOpen, onClose, data }) => {
 
           {data.image && (
             <div className="flex justify-center items-center">
-              <Image
+              <img
                 src={data.image}
                 alt={data.name}
                 className="rounded-lg object-cover max-h-96"
@@ -79,6 +76,11 @@ export const MentorModal = ({ isOpen, onClose, data }) => {
     </div>
   );
 };
+
+
+
+
+
 
 function Cards({ CardData }) {
   const [CardDatas, setCardDatas] = useState(CardData);

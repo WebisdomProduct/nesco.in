@@ -37,20 +37,19 @@ function SocialCSR() {
               </p>
             </div>
             <p>
-              Nesco&#39;s Corporate Social Responsibility (CSR) initiatives are
+              Nesco’s Corporate Social Responsibility (CSR) initiatives are
               designed to promote sustainable development and improve the
               quality of life in the communities where we operate. Our CSR
               efforts focus on key areas such as Education, Health,
               Infrastructure, Sanitation, and Environmental Sustainability. We
               are committed to creating long-term value by investing in local
               communities and addressing their most pressing needs. The CSR
-              Committee ensures that our initiatives are effectively, and
-              continuous monitoring.
-            </p>
-            <p className="">
-              Through these programs, Nesco aims to make a significant and
-              positive impact, enhancing both social welfare and environmental
-              sustainability.
+              Committee ensures that our initiatives are effectively implemented
+              through strategic planning, efficient execution, and continuous
+              monitoring. <br/> <br/>
+               Through these programs, Nesco aims to make a
+              significant and positive impact, enhancing both social welfare and
+              environmental sustainability.
             </p>
             <div className="grid xl:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-5 mt-5">
               {buttonData.map((data, index) => (

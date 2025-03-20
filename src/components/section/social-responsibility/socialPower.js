@@ -9,17 +9,9 @@ function SocialPower() {
           <span className="mt-2 ">power to make a difference! </span>
         </h1>
         <p className="mt-10 md:text-2xl text-white">
-          Across our many sectors, we at Nesco have gone beyond profitability to
-          prioritize benefits that impact local communities, youth, and rural
-          society. Our founder, Mr. J.V. Patel was regarded as a man of strong
-          social conscience who emphasized the need to 'giveback' as a vital
-          aspect of nation-building. Corporate accountability at Nesco is,
-          therefore, embedded into the very foundation of the company. His
-          efforts to promote education and self-sustainability are still close
-          to the heart of the organization and remain at the core of our
-          pioneering initiatives. Over the years, we have transtouch through our
-          organized welfare initiatives, and as a result, we are now one big
-          family.
+        Across our many sectors, we at Nesco have gone beyond the purview of profitability to prioritise benefit. The logic, we felt, was incomplete without impacting local communities, the youth and rural society.
+        Our founder, Mr. J. V. Patel was regarded as a man of strong social conscience who emphasised the need to "give back" as a vital aspect of nation-building. Corporate accountability at Nesco is, therefore embedded into the very foundation of the company. His efforts toward promoting education and self-sustenance are still close to the heart of the organisation as they remain our pioneer initiatives. Over the years, we have changed the lives of thousands that have graduated from our schools and training institute. These are the lives we touch via our organised welfare initiatives and as a result, we are now one big family.
+
         </p>
       </div>
     </section>
