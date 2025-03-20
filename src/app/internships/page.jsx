@@ -33,7 +33,6 @@ const InternshipForm = () => {
           bodyStyle={{ padding: 0 }}
         >
           <div className="flex flex-col md:flex-row">
-            {/* Left Side - Image */}
             <div className="w-full md:w-1/2">
               <Image
                 src={img}
@@ -44,7 +43,6 @@ const InternshipForm = () => {
               />
             </div>
 
-            {/* Right Side - Form */}
             <div className="w-full md:w-1/2 p-8">
               <h2 className="text-3xl font-bold text-center mb-6 text-gray-700">
                 Internship Application
@@ -58,7 +56,6 @@ const InternshipForm = () => {
                 onFinishFailed={handleFinishFailed}
               >
                 <Row gutter={[24, 16]}>
-                  {/* Full Name */}
                   <Col xs={24} sm={24} md={12}>
                     <Form.Item
                       label="Full Name"
@@ -77,7 +74,6 @@ const InternshipForm = () => {
                     </Form.Item>
                   </Col>
 
-                  {/* Email */}
                   <Col xs={24} sm={24} md={12}>
                     <Form.Item
                       label="Email Address"
@@ -91,7 +87,6 @@ const InternshipForm = () => {
                     </Form.Item>
                   </Col>
 
-                  {/* Phone Number */}
                   <Col xs={24} sm={24} md={12}>
                     <Form.Item
                       label="Phone Number"
@@ -114,7 +109,6 @@ const InternshipForm = () => {
                     </Form.Item>
                   </Col>
 
-                  {/* University & Degree */}
                   <Col xs={24} sm={24} md={12}>
                     <Form.Item
                       label="University & Degree"
@@ -133,7 +127,6 @@ const InternshipForm = () => {
                     </Form.Item>
                   </Col>
 
-                  {/* Expected Graduation Year */}
                   <Col xs={24} sm={24} md={12}>
                     <Form.Item
                       label="Expected Graduation Year"
@@ -156,7 +149,6 @@ const InternshipForm = () => {
                     </Form.Item>
                   </Col>
 
-                  {/* Upload Resume */}
                   <Col xs={24}>
                     <Form.Item
                       label="Upload Resume"
@@ -184,7 +176,6 @@ const InternshipForm = () => {
                     </Form.Item>
                   </Col>
 
-                  {/* Submit Button */}
                   <Col xs={24}>
                     <Form.Item>
                       <Button

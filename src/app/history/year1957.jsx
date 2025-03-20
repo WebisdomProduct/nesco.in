@@ -14,22 +14,22 @@ const Year1957 = () => {
     triggerOnce: true,
     onChange: (inView) => setYear1957InView(inView),
   });
-   useEffect(() => {
-      if (year1957InView) {
-        const interval = setInterval(() => {
-          setCount((prevCount) => {
-            const nextCount = prevCount + 5;
-            if (nextCount >= 1957) {
-              clearInterval(interval);
-              return 1957; // Stop exactly at 1957
-            }
-            return nextCount;
-          });
-        }, 10); // Fast counting interval
-  
-        return () => clearInterval(interval);
-      }
-    }, [year1957InView]);
+  useEffect(() => {
+    if (year1957InView) {
+      const interval = setInterval(() => {
+        setCount((prevCount) => {
+          const nextCount = prevCount + 5;
+          if (nextCount >= 1957) {
+            clearInterval(interval);
+            return 1957; // Stop exactly at 1957
+          }
+          return nextCount;
+        });
+      }, 10); // Fast counting interval
+
+      return () => clearInterval(interval);
+    }
+  }, [year1957InView]);
 
   return (
     <motion.div
@@ -51,9 +51,9 @@ const Year1957 = () => {
         <Image
           src={historyFour}
           alt="Historical Image"
-          width={1000}
-          height={500}
-          className="w-full  sm:max-w-[80%] md:[70%] lg:w-[90%] h-auto object-cover transition-transform duration-300 ease-in-out hover:scale-105"
+          width={1500}
+          height={900}
+          className="w-full sm:max-w-[100%] md:max-w-[90%] lg:max-w-[100%] h-auto object-cover transition-transform duration-300 ease-in-out hover:scale-105"
           priority
         />
 
@@ -62,7 +62,7 @@ const Year1957 = () => {
           initial={{ opacity: 0, y: -20 }}
           animate={year1957InView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6, delay: 0.5 }}
-          className="year absolute top-1/2 left-1/3 md:left-1/4  transform -translate-x-1/2 -translate-y-1/2 flex flex-row"
+          className="year absolute inset-0 flex justify-center items-center"
         >
           <p className="text-6xl sm:text-7xl md:text-8xl lg:text-[100px] text-white font-branding-bold">
             {count}
@@ -75,26 +75,26 @@ const Year1957 = () => {
 
       {/* Content Container */}
       <motion.div
-  initial={{ opacity: 0, x: 50 }}
-  animate={year1957InView ? { opacity: 1, x: 0 } : {}}
-  transition={{ duration: 0.7, delay: 0.5 }}
-  className="contentDiv w-full sm:w-full md:w-1/2 flex justify-center items-center px-4 sm:px-8 lg:px-12"
->
-  <motion.div
-    initial={{ opacity: 0, x: 30 }}
-    animate={year1957InView ? { opacity: 1, x: 0 } : {}}
-    transition={{ duration: 0.6, delay: 0.7 }}
-    className="w-full  p-6 sm:p-8  transition-all duration-300"
-  >
-    <p className="text-center text-gray-700 text-lg sm:text-xl md:text-2xl leading-relaxed">
-      <strong>New Standard Engineering</strong> collaborates with <strong>B&S Massey Ltd</strong> to become the first manufacturer in India for forging hammers & presses.
-    </p>
-  </motion.div>
-</motion.div>
-
+        initial={{ opacity: 0, x: 50 }}
+        animate={year1957InView ? { opacity: 1, x: 0 } : {}}
+        transition={{ duration: 0.7, delay: 0.5 }}
+        className="contentDiv w-full sm:w-full md:w-1/2 flex justify-center items-center px-4 sm:px-8 lg:px-12"
+      >
+        <motion.div
+          initial={{ opacity: 0, x: 30 }}
+          animate={year1957InView ? { opacity: 1, x: 0 } : {}}
+          transition={{ duration: 0.6, delay: 0.7 }}
+          className="w-full  p-6 sm:p-8  transition-all duration-300"
+        >
+          <p className="text-center text-gray-700 text-lg sm:text-xl md:text-2xl leading-relaxed">
+            <strong>New Standard Engineering</strong> collaborates with{" "}
+            <strong>B&S Massey Ltd</strong> to become the first manufacturer in
+            India for forging hammers & presses.
+          </p>
+        </motion.div>
+      </motion.div>
     </motion.div>
   );
 };
-
 
 export default Year1957;

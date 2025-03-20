@@ -189,10 +189,8 @@ const page = () => {
           </div>
 
           <div ref={bottomObserver}>
-          {/* <div className="relative bottom-[100vh] left-1/10 h-[800px] w-[2px] bg-black z-10"></div>
-          <div className="relative  left-0 w-[100px] h-[2px] bg-black"></div> */}
             <motion.div
-              className="bottomContentDiv w-fit md:w-[75%] lg:bottom-[10vh] ml-auto text-gray-500 p-4 pt-2 transition-all ease-in-out duration-300 hover:-translate-y-1  lg:z-10 lg:top-[-26vh] flex flex-col md:flex-row relative"
+              className="bottomContentDiv w-fit md:w-[75%] lg:bottom-[10vh] ml-auto text-gray-500 p-4 pt-2 transition-all ease-in-out duration-300 hover:-translate-y-1  lg:z-10 lg:top-[-22vh] flex flex-col md:flex-row relative"
               initial={{ opacity: 0, y: 50 }}
               animate={bottomInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 1, delay: 0.5 }}
