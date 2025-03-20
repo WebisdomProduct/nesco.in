@@ -107,7 +107,7 @@ const ExperiencedForm = () => {
     <>
       <Navbar activeSlide={activeSlide} />
       <ToastContainer /> {/* Added ToastContainer */}
-      <div className="flex justify-center items-center min-h-screen bg-gray-100 py-24">
+      <div className="flex justify-center items-center min-h-screen bg-gray-100 py-10">
         <Card
           className="w-full md:w-[1400px] bg-white rounded-xl overflow-hidden lg:mt-[7vh]"
           bodyStyle={{ padding: 0 }}
