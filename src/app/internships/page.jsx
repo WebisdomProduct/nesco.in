@@ -13,7 +13,7 @@ import {
 } from "antd"; // Added Spin
 import { InboxOutlined } from "@ant-design/icons";
 import Image from "next/image";
-import img from "@/assests/internships/intern2.jpg";
+import img from "@/assests/internships/intern.jpg";
 import Navbar from "@/components/layout/navbar/Navbar";
 import Footer from "@/components/layout/footer/footer";
 import usePostQuery from "@/hooks/postQuery.hook";
