@@ -52,8 +52,8 @@ const Year1956 = () => {
         />
       </div>
 
-      <div className="contentDiv p-6 sm:p-8 m-2 flex flex-col relative bg-blue-900 h-fit w-full">
-        <p className="text-3xl sm:text-4xl md:text-5xl text-left ml-2 p-2 text-white">
+      <div className="contentDiv p-6 sm:p-8 m-2 flex flex-col relative bg-[#060E9F] h-fit w-full">
+        <p className="text-3xl sm:text-4xl md:text-5xl text-left ml-2 p-2 text-[#00A7E1] font-branding-bold leading-8">
           New Standard Engineering <br className="hidden sm:block" />
           Company Ltd
         </p>

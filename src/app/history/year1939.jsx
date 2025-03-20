@@ -36,25 +36,25 @@ const Year1939 = () => {
   return (
     <motion.div
       ref={year1939Observer}
-      className="year1939Div w-full max-w-[90%] md:w-[85%] relative p-4 flex flex-col md:flex-row-reverse items-center gap-6 sm:gap-8 md:gap-10 m-4 ml-auto"
+      className="year1939Div w-full flex flex-col-reverse md:flex-row items-center gap-6 md:gap-12 m-4 ml-auto md:w-[85%] "
       data-year="1939"
       initial={{ opacity: 0, y: 50 }}
       animate={year1939InView ? { opacity: 1, y: 0 } : {}}
-      transition={{ duration: 0.6, delay: 0.5, ease: 'easeOut' }}
+      transition={{ duration: 0.6, delay: 0.5, ease: "easeOut" }}
     >
       {/* Image + Year Number */}
-      <div className="iconDiv w-full md:w-fit flex-1 relative">
+      <div className="iconDiv w-full md:w-[60%] relative">
         <Image
           src={mid}
           alt="Top Image"
-          width={1000}
-          height={500}
-          className="w-full md:w-[90%] lg:w-full h-auto object-cover"
+          width={1800}
+          height={800}
+          className="w-full h-auto object-cover"
           priority
         />
-        <div className="year absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 flex flex-row">
-        <motion.p
-            className="text-[60px] md:text-[100px] text-white font-branding-bold"
+        <div className="year absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+          <motion.p
+            className="text-[80px] md:text-[140px] lg:text-[180px] text-white font-branding-bold"
           >
             {count}
           </motion.p>
@@ -63,21 +63,21 @@ const Year1939 = () => {
 
       {/* Text + Image */}
       <motion.div
-        className="flex-1 flex flex-col justify-center items-center p-4"
+        className="flex-1 flex flex-col justify-center items-start p-4"
         initial={{ opacity: 0, x: 50 }}
         animate={year1939InView ? { opacity: 1, x: 0 } : {}}
-        transition={{ duration: 0.6, delay: 0.5, ease: 'easeOut' }}
+        transition={{ duration: 0.6, delay: 0.5, ease: "easeOut" }}
       >
-        <div className="text-left w-full max-w-sm md:max-w-md lg:max-w-lg p-4">
+        <div className="text-left w-full max-w-sm md:max-w-md lg:max-w-lg ">
           <Image
             src={historyTwo}
             alt="History Image"
             width={300}
             height={300}
-            className="w-full md:w-[80%] lg:w-[90%] h-auto object-cover"
+            className="w-full md:w-[80%] lg:w-[60%] h-auto object-cover lg:ml-14 "
             priority
           />
-          <p className="text-gray-600 mt-6 sm:text-lg md:text-xl lg:text-xl leading-relaxed">
+          <p className="text-gray-600 mt-6 sm:text-lg md:text-xl lg:text-xl leading-relaxed text-center w-[60%] ml-16">
             The founder, Shri. J.V. Patel manifests his vision as the Standard Engineering Company (SEC).
           </p>
         </div>
@@ -85,6 +85,5 @@ const Year1939 = () => {
     </motion.div>
   );
 };
-
 
 export default Year1939;

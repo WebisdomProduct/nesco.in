@@ -18,22 +18,22 @@ export const MentorModal = ({ isOpen, onClose, data }) => {
   useEffect(() => {
     function handleClickOutside(event) {
       if (modalRef.current && !modalRef.current.contains(event.target)) {
-        onClose(); // Close the modal if clicked outside
+        onClose();
       }
     }
 
     if (isOpen) {
-      document.addEventListener("mousedown", handleClickOutside); // Use mousedown for clicks
+      document.addEventListener("mousedown", handleClickOutside);
     }
 
     return () => {
-      document.removeEventListener("mousedown", handleClickOutside); // Cleanup event listener
+      document.removeEventListener("mousedown", handleClickOutside);
+      // ✅ Re-enable scrolling when closed
+      document.body.style.overflow = "unset";
     };
-  }, [isOpen, onClose]); // Re-run effect when isOpen or onClose changes
+  }, [isOpen, onClose]);
 
-  if (!isOpen || !data) {
-    return null;
-  }
+  if (!isOpen || !data) return null;
 
   const handleOk = () => {
     setLoading(true);

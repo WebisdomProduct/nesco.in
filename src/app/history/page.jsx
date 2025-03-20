@@ -137,7 +137,7 @@ const page = () => {
         <div className="rightSectionContainer w-fit h-fit m-2  lg:ml-[15%]">
           <div
             ref={upperObserver}
-            className="upperDiv w-fit md:w-[87%] flex flex-col relative md:left-2 lg:left-[2%] ml-auto  mt-[15vh]"
+            className="upperDiv w-fit md:w-[87%] flex flex-col relative md:left-2 lg:left-[0%] ml-auto mt-[15vh]  h-fit  "
           >
             <motion.div
               initial={{ opacity: 0, scale: 0.9 }}
@@ -147,14 +147,14 @@ const page = () => {
               <Image
                 src={top}
                 alt="Top Image"
-                width={1500}
-                height={300}
-                className="lg:w-[90%] h-auto object-cover relative w-full"
+                width={1200}
+                height={800}
+                className=" h-auto object-cover relative w-full "
               />
             </motion.div>
 
             <motion.div
-              className="sideContentDiv flex flex-col relative bg-sky-500 text-justify p-8 left-0 md:left-[35%] md:bottom-[5vh] lg:bottom-[45vh] w-full sm:w-[60%] md:w-[65%] lg:w-[65%] z-50 transition-all ease-in-out duration-300 hover:-translate-y-1 hover:bg-gray-600"
+              className="sideContentDiv flex flex-col relative bg-sky-500 text-justify p-8 left-0 md:left-[35%]  md:bottom-[5vh] lg:bottom-[45vh] w-full sm:w-[60%] md:w-[65%] lg:w-[65%] z-50 transition-all ease-in-out duration-300 hover:-translate-y-1 hover:bg-gray-600"
               initial={{ opacity: 0, x: 100 }}
               animate={upperInView ? { opacity: 1, x: 0 } : {}}
               transition={{ duration: 1.5, delay: 1 }}
@@ -189,8 +189,10 @@ const page = () => {
           </div>
 
           <div ref={bottomObserver}>
+          {/* <div className="relative bottom-[100vh] left-1/10 h-[800px] w-[2px] bg-black z-10"></div>
+          <div className="relative  left-0 w-[100px] h-[2px] bg-black"></div> */}
             <motion.div
-              className="bottomContentDiv w-fit md:w-[75%] lg:bottom-[10vh] ml-auto text-gray-500 p-4 pt-6 transition-all ease-in-out duration-300 hover:-translate-y-1 mt-6 flex flex-col md:flex-row relative"
+              className="bottomContentDiv w-fit md:w-[75%] lg:bottom-[10vh] ml-auto text-gray-500 p-4 pt-2 transition-all ease-in-out duration-300 hover:-translate-y-1  lg:z-10 lg:top-[-26vh] flex flex-col md:flex-row relative"
               initial={{ opacity: 0, y: 50 }}
               animate={bottomInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 1, delay: 0.5 }}
@@ -204,23 +206,23 @@ const page = () => {
                 <Image
                   src={historyOne}
                   alt="Mid Image"
-                  width={300}
-                  height={200}
+                  width={400}
+                  height={300}
                   className="md:w-[95%] lg:w-[90%] h-auto object-cover relative w-full sm:w-auto"
                 />
               </motion.div>
 
               <motion.div
-                className="textDiv flex flex-col relative w-full md:w-[50%] m-2 items-center justify-center md:left-[4%]"
+                className="textDiv flex flex-col relative w-full md:w-[50%]  items-center justify-center md:left-[4%] m-1 p-1 "
                 initial={{ opacity: 0, x: 50 }}
                 animate={bottomInView ? { opacity: 1, x: 0 } : {}}
                 transition={{ duration: 1, delay: 1 }}
               >
-                <p className="md:text-2xl lg:text-4xl sm:text-xl text-lg font-branding-semibold text-center p-2">
+                <p className="sm:text-3xl md:text-2xl lg:text-6xl lg:w-[95%]  font-branding-semibold text-center">
                   ‘Your right is in action, never to its fruits, let not the
                   fruits of action be your motive.’
                 </p>
-                <p className="text-md font-branding-semibold text-center p-2">
+                <p className="text-md font-branding-semibold text-center mt-4">
                   The Bhagavad Gita, Chapter 2, Verse 47. A verse that was Shri.
                   J.V. Patel's guiding statement in life.
                 </p>
