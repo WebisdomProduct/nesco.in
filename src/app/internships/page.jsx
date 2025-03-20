@@ -29,7 +29,7 @@ const InternshipForm = () => {
 
       <div className="flex justify-center items-center min-h-screen bg-gray-100 lg:py-8">
         <Card
-          className="w-full md:w-[1500px] bg-white rounded-xl overflow-hidden"
+          className="w-full md:w-[1500px] bg-white rounded-xl overflow-hidden lg:mt-[7vh]"
           bodyStyle={{ padding: 0 }}
         >
           <div className="flex flex-col md:flex-row">
