@@ -35,8 +35,7 @@ function LifeCommitment() {
           <Image
             src={CommitmentImage}
             alt="Two People shaking hand"
-            
-            className="md:w-full md:h-full"
+            className="md:w-full md:h-full aspect-square"
             priority
           />
         </div>

@@ -114,7 +114,7 @@ function Cards({ CardData }) {
 
   return (
     <div className="w-full  py-4 flex justify-center">
-      <div className="grid xl:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-10 w-[90%]">
+      <div className="grid xl:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-5 w-[90%]">
         {CardDatas?.map((data, index) => (
           <div
             key={index}

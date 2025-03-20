@@ -1,6 +1,16 @@
 "use client";
 import React, { useState } from "react";
-import { Form, Input, Button, Upload, message, Card, Row, Col } from "antd";
+import {
+  Form,
+  Input,
+  Button,
+  Upload,
+  message,
+  Card,
+  Row,
+  Col,
+  Spin,
+} from "antd"; // Added Spin
 import { InboxOutlined } from "@ant-design/icons";
 import Image from "next/image";
 import img from "@/assests/internships/intern2.jpg";
@@ -8,13 +18,13 @@ import Navbar from "@/components/layout/navbar/Navbar";
 import Footer from "@/components/layout/footer/footer";
 import usePostQuery from "@/hooks/postQuery.hook";
 import { apiUrls } from "@/apis";
-import { toast } from "react-toastify";
+import { toast, ToastContainer } from "react-toastify"; // Added ToastContainer
 
 const ExperiencedForm = () => {
   const [form] = Form.useForm();
   const [activeSlide, setActiveSlide] = useState(0);
-
   const { postQuery } = usePostQuery();
+  const [loading, setLoading] = useState(false); // Added loading state
 
   const handleDocumentUpload = (file) => {
     return new Promise((resolve, reject) => {
@@ -44,10 +54,12 @@ const ExperiencedForm = () => {
 
   const onSubmit = async (data) => {
     console.log("Form Submission Triggered! Data:", data);
+    setLoading(true); // Start loader
     try {
       const file = data.resume?.[0]?.originFileObj;
       if (!file) {
         toast.error("Please select a PDF file");
+        setLoading(false); // Stop loader
         return;
       }
 
@@ -69,27 +81,32 @@ const ExperiencedForm = () => {
               resumeFile: response?.data,
             },
             onSuccess: () => {
-              toast.success("Document uploaded and data created successfully");
+              toast.success("Details send");
               form.resetFields(); // Reset form after submission
+              setLoading(false); // Stop loader
               // navigate("/announcement/list");
             },
             onFail: () => {
               toast.error("Failed to create document");
+              setLoading(false); // Stop loader
             },
           });
         },
         onFail: () => {
           toast.error("Document upload failed");
+          setLoading(false); // Stop loader
         },
       });
     } catch (error) {
       toast.error("Error processing file");
+      setLoading(false); // Stop loader
     }
   };
 
   return (
     <>
       <Navbar activeSlide={activeSlide} />
+      <ToastContainer /> {/* Added ToastContainer */}
       <div className="flex justify-center items-center min-h-screen bg-gray-100 py-24">
         <Card
           className="w-full md:w-[1400px] bg-white rounded-xl overflow-hidden lg:mt-[7vh]"
@@ -257,8 +274,10 @@ const ExperiencedForm = () => {
                         type="primary"
                         htmlType="submit"
                         className="w-full bg-blue-500 hover:bg-blue-600"
+                        disabled={loading} // Disable button while loading
                       >
-                        Submit Application
+                        {loading ? <Spin /> : "Submit Application"}{" "}
+                        {/* Show loader */}
                       </Button>
                     </Form.Item>
                   </Col>
@@ -268,7 +287,6 @@ const ExperiencedForm = () => {
           </div>
         </Card>
       </div>
-
       <Footer />
     </>
   );

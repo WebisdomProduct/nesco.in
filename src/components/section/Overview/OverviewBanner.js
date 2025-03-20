@@ -40,7 +40,7 @@ function OverviewBanner() {
   ];
 
   return (
-    <div className="w-full header_color_black">
+    <div className="w-full ">
       {/* <Navbar activeSlide={activeSlide} /> */}
       {/* <Banner SliderData={SliderData}  onSlideChange={handleSlideChange} /> */}
       <Banner

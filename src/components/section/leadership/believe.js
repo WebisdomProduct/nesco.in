@@ -1,5 +1,5 @@
 import React from "react";
-import chessImage from "@/assests/leadership/24.png";
+import chessImage from "@/assests/leadership/24-1.png";
 import Image from "next/image";
 import LeaderIcon from "@/assests/leadership/Leader.png";
 
@@ -17,11 +17,11 @@ function believe() {
         </div>
         <div className="flex relative mt-10">
           <div className=" flex lg:flex-row flex-col xl:items-start items-center w-full gap-10 overflow-hidden">
-            <div className="relative h-[430px] lg:w-[40%] w-full top-2">
+            <div className="relative lg:w-[38%] w-full top-2">
               <Image
                 src={chessImage}
                 alt="Chess Image"
-                className=" w-full h-full "
+                className=" w-full object-cover object-bottom aspect-square"
                 priority
               />
             </div>

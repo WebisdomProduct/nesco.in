@@ -1,7 +1,7 @@
 "use client";
 import Banner from "@/components/common/MainBanner/Banner";
 import React, { useState } from "react";
-import bannerImage from "@/assests/careers/73-1.png";
+import bannerImage from "@/assests/careers/73.jpeg";
 import Navbar from "@/components/layout/navbar/Navbar";
 function LifeBanner() {
   const [activeSlide, setActiveSlide] = useState(0);
@@ -18,7 +18,7 @@ function LifeBanner() {
           <p>Be celebrated,</p>
           <p>recognised</p>
           <p>and valued.</p>
-          <p className="text-blue-500 text-6xl">Believe</p>
+          <p className="text-[#08A8DD] text-6xl">Believe</p>
           <p className="text-xl md:w-[100%] mt-10">
             At Nesco, we see ourselves as a family and we are
             <br /> all about giving our employees the breadth to expand and

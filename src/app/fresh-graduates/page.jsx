@@ -1,6 +1,16 @@
 "use client";
 import React, { useState } from "react";
-import { Form, Input, Button, Upload, message, Card, Row, Col } from "antd";
+import {
+  Form,
+  Input,
+  Button,
+  Upload,
+  message,
+  Card,
+  Row,
+  Col,
+  Spin,
+} from "antd";
 import { InboxOutlined } from "@ant-design/icons";
 import Image from "next/image";
 import img from "@/assests/internships/intern2.jpg";
@@ -8,33 +18,25 @@ import Navbar from "@/components/layout/navbar/Navbar";
 import Footer from "@/components/layout/footer/footer";
 import { apiUrls } from "@/apis";
 import usePostQuery from "@/hooks/postQuery.hook";
-import { toast } from "react-toastify";
+import { toast, ToastContainer } from "react-toastify";
 
 const GraduateForm = () => {
   const [form] = Form.useForm();
   const [activeSlide, setActiveSlide] = useState(0);
-
   const { postQuery } = usePostQuery();
+  const [loading, setLoading] = useState(false);
 
   const handleDocumentUpload = (file) => {
     return new Promise((resolve, reject) => {
       const reader = new FileReader();
-      // console.log(reader);
       reader.onloadend = () => {
         const base64String = reader.result;
-        // console.log(base64String);
         resolve(base64String);
       };
       reader.onerror = (error) => reject(error);
       reader.readAsDataURL(file);
     });
   };
-
-  // const handleFinish = (values) => {
-  //   console.log("Form values:", values);
-  //   message.success("Application submitted successfully!");
-  //   form.resetFields(); // Reset form after submission
-  // };
 
   const handleFinishFailed = (errorInfo) => {
     console.log("Failed:", errorInfo);
@@ -44,10 +46,12 @@ const GraduateForm = () => {
 
   const onSubmit = async (data) => {
     console.log("Form Submission Triggered! Data:", data);
+    setLoading(true);
     try {
       const file = data.resume?.[0]?.originFileObj;
       if (!file) {
         toast.error("Please select a PDF file");
+        setLoading(false);
         return;
       }
 
@@ -69,34 +73,37 @@ const GraduateForm = () => {
               resumeFile: response?.data,
             },
             onSuccess: () => {
-              toast.success("Document uploaded and data created successfully");
-              form.resetFields(); // Reset form after submission
-              // navigate("/announcement/list");
+              toast.success("Details send");
+              form.resetFields();
+              setLoading(false);
             },
             onFail: () => {
               toast.error("Failed to create document");
+              setLoading(false);
             },
           });
         },
         onFail: () => {
           toast.error("Document upload failed");
+          setLoading(false);
         },
       });
     } catch (error) {
       toast.error("Error processing file");
+      setLoading(false);
     }
   };
+
   return (
     <>
       <Navbar activeSlide={activeSlide} />
-
+      <ToastContainer />
       <div className="flex justify-center items-center min-h-screen bg-gray-100 lg:py-24">
         <Card
           className="w-full md:w-[1500px] bg-white rounded-xl overflow-hidden lg:mt-[7vh]"
           bodyStyle={{ padding: 0 }}
         >
           <div className="flex flex-col md:flex-row">
-            {/* Left Side - Image */}
             <div className="w-full md:w-1/2">
               <Image
                 src={img}
@@ -107,7 +114,6 @@ const GraduateForm = () => {
               />
             </div>
 
-            {/* Right Side - Form */}
             <div className="w-full md:w-1/2 p-8">
               <h2 className="text-3xl font-bold text-center mb-6 text-gray-700">
                 Fresh Graduate Application
@@ -121,7 +127,6 @@ const GraduateForm = () => {
                 onFinishFailed={handleFinishFailed}
               >
                 <Row gutter={[24, 16]}>
-                  {/* Full Name */}
                   <Col xs={24} sm={24} md={12}>
                     <Form.Item
                       label="Full Name"
@@ -140,7 +145,6 @@ const GraduateForm = () => {
                     </Form.Item>
                   </Col>
 
-                  {/* Email */}
                   <Col xs={24} sm={24} md={12}>
                     <Form.Item
                       label="Email Address"
@@ -154,7 +158,6 @@ const GraduateForm = () => {
                     </Form.Item>
                   </Col>
 
-                  {/* Phone Number */}
                   <Col xs={24} sm={24} md={12}>
                     <Form.Item
                       label="Phone Number"
@@ -177,7 +180,6 @@ const GraduateForm = () => {
                     </Form.Item>
                   </Col>
 
-                  {/* Degree & Graduation Year */}
                   <Col xs={24} sm={24} md={12}>
                     <Form.Item
                       label="Degree"
@@ -210,7 +212,6 @@ const GraduateForm = () => {
                     </Form.Item>
                   </Col>
 
-                  {/* Preferred Job Role */}
                   <Col xs={24} sm={24} md={12}>
                     <Form.Item
                       label="Preferred Job Role"
@@ -229,7 +230,6 @@ const GraduateForm = () => {
                     </Form.Item>
                   </Col>
 
-                  {/* Upload Resume */}
                   <Col xs={24}>
                     <Form.Item
                       label="Upload Resume"
@@ -257,15 +257,15 @@ const GraduateForm = () => {
                     </Form.Item>
                   </Col>
 
-                  {/* Submit Button */}
                   <Col xs={24}>
                     <Form.Item>
                       <Button
                         type="primary"
                         htmlType="submit"
                         className="w-full bg-blue-500 hover:bg-blue-600"
+                        disabled={loading}
                       >
-                        Submit Application
+                        {loading ? <Spin /> : "Submit Application"}
                       </Button>
                     </Form.Item>
                   </Col>

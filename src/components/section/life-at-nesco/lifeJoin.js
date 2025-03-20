@@ -3,20 +3,24 @@ import InternshipLogo from "@/assests/careers/internship.png";
 import GraduatesLogo from "@/assests/careers/graduates.png";
 import ProfessionalLogo from "@/assests/careers/professional.png";
 import Image from "next/image";
+import Link from "next/link";
 
 function LifeJoin() {
   const careerCard = [
     {
       image: InternshipLogo,
       title: "Internships",
+      link: "/internships",
     },
     {
       image: GraduatesLogo,
       title: "Fresh Graduates",
+      link: "/fresh-graduates",
     },
     {
       image: ProfessionalLogo,
       title: "Experienced Professionals",
+      link: "/experienced",
     },
   ];
 
@@ -43,13 +47,18 @@ function LifeJoin() {
               className="flex flex-col justify-center items-center"
             >
               <div className="md:w-[20rem] md:h-[20rem] w-[60%] overflow-hidden">
-                <Image
-                  src={data.image}
-                  alt={data.title}
-                  className="w-full h-full object-cover -mt-1"
-                />
+                <Link href={data.link}>
+                  <Image
+                    src={data.image}
+                    alt={data.title}
+                    className="w-full h-full object-cover -mt-1"
+                  />
+                </Link>
               </div>
-              <p className="mt-5 text-center text-xl">{data.title}</p>
+
+              <p className="mt-5 text-center text-xl">
+                <Link href={data.link}>{data.title}</Link>
+              </p>
             </div>
           ))}
         </div>

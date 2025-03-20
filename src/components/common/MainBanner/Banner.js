@@ -92,7 +92,7 @@ function Banner({
               <img
                 src={SliderData[0].image.src}
                 alt="banner image"
-                className={`w-full h-full object-contain ${filter}`}
+                className={`w-full object-cover ${filter}`}
               />
             </div>
           ) : (
