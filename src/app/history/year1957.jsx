@@ -43,17 +43,17 @@ const Year1957 = () => {
     >
       {/* Image Container */}
       <motion.div
-        className="iconDiv w-full sm:w-[60%] flex justify-center items-center relative"
-        initial={{ scale: 0.8, opacity: 0 }}
+        className="iconDiv flex justify-center items-center relative"
+        initial={{ scale: 1, opacity: 0 }}
         animate={year1957InView ? { opacity: 1, y: 0 } : {}}
         transition={{ duration: 0.6, delay: 0.3 }}
       >
         <Image
           src={historyFour}
           alt="Historical Image"
-          width={1500}
+          width={2800}
           height={900}
-          className="w-full sm:max-w-[100%] md:max-w-[90%] lg:max-w-[100%] h-auto object-cover transition-transform duration-300 ease-in-out hover:scale-105"
+          className="w-full sm:max-w-[100%] md:max-w-[90%] lg:max-w-[73rem] object-cover transition-transform duration-300 ease-in-out hover:scale-105"
           priority
         />
 
@@ -78,13 +78,13 @@ const Year1957 = () => {
         initial={{ opacity: 0, x: 50 }}
         animate={year1957InView ? { opacity: 1, x: 0 } : {}}
         transition={{ duration: 0.7, delay: 0.5 }}
-        className="contentDiv w-full sm:w-full md:w-1/2 flex justify-center items-center px-4 sm:px-8 lg:px-12"
+        className="contentDiv w-full sm:w-full md:w-[60%] flex justify-center items-center px-4 sm:px-8 lg:px-12"
       >
         <motion.div
           initial={{ opacity: 0, x: 30 }}
           animate={year1957InView ? { opacity: 1, x: 0 } : {}}
           transition={{ duration: 0.6, delay: 0.7 }}
-          className="w-full  p-6 sm:p-8  transition-all duration-300"
+          className="w-full  transition-all duration-300"
         >
           <p className="text-center text-gray-700 text-lg sm:text-xl md:text-2xl leading-relaxed">
             <strong>New Standard Engineering</strong> collaborates with{" "}
