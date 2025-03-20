@@ -119,15 +119,18 @@ const InternshipForm = () => {
                 alt="Internship"
                 width={700}
                 height={500}
-                className="object-cover w-full h-full"
+                className="object-cover w-full h-full object-left"
               />
             </div>
 
             <div className="w-full md:w-1/2 p-8">
-              <h2 className="text-3xl font-bold text-center mb-6 text-gray-700">
+              <h2 className="text-3xl font-bold text-center mb-2 text-gray-700">
                 Internship Application
               </h2>
 
+              <h3 className="text-lg font-branding-semibold mb-6 text-center">
+                Vacancy : 100
+              </h3>
               <Form
                 form={form}
                 name="internship_form"

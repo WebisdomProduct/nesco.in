@@ -13,7 +13,7 @@ import {
 } from "antd";
 import { InboxOutlined } from "@ant-design/icons";
 import Image from "next/image";
-import img from "@/assests/internships/intern2.jpg";
+import img from "@/assests/internships/intern1.jpg";
 import Navbar from "@/components/layout/navbar/Navbar";
 import Footer from "@/components/layout/footer/footer";
 import { apiUrls } from "@/apis";
@@ -110,15 +110,17 @@ const GraduateForm = () => {
                 alt="Graduate"
                 width={600}
                 height={400}
-                className="object-cover w-full h-full"
+                className="object-cover w-full h-full "
               />
             </div>
 
             <div className="w-full md:w-1/2 p-8">
-              <h2 className="text-3xl font-bold text-center mb-6 text-gray-700">
+              <h2 className="text-3xl font-bold text-center mb-2 text-gray-700">
                 Fresh Graduate Application
               </h2>
-
+              <h3 className="text-lg font-branding-semibold mb-6 text-center">
+                Vacancy : 100
+              </h3>
               <Form
                 form={form}
                 name="graduate_form"

@@ -13,7 +13,7 @@ import {
 } from "antd"; // Added Spin
 import { InboxOutlined } from "@ant-design/icons";
 import Image from "next/image";
-import img from "@/assests/internships/intern2.jpg";
+import img from "@/assests/internships/experience.jpeg";
 import Navbar from "@/components/layout/navbar/Navbar";
 import Footer from "@/components/layout/footer/footer";
 import usePostQuery from "@/hooks/postQuery.hook";
@@ -126,9 +126,13 @@ const ExperiencedForm = () => {
 
             {/* Right Side - Form */}
             <div className="w-full md:w-1/2 p-8">
-              <h2 className="text-3xl font-bold text-center mb-6 text-gray-700">
+              <h2 className="text-3xl font-bold text-center mb-2 text-gray-700">
                 Experienced Candidate Application
               </h2>
+
+              <h3 className="text-lg font-branding-semibold mb-6 text-center">
+                Vacancy : 100
+              </h3>
 
               <Form
                 form={form}
