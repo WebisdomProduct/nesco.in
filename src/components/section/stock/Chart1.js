@@ -9,23 +9,25 @@ function Chart1() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
-  const API_ENDPOINT_CHART = "/api/chart-data"; // Next.js API route for chart data
+  const API_ENDPOINT_CHART = "/api/chart-data";
 
   useEffect(() => {
     const fetchChartData = async () => {
       setLoading(true);
       setError(null);
-      setChartData(null); // Clear previous data while loading
+      setChartData(null);
 
       try {
         const response = await fetch(
-          `${API_ENDPOINT_CHART}?exchange=${select}&monthRange=${selectMonth}` // Pass exchange and monthRange
+          `${API_ENDPOINT_CHART}?exchange=${select}&monthRange=${selectMonth}`
         );
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
         }
         const apiData = await response.json();
-        setChartData(transformChartData(apiData)); // Transform API data
+        console.log("API Response:", apiData); // Debugging
+
+        setChartData(transformChartData(apiData));
       } catch (e) {
         console.error("Error fetching chart data:", e);
         setError("Failed to load chart data. Please try again later.");
@@ -35,25 +37,29 @@ function Chart1() {
     };
 
     fetchChartData();
-  }, [select, selectMonth]); // Fetch data when select or selectMonth changes
+  }, [select, selectMonth]);
 
+  // Function to transform API data into the required chart format
   const transformChartData = (apiData) => {
-    if (!apiData || !apiData.labels || !apiData.stockPrices || !apiData.volumes) {
-      return null; // Handle cases where API data is missing or in incorrect format
-    }
+    if (!apiData) return null;
+
+    console.log("Transforming data for:", select);
 
     return {
-      labels: apiData.labels,
-      stockPrices: apiData.stockPrices,
-      volumes: apiData.volumes,
+      labels: ["Open", "Close", "Bid Price", "Offer Price"], // Static labels
+      stockPrices: [
+        parseFloat(apiData[`${select}_open`] || 0),
+        parseFloat(apiData[`${select}_close`] || 0),
+        parseFloat(apiData[`${select}_bid_price`] || 0),
+        parseFloat(apiData[`${select}_offer_price`] || 0)
+      ],
+      volumes: [parseInt(apiData[`${select}_volume`] || 0, 10)],
     };
   };
 
-  const graphDataToUse = chartData; // Directly use transformed chartData
-
   if (loading) {
     return (
-      <div className="goal-section1 pb-10 py-20 bg-white shadow-md rounded-lg  flex justify-center">
+      <div className="goal-section1 pb-10 py-20 bg-white shadow-md rounded-lg flex justify-center">
         <div className="flex flex-col w-[90%] items-center">
           <h1 className="text-6xl font-branding-semibold text-[#2C4AA0] text-center mb-10">
             Stock Chart
@@ -66,7 +72,7 @@ function Chart1() {
 
   if (error) {
     return (
-      <div className="goal-section1 pb-10 py-20 bg-white shadow-md rounded-lg  flex justify-center">
+      <div className="goal-section1 pb-10 py-20 bg-white shadow-md rounded-lg flex justify-center">
         <div className="flex flex-col w-[90%] items-center">
           <h1 className="text-6xl font-branding-semibold text-[#2C4AA0] text-center mb-10">
             Stock Chart
@@ -78,7 +84,7 @@ function Chart1() {
   }
 
   return (
-    <div className="goal-section1 pb-10 py-20 bg-white shadow-md rounded-lg  flex justify-center">
+    <div className="goal-section1 pb-10 py-20 bg-white shadow-md rounded-lg flex justify-center">
       <div className="flex flex-col w-[90%] items-center">
         <h1 className="text-6xl font-branding-semibold text-[#2C4AA0] text-center mb-10">
           Stock Chart
@@ -119,9 +125,9 @@ function Chart1() {
           ].map((tab) => (
             <div className="border-r-2 pr-2" key={tab}>
               <button
-                className={` whitespace-nowrap px-4 py-2 ${
+                className={`whitespace-nowrap px-4 py-2 ${
                   selectMonth === tab
-                    ? " bg-white text-primary rounded-lg"
+                    ? "bg-white text-primary rounded-lg"
                     : "text-white"
                 }`}
                 onClick={() => setSelectMonth(tab)}
@@ -132,9 +138,9 @@ function Chart1() {
             </div>
           ))}
         </div>
-        <div className="w-full ">
-          {graphDataToUse ? (
-            <LineChart GraphData={graphDataToUse} />
+        <div className="w-full">
+          {chartData ? (
+            <LineChart GraphData={chartData} />
           ) : (
             <p>No chart data available.</p>
           )}
