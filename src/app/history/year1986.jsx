@@ -26,7 +26,7 @@ const Year1986 = () => {
       whileHover={{ scale: 1.02, y: -2 }}
     >
       {/* Blue Background Strip */}
-      <div className="absolute top-[3%] md:left-4 lg:left-10 w-[90%] h-[70%] bg-blue-800 transition-shadow duration-300 hover:shadow-lg hover:shadow-blue-500/50 z-0 m-4" />
+      <div className="absolute top-[3%] md:left-4 lg:left-10 w-[90%] h-[70%] bg-primary transition-shadow duration-300 hover:shadow-lg hover:shadow-blue-500/50 z-0 m-4" />
 
       {/* Image Container */}
       <motion.div

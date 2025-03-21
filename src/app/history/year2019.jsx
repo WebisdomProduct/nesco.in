@@ -14,27 +14,27 @@ const Year2019 = () => {
     onChange: (inView) => setYear2019InView(inView),
   });
 
-    useEffect(() => {
-        if (Year2019InView) {
-          const interval = setInterval(() => {
-            setCount((prevCount) => {
-              const nextCount = prevCount + 5;
-              if (nextCount >= 2019) {
-                clearInterval(interval);
-                return 2019; // Stop exactly at 2019
-              }
-              return nextCount;
-            });
-          }, 10); // Fast counting interval
-    
-          return () => clearInterval(interval);
-        }
-      }, [Year2019InView]);
+  useEffect(() => {
+    if (Year2019InView) {
+      const interval = setInterval(() => {
+        setCount((prevCount) => {
+          const nextCount = prevCount + 5;
+          if (nextCount >= 2019) {
+            clearInterval(interval);
+            return 2019; // Stop exactly at 2019
+          }
+          return nextCount;
+        });
+      }, 10); // Fast counting interval
+
+      return () => clearInterval(interval);
+    }
+  }, [Year2019InView]);
 
   return (
     <motion.div
       ref={Year2019Observer}
-      className="Year2019 mt-[14vh] flex flex-col sm:flex-col p-6 md:mr-4 "
+      className="Year2019 mt-[10vh] flex flex-col sm:flex-col p-6 md:mr-4 "
       initial={{ opacity: 0, x: 50 }}
       animate={Year2019InView ? { opacity: 1, x: 0 } : {}}
       transition={{ duration: 0.8, ease: "easeOut" }}

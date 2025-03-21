@@ -13,6 +13,7 @@ function Banner({
   onSlideChange,
   filter,
   heightClassName,
+  height1,
   apperentClassName = "absolute bg-black opacity-[0.55] z-10",
 }) {
   const sliderRef = React.useRef(null);
@@ -92,7 +93,7 @@ function Banner({
               <img
                 src={SliderData[0].image.src}
                 alt="banner image"
-                className={`w-full object-cover ${filter}`}
+                className={`w-full object-cover ${height1} ${filter}`}
               />
             </div>
           ) : (

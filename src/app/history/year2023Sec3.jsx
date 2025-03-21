@@ -15,27 +15,27 @@ const Year2023Sec3 = () => {
     triggerOnce: true,
     onChange: (inView) => setYear2023Sec3InView(inView),
   });
-    useEffect(() => {
-        if (Year2023Sec3InView) {
-          const interval = setInterval(() => {
-            setCount((prevCount) => {
-              const nextCount = prevCount + 5;
-              if (nextCount >= 2023) {
-                clearInterval(interval);
-                return 2023; // Stop exactly at 2023
-              }
-              return nextCount;
-            });
-          }, 10); // Fast counting interval
-    
-          return () => clearInterval(interval);
-        }
-      }, [Year2023Sec3InView]);
+  useEffect(() => {
+    if (Year2023Sec3InView) {
+      const interval = setInterval(() => {
+        setCount((prevCount) => {
+          const nextCount = prevCount + 5;
+          if (nextCount >= 2023) {
+            clearInterval(interval);
+            return 2023; // Stop exactly at 2023
+          }
+          return nextCount;
+        });
+      }, 10); // Fast counting interval
+
+      return () => clearInterval(interval);
+    }
+  }, [Year2023Sec3InView]);
 
   return (
     <motion.div
       ref={Year2023Sec3Observer}
-      className="Year2023Sec3 md:mt-[10vh] lg:mt-[30vh] flex flex-col sm:flex-col p-6 md:mr-4 "
+      className="Year2023Sec3 md:mt-[10vh] lg:mt-[35vh] flex flex-col sm:flex-col p-6 md:mr-4 "
       initial={{ opacity: 0, x: 50 }}
       animate={Year2023Sec3InView ? { opacity: 1, x: 0 } : {}}
       transition={{ duration: 0.8, ease: "easeOut" }}

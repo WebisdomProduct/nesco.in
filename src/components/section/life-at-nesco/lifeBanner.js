@@ -31,7 +31,7 @@ function LifeBanner() {
 
   return (
     <div className="w-full section">
-      <Navbar activeSlide={activeSlide} />
+      {/* <Navbar activeSlide={activeSlide} /> */}
       {/* <Banner SliderData={SliderData}  onSlideChange={handleSlideChange} /> */}
       <Banner SliderData={SliderData} onSlideChange={handleSlideChange} />
     </div>

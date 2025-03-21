@@ -80,8 +80,12 @@ function Quote() {
     const rows = [
       {
         date: apiData?.date || "-",
+        volume: apiData?.volume || "-",
         openPrice: apiData?.bse_bid_price
           ? `₹${parseFloat(apiData?.bse_bid_price).toFixed(2)}`
+          : "-",
+        closePrice: apiData?.bse_close
+          ? `₹${parseFloat(apiData?.bse_close).toFixed(2)}`
           : "-",
         highPrice: apiData?.bse_offer_price
           ? `₹${parseFloat(apiData?.bse_offer_price).toFixed(2)}`
@@ -89,12 +93,9 @@ function Quote() {
         lowPrice: apiData?.nse_bid_price
           ? `₹${parseFloat(apiData?.nse_bid_price).toFixed(2)}`
           : "-",
-        closePrice: apiData?.bse_close
-          ? `₹${parseFloat(apiData?.bse_close).toFixed(2)}`
-          : "-",
-        tradedValue: apiData.tradedValue || "-",
-        noOfTrades: apiData.noOfTrades || "-",
-        tradedQuantity: apiData.tradedQuantity || "-",
+        // tradedValue: apiData.tradedValue || "-",
+        // noOfTrades: apiData.noOfTrades || "-",
+        // tradedQuantity: apiData.tradedQuantity || "-",
       },
     ];
 
@@ -102,13 +103,14 @@ function Quote() {
       title: "DATE",
       dataIndex: "date",
       header: [
+        { title: "Volume", dataIndex: "volume" },
         { title: "OPEN PRICE", dataIndex: "openPrice" },
         { title: "HIGH PRICE", dataIndex: "highPrice" },
         { title: "LOW PRICE", dataIndex: "lowPrice" },
         { title: "CLOSE PRICE", dataIndex: "closePrice" },
-        { title: "TRADED VALUE", dataIndex: "tradedValue" },
-        { title: "NO. OF TRADES", dataIndex: "noOfTrades" },
-        { title: "TRADED QUANTITY", dataIndex: "tradedQuantity" },
+        // { title: "TRADED VALUE", dataIndex: "tradedValue" },
+        // { title: "NO. OF TRADES", dataIndex: "noOfTrades" },
+        // { title: "TRADED QUANTITY", dataIndex: "tradedQuantity" },
       ],
       rows: rows,
     };
@@ -119,7 +121,7 @@ function Quote() {
   const years = Array.from({ length: 21 }, (_, i) => 2005 + i); // Adjusted year range
 
   return (
-    <div className="goal-section1 flex flex-col justify-center items-center py-10 font-branding-medium mt-0 lg:mt-10">
+    <div className="header_purple flex flex-col justify-center items-center py-10 font-branding-medium mt-0 lg:mt-10">
       <h2 className="text-6xl font-branding-semibold text-primary text-center mb-10">
         Historical Stock Quote
       </h2>

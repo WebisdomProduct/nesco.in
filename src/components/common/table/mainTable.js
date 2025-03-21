@@ -26,10 +26,10 @@ const MainTable = ({
 
         /* Custom Table Header */
         .ant-table-thead > tr > th {
-          background-color: #272ad9;
+          background-color: #2b2a76;
           color: white;
           font-weight: 400;
-          background-color: #272ad9 !important;
+          background-color: #2b2a76 !important;
           border: none !important;
           ${ClassCss1};
         }

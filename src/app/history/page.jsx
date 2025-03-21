@@ -63,7 +63,7 @@ const Timeline = ({ years, isFooterVisible }) => {
     >
       <ul className="relative pl-4">
         {years.map((year, index) => (
-          <li key={index} className="relative flex items-center space-x-2 mb-4">
+          <li key={index} className="relative flex items-center space-x-2 mb-3">
             <motion.span
               className="w-3 h-3 rounded-full relative z-10"
               animate={{
@@ -134,10 +134,10 @@ const page = () => {
       <div className="historyDiv header_purple max-w-full flex flex-col overflow-x-hidden overflow-y-auto scrollbar-hide">
         <Timeline years={years} isFooterVisible={isFooterVisible} />
 
-        <div className="rightSectionContainer w-fit h-fit m-2  lg:ml-[15%]">
+        <div className="rightSectionContainer w-fit m-2  lg:ml-[10%]">
           <div
             ref={upperObserver}
-            className="upperDiv w-fit md:w-[87%] flex flex-col relative md:left-2 lg:left-[0%] ml-auto mt-[15vh]  h-fit  "
+            className="upperDiv w-fit md:w-[87%] flex flex-col relative md:left-2 lg:left-[0%] ml-auto transform translate-y-[10vh] "
           >
             <motion.div
               initial={{ opacity: 0, scale: 0.9 }}
@@ -154,20 +154,18 @@ const page = () => {
             </motion.div>
 
             <motion.div
-              className="sideContentDiv flex flex-col relative bg-sky-500 text-justify p-8 left-0 md:left-[35%]  md:bottom-[5vh] lg:bottom-[45vh] w-full sm:w-[60%] md:w-[65%] lg:w-[65%] z-50 transition-all ease-in-out duration-300 hover:-translate-y-1 hover:bg-gray-600"
+              className="sideContentDiv flex flex-col relative bg-sky-500 transform text-justify p-8 left-0 md:left-[35%]  md:bottom-[5vh] lg:bottom-[45vh] w-full sm:w-[60%] md:w-[65%] lg:w-[65%] z-50 transition-all ease-in-out duration-300 hover:-translate-y-1 "
               initial={{ opacity: 0, x: 100 }}
               animate={upperInView ? { opacity: 1, x: 0 } : {}}
               transition={{ duration: 1.5, delay: 1 }}
             >
               <div className="header flex relative w-full">
-                <p className="lg:text-6xl sm:text-3xl text-xl font-branding-medium p-2 text-left text-sky-900">
+                <p className="lg:text-4xl sm:text-3xl text-xl font-branding-medium p-2 text-left text-sky-900">
                   Every journey begins with a single step. Introducing the man
                   behind the legacy.
                 </p>
               </div>
-              <br />
-              <br />
-              <p className="font-branding-medium p-2 lg:text-2xl text-white sm:text-lg text-md">
+              <p className="font-branding-medium p-2 lg:text-xl text-white sm:text-lg text-md">
                 Shri. J. V. Patel, or Jethabhai as he was fondly called, grew up
                 in an India that was not industrially advanced. The lack of
                 external inspiration only dared him to dream big and become an
@@ -175,9 +173,7 @@ const page = () => {
                 transformed and strengthened the backbone of the changed Indian
                 industry.
               </p>
-              <br />
-              <br />
-              <p className="font-branding-medium text-white p-2 lg:text-2xl sm:text-lg text-md">
+              <p className="font-branding-medium text-white p-2 lg:text-xl sm:text-lg text-md">
                 The Standard Engineering Company was in fact founded on his
                 belief in ‘indigenous’ growth. He also took several sick
                 companies under his wing, which is why he was often known as the
@@ -190,7 +186,7 @@ const page = () => {
 
           <div ref={bottomObserver}>
             <motion.div
-              className="bottomContentDiv w-fit md:w-[75%] lg:bottom-[10vh] ml-auto text-gray-500 p-4 pt-2 transition-all ease-in-out duration-300 hover:-translate-y-1  lg:z-10 lg:top-[-22vh] flex flex-col md:flex-row relative"
+              className="bottomContentDiv w-fit md:w-[80%]  ml-auto text-gray-500 transition-all ease-in-out duration-300 hover:-translate-y-1  lg:z-10 lg:top-[-10rem] transform flex flex-col md:flex-row relative"
               initial={{ opacity: 0, y: 50 }}
               animate={bottomInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 1, delay: 0.5 }}
@@ -204,14 +200,14 @@ const page = () => {
                 <Image
                   src={historyOne}
                   alt="Mid Image"
-                  width={400}
-                  height={300}
-                  className="md:w-[200px] lg:w-[250px] h-auto object-cover relative w-full sm:w-auto"
+                  width={600}
+                  height={400}
+                  className="md:w-[200px] lg:w-[300px] h-auto object-cover relative w-full sm:w-auto"
                 />
               </motion.div>
 
               <motion.div
-                className="textDiv flex flex-col relative w-full md:w-[50%]  items-center justify-center md:left-[4%] m-1 p-1 "
+                className="flex flex-col relative w-full md:w-[50%]  items-center justify-center md:left-[4%]"
                 initial={{ opacity: 0, x: 50 }}
                 animate={bottomInView ? { opacity: 1, x: 0 } : {}}
                 transition={{ duration: 1, delay: 1 }}

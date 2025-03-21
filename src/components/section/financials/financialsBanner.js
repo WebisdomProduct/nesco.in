@@ -13,7 +13,7 @@ function FinancialsBanner() {
   const SliderData = [
     {
       image: bannerImage,
-      isOpacity:true,
+      isOpacity: true,
       data: (
         <div className="absolute z-20 md:top-[30%] left-[10%]">
           <div className="innerContainer text-center">
@@ -41,6 +41,7 @@ function FinancialsBanner() {
         SliderData={SliderData}
         onSlideChange={handleSlideChange}
         filter={filter}
+        height1="h-full"
       />
     </div>
   );

@@ -1,4 +1,4 @@
-export const apiBaseUrl = "https://nesco-backend-pi.vercel.app/";
+export const apiBaseUrl = "https://nesco-backend-pi.vercel.app";
 // export const apiBaseUrl = "http://localhost:8040";
 
 export const apiUrls = {

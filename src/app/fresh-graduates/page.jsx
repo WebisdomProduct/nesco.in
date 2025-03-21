@@ -98,7 +98,7 @@ const GraduateForm = () => {
     <>
       <Navbar activeSlide={activeSlide} />
       <ToastContainer />
-      <div className="flex justify-center items-center min-h-screen bg-gray-100 lg:py-24">
+      <div className="flex justify-center items-center min-h-screen bg-gray-100 lg:py-10 header_purple">
         <Card
           className="w-full md:w-[1500px] bg-white rounded-xl overflow-hidden lg:mt-[7vh]"
           bodyStyle={{ padding: 0 }}
@@ -226,7 +226,7 @@ const GraduateForm = () => {
                       ]}
                     >
                       <Input
-                        placeholder="e.g., Frontend Developer"
+                        placeholder="e.g., Sales & Marketing"
                         className="p-2"
                       />
                     </Form.Item>

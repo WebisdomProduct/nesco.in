@@ -46,54 +46,61 @@ export const MentorModal = ({ isOpen, onClose, data }) => {
   };
 
   return (
-    <Modal
-      open={isOpen}
-      // title={data.name}
-      onOk={handleOk}
-      onCancel={onClose}
-      width="80%"
-      // bodyStyle={{ height: "600px" }}
-      // footer={[
-      //   <Button key="back" onClick={onClose}>
-      //     Return
-      //   </Button>,
-      //   <Button
-      //     key="submit"
-      //     type="primary"
-      //     loading={loading}
-      //     onClick={handleOk}
-      //   >
-      //     Submit
-      //   </Button>,
-      // ]}
-      footer={false}
-      centered
-    >
-      <div ref={modalRef} className="w-full h-full -mb-2 p-4">
-        <div
-          className={`grid gap-8  ${
-            data.image ? "grid-cols-1 md:grid-cols-2" : "grid-cols-1"
-          }`}
-        >
-          <div className="flex flex-col gap-4">
-            <h2 className="text-2xl font-branding-semibold">{data.name}</h2>
-            <p className="text-gray-700">{data.position}</p>
-            <p className="text-gray-800 text-justify">{data.description}</p>
-          </div>
-          {data.image && (
-            <div className="flex justify-end items-center">
-              <Image
-                src={data.image}
-                alt={data.name}
-                className="rounded-lg object-cover max-h-96 object-top"
-                width={400}
-                height={400}
-              />
+    <>
+      <div className="w-full h-full absolute top-0 "></div>
+      <Modal
+        open={isOpen}
+        // title={data.name}
+        onOk={handleOk}
+        onCancel={onClose}
+        width="60%"
+        height="80%"
+        // bodyStyle={{ height: "600px" }}
+        // footer={[
+        //   <Button key="back" onClick={onClose}>
+        //     Return
+        //   </Button>,
+        //   <Button
+        //     key="submit"
+        //     type="primary"
+        //     loading={loading}
+        //     onClick={handleOk}
+        //   >
+        //     Submit
+        //   </Button>,
+        // ]}
+        footer={false}
+        centered
+        maskStyle={{ backdropFilter: "blur(10px)" }} // Apply blur effect using maskStyle
+      >
+        <div ref={modalRef} className="w-full h-full">
+          <h2 className="text-2xl font-branding-semibold text-primary">
+            {data.name}
+          </h2>
+          <p className="text-gray-700 mb-5 text-[1.1rem]">{data.position}</p>
+          <div
+            className={`grid gap-8  ${
+              data.image ? "grid-cols-1 md:grid-cols-2" : "grid-cols-1"
+            }`}
+          >
+            <div className="flex flex-col gap-4">
+              <p className="text-gray-800 text-justify">{data.description}</p>
             </div>
-          )}
+            {data.image && (
+              <div className="flex justify-end items-start">
+                <Image
+                  src={data.image}
+                  alt={data.name}
+                  className="rounded-lg object-cover max-h-96 object-top"
+                  width={400}
+                  height={400}
+                />
+              </div>
+            )}
+          </div>
         </div>
-      </div>
-    </Modal>
+      </Modal>
+    </>
   );
 };
 
@@ -113,8 +120,8 @@ function Cards({ CardData }) {
   };
 
   return (
-    <div className="w-full  py-4 flex justify-center">
-      <div className="grid xl:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-5 w-[90%]">
+    <div className="w-full  py-3 flex justify-center">
+      <div className="grid xl:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-5 w-[70%]">
         {CardDatas?.map((data, index) => (
           <div
             key={index}
@@ -122,7 +129,7 @@ function Cards({ CardData }) {
             style={{ cursor: "pointer" }}
           >
             <div
-              className="flex flex-col gap-1 w-[19rem] py-3 px-3 border-gray-500  border-2 h-full items-center "
+              className="flex flex-col gap-1 w-[19rem] py-3 px-3 border-gray-200  border-2 h-full items-center "
               onClick={() => openModal(data)}
             >
               <Image
@@ -132,7 +139,7 @@ function Cards({ CardData }) {
               />
 
               <p className="flex justify-between mt-2 w-full">
-                <span className="font-branding-semibold text-lg inline-block w-full text-left">
+                <span className="font-branding-semibold text-[1.1rem] inline-block w-full text-left">
                   {data.name}
                 </span>
                 <span className="flex items-center">

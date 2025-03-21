@@ -16,27 +16,27 @@ const Year2017 = () => {
     onChange: (inView) => setYear2017InView(inView),
   });
 
-    useEffect(() => {
-        if (year2017InView) {
-          const interval = setInterval(() => {
-            setCount((prevCount) => {
-              const nextCount = prevCount + 5;
-              if (nextCount >= 2017) {
-                clearInterval(interval);
-                return 2017; // Stop exactly at 2017
-              }
-              return nextCount;
-            });
-          }, 10); // Fast counting interval
-    
-          return () => clearInterval(interval);
-        }
-      }, [year2017InView]);
+  useEffect(() => {
+    if (year2017InView) {
+      const interval = setInterval(() => {
+        setCount((prevCount) => {
+          const nextCount = prevCount + 5;
+          if (nextCount >= 2017) {
+            clearInterval(interval);
+            return 2017; // Stop exactly at 2017
+          }
+          return nextCount;
+        });
+      }, 10); // Fast counting interval
+
+      return () => clearInterval(interval);
+    }
+  }, [year2017InView]);
 
   return (
     <motion.div
       ref={year2017Observer}
-      className="year2017 sm:mt-[2vh] md:mt-[5vh] lg:mt-[14vh] flex flex-col sm:flex-col p-6 md:ml-4"
+      className="year2017 mt-0 md:mt-[5vh] lg:mt-[20vh] flex flex-col sm:flex-col p-6 md:ml-4"
       initial={{ opacity: 0, x: 50 }}
       animate={year2017InView ? { opacity: 1, x: 0 } : {}}
       transition={{ duration: 0.8, ease: "easeOut" }}

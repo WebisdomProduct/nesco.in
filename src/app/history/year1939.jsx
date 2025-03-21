@@ -44,15 +44,16 @@ const Year1939 = () => {
     >
       {/* Image + Year Number */}
       <div className="iconDiv w-full md:w-[70%] relative">
+        <div className="absolute w-full h-full bg-primary -top-[10%] -left-[10%] z-0"></div>
         <Image
           src={mid}
           alt="Top Image"
           width={2800}
           height={800}
-          className="w-full h-auto object-cover"
+          className="w-full h-auto object-cover z-10 relative"
           priority
         />
-        <div className="year absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+        <div className="year absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-20">
           <motion.p className="text-[80px] md:text-[140px] lg:text-[180px] text-white font-branding-bold">
             {count}
           </motion.p>

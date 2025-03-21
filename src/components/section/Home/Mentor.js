@@ -81,10 +81,10 @@ function Mentor() {
                 />
               </div>
               <div className="text-center mt-4">
-                <h3 className="text-2xl font-branding-semibold text-primary">
+                <h3 className="text-[1.8rem] font-branding-semibold text-primary">
                   Sumant J. Patel
                 </h3>
-                <p className="mt-1 font-branding-medium">
+                <p className="mt-1 font-branding-medium text-[1.2rem]">
                   (15th August 1935 – 17th November 2021)
                 </p>
               </div>

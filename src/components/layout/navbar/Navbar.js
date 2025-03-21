@@ -279,7 +279,7 @@ function Navbar({ activeSlide }) {
 
   return (
     <nav
-      key={activeSlide}
+      // key={activeSlide}
       className={`py-6 md:px-6 px-8 flex items-center justify-between w-full z-[999] fixed transition-all duration-50 ${changeNavbar()} ${changeNavbar1()}`}
     >
       {!isScrolled && (

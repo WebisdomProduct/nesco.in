@@ -15,34 +15,34 @@ const Year2016 = () => {
     onChange: (inView) => setYear2016InView(inView),
   });
 
-    useEffect(() => {
-        if (year2016InView) {
-          const interval = setInterval(() => {
-            setCount((prevCount) => {
-              const nextCount = prevCount + 5;
-              if (nextCount >= 2016) {
-                clearInterval(interval);
-                return 2016; // Stop exactly at 2016
-              }
-              return nextCount;
-            });
-          }, 10); // Fast counting interval
-    
-          return () => clearInterval(interval);
-        }
-      }, [year2016InView]);
+  useEffect(() => {
+    if (year2016InView) {
+      const interval = setInterval(() => {
+        setCount((prevCount) => {
+          const nextCount = prevCount + 5;
+          if (nextCount >= 2016) {
+            clearInterval(interval);
+            return 2016; // Stop exactly at 2016
+          }
+          return nextCount;
+        });
+      }, 10); // Fast counting interval
+
+      return () => clearInterval(interval);
+    }
+  }, [year2016InView]);
 
   return (
     <motion.div
       ref={year2016Observer}
-      className="year2016 md:mt-[10vh] lg:mt-[35vh] flex flex-col sm:flex-col p-6"
+      className="year2016 md:mt-[10vh] lg:mt-[20vh] mt-0 flex flex-col sm:flex-col p-6"
       initial={{ opacity: 0, x: 50 }}
       animate={year2016InView ? { opacity: 1, x: 0 } : {}}
       transition={{ duration: 0.8, ease: "easeOut" }}
       whileHover={{ scale: 1.02, y: -5 }}
       data-year="2016"
     >
-      <div className="container flex flex-col sm:flex-col md:flex-row lg:flex-row relative m-auto mt-4 mb-4  p-4">
+      <div className="container flex flex-col sm:flex-col md:flex-row lg:flex-row relative m-auto md:mt-4 md:mb-4  p-4">
         {/* Left Content */}
 
         {/* Right Image */}

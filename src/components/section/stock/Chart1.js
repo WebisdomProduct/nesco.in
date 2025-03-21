@@ -51,7 +51,7 @@ function Chart1() {
         parseFloat(apiData[`${select}_open`] || 0),
         parseFloat(apiData[`${select}_close`] || 0),
         parseFloat(apiData[`${select}_bid_price`] || 0),
-        parseFloat(apiData[`${select}_offer_price`] || 0)
+        parseFloat(apiData[`${select}_offer_price`] || 0),
       ],
       volumes: [parseInt(apiData[`${select}_volume`] || 0, 10)],
     };

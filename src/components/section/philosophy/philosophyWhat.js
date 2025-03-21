@@ -23,6 +23,9 @@ function PhilosophyWhat() {
   const headerRef = useRef(null);
 
   useEffect(() => {
+    if (!sectionRef.current || !textContainerRef.current || !headerRef.current)
+      return;
+
     const fadeIn = () => {
       gsap.fromTo(
         textContainerRef.current,
@@ -63,6 +66,8 @@ function PhilosophyWhat() {
   }, [currentText]);
 
   useEffect(() => {
+    if (!sectionRef.current || !headerRef.current) return;
+
     gsap.fromTo(
       sectionRef.current,
       { opacity: 0, y: 100 },
@@ -94,6 +99,8 @@ function PhilosophyWhat() {
         },
       }
     );
+
+    ScrollTrigger.refresh();
   }, []);
 
   return (
