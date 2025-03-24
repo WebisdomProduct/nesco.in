@@ -13,7 +13,7 @@ import { Button, Modal } from "antd";
 // Modal Component
 export const MentorModal = ({ isOpen, onClose, data }) => {
   const [loading, setLoading] = useState(false);
-  const modalRef = useRef(null); // Create a ref for the modal
+  const modalRef = useRef(null);
 
   useEffect(() => {
     function handleClickOutside(event) {
@@ -24,13 +24,11 @@ export const MentorModal = ({ isOpen, onClose, data }) => {
 
     if (isOpen) {
       document.addEventListener("mousedown", handleClickOutside);
-      // Disable scrolling when modal is open
       document.body.style.overflow = "hidden";
     }
 
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
-      // ✅ Re-enable scrolling when closed
       document.body.style.overflow = "unset";
     };
   }, [isOpen, onClose]);
@@ -46,40 +44,30 @@ export const MentorModal = ({ isOpen, onClose, data }) => {
   };
 
   return (
-    <>
-      <div className="w-full h-full absolute top-0 "></div>
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-70 backdrop-blur-md">
       <Modal
         open={isOpen}
-        // title={data.name}
         onOk={handleOk}
         onCancel={onClose}
         width="60%"
-        height="80%"
-        // bodyStyle={{ height: "600px" }}
-        // footer={[
-        //   <Button key="back" onClick={onClose}>
-        //     Return
-        //   </Button>,
-        //   <Button
-        //     key="submit"
-        //     type="primary"
-        //     loading={loading}
-        //     onClick={handleOk}
-        //   >
-        //     Submit
-        //   </Button>,
-        // ]}
+        style={{
+          top: "50%",
+          transform: "translateY(-50%)",
+          maxHeight: "80vh",
+          // overflowY: "auto",
+        }}
         footer={false}
-        centered
-        maskStyle={{ backdropFilter: "blur(10px)" }} // Apply blur effect using maskStyle
+        // centered
+        mask={true}
+        maskStyle={{ backdropFilter: "blur(10px)" }}
       >
-        <div ref={modalRef} className="w-full h-full">
+        <div ref={modalRef} className="w-full -mb-3">
           <h2 className="text-2xl font-branding-semibold text-primary">
             {data.name}
           </h2>
           <p className="text-gray-700 mb-5 text-[1.1rem]">{data.position}</p>
           <div
-            className={`grid gap-8  ${
+            className={`grid gap-8 ${
               data.image ? "grid-cols-1 md:grid-cols-2" : "grid-cols-1"
             }`}
           >
@@ -100,7 +88,7 @@ export const MentorModal = ({ isOpen, onClose, data }) => {
           </div>
         </div>
       </Modal>
-    </>
+    </div>
   );
 };
 

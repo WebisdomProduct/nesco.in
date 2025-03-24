@@ -237,11 +237,13 @@ function Quote() {
           {/* Search Button */}
           <div>
             <button
-              className="px-12 py-2 text-xl text-primary border-2 border-primary rounded-full font-branding-bold"
+              className={`${
+                loading === true ? "px-10" : "px-12"
+              } py-2 text-xl text-primary border-2 border-primary rounded-full font-branding-bold`}
               onClick={handleSearch}
               disabled={loading}
             >
-              {loading ? "Searching..." : "Search"}
+              {loading ? "Searching" : "Search"}
             </button>
           </div>
         </div>
