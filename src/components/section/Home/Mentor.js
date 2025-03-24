@@ -14,6 +14,8 @@ function Mentor() {
   const textRef = useRef(null);
 
   useEffect(() => {
+    gsap.registerPlugin(ScrollTrigger);
+
     setText(fullText);
 
     gsap.fromTo(

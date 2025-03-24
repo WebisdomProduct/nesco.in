@@ -1,5 +1,5 @@
 import React from "react";
-import background from "@/assests/Home/N-5.png";
+import background from "@/assests/Home/N.png";
 
 function Life() {
   return (
@@ -44,7 +44,7 @@ function Life() {
           <img
             src={background.src}
             alt="background"
-            className="absolute z-0 xl:w-[80%] w-[70%] -right-[10%]"
+            className="absolute z-0 xl:w-[60%] w-[50%] right-1"
           />
           <div className="absolute hidden lg:block z-0 xl:bottom-20 bottom-10 right-12 h-[33%] w-[140px]">
             <div

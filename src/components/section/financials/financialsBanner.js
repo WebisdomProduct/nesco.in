@@ -41,7 +41,6 @@ function FinancialsBanner() {
         SliderData={SliderData}
         onSlideChange={handleSlideChange}
         filter={filter}
-        height1="h-full"
       />
     </div>
   );

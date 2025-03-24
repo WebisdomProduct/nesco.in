@@ -23,7 +23,7 @@ function MainHome() {
     {
       comp: (
         // <AnimateOnScroll>
-          <Goal />
+        <Goal />
         // </AnimateOnScroll>
       ),
       classCss: "section",
@@ -31,7 +31,7 @@ function MainHome() {
     {
       comp: (
         // <AnimateOnScroll>
-          <Mentor />
+        <Mentor />
         // </AnimateOnScroll>
       ),
       classCss: "section",
@@ -39,7 +39,7 @@ function MainHome() {
     {
       comp: (
         // <AnimateOnScroll>
-          <Service />
+        <Service />
         // </AnimateOnScroll>
       ),
       classCss: "section",
@@ -47,7 +47,7 @@ function MainHome() {
     {
       comp: (
         // <AnimateOnScroll>
-          <Life />
+        <Life />
         // </AnimateOnScroll>
       ),
       classCss: "section",
@@ -55,7 +55,7 @@ function MainHome() {
     {
       comp: (
         // <AnimateOnScroll>
-          <News />
+        <News />
         // </AnimateOnScroll>
       ),
       classCss: "section ",

@@ -1,105 +1,49 @@
-import React from "react";
+"use client";
+import { apiUrls } from "@/apis";
+import useGetQuery from "@/hooks/getQuery.hook";
+import React, { useEffect, useMemo, useState } from "react";
 import { FaArrowDown } from "react-icons/fa";
 
 function ShareUnclaimed() {
-  // function getFileName(fileUrl) {
-  //   // Ensure fileUrl is a string
-  //   const fileUrlString = fileUrl;
-  //   // If window is undefined (server side), use the fileUrlString directly
-  //   if (typeof window === "undefined") {
-  //     return fileUrlString.split("/").pop();
-  //   }
+  const { getQuery } = useGetQuery();
+  const [loading, setLoading] = useState(false);
+  const [getData, setGetData] = useState([]);
 
-  //   let location = window.location.origin;
-  //   const urlObj = new URL(fileUrlString, location);
-  //   const fileNameWithHash = urlObj.pathname.split("/").pop();
-  //   const parts = fileNameWithHash.split(".");
-  //   // If the file name doesn't contain a dot (unexpected), return the full name
-  //   if (parts.length < 2) return fileNameWithHash;
-  //   const originalName = parts[0];
-  //   const extension = parts[parts.length - 1];
-  //   return `${originalName}.${extension}`;
-  // }
+  // Function to format date
+  const formatDate = (dateString) => {
+    const date = new Date(dateString);
+    const day = date.getDate();
+    const month = date.toLocaleString("default", { month: "short" });
+    const year = date.getFullYear();
+    return `${day} ${month} ${year}`;
+  };
 
-  const tableData = [
-    {
-      financialYear: "2023-2024",
-      dividend: "300",
-      unclaimedDividend: "40,45,230.00",
-      lastDate: "20-Aug-31",
-      dueDate: "07-Sep-31",
-      downloadFile: new URL(
-        "@/assests/shareHolder/unclaimed/2023-2024-Unclaimed-Dividend-31-12-2024.pdf",
-        import.meta.url
-      ).href,
-    },
-    {
-      financialYear: "2022-2023",
-      dividend: "225",
-      unclaimedDividend: "13,87,914.50",
-      lastDate: "09-Aug-30",
-      dueDate: "05-Sep-30",
-      downloadFile: new URL(
-        "@/assests/shareHolder/unclaimed/2022-2023-Unclaimed-Dividend.pdf",
-        import.meta.url
-      ).href,
-    },
-    {
-      financialYear: "2021-2022",
-      dividend: "150",
-      unclaimedDividend: "11,27,513.00",
-      lastDate: "13-Aug-29",
-      dueDate: "14-Sep-29",
-      downloadFile: new URL(
-        "@/assests/shareHolder/unclaimed/2021-2022-Unclaimed-Dividend.pdf",
-        import.meta.url
-      ).href,
-    },
-    {
-      financialYear: "2020-2021",
-      dividend: "126",
-      unclaimedDividend: "13,42,926.00",
-      lastDate: "17-Sep-28",
-      dueDate: "15-Oct-28",
-      downloadFile: new URL(
-        "@/assests/shareHolder/unclaimed/2020-2021-Unclaimed-Dividend.pdf",
-        import.meta.url
-      ).href,
-    },
-    {
-      financialYear: "2019-2020",
-      dividend: "125",
-      unclaimedDividend: "41,14,437.00",
-      lastDate: "02-May-27",
-      dueDate: "29-May-27",
-      downloadFile: new URL(
-        "@/assests/shareHolder/unclaimed/2019-2020-Unclaimed-Dividend.pdf",
-        import.meta.url
-      ).href,
-    },
-    {
-      financialYear: "2018-2019",
-      dividend: "125",
-      unclaimedDividend: "19,67,672.00",
-      lastDate: "11-Sep-26",
-      dueDate: "07-Oct-26",
-      downloadFile: new URL(
-        "@/assests/shareHolder/unclaimed/2018-2019-Unclaimed-Dividend.pdf",
-        import.meta.url
-      ).href,
-    },
-    {
-      financialYear: "2017-2018",
-      dividend: "115",
-      unclaimedDividend: "21,61,279.00",
-      lastDate: "14-Sep-25",
-      dueDate: "10-Oct-25",
-      downloadFile: new URL(
-        "@/assests/shareHolder/unclaimed/2017-2018-Unclaimed-Dividend-31-12-2024.pdf",
-        import.meta.url
-      ).href,
-    },
-  ];
+  useEffect(() => {
+    setLoading(true);
+    getQuery({
+      url: `${apiUrls?.shareholder.unclaimed}`,
+      onSuccess: (res) => {
+        setGetData(res?.data || []);
+        setTimeout(() => setLoading(false), 2000);
+      },
+      onFail: (err) => {
+        console.error("Failed to fetch announcements data:", err);
+      },
+    });
+  }, []);
+
+  const transformedData = useMemo(() => {
+    return Array.isArray(getData)
+      ? getData.map((item) => ({
+          lastDate: formatDate(item.lastDate.split("T")[0]), // Format lastDate
+          dueDate: formatDate(item.dueDate.split("T")[0]), // Format dueDate
+          year: `${+item.year}-${+item.year + 1}`,
+          dividend: item.dividend,
+          unclaimedAmount: item.unclaimedAmount,
+          file: item.file,
+        }))
+      : [];
+  }, [getData]);
 
   return (
     <div className="dividendDiv goal-section1 bg-gray-300 flex justify-center items-center flex-col py-10 header_purple">
@@ -153,22 +97,23 @@ function ShareUnclaimed() {
                 </tr>
               </thead>
               <tbody className="bg-white text-gray-500">
-                {tableData.map((data, index) => (
+                {transformedData.map((data, index) => (
                   <tr key={index} className=" w-full font-branding-semibold">
-                    <td className="px-4 py-2">{data.financialYear}</td>
+                    <td className="px-4 py-2">{data.year}</td>
                     <td className="px-4 py-2">{data.dividend}</td>
                     <td className="px-4 py-2" colSpan={2}>
-                      {data.unclaimedDividend}
+                      {data.unclaimedAmount}
                     </td>
                     <td className="px-4 py-2" colSpan={2}>
-                      {data.lastDate}
+                      {data.lastDate} {/* Formatted lastDate */}
                     </td>
-                    <td className="px-4 py-2">{data.dueDate}</td>
+                    <td className="px-4 py-2">
+                      {data.dueDate} {/* Formatted dueDate */}
+                    </td>
                     <td className="px-4 py-2 flex justify-center items-center">
                       <div className="flex justify-center items-center w-10 h-10">
                         <a
-                          href={data.downloadFile}
-                          // download={getFileName(data.downloadFile)}
+                          href={data.file}
                           className="inline-block"
                           target="_blank"
                         >

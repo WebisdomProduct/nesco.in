@@ -1,83 +1,62 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { IoSearch } from "react-icons/io5";
 import { FaArrowRight } from "react-icons/fa";
+import useGetQuery from "@/hooks/getQuery.hook";
+import { apiUrls } from "@/apis";
 
 function AnnouncementFilter() {
-  const tableData = [
-    {
-      year: "2024-2025",
-      date: "23 Jan 2025",
-      description:
-        "Disclosure under Regulation 30 of the SEBI (Listing Obligations and Disclosure Requirements) Regulations, 2015-Sale of 100% stake in M Entertainments Private Limited ",
-    },
-    {
-      year: "2024-2025",
-      date: "17 Jan 2025",
-      description:
-        "Disclosure under Flegulation 30 of the Securities and Exchange Board of India (Listing Obligations and Disclosure Requirements) Regulations, 2015-Update on acquisition of 100% equity stake of Reliance New Energy Battery Limited ",
-    },
-    {
-      year: "2024-2025",
-      date: "17 Jan 2025 ",
-      description:
-        "Audio/video recording and transcript of the presentation made to analysts on the Unaudited Financial Results (Consolidated and Standalone) for the quarter and nine months ended December 31, 2024 ",
-    },
-    {
-      year: "2024-2025",
-      date: "16 Jan 2025 ",
-      description:
-        "Integrated Filing (Financial) for the quarter and nine months ended December 31, 2024 ",
-    },
-    {
-      year: "2024-2025",
-      date: "16 Jan 2025 ",
-      description:
-        "Disclosure under Regulation 30 of the SEBI (Listing Obligations and Disclosure Requirements) Regulations, 2015-Acquisition of 100% equity stake of Lakadia B Power Transmission Limited ",
-    },
-    {
-      year: "2024-2025",
-      date: "16 Jan 2025",
-      description:
-        "Presentation on the Unaudited Financial Results (Consolidated and Standalone) for the quarter and nine months ended December 31, 2024 ",
-    },
-    {
-      year: "2024-2025",
-      date: "16 Jan 2025",
-      description:
-        "Media Release - Consolidated and Standalone Unaudited Financial Results for the quarter and nine months ended December 31, 2024 ",
-    },
-    {
-      year: "2024-2025",
-      date: "16 Jan 2025 ",
-      description:
-        "Consolidated and Standalone Unaudited Financial Results for the quarter and nine months ended December 31, 2024 ",
-    },
-    {
-      year: "2024-2025",
-      date: "10 Jan 2025 ",
-      description:
-        "Disclosure under Regulation 30 of the SEBI (Listing Obligations and Disclosure Requirements) Regulations, 2015-Acquisition of 100% equity stake of Reliance New Energy Battery Limited ",
-    },
-    {
-      year: "2024-2025",
-      date: "31 Dec 2024 ",
-      description:
-        "Conversion of compulsorily convertible preference shares held by the Company in Viacom 18 Media Private Limited ",
-    },
-  ];
+  const { getQuery } = useGetQuery();
+
+  const [loading, setLoading] = useState(false);
+  const [getData, setGetData] = useState([]);
+
+  useEffect(() => {
+    setLoading(true);
+    getQuery({
+      url: `${apiUrls?.announcements}`,
+      onSuccess: (res) => {
+        console.log("API Response:", res);
+        setGetData(res?.newDetail || []);
+        setTimeout(() => setLoading(false), 2000);
+      },
+      onFail: (err) => {
+        console.error("Failed to fetch announcements data:", err);
+      },
+    });
+  }, []);
+
+  const transformedData = Array.isArray(getData)
+    ? getData.map((item, index) => {
+        const year = `${new Date(item.date).getFullYear()}-${
+          new Date(item.date).getFullYear() + 1
+        }`;
+        return {
+          year,
+          description: item.title,
+          file: item.file,
+          date: item.date.split("T")[0],
+        };
+      })
+    : [];
 
   const [visibleCheckboxes, setVisibleCheckboxes] = useState(8);
   const [visibleRows, setVisibleRows] = useState(8);
-  const totalRows = tableData.length;
+  const totalRows = transformedData.length;
   const [selectedYears, setSelectedYears] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
 
-  const allYears = Array.from({ length: 8 }, (_, i) => {
-    const startYear = 2024 - i;
-    const endYear = startYear + 1;
-    return `${startYear}-${endYear.toString()}`;
-  });
+  const allYears = Array.from(
+    new Set(
+      transformedData.map((item) => {
+        const date = new Date(item.date);
+        const startYear =
+          date.getMonth() >= 3 ? date.getFullYear() : date.getFullYear() - 1;
+        const endYear = startYear + 1;
+        return `${startYear}-${endYear}`;
+      })
+    )
+  ).sort((a, b) => b.localeCompare(a));
 
   const handleYearChange = (year) => {
     setSelectedYears((prevSelected) =>
@@ -87,10 +66,17 @@ function AnnouncementFilter() {
     );
   };
 
-  const filteredData = tableData
-    .filter((item) =>
-      selectedYears.length > 0 ? selectedYears.includes(item.year) : true
-    )
+  const filteredData = transformedData
+    .filter((item) => {
+      if (selectedYears.length === 0) return true;
+      const itemDate = new Date(item.date);
+      return selectedYears.some((year) => {
+        const [startYear, endYear] = year.split("-").map(Number);
+        const startDate = new Date(startYear, 2, 1); // March 1st of startYear
+        const endDate = new Date(endYear, 1, 31); // March 31st of endYear
+        return itemDate >= startDate && itemDate <= endDate;
+      });
+    })
     .filter((item) =>
       item.description.toLowerCase().includes(searchQuery.toLowerCase())
     );
@@ -127,12 +113,6 @@ function AnnouncementFilter() {
               className="mt-4 mb-2 font-branding-medium text-gray-500 text-left"
               onClick={handleSelectAll}
             >
-              {/* <input
-                  type="checkbox"
-                  className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded-sm focus:ring-blue-500"
-                  checked={selectedYears.length === allYears.length}
-                  onChange={handleSelectAll}
-                /> */}
               Select All
             </button>
 
@@ -149,28 +129,6 @@ function AnnouncementFilter() {
                 </label>
               </div>
             ))}
-
-            {/* {visibleCheckboxes < allYears.length ? (
-              <button
-                className="mt-2 text-gray-500 hover:underline w-fit p-1 flex justify-center items-center gap-3"
-                onClick={() => setVisibleCheckboxes(visibleCheckboxes + 1)}
-              >
-                Show More{" "}
-                <span className="w-4 h-4 rounded-full border-2 flex justify-center items-center">
-                  <span className="inline-block w-2 h-2 rounded-full bg-gray-600 "></span>
-                </span>
-              </button>
-            ) : (
-              <button
-                className="mt-2 text-gray-500 hover:underline w-fit p-1 flex justify-center items-center gap-3"
-                onClick={() => setVisibleCheckboxes(7)}
-              >
-                Show Less{" "}
-                <span className="w-4 h-4 rounded-full border-2 flex justify-center items-center">
-                  <span className="inline-block w-2 h-2 rounded-full bg-gray-600 "></span>
-                </span>
-              </button>
-            )} */}
           </div>
 
           <div className=" md:w-[80%] py-3 col-span-3 ">
@@ -183,28 +141,32 @@ function AnnouncementFilter() {
                 </tr>
               </thead>
               <tbody>
-                {/* {filteredData.slice(0, visibleRows).map((row, index) => (
-                  <tr key={index}>
-                    <td className="shadow-md pl-3 font-branding-medium text-gray-500">
-                      <div className="flex justify-between mx-4 md:pr-[8%] my-3">
-                        <span className="">{row.year}</span>
-                        <span className=" ">{row.title}</span>
-                      </div>
-                    </td>
-                  </tr>
-                ))} */}
-                {filteredData.slice(0, visibleRows).map((data, index) => (
-                  <tr key={index}>
+                {filteredData.length > 0 ? (
+                  filteredData.slice(0, visibleRows).map((data, index) => (
+                    <tr key={index}>
+                      <td className="shadow-md pl-3 font-branding-medium text-gray-500 text-base md:text-xl">
+                        <a
+                          href={data.file}
+                          target="_blank"
+                          className="flex gap-2"
+                        >
+                          <div className="flex gap-10 my-3">
+                            <p className=" whitespace-nowrap flex justify-center items-center">
+                              {data.date}
+                            </p>
+                            <p className="px-4">{data.description}</p>
+                          </div>
+                        </a>
+                      </td>
+                    </tr>
+                  ))
+                ) : (
+                  <tr>
                     <td className="shadow-md pl-3 font-branding-medium text-gray-500 text-base md:text-xl">
-                      <div className="flex gap-10 my-3">
-                        <p className=" whitespace-nowrap flex justify-center items-center">
-                          {data.date}
-                        </p>
-                        <p className="px-4">{data.description}</p>
-                      </div>
+                      No data available
                     </td>
                   </tr>
-                ))}
+                )}
               </tbody>
             </table>
 

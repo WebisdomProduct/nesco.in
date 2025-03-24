@@ -60,7 +60,7 @@ function PhilosophyForUs() {
     if (!blueSqRef.current) return;
     blueSqRef.current.style.opacity = 1;
     setTimeout(() => {
-      blueSqRef.current.classList.remove("lineform");
+      blueSqRef.current?.classList.remove("lineform");
       autoToggleLines2();
     }, 3000);
   }
