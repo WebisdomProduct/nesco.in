@@ -410,7 +410,7 @@ function Navbar({ activeSlide }) {
                   onMouseLeave={handleMouseLeave1}
                 >
                   <div className="w-full h-full flex justify-end ">
-                    <ul className="flex flex-col gap-6 w-[60%] pl-10 pr-20 py-5 text-white">
+                    <ul className="flex flex-col gap-6 lg:gap-4 w-[60%] pl-10 pr-20 py-5 text-white">
                       {data.subMenu.map((subData, subIndex) => (
                         <li key={subIndex} className=" text-xl">
                           <Link
