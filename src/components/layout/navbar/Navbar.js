@@ -141,17 +141,19 @@ function Navbar({ activeSlide }) {
     });
 
     // Header White Section
-    ScrollTrigger.create({
-      trigger: ".header_white",
-      start: "top center",
-      end: "bottom center",
-      onEnter: () => setIsHeaderWhite(true),
-      onLeave: () => setIsHeaderWhite(false),
-      onEnterBack: () => setIsHeaderWhite(true),
-      onLeaveBack: () => setIsHeaderWhite(false),
-      animation: gsap.to(".navbar", { opacity: 1, duration: 0.05 }),
+    const WhiteHeader = document.querySelectorAll(".header_white");
+    WhiteHeader.forEach((section) => {
+      ScrollTrigger.create({
+        trigger: section,
+        start: "top center",
+        end: "bottom center",
+        onEnter: () => setIsHeaderWhite(true),
+        onLeave: () => setIsHeaderWhite(false),
+        onEnterBack: () => setIsHeaderWhite(true),
+        onLeaveBack: () => setIsHeaderWhite(false),
+        animation: gsap.to(".navbar", { opacity: 1, duration: 0.05 }),
+      });
     });
-
     // Footer Section
     ScrollTrigger.create({
       trigger: ".footer_section",
@@ -220,11 +222,11 @@ function Navbar({ activeSlide }) {
     if (activeSlide === 0) {
       return "text-black border-black";
     }
-    if (textBlack) {
-      return "text-black border-black";
-    }
     if (isHeaderWhite) {
       return "text-white border-white";
+    }
+    if (textBlack) {
+      return "text-black border-black";
     }
 
     if (isScrolled) {
