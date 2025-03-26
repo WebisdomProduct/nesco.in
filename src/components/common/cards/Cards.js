@@ -44,7 +44,7 @@ export const MentorModal = ({ isOpen, onClose, data }) => {
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-70 backdrop-blur-md">
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-60 backdrop-blur-sm">
       <Modal
         open={isOpen}
         onOk={handleOk}
@@ -58,8 +58,8 @@ export const MentorModal = ({ isOpen, onClose, data }) => {
         }}
         footer={false}
         // centered
-        mask={true}
-        maskStyle={{ backdropFilter: "blur(10px)" }}
+        // mask={true}
+        maskStyle={{ backdropFilter: "blur(3px)" }}
       >
         <div ref={modalRef} className="w-full -mb-3">
           <h2 className="text-2xl font-branding-semibold text-primary">

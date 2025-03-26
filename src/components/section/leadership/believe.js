@@ -5,7 +5,7 @@ import LeaderIcon from "@/assests/leadership/Leader.png";
 
 function believe() {
   return (
-    <section className="w-full goal-section1 relative flex flex-col items-center py-10">
+    <section className="w-full goal-section1 relative flex flex-col items-center py-10 lg:h-screen">
       <div className="pt-16 items-center w-[90%] mx-auto ">
         <div className=" text-primary flex justify-center items-center">
           <p
