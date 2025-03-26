@@ -141,17 +141,19 @@ function Navbar({ activeSlide }) {
     });
 
     // Header White Section
-    ScrollTrigger.create({
-      trigger: ".header_white",
-      start: "top center",
-      end: "bottom center",
-      onEnter: () => setIsHeaderWhite(true),
-      onLeave: () => setIsHeaderWhite(false),
-      onEnterBack: () => setIsHeaderWhite(true),
-      onLeaveBack: () => setIsHeaderWhite(false),
-      animation: gsap.to(".navbar", { opacity: 1, duration: 0.05 }),
+    const WhiteHeader = document.querySelectorAll(".header_white");
+    WhiteHeader.forEach((section) => {
+      ScrollTrigger.create({
+        trigger: section,
+        start: "top center",
+        end: "bottom center",
+        onEnter: () => setIsHeaderWhite(true),
+        onLeave: () => setIsHeaderWhite(false),
+        onEnterBack: () => setIsHeaderWhite(true),
+        onLeaveBack: () => setIsHeaderWhite(false),
+        animation: gsap.to(".navbar", { opacity: 1, duration: 0.05 }),
+      });
     });
-
     // Footer Section
     ScrollTrigger.create({
       trigger: ".footer_section",
@@ -220,11 +222,11 @@ function Navbar({ activeSlide }) {
     if (activeSlide === 0) {
       return "text-black border-black";
     }
-    if (textBlack) {
-      return "text-black border-black";
-    }
     if (isHeaderWhite) {
       return "text-white border-white";
+    }
+    if (textBlack) {
+      return "text-black border-black";
     }
 
     if (isScrolled) {
@@ -410,7 +412,7 @@ function Navbar({ activeSlide }) {
                   onMouseLeave={handleMouseLeave1}
                 >
                   <div className="w-full h-full flex justify-end ">
-                    <ul className="flex flex-col gap-6 w-[60%] pl-10 pr-20 py-5 text-white">
+                    <ul className="flex flex-col gap-6 lg:gap-4 w-[60%] pl-10 pr-20 py-5 text-white">
                       {data.subMenu.map((subData, subIndex) => (
                         <li key={subIndex} className=" text-xl">
                           <Link
