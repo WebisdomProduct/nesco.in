@@ -8,7 +8,7 @@ function OverviewBanner() {
   const [activeSlide, setActiveSlide] = useState(0);
 
   const handleSlideChange = () => {
-    setActiveSlide(1);
+    setActiveSlide(0);
   };
 
   const SliderData = [
@@ -40,7 +40,7 @@ function OverviewBanner() {
   ];
 
   return (
-    <div className="w-full ">
+    <div className="w-full header_color_black">
       {/* <Navbar activeSlide={activeSlide} /> */}
       {/* <Banner SliderData={SliderData}  onSlideChange={handleSlideChange} /> */}
       <Banner
