@@ -27,7 +27,7 @@ function LeadershipMentor2() {
           </div>
           <div className="relative lg:w-[50%] h-full flex flex-col lg:justify-center xl:pt-32 lg:pl-10 lg:pr-16">
             <div className=" mt-4">
-              <h2 className="text-[2rem] font-branding-semibold text-[#C3F0FB]">
+              <h2 className="text-[2rem] leading-10 font-branding-semibold text-[#C3F0FB]">
                 Krishna S. Patel
               </h2>
               <p className=" font-branding-medium text-[1rem] mb-4 text-white">
