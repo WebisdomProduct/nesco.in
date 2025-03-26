@@ -1,5 +1,5 @@
 import React from "react";
-import MentorImage from "@/assests/Home/mentorNew/krishna.png";
+import MentorImage from "@/assests/Home/mentorNew/3.png";
 import backgroundImage from "@/assests/Home/mentorNew/KrishnaBack.jpg";
 import Image from "next/image";
 
@@ -22,7 +22,7 @@ function LeadershipMentor2() {
               alt="Mentor"
               width={650}
               height={400}
-              className="w-full h-auto"
+              className="w-full h-auto object-cover object-top"
             />
           </div>
           <div className="relative lg:w-[50%] h-full flex flex-col lg:justify-center xl:pt-32 lg:pl-10 lg:pr-16">

@@ -1,6 +1,6 @@
 "use client";
 import React, { useEffect, useState, useRef } from "react";
-import MentorImage from "@/assests/Home/mentorNew/Sumant.png";
+import MentorImage from "@/assests/Home/mentorNew/2.png";
 import backgroundImage from "@/assests/Home/mentorNew/SumanBack.jpg";
 import Image from "next/image";
 import { gsap } from "gsap";
