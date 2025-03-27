@@ -3,9 +3,9 @@ import background from "@/assests/Home/N.png";
 
 function Life() {
   return (
-    <section className="header_white flex justify-between items-center w-full bg-[#403092] relative pt-16 overflow-hidden lg:h-full md:h-[100vh] xl:h-[100vh]">
-      <div className="px-[5%]   xl:py-20">
-        <div className="flex flex-col xl:w-[50%] lg:w-[60%] md:gap-7 gap-10 md:py-20 pb-20 z-10">
+    <section className="header_white flex justify-between items-center w-full bg-[#403092] relative pt-16 xl:pt-10 overflow-hidden xl:h-auto 2xl:h-screen lg:h-screen h-full ">
+      <div className="px-[5%] ">
+        <div className="flex flex-col xl:w-[50%] md:gap-7 gap-10 md:py-20 pb-20 z-10">
           {/* <p className="text-3xl font-bold text-secondary text-center md:text-left"> */}
           <p
             className="lg:text-[3.5rem] text-2xl font-bold text-secondary mt-10 tracking-wide leading-[3.5rem]"
@@ -40,11 +40,11 @@ function Life() {
           </p>
         </div>
 
-        <div className="hidden lg:flex absolute w-full h-full top-0 left-0 lg:justify-center lg:items-center overflow-hidden">
+        <div className="hidden xl:flex absolute w-full h-full top-0 left-0 lg:justify-center lg:items-center overflow-hidden">
           <img
             src={background.src}
             alt="background"
-            className="absolute z-0 xl:w-[60%] w-[50%] right-1 top-10"
+            className="absolute z-0 xl:w-[60%] w-[50%] right-1 top-0"
           />
           <div className="absolute hidden lg:block z-0 xl:bottom-20 bottom-10 right-12 h-[33%] w-[140px]">
             <div

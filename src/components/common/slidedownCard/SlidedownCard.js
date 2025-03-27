@@ -47,7 +47,7 @@ function SlidedownCard({ data }) {
         </div>
       ))} */}
       {data.map((element, index) => (
-        <div key={index} className="md: w-[50%] my-2 ">
+        <div key={index} className="md:w-[50%] my-2 ">
           <div
             className="font-branding-medium text-3xl text-white flex justify-between items-center cursor-pointer"
             onClick={() => handleToggle(index)}

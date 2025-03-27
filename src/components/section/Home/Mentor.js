@@ -23,7 +23,7 @@ function Mentor() {
     >
       <div className="z-20 relative lg:w-[100%] w-[90%] flex flex-col items-center justify-center mx-auto mt-12 lg:mb-0 mb-10 h-full  goal-section1">
         <div className="flex lg:flex-row flex-col lg:items-start items-center h-full w-full">
-          <div className="flex flex-col lg:w-[50%] w-1/2 h-full xl:justify-end justify-center z-10 relative">
+          <div className="flex flex-col lg:w-[50%] w-1/2 h-full lg:justify-end justify-center z-10 relative">
             <Image
               src={MentorImage}
               alt="Mentor"

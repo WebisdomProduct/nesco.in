@@ -126,14 +126,14 @@ function Quote() {
         Historical Stock Quote
       </h2>
       <div className=" flex justify-center  w-[90%]  ">
-        <div className="flex lg:flex-row flex-col md:gap-10 gap-5 justify-center items-center bg-[#B8DFFC] p-4 md:w-[70%] w-full">
+        <div className="flex xl:flex-row flex-col overflow-hidden xl:gap-10 gap-5 justify-center items-center bg-[#B8DFFC] p-4 md:w-[80%] w-full">
           {/* Exchange Selector */}
-          <div className="flex flex-col gap-2">
+          <div className="flex xl:flex-col items-center gap-2">
             <p className="text-[#3460C6] font-branding-semibold">Exchange: </p>
             <select
               value={exchange}
               onChange={(e) => setExchange(e.target.value)}
-              className="w-20 h-10 text-center text-[#857E7E]"
+              className="md:w-20 w-16 h-10 text-center text-[#857E7E]"
             >
               <option value="BSE">BSE</option>
               <option value="NSE">NSE</option>
@@ -141,7 +141,7 @@ function Quote() {
           </div>
 
           {/* Start Date Selector */}
-          <div className="flex flex-col gap-2">
+          <div className="flex xl:flex-col items-center gap-2">
             <p className="text-[#3460C6] font-branding-semibold">
               Start Date:{" "}
             </p>
@@ -151,7 +151,7 @@ function Quote() {
                 onChange={(e) =>
                   setStartDate({ ...startDate, day: Number(e.target.value) })
                 }
-                className="w-20 h-10 text-center text-[#857E7E]"
+                className="md:w-20 w-16 h-10 text-center text-[#857E7E] border-r-4 border-white"
               >
                 {days.map((d) => (
                   <option key={d} value={d}>
@@ -164,7 +164,7 @@ function Quote() {
                 onChange={(e) =>
                   setStartDate({ ...startDate, month: Number(e.target.value) })
                 }
-                className="w-20 h-10 text-center text-[#857E7E]"
+                className="md:w-20 w-16 h-10 text-center text-[#857E7E] border-r-4 border-white"
               >
                 {months.map((m) => (
                   <option key={m} value={m}>
@@ -177,7 +177,7 @@ function Quote() {
                 onChange={(e) =>
                   setStartDate({ ...startDate, year: Number(e.target.value) })
                 }
-                className="w-20 h-10 text-center text-[#857E7E]"
+                className="md:w-20 w-16 h-10 text-center text-[#857E7E] border-r-4 border-white"
               >
                 {years.map((y) => (
                   <option key={y} value={y}>
@@ -189,7 +189,7 @@ function Quote() {
           </div>
 
           {/* End Date Selector */}
-          <div className="flex flex-col gap-2">
+          <div className="flex xl:flex-col items-center gap-2">
             <p className="text-[#3460C6] font-branding-semibold">End Date: </p>
             <div className="flex gap-3">
               <select
@@ -197,7 +197,7 @@ function Quote() {
                 onChange={(e) =>
                   setEndDate({ ...endDate, day: Number(e.target.value) })
                 }
-                className="w-20 h-10 text-center text-[#857E7E]"
+                className="md:w-20 w-16 h-10 text-center text-[#857E7E] border-r-4 border-white"
               >
                 {days.map((d) => (
                   <option key={d} value={d}>
@@ -210,7 +210,7 @@ function Quote() {
                 onChange={(e) =>
                   setEndDate({ ...endDate, month: Number(e.target.value) })
                 }
-                className="w-20 h-10 text-center text-[#857E7E]"
+                className="md:w-20 w-16 h-10 text-center text-[#857E7E] border-r-4 border-white"
               >
                 {months.map((m) => (
                   <option key={m} value={m}>
@@ -223,7 +223,7 @@ function Quote() {
                 onChange={(e) =>
                   setEndDate({ ...endDate, year: Number(e.target.value) })
                 }
-                className="w-20 h-10 text-center text-[#857E7E]"
+                className="md:w-20 w-16 h-10 text-center text-[#857E7E] border-r-4 border-white"
               >
                 {years.map((y) => (
                   <option key={y} value={y}>
