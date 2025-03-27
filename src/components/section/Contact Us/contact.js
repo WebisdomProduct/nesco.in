@@ -79,7 +79,7 @@ function Contact() {
       <div className="w-full flex flex-col md:items-center mt-32 z-10 relative">
         <SlidedownCard data={data} />
         <div className="w-[50%] my-2 flex-col gap-4 font-branding-medium text-3xl text-white flex items-start cursor-pointer px-5 md:px-0 ">
-          <p>Carrers</p>
+          <p>Careers</p>
           <p>Investors</p>
         </div>
       </div>

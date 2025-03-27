@@ -15,8 +15,8 @@ function SebiBanner() {
     {
       image: bannerImage,
       data: (
-        <div className="absolute z-20 flex justify-end md:top-[25%] md:right-20">
-          <div className="text-5xl text-center md:w-[55%]">
+        <div className="absolute z-20 flex justify-end md:top-[22%] md:right-5">
+          <div className="text-[3rem] leading-[3rem] text-center md:w-[55%]">
             Disclosures under Regulation <br /> 46 of SEBI (LODR) Regulations,
             2015 & others statuory information
           </div>
