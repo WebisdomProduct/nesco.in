@@ -158,11 +158,19 @@ function Navbar({ activeSlide }) {
     ScrollTrigger.create({
       trigger: ".footer_section",
       start: "top bottom",
-      end: "bottom center",
-      onEnter: () => setIsFooter(true),
-      onLeave: () => setIsFooter(false),
-      onEnterBack: () => setIsFooter(true),
-      onLeaveBack: () => setIsFooter(false),
+      end: "bottom top",
+      onEnter: () => {
+        if (window.innerWidth <= 768) setIsFooter(true); // Activate only for mobile view
+      },
+      onLeave: () => {
+        if (window.innerWidth <= 768) setIsFooter(false); // Deactivate only for mobile view
+      },
+      onEnterBack: () => {
+        if (window.innerWidth <= 768) setIsFooter(true); // Activate only for mobile view
+      },
+      onLeaveBack: () => {
+        if (window.innerWidth <= 768) setIsFooter(false); // Deactivate only for mobile view
+      },
     });
 
     // Purple Sections

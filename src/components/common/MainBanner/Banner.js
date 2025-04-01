@@ -21,6 +21,8 @@ function Banner({
 }) {
   const [swiperInstance, setSwiperInstance] = useState(null);
   const [activeIndex, setActiveIndex] = useState(0);
+  const navigationPrevRef = useRef(null);
+  const navigationNextRef = useRef(null);
   const mainBannerRef = useRef(null); // Ref for Main Banner section
 
   useEffect(() => {
@@ -99,10 +101,10 @@ function Banner({
               modules={[Navigation, Autoplay]}
               spaceBetween={0}
               slidesPerView={1}
-              autoplay={{ delay: 3000 }}
+              autoplay={{ delay: 5000 }}
               navigation={{
-                nextEl: ".swiper-button-next",
-                prevEl: ".swiper-button-prev",
+                prevEl: navigationPrevRef.current,
+                nextEl: navigationNextRef.current,
               }}
               onSwiper={setSwiperInstance}
               className="w-full h-[100vh]"
@@ -218,10 +220,16 @@ function Banner({
                 </SwiperSlide>
               ))}
               {/* Custom Navigation Buttons */}
-              <div className="swiper-button-prev">
+              <div
+                className={`absolute left-4 top-[50%] transform -translate-y-1/2 text-[#007AFE] p-3 rounded-full z-10`}
+                ref={navigationPrevRef}
+              >
                 <IoIosArrowBack size={40} />
               </div>
-              <div className="swiper-button-next">
+              <div
+                className={`absolute right-4 top-[50%] transform -translate-y-1/2 text-[#007AFE] p-3 rounded-full z-10`}
+                ref={navigationNextRef}
+              >
                 <IoIosArrowForward size={40} />
               </div>
             </Swiper>

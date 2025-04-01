@@ -26,7 +26,11 @@ function StockBanner() {
     <div className="w-full">
       {/* <Navbar activeSlide={activeSlide} /> */}
       {/* <Banner SliderData={SliderData}  onSlideChange={handleSlideChange} /> */}
-      <Banner SliderData={SliderData} onSlideChange={handleSlideChange} />
+      <Banner
+        SliderData={SliderData}
+        onSlideChange={handleSlideChange}
+        apperentClassName="absolute"
+      />
     </div>
   );
 }

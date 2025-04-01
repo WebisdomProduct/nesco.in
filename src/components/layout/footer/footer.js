@@ -106,8 +106,8 @@ function Footer() {
   ];
 
   return (
-    <div className="footer_section bg-[#081422] text-white flex flex-col justify-center items-center font-branding-medium pt-7 pb-2 z-50 relative ">
-      <div className="w-[90%] xl:flex">
+    <div className=" bg-[#081422] text-white flex flex-col justify-center items-center font-branding-medium pt-7 pb-2 z-50 relative ">
+      <div className="w-[90%] xl:flex footer_section">
         <div className="md:flex justify-between xl:w-[83%] w-full md:gap-4 xl:gap-0">
           {FooterData.map((data, index) => (
             <div
