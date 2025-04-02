@@ -1,26 +1,72 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, EffectCoverflow } from "swiper/modules";
 import { FaAngleLeft, FaAngleRight } from "react-icons/fa";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/effect-coverflow";
-import "./VideoBanner.css"; // Custom CSS for hiding Swiper's default icons
+import "./VideoBanner.css";
 
 function VideoBanner({ SliderData }) {
   const [activeIndex, setActiveIndex] = useState(0);
+  const videoRefs = useRef([]);
+  const [playingIndex, setPlayingIndex] = useState(null);
 
   const handleSlideChange = (swiper) => {
     setActiveIndex(swiper.realIndex);
+    // Pause all videos when slide changes
+    pauseAllVideos();
+    setPlayingIndex(null);
   };
+
+  const pauseAllVideos = () => {
+    videoRefs.current.forEach((video) => {
+      if (video) {
+        video.pause();
+      }
+    });
+  };
+
+  const handleVideoClick = (index) => {
+    // If clicking the active video
+    if (index === activeIndex) {
+      if (playingIndex === index) {
+        // If it's already playing, pause it
+        videoRefs.current[index]?.pause();
+        setPlayingIndex(null);
+      } else {
+        // Otherwise, pause all and play this one
+        pauseAllVideos();
+        videoRefs.current[index]?.play();
+        setPlayingIndex(index);
+      }
+    }
+  };
+
+  // Update video refs array
+  const setVideoRef = (el, index) => {
+    videoRefs.current[index] = el;
+  };
+
+  // Clean up on unmount
+  useEffect(() => {
+    return () => {
+      pauseAllVideos();
+    };
+  }, []);
 
   return (
     <div className="w-full xl:h-[70vh]">
       {SliderData.length === 1 ? (
         <div className="text-white w-full flex justify-center items-center text-xl md:text-2xl">
           <div className="w-full max-w-4xl p-4">
-            <video controls className="w-full h-auto rounded-lg shadow-lg">
+            <video
+              controls
+              className="w-full h-auto rounded-lg shadow-lg"
+              ref={(el) => setVideoRef(el, 0)}
+              onClick={() => handleVideoClick(0)}
+            >
               <source
                 src={SliderData[0].video}
                 type={`video/${SliderData[0].type}`}
@@ -32,8 +78,6 @@ function VideoBanner({ SliderData }) {
         <div className="w-full">
           <Swiper
             modules={[Navigation, EffectCoverflow]}
-            // spaceBetween={30}
-            // slidesPerView={2}
             centeredSlides={true}
             loop={true}
             navigation={{
@@ -50,9 +94,9 @@ function VideoBanner({ SliderData }) {
             }}
             onSlideChange={handleSlideChange}
             breakpoints={{
-              320: { slidesPerView: 1, spaceBetween: 10 }, // Small screens (phones)
-              768: { slidesPerView: 1, spaceBetween: 20 }, // Medium screens (tablets)
-              1024: { slidesPerView: 2, spaceBetween: 30 }, // Large screens (desktops)
+              320: { slidesPerView: 1, spaceBetween: 10 },
+              768: { slidesPerView: 1, spaceBetween: 20 },
+              1024: { slidesPerView: 2, spaceBetween: 30 },
             }}
             className="w-full lg:mt-10"
           >
@@ -65,8 +109,10 @@ function VideoBanner({ SliderData }) {
                 >
                   <div className="w-full max-w-4xl mx-auto">
                     <video
+                      ref={(el) => setVideoRef(el, index)}
                       controls
                       className="w-full rounded-lg shadow-lg xl:h-[60vh] bg-white"
+                      onClick={() => handleVideoClick(index)}
                     >
                       <source src={data.video} type={`video/${data.type}`} />
                     </video>

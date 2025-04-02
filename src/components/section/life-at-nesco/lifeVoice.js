@@ -4,19 +4,23 @@ import React from "react";
 function LifeVoice() {
   const SliderData = [
     {
-      video: "/sample.mp4",
+      video:
+        "https://nescodoucmentsandpdfs.s3.ap-south-1.amazonaws.com/Neha.mp4",
       type: "mp4",
     },
     {
-      video: "/sample.mp4",
+      video:
+        "https://nescodoucmentsandpdfs.s3.ap-south-1.amazonaws.com/Amber.mp4",
       type: "mp4",
     },
     {
-      video: "/sample.mp4",
+      video:
+        "https://nescodoucmentsandpdfs.s3.ap-south-1.amazonaws.com/Neha.mp4",
       type: "mp4",
     },
     {
-      video: "/sample.mp4",
+      video:
+        "https://nescodoucmentsandpdfs.s3.ap-south-1.amazonaws.com/Amber.mp4",
       type: "mp4",
     },
   ];

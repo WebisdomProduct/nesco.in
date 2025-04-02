@@ -32,10 +32,14 @@ function ShareBanner() {
   ];
 
   return (
-    <div className="w-full">
+    <div className="w-full header_color_black">
       {/* <Navbar activeSlide={activeSlide} /> */}
       {/* <Banner SliderData={SliderData}  onSlideChange={handleSlideChange} /> */}
-      <Banner SliderData={SliderData} onSlideChange={handleSlideChange} />
+      <Banner
+        SliderData={SliderData}
+        onSlideChange={handleSlideChange}
+        apperentClassName="absolute"
+      />
     </div>
   );
 }

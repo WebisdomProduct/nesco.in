@@ -116,6 +116,7 @@ function SebiDetails() {
           tables: item.pdfTables.map((table) => ({
             year: table.pdfYear,
             fields: table.fields.map((field) => ({
+              quater: field.quater,
               pdfDate: field.pdfDate,
               pdfFile: field.pdfFile,
               pdfName: field.pdfName,
@@ -252,7 +253,7 @@ function SebiDetails() {
               {table.fields.map((field, fieldIndex) => (
                 <div key={fieldIndex} className="border p-3 rounded">
                   <p className="font-semibold">{field.documentName}</p>
-                  <p>Date: {field.documentDate}</p>
+                  {field.documentDate && <p>Date: {field.documentDate}</p>}
                   <a
                     href={field.documentFile}
                     target="_blank"
@@ -278,6 +279,7 @@ function SebiDetails() {
                 <div className="">
                   {table.fields.map((field, fieldIndex) => {
                     // Format the date
+                    console.log(table.fields);
                     const formatDate = (dateString) => {
                       const date = new Date(dateString);
                       const day = date.getDate();
@@ -294,7 +296,11 @@ function SebiDetails() {
                         className="border px-4 py-2 rounded flex w-full"
                       >
                         <div className="w-[30%]">
-                          <p>{formatDate(field.pdfDate)}</p>
+                          {field.pdfDate ? (
+                            <p>{formatDate(field.pdfDate)}</p>
+                          ) : (
+                            <p>{field.quater}</p>
+                          )}
                         </div>
                         <div className="w-[70%] ">
                           <p className="flex items-center">
@@ -325,8 +331,8 @@ function SebiDetails() {
   };
 
   return (
-    <div className="flex justify-center">
-      <div className=" lg:w-[80%] w-[90%] header_purple mt-0">
+    <div className="flex justify-center header_purple">
+      <div className=" lg:w-[80%] w-[90%]  mt-0">
         {transformedData.map((item, index) => (
           <div key={item._id || index} className="mb-3">
             <div
