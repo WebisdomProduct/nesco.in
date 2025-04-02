@@ -102,6 +102,7 @@ function Banner({
               spaceBetween={0}
               slidesPerView={1}
               autoplay={{ delay: 5000 }}
+              loop
               navigation={{
                 prevEl: navigationPrevRef.current,
                 nextEl: navigationNextRef.current,
