@@ -92,30 +92,6 @@ function Navbar({ activeSlide }) {
 
   const toggleSidebar = () => setIsSidebarOpen(!isSidebarOpen);
 
-  // const handleMouseEnter = (index) => {
-  //   setHoverStates((prev) => {
-  //     const newStates = [...prev];
-  //     newStates[index] = true;
-  //     return newStates;
-  //   });
-  //   setIsOpen(index);
-  //   setTextWhite(true);
-  // };
-
-  // const handleMouseLeave = (index) => {
-  //   setHoverStates((prev) => {
-  //     const newStates = [...prev];
-  //     newStates[index] = false;
-  //     return newStates;
-  //   });
-  //   setTextWhite(false);
-  // };
-
-  // const handleMouseLeave1 = () => {
-  //   setIsClosed(false);
-  //   setIsOpen(null);
-  // };
-
   const handleMouseEnter = (index) => {
     if (isAnimating) return;
 
@@ -138,18 +114,6 @@ function Navbar({ activeSlide }) {
     setTextWhite(false);
   };
 
-  const handleMouseLeave1 = () => {
-    setIsClosing(true);
-    setTimeout(() => {
-      setIsClosed(false);
-      setIsOpen(null);
-      setIsClosing(false);
-    }, 300);
-  };
-  const handleMouseEnter1 = () => {
-    setIsClosed(true);
-  };
-
   const handleDropdownEnter = () => {
     // No need to do anything special on enter
   };
@@ -159,9 +123,8 @@ function Navbar({ activeSlide }) {
     setIsOpen(null);
 
     // Reset after animation would complete
-    setTimeout(() => {
-      setIsAnimating(false);
-    }, 300);
+
+    setIsAnimating(false);
   };
 
   const toggleMobileMenu = (index) => {
