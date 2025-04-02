@@ -49,14 +49,14 @@ function MainLeadership() {
       ),
       classCss: "",
     },
-    {
-      comp: (
-        <AnimateOnScroll>
-          <VisionaryLeader />
-        </AnimateOnScroll>
-      ),
-      classCss: "",
-    },
+    // {
+    //   comp: (
+    //     <AnimateOnScroll>
+    //       <VisionaryLeader />
+    //     </AnimateOnScroll>
+    //   ),
+    //   classCss: "",
+    // },
   ];
 
   return (
