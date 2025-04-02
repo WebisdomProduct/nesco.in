@@ -82,6 +82,8 @@ function Navbar({ activeSlide }) {
   const [isClosed, setIsClosed] = useState(false);
   const [textWhite, setTextWhite] = useState(false);
   const [expandedMenuIndex, setExpandedMenuIndex] = useState(null); // State to track expanded mobile menu
+  const [isClosing, setIsClosing] = useState(false);
+  const [isAnimating, setIsAnimating] = useState(false);
 
   const logo = {
     imagePath: Nescologo,
@@ -91,11 +93,14 @@ function Navbar({ activeSlide }) {
   const toggleSidebar = () => setIsSidebarOpen(!isSidebarOpen);
 
   const handleMouseEnter = (index) => {
+    if (isAnimating) return;
+
     setHoverStates((prev) => {
       const newStates = [...prev];
       newStates[index] = true;
       return newStates;
     });
+
     setIsOpen(index);
     setTextWhite(true);
   };
@@ -109,12 +114,17 @@ function Navbar({ activeSlide }) {
     setTextWhite(false);
   };
 
-  const handleMouseLeave1 = () => {
-    setIsClosed(false);
-    setIsOpen(null);
+  const handleDropdownEnter = () => {
+    // No need to do anything special on enter
   };
-  const handleMouseEnter1 = () => {
-    setIsClosed(true);
+
+  const handleDropdownLeave = () => {
+    setIsAnimating(true);
+    setIsOpen(null);
+
+    // Reset after animation would complete
+
+    setIsAnimating(false);
   };
 
   const toggleMobileMenu = (index) => {
@@ -208,38 +218,18 @@ function Navbar({ activeSlide }) {
   }, []);
 
   const getTextColor = () => {
-    if (activePurpleSection) {
+    if (activePurpleSection) return "text-white border-white";
+    if (textWhite && !(isOpen === 4 || isOpen === 5))
       return "text-white border-white";
-    }
-
-    if (textWhite === true && !(isOpen === 4 || isOpen === 5)) {
+    if (isFooter) return "text-white border-white";
+    if (isOpen !== null && !(isOpen === 4 || isOpen === 5))
       return "text-white border-white";
-    }
-    if (isClosed) {
-      return "text-white border-white";
-    }
-    if (isFooter) {
-      return "text-white border-white";
-    }
-    if (isOpen && !(isOpen === 4 || isOpen === 5)) {
-      return "text-white border-white";
-    }
-    if (isOpen === 0) {
-      return "text-white border-white";
-    }
-    if (activeSlide === 0) {
-      return "text-black border-black";
-    }
-    if (isHeaderWhite) {
-      return "text-white border-white";
-    }
-    if (textBlack) {
-      return "text-black border-black";
-    }
-
-    if (isScrolled) {
-      return "text-black border-black";
-    } else return "text-white border-white";
+    if (isOpen === 0) return "text-white border-white";
+    if (activeSlide === 0) return "text-black border-black";
+    if (isHeaderWhite) return "text-white border-white";
+    if (textBlack) return "text-black border-black";
+    if (isScrolled) return "text-black border-black";
+    return "text-white border-white";
   };
 
   useEffect(() => {
@@ -325,6 +315,8 @@ function Navbar({ activeSlide }) {
             <li
               key={index}
               className={`${getTextColor()} border-r font-branding-medium text-[1.1rem] last:border-none xl:px-6 lg:px-5`}
+              onMouseEnter={() => handleMouseEnter(index)}
+              onMouseLeave={() => handleMouseLeave(index)}
             >
               <Link
                 href={data.route}
@@ -332,8 +324,6 @@ function Navbar({ activeSlide }) {
                 className={`${
                   hoverStates[index] && "boxAnimation relative overflow-hidden"
                 } w-full`}
-                onMouseEnter={() => handleMouseEnter(index)}
-                onMouseLeave={() => handleMouseLeave(index)}
               >
                 {data.title}
               </Link>
@@ -410,34 +400,44 @@ function Navbar({ activeSlide }) {
           ))}
         </ul>
       </div>
-      {isOpen !== null
-        ? NavData.map((data, index) => {
-            if (index === isOpen && data.subMenu.length > 0) {
-              return (
-                <div
-                  className={`absolute navbarAnimation top-0 pt-20 left-0 w-full  bg-black bg-opacity-90 z-40 hidden lg:flex`}
-                  onMouseEnter={handleMouseEnter1}
-                  onMouseLeave={handleMouseLeave1}
-                >
-                  <div className="w-full h-full flex justify-end ">
-                    <ul className="flex flex-col gap-6 lg:gap-4 w-[60%] pl-10 pr-20 py-5 text-white">
-                      {data.subMenu.map((subData, subIndex) => (
-                        <li key={subIndex} className=" text-xl">
-                          <Link
-                            href={subData.route}
-                            className="hover:text-secondary text-white transition-all duration-200"
-                          >
-                            {subData.title}
-                          </Link>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
+      {isOpen !== null &&
+        NavData.map((data, index) => {
+          if (index === isOpen && data.subMenu.length > 0) {
+            return (
+              <div
+                key={index}
+                className={`absolute top-0 pt-20 left-0 w-full bg-black bg-opacity-90 z-40 hidden lg:flex 
+                ${
+                  isOpen !== null
+                    ? "animate-dropdown-open"
+                    : "animate-dropdown-close"
+                }`}
+                onMouseEnter={handleDropdownEnter}
+                onMouseLeave={handleDropdownLeave}
+              >
+                <div className="w-full h-full flex justify-end">
+                  <ul className="flex flex-col gap-6 lg:gap-4 w-[60%] pl-10 pr-20 py-5">
+                    {data.subMenu.map((subData, subIndex) => (
+                      <li
+                        key={subIndex}
+                        className="text-xl text-white opacity-0 animate-text-appear"
+                        style={{ animationDelay: `${subIndex * 0.1}s` }}
+                      >
+                        <Link
+                          href={subData.route}
+                          className="hover:text-secondary transition-all duration-200"
+                        >
+                          {subData.title}
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
                 </div>
-              );
-            }
-          })
-        : ""}
+              </div>
+            );
+          }
+          return null;
+        })}
     </nav>
   );
 }

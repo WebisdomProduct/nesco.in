@@ -101,7 +101,9 @@ function Banner({
               modules={[Navigation, Autoplay]}
               spaceBetween={0}
               slidesPerView={1}
-              autoplay={{ delay: 5000 }}
+              autoplay={{ delay: 3000 }}
+              speed={1000}
+              loop
               navigation={{
                 prevEl: navigationPrevRef.current,
                 nextEl: navigationNextRef.current,

@@ -246,27 +246,60 @@ function SebiDetails() {
         ));
 
       case "documentAll":
-        return item.tables.map((table, tableIndex) => (
-          <div key={tableIndex} className="mb-6">
-            <h4 className="font-bold mb-2">{table.year}</h4>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              {table.fields.map((field, fieldIndex) => (
-                <div key={fieldIndex} className="border p-3 rounded">
-                  <p className="font-semibold">{field.documentName}</p>
-                  {field.documentDate && <p>Date: {field.documentDate}</p>}
-                  <a
-                    href={field.documentFile}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-blue-600 hover:underline inline-block mt-2"
-                  >
-                    View Document
-                  </a>
+        return (
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 bg-[#F3F3F3]">
+            {item.tables.map((table, tableIndex) => (
+              <div key={tableIndex} className="p-4">
+                <h4 className="font-branding-bold py-2 px-6 bg-[#D6D6D6]">
+                  {table.year}
+                </h4>
+                <div className="">
+                  {table.fields.map((field, fieldIndex) => {
+                    // Format the date
+                    // console.log(table.fields);
+                    const formatDate = (dateString) => {
+                      const date = new Date(dateString);
+                      const day = date.getDate();
+                      const month = date.toLocaleString("default", {
+                        month: "short",
+                      });
+                      const year = date.getFullYear();
+                      return `${day} ${month} ${year}`;
+                    };
+
+                    return (
+                      <div
+                        key={fieldIndex}
+                        className=" px-4 py-2 rounded flex w-full"
+                      >
+                        <div className="">
+                          {field.pdfDate && (
+                            <p>{formatDate(field.documentDate)}</p>
+                          )}
+                        </div>
+                        <div className="w-[100%] ">
+                          <p className="flex items-center">
+                            <span className="h-full w-fit">
+                              <FaRegFilePdf className="text-red-500 w-10" />
+                            </span>
+                            <a
+                              href={field.documentFile}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="hover:text-blue-500 underline inline-block w-full"
+                            >
+                              {field.documentName}
+                            </a>
+                          </p>
+                        </div>
+                      </div>
+                    );
+                  })}
                 </div>
-              ))}
-            </div>
+              </div>
+            ))}
           </div>
-        ));
+        );
 
       case "pdfTables":
         return (
