@@ -1,31 +1,42 @@
 "use client";
 import React, { useEffect, useRef, useState } from "react";
-import { gsap } from "gsap";
+import Lenis from "@studio-freight/lenis";
+import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(ScrollTrigger);
 
 function ScrollSnip({ Children }) {
   const containerRef = useRef(null);
+  const lenisRef = useRef(null);
   const [isDesktop, setIsDesktop] = useState(false);
 
-  // Smoother snap configuration
-  const snapConfig = {
-    snapTo: 1,
-    duration: 0.8,
-    ease: "power1.out",
-    inertia: true,
-    delay: 0.0005,
-  };
-
+  // Check for screen width
   useEffect(() => {
-    const checkScreenWidth = () => {
-      setIsDesktop(window.innerWidth >= 1024);
-    };
-
+    const checkScreenWidth = () => setIsDesktop(window.innerWidth >= 1024);
     checkScreenWidth();
     window.addEventListener("resize", checkScreenWidth);
     return () => window.removeEventListener("resize", checkScreenWidth);
+  }, []);
+
+  useEffect(() => {
+    // Initialize Lenis for smooth scrolling
+    const lenis = new Lenis({
+      smooth: true,
+      syncTouch: true,
+      gestureOrientation: "vertical",
+      wheelMultiplier: 1.2,
+      touchMultiplier: 2,
+    });
+    lenisRef.current = lenis;
+
+    function raf(time) {
+      lenis.raf(time);
+      requestAnimationFrame(raf);
+    }
+    requestAnimationFrame(raf);
+
+    return () => lenis.destroy();
   }, []);
 
   useEffect(() => {
@@ -33,68 +44,38 @@ function ScrollSnip({ Children }) {
 
     const container = containerRef.current;
     const sections = Array.from(container.querySelectorAll(".section"));
-    let triggers = [];
 
-    // Prefer CSS transforms for smoother animations
+    // Enable smooth snapping
     gsap.set(sections, { willChange: "transform" });
 
-    sections.forEach((section) => {
-      const trigger = ScrollTrigger.create({
+    sections.forEach((section, index) => {
+      ScrollTrigger.create({
         trigger: section,
         start: "top top",
         end: "bottom top",
-        snap: snapConfig,
-        // onEnter: () => smoothNavbar(section),
-        // onEnterBack: () => smoothNavbar(section),
+        snap: {
+          snapTo: 1, // Snap to the closest section
+          duration: 1,
+          ease: "power1.out",
+          inertia: true,
+          delay: 0,
+        },
       });
-      triggers.push(trigger);
     });
 
-    // Last section handling
-    const lastSection = sections[sections.length - 1];
-    const lastTrigger = ScrollTrigger.create({
-      trigger: lastSection,
-      start: "bottom bottom",
-      end: "bottom top",
-      onEnter: () => triggers.forEach((t) => t.kill()),
-      onLeaveBack: () => {
-        triggers = sections.map((section) =>
-          ScrollTrigger.create({
-            trigger: section,
-            start: "top top",
-            end: "bottom top",
-            snap: snapConfig,
-          })
-        );
-      },
-    });
-
-    return () => {
-      triggers.forEach((t) => t.kill());
-      lastTrigger.kill();
-    };
+    return () => ScrollTrigger.getAll().forEach((t) => t.kill());
   }, [isDesktop]);
 
-  // Smoother navbar transition
-  // const smoothNavbar = (section) => {
-  //   gsap.to("nav", {
-  //     // backgroundColor: section.classList.contains("goal-section") ? "#403092" : "transparent",
-  //     // text:section.classList.contains("banner-section") ? "black" : "white"
-  //     duration: 0.5,
-  //     ease: "power2.out"
-  //   });
-  // };
-
   return (
-    <div className="container1 font-branding-medium" ref={containerRef}>
+    <div ref={containerRef} className="container1 font-branding-medium">
       {Children.map((data, index) => (
-        <div
-          className={` overflow-hidden ${data.classCss}`}
+        <section
           key={index}
-          style={{ transform: "translateZ(0)" }} // Boost performance
+          className={`lg:min-h-screen flex items-center justify-center ${data.classCss}`}
+          style={{ scrollSnapAlign: "start", transform: "translateZ(0)" }} // Performance boost
         >
           {data.comp}
-        </div>
+        </section>
       ))}
     </div>
   );

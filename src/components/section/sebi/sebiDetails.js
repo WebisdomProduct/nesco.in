@@ -365,40 +365,44 @@ function SebiDetails() {
 
   return (
     <div className="flex justify-center header_purple">
-      <div className=" lg:w-[80%] w-[90%]  mt-0">
-        {transformedData.map((item, index) => (
-          <div key={item._id || index} className="mb-3">
-            <div
-              className="border-2 border-gray-300 px-4 py-2 font-bold flex justify-between mb-0 cursor-pointer"
-              onClick={() => handleToggle(index)}
-            >
-              <p className="text-gray-600 font-branding-semibold w-[95%]">
-                {item.title}
-              </p>
-              <p className="text-blue-800 overflow-hidden p-0 h-6 flex justify-center items-center w-[5%]">
-                <span
-                  className={`transition-transform duration-300 font-bold text-3xl inline-block ${
-                    openIndex === index ? "rotate-45" : "rotate-0"
-                  }`}
-                >
-                  +
-                </span>
-              </p>
-            </div>
-            <div
-              className={`font-bold transition-all duration-700 ease-in-out overflow-hidden ${
-                openIndex === index
-                  ? "opacity-100 max-h-[5000px]"
-                  : "opacity-0 max-h-0"
-              }`}
-            >
-              <div className="border-2 border-gray-300 border-t-0 w-full">
-                {renderTableContent(item)}
+      {loading ? (
+        "Loading...."
+      ) : (
+        <div className=" lg:w-[80%] w-[90%]  mt-0">
+          {transformedData.map((item, index) => (
+            <div key={item._id || index} className="mb-3">
+              <div
+                className="border-2 border-gray-300 px-4 py-2 font-bold flex justify-between mb-0 cursor-pointer"
+                onClick={() => handleToggle(index)}
+              >
+                <p className="text-gray-600 font-branding-semibold w-[95%]">
+                  {item.title}
+                </p>
+                <p className="text-blue-800 overflow-hidden p-0 h-6 flex justify-center items-center w-[5%]">
+                  <span
+                    className={`transition-transform duration-300 font-bold text-3xl inline-block ${
+                      openIndex === index ? "rotate-45" : "rotate-0"
+                    }`}
+                  >
+                    +
+                  </span>
+                </p>
+              </div>
+              <div
+                className={`font-bold transition-all duration-700 ease-in-out overflow-hidden ${
+                  openIndex === index
+                    ? "opacity-100 max-h-[5000px]"
+                    : "opacity-0 max-h-0"
+                }`}
+              >
+                <div className="border-2 border-gray-300 border-t-0 w-full">
+                  {renderTableContent(item)}
+                </div>
               </div>
             </div>
-          </div>
-        ))}
-      </div>
+          ))}
+        </div>
+      )}
     </div>
   );
 }
