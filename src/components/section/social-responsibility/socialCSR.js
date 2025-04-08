@@ -1,3 +1,4 @@
+"use client";
 import React, { useState } from "react";
 import chessImage from "@/assests/social/42.png";
 import Image from "next/image";
@@ -8,16 +9,19 @@ function SocialCSR() {
       title: "Composition of CSR",
       buttonColor: "#5A9448",
       buttonColor1: "#518642",
+      link: "https://nescodoucmentsandpdfs.s3.ap-south-1.amazonaws.com/composition.pdf",
     },
     {
       title: "CSR Policy",
       buttonColor: "#43AD97",
       buttonColor1: "#3D9B89",
+      link: "https://nescodoucmentsandpdfs.s3.ap-south-1.amazonaws.com/csr.pdf",
     },
     {
       title: "Proposed Action Plan",
       buttonColor: "#4E53A4",
       buttonColor1: "#474B92",
+      link: "https://nescodoucmentsandpdfs.s3.ap-south-1.amazonaws.com/proposed.pdf",
     },
   ];
 
@@ -46,10 +50,10 @@ function SocialCSR() {
               communities and addressing their most pressing needs. The CSR
               Committee ensures that our initiatives are effectively implemented
               through strategic planning, efficient execution, and continuous
-              monitoring. <br/> <br/>
-               Through these programs, Nesco aims to make a
-              significant and positive impact, enhancing both social welfare and
-              environmental sustainability.
+              monitoring. <br /> <br />
+              Through these programs, Nesco aims to make a significant and
+              positive impact, enhancing both social welfare and environmental
+              sustainability.
             </p>
             <div className="grid xl:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-5 mt-5">
               {buttonData.map((data, index) => (
@@ -63,15 +67,22 @@ function SocialCSR() {
                   onMouseLeave={() => setIsEnter(null)}
                   aria-label={data.title}
                 >
-                  <div
-                    className={`absolute h-full top-0 left-0 z-10 rounded-lg transition-all duration-200 ${
-                      isEnter === index ? "w-full" : "w-1/2"
-                    }`}
-                    style={{
-                      backgroundColor: data.buttonColor,
-                    }}
-                  ></div>
-                  <span className="z-20 relative">{data.title}</span>
+                  <a
+                    href={data.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    key={index}
+                  >
+                    <div
+                      className={`absolute h-full top-0 left-0 z-10 rounded-lg transition-all duration-200 ${
+                        isEnter === index ? "w-full" : "w-1/2"
+                      }`}
+                      style={{
+                        backgroundColor: data.buttonColor,
+                      }}
+                    ></div>
+                    <span className="z-20 relative">{data.title}</span>
+                  </a>
                 </button>
               ))}
             </div>
