@@ -5,7 +5,7 @@ import LeaderIcon from "@/assests/leadership/Leader.png";
 
 function believe() {
   return (
-    <section className="w-full goal-section1 relative flex flex-col items-center py-12 xl:h-screen min-h-[800px]">
+    <section className="w-full goal-section1 relative flex flex-col items-center py-12 xl:h-screen min-h-[500px] overflow-hidden">
       <div className="pt-16 items-center w-[90%] mx-auto ">
         <div className=" text-primary flex justify-center items-center">
           <p
@@ -30,14 +30,14 @@ function believe() {
               <p className="leading-9">
                 Leadership at Nesco is more than just man-agement, it is a
                 principle. Our founder, J. V. Patel was a first-generation
-                industrialist in in dependent, India anda peerless entrepreneur.
-                He carved a niche for himself in the industrial and business
-                realm by dint of technical know-how, meticulousness, diligence
-                and leadership. The investiture of his beliefs in our teams is
-                what takes us forward as a company. Across our diverse
-                industries, our capabilities at Nesco are expanding. As
-                businesses grow, the focus of our leadership grows on converting
-                the credo of Bellieve into action.
+                industrialist in in dependent, India and a peerless
+                entrepreneur. He carved a niche for himself in the industrial
+                and business realm by dint of technical know-how,
+                meticulousness, diligence and leadership. The investiture of his
+                beliefs in our teams is what takes us forward as a company.
+                Across our diverse industries, our capabilities at Nesco are
+                expanding. As businesses grow, the focus of our leadership grows
+                on converting the credo of believe into action.
               </p>
             </div>
           </div>

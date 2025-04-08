@@ -15,7 +15,11 @@ function AnimateOnScroll({ children }) {
     });
   }, [inView]);
 
-  return <div ref={ref}>{children}</div>;
+  return (
+    <div ref={ref} className="w-full h-full">
+      {children}
+    </div>
+  );
 }
 
 export default AnimateOnScroll;

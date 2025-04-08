@@ -5,12 +5,7 @@ function LifeVoice() {
   const SliderData = [
     {
       video:
-        "https://nescodoucmentsandpdfs.s3.ap-south-1.amazonaws.com/Neha.mp4",
-      type: "mp4",
-    },
-    {
-      video:
-        "https://nescodoucmentsandpdfs.s3.ap-south-1.amazonaws.com/Amber.mp4",
+        "https://nescodoucmentsandpdfs.s3.ap-south-1.amazonaws.com/Tanveer.mp4",
       type: "mp4",
     },
     {
@@ -20,7 +15,22 @@ function LifeVoice() {
     },
     {
       video:
+        "https://nescodoucmentsandpdfs.s3.ap-south-1.amazonaws.com/Suhas.mp4",
+      type: "mp4",
+    },
+    {
+      video:
+        "https://nescodoucmentsandpdfs.s3.ap-south-1.amazonaws.com/Mini.mp4",
+      type: "mp4",
+    },
+    {
+      video:
         "https://nescodoucmentsandpdfs.s3.ap-south-1.amazonaws.com/Amber.mp4",
+      type: "mp4",
+    },
+    {
+      video:
+        "https://nescodoucmentsandpdfs.s3.ap-south-1.amazonaws.com/Bait.mp4",
       type: "mp4",
     },
   ];

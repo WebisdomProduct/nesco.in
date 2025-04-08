@@ -11,11 +11,11 @@ const MainOverview = () => {
   const Children = [
     {
       comp: <OverviewBanner />,
-      classCss: "section",
+      classCss: "",
     },
     {
       comp: <OverviewEvolve />,
-      classCss: "section",
+      classCss: "",
     },
   ];
 

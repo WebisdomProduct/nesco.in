@@ -19,25 +19,25 @@ function ScrollSnip({ Children }) {
     return () => window.removeEventListener("resize", checkScreenWidth);
   }, []);
 
-  useEffect(() => {
-    // Initialize Lenis for smooth scrolling
-    const lenis = new Lenis({
-      smooth: true,
-      syncTouch: true,
-      gestureOrientation: "vertical",
-      wheelMultiplier: 1.2,
-      touchMultiplier: 2,
-    });
-    lenisRef.current = lenis;
+  // useEffect(() => {
+  //   // Initialize Lenis for smooth scrolling
+  //   const lenis = new Lenis({
+  //     smooth: true,
+  //     syncTouch: true,
+  //     gestureOrientation: "vertical",
+  //     wheelMultiplier: 1.2,
+  //     touchMultiplier: 2,
+  //   });
+  //   lenisRef.current = lenis;
 
-    function raf(time) {
-      lenis.raf(time);
-      requestAnimationFrame(raf);
-    }
-    requestAnimationFrame(raf);
+  //   function raf(time) {
+  //     lenis.raf(time);
+  //     requestAnimationFrame(raf);
+  //   }
+  //   requestAnimationFrame(raf);
 
-    return () => lenis.destroy();
-  }, []);
+  //   return () => lenis.destroy();
+  // }, []);
 
   useEffect(() => {
     if (!isDesktop) return;
@@ -67,7 +67,10 @@ function ScrollSnip({ Children }) {
   }, [isDesktop]);
 
   return (
-    <div ref={containerRef} className="container1 font-branding-medium">
+    <div
+      ref={containerRef}
+      className="container1 font-branding-medium scroll-smooth"
+    >
       {Children.map((data, index) => (
         <section
           key={index}

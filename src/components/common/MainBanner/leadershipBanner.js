@@ -47,7 +47,7 @@ function LeadershipBanner1({
               delay: activeIndex === 0 ? 5000 : 3000,
               disableOnInteraction: false,
             }}
-            speed={500}
+            speed={1000}
             navigation={{
               prevEl: navigationPrevRef.current,
               nextEl: navigationNextRef.current,

@@ -35,6 +35,7 @@
     "recharts": "^2.15.1",
     "scroll-to-plugin": "^1.0.1",
     "slick-carousel": "^1.8.1",
+    "smooth-scrollbar": "^8.8.4",
     "swiper": "^11.2.6",
     "typewriter-effect": "^2.21.0"
   },

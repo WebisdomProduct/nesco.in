@@ -6,7 +6,7 @@ import Image from "next/image";
 function LeadershipMentor() {
   return (
     <section
-      className="header_white flex flex-col items-center justify-center relative w-full h-full overflow-hidden lg:h-screen min-h-[800px]"
+      className="header_white flex flex-col items-center justify-center relative w-full h-full overflow-hidden xl:h-screen min-h-[500px]"
       style={{
         backgroundImage: `url(${backgroundImage.src})`,
         backgroundSize: "cover",
@@ -43,7 +43,7 @@ function LeadershipMentor() {
                   been instrumental in shaping the Nesco Group. A mechanical
                   engineer from the University of Pennsylvania, USA and a
                   business graduate from the prestigious Wharton School, he
-                  returned to India in 1960 and sucessfully founded the
+                  returned to India in 1960 and Successfully founded the
                   engineering heavyweights GMM and Indabrator, in the decades
                   that followed, Sumant's eye on the big picture emboldened
                   teams to innovatively face challenges in each new sector. As

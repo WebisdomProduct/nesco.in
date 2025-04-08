@@ -11,23 +11,23 @@ function MainPhilosophy() {
   const Children = [
     {
       comp: <PhilosophyBelieve />,
-      classCss: "",
+      classCss: "overflow-hidden",
     },
     {
       comp: <PhilosophyForUs />,
-      classCss: "header_purple",
+      classCss: "header_purple overflow-hidden",
     },
     {
       comp: <PhilosophyWhat />,
-      classCss: "header_purple",
+      classCss: "header_purple overflow-hidden",
     },
     {
       comp: <PhilosophyVision />,
-      classCss: "header_purple",
+      classCss: "header_purple overflow-hidden",
     },
     {
       comp: <PhilosophyValue />,
-      classCss: "header_purple",
+      classCss: "header_purple overflow-hidden",
     },
   ];
 

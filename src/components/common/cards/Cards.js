@@ -1,17 +1,11 @@
 "use client";
 import Image from "next/image";
-import React, { useState, useRef, useEffect } from "react"; // Import useRef and useEffect
+import React, { useState, useRef, useEffect } from "react";
 import { FaArrowRightLong } from "react-icons/fa6";
-import MentorImage from "@/assests/leadership/6-1.jpg";
-import MentorImage2 from "@/assests/leadership/7-1.jpg";
-import MentorImage3 from "@/assests/leadership/9-1.jpg";
-import MentorImage4 from "@/assests/leadership/16-1.jpg";
-import MentorImage5 from "@/assests/leadership/27-1.jpg";
-import MentorImage6 from "@/assests/leadership/28-1.jpg";
 import { Button, Modal } from "antd";
 
 // Modal Component
-export const MentorModal = ({ isOpen, onClose, data }) => {
+export const MentorModal = ({ isOpen, onClose, data, lenis }) => {
   const [loading, setLoading] = useState(false);
   const modalRef = useRef(null);
 
@@ -24,14 +18,18 @@ export const MentorModal = ({ isOpen, onClose, data }) => {
 
     if (isOpen) {
       document.addEventListener("mousedown", handleClickOutside);
-      document.body.style.overflow = "hidden";
+      document.body.classList.add("lenis-stop"); // 🚫 Stop Lenis scroll
+      document.body.style.overflow = "hidden"; // Fallback for default scroll
+      lenis?.stop(); // Stop Lenis programmatically
     }
 
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
+      document.body.classList.remove("lenis-stop"); // ✅ Resume Lenis
       document.body.style.overflow = "unset";
+      lenis?.start(); // Start Lenis programmatically
     };
-  }, [isOpen, onClose]);
+  }, [isOpen, onClose, lenis]);
 
   if (!isOpen || !data) return null;
 
@@ -44,7 +42,7 @@ export const MentorModal = ({ isOpen, onClose, data }) => {
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-60 backdrop-blur-sm">
+    <div className="fixed inset-0 z-50 flex items-center w-full h-full justify-center bg-black bg-opacity-60 backdrop-blur-sm">
       <Modal
         open={isOpen}
         onOk={handleOk}
@@ -54,11 +52,8 @@ export const MentorModal = ({ isOpen, onClose, data }) => {
           top: "50%",
           transform: "translateY(-50%)",
           maxHeight: "80vh",
-          // overflowY: "auto",
         }}
         footer={false}
-        // centered
-        // mask={true}
         maskStyle={{ backdropFilter: "blur(3px)" }}
       >
         <div ref={modalRef} className="w-full -mb-3">
@@ -92,7 +87,7 @@ export const MentorModal = ({ isOpen, onClose, data }) => {
   );
 };
 
-function Cards({ CardData }) {
+function Cards({ CardData, lenis }) {
   const [CardDatas, setCardDatas] = useState(CardData);
   const [selectedCard, setSelectedCard] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -108,7 +103,7 @@ function Cards({ CardData }) {
   };
 
   return (
-    <div className="w-full  py-3 flex justify-center">
+    <div className="w-full py-3 flex justify-center">
       <div className="grid xl:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-5 w-[70%]">
         {CardDatas?.map((data, index) => (
           <div
@@ -117,7 +112,7 @@ function Cards({ CardData }) {
             style={{ cursor: "pointer" }}
           >
             <div
-              className="flex flex-col gap-1 w-[19rem] py-3 px-3 border-gray-200  border-2 h-full items-center "
+              className="flex flex-col gap-1 w-[19rem] py-3 px-3 border-gray-200 border-2 h-full items-center"
               onClick={() => openModal(data)}
             >
               <Image
@@ -125,7 +120,6 @@ function Cards({ CardData }) {
                 alt="Mentor"
                 className="h-[14.5rem] object-cover object-top filter grayscale contrast-125 hover:filter-none transition-all duration-300"
               />
-
               <p className="flex justify-between mt-2 w-full">
                 <span className="font-branding-semibold text-[1.1rem] inline-block w-full text-left">
                   {data.name}
@@ -147,6 +141,7 @@ function Cards({ CardData }) {
         isOpen={isModalOpen}
         onClose={closeModal}
         data={selectedCard}
+        lenis={lenis} // Pass Lenis instance to modal
       />
     </div>
   );

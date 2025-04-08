@@ -6,7 +6,7 @@ import Image from "next/image";
 function LeadershipMentor2() {
   return (
     <section
-      className="header_white flex flex-col items-center justify-center relative w-full h-full overflow-hidden lg:h-screen min-h-[800px]"
+      className="header_white flex flex-col items-center justify-center relative w-full h-full overflow-hidden xl:h-screen min-h-[500px]"
       style={{
         backgroundImage: `url(${backgroundImage.src})`,
         backgroundSize: "cover",
@@ -49,7 +49,7 @@ function LeadershipMentor2() {
                   His experience taught him the value of a services backbone. He
                   has guided the corporate expansion of Bombay Exhibition Center
                   and introduced the fast-gaining service verticals of
-                  hospitality and events.A technology enthusiast, Krishna keeps
+                  hospitality and events. A technology enthusiast, Krishna keeps
                   up-to-date with the latest industry trends, introducing new
                   technologies and global industry norms to our world at Nesco.
                 </p>

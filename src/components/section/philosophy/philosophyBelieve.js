@@ -59,7 +59,7 @@ function PhilosophyBelieve() {
       </div>
 
       {showContent && (
-        <div className="relative w-full h-full flex justify-center items-center">
+        <div className="relative w-full h-full flex justify-center items-center overflow-hidden">
           {/* Overlay */}
           <div className="absolute w-full h-full bg-[#05547A] opacity-40"></div>
           {/* Blue Stripe Container */}
@@ -72,34 +72,34 @@ function PhilosophyBelieve() {
           {showContent1 && (
             <div className="content absolute left-0 w-full h-full flex xl:flex-row flex-col gap-10 items-center overflow-hidden ">
               <div className=" relative xl:w-[75%] w-full h-[75%] flex justify-center items-center">
-                <div className="absolute md:leading-[18rem] leading-[10rem] lg:text-[20rem] md:text-[15rem] text-[10rem] font-branding-bold text-white lg:left-[10%] md:left-[1%] left-0 z-20">
-                  <span className="lg:mx-10 mx-3 absolute -top-1/2 transform -translate-y-[90%] lg:left-[16.8rem] md:left-[16rem] left-[8rem]">
+                <div className="absolute md:leading-[18rem] leading-[10rem] lg:text-[20rem] md:text-[15rem] text-[7rem] font-branding-bold text-white lg:left-[10%] md:left-[1%] left-0 z-20">
+                  <span className="lg:mx-10 mx-3 absolute -top-1/2 transform -translate-y-[90%] lg:left-[16.8rem] md:left-[16rem] left-[6rem]">
                     E
                   </span>
                 </div>
-                <div className=" absolute md:leading-[18rem] leading-[10rem] lg:text-[20rem] md:text-[15rem] text-[10rem] font-branding-bold text-white lg:left-[10%] md:left-[0%] left-0 z-20 transform">
-                  <span className="lg:mx-10 mx-3 absolute -top-1/2 transform -translate-y-[90%] lg:left-[32.6rem] md:left-[25.6rem] left-[15rem]">
+                <div className=" absolute md:leading-[18rem] leading-[10rem] lg:text-[20rem] md:text-[15rem] text-[7rem] font-branding-bold text-white lg:left-[10%] md:left-[0%] left-0 z-20 transform">
+                  <span className="lg:mx-10 mx-3 absolute -top-1/2 transform -translate-y-[90%] lg:left-[32.6rem] md:left-[25.6rem] left-[11rem]">
                     L
                   </span>
                 </div>
-                <div className=" absolute md:leading-[18rem] leading-[10rem] lg:text-[20rem] md:text-[15rem] text-[10rem] font-branding-bold text-white lg:left-[10%] md:left-[1%] left-0 z-20 transform">
+                <div className=" absolute md:leading-[18rem] leading-[10rem] lg:text-[20rem] md:text-[15rem] text-[7rem] font-branding-bold text-white lg:left-[10%] md:left-[1%] left-0 z-20 transform">
                   <span className="lg:mx-10 mx-3 absolute transform md:top-7 top-4 left-2 md:left-[5.5rem] lg:left-0 ">
                     I
                   </span>
                 </div>
-                <div className="absolute md:leading-[18rem] leading-[10rem] lg:text-[20rem] md:text-[15rem] text-[10rem] font-branding-bold text-white lg:left-[10%] md:left-[1%] left-0 z-20 transform">
-                  <span className="lg:mx-10 mx-3 absolute transform md:top-7 top-4 left-[11.6rem] md:left-[19.8rem] lg:left-[26.5rem] ">
+                <div className="absolute md:leading-[18rem] leading-[10rem] lg:text-[20rem] md:text-[15rem] text-[7rem] font-branding-bold text-white lg:left-[10%] md:left-[1%] left-0 z-20 transform">
+                  <span className="lg:mx-10 mx-3 absolute transform md:top-7 top-4 left-[9.6rem] md:left-[19.8rem] lg:left-[26.5rem] ">
                     V
                   </span>
                 </div>
-                <div className="absolute md:leading-[18rem] leading-[10rem] lg:text-[20rem] md:text-[15rem] text-[10rem] font-branding-bold text-white lg:left-[10%] md:left-[1%] left-0 z-20 transform">
-                  <span className="lg:mx-10 mx-3 absolute transform md:top-7 top-4 left-[19.5rem] md:left-[30.5rem] lg:left-[44rem] ">
+                <div className="absolute md:leading-[18rem] leading-[10rem] lg:text-[20rem] md:text-[15rem] text-[7rem] font-branding-bold text-white lg:left-[10%] md:left-[1%] left-0 z-20 transform">
+                  <span className="lg:mx-10 mx-3 absolute transform md:top-7 top-4 left-[15.5rem] md:left-[30.5rem] lg:left-[44rem] ">
                     E
                   </span>
                 </div>
 
                 {/* Text Container */}
-                <p className="absolute md:leading-[18rem] leading-[10rem] lg:text-[20rem] md:text-[15rem] text-[10rem] font-branding-bold text-white md:left-[10%] left-[1%] transform translate-y-[5%] overflow-hidden">
+                <p className="absolute md:leading-[18rem] leading-[10rem] lg:text-[20rem] md:text-[15rem] text-[7rem] font-branding-bold text-white md:left-[10%] left-[1%] transform translate-y-[5%] overflow-hidden">
                   <span className="lg:mx-10 mx-3 relative z-0 ">B</span>
                   <span className="lg:mx-10 mx-3 relative opacity-0">E</span>
                   <span className="lg:mx-10 mx-3 relative opacity-1">L</span>

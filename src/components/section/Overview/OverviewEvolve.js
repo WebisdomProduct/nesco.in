@@ -8,7 +8,7 @@ function OverviewEvolve() {
           <p className="text-blue-800 text-3xl md:text-[5rem] md:leading-[5rem] font-branding-semibold w-full text-center md:text-left">
             Businesses
             <br /> evolve,so do <br /> mindsets. Only <br />
-            beliefs remains <br /> unchanged.
+            beliefs remain <br /> unchanged.
           </p>
         </div>
 

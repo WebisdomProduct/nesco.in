@@ -35,7 +35,7 @@ function LifeCulture() {
               Inspired by our founder, J.V. Patel, who established scholarships
               for the children of factory workers, we prioritize social
               responsibility and encourage a sense of purpose in every team
-              member.Join us, and be part of a legacy dedicated to making a
+              member. Join us, and be part of a legacy dedicated to making a
               difference.
             </p>
           </div>

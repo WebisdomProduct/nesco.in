@@ -345,7 +345,7 @@ function PhilosophyForUs() {
   // );
 
   return (
-    <section className="mobile-full philosophy-blue-sect inview">
+    <section className="mobile-full philosophy-blue-sect inview w-full ">
       <div className="container">
         <div className="blue-sq-box">
           <p

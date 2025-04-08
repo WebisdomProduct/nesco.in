@@ -152,7 +152,43 @@ function Navbar({ activeSlide }) {
       animation: gsap.to(".navbar", { opacity: 1, duration: 0.05 }),
     });
 
-    // Header White Section
+    // Check screen size
+    const checkScreenSize = () => {
+      const isMobileOrTablet = window.innerWidth <= 1024; // Adjust breakpoint as needed
+
+      // Clear existing ScrollTriggers
+      ScrollTrigger.getAll().forEach((trigger) => {
+        if (trigger.vars?.id === "sectionTrigger") {
+          trigger.kill();
+        }
+      });
+
+      // Get all sections we want to observe
+      const sectionsToObserve = isMobileOrTablet
+        ? document.querySelectorAll("section") // All sections on mobile/tablet
+        : document.querySelectorAll(".header_purple"); // Only purple sections on desktop
+
+      sectionsToObserve.forEach((section) => {
+        ScrollTrigger.create({
+          id: "sectionTrigger", // Add identifier so we can kill these later
+          trigger: section,
+          start: "top center",
+          end: "bottom center",
+          onEnter: () => setActivePurpleSection(section),
+          onLeave: () => setActivePurpleSection(null),
+          onEnterBack: () => setActivePurpleSection(section),
+          onLeaveBack: () => setActivePurpleSection(null),
+        });
+      });
+    };
+
+    // Initial setup
+    checkScreenSize();
+
+    // Update on resize
+    window.addEventListener("resize", checkScreenSize);
+
+    // White Header Section (keep existing)
     const WhiteHeader = document.querySelectorAll(".header_white");
     WhiteHeader.forEach((section) => {
       ScrollTrigger.create({
@@ -166,40 +202,27 @@ function Navbar({ activeSlide }) {
         animation: gsap.to(".navbar", { opacity: 1, duration: 0.05 }),
       });
     });
-    // Footer Section
+
+    // Footer Section (keep existing)
     ScrollTrigger.create({
       trigger: ".footer_section",
       start: "top bottom",
       end: "bottom top",
       onEnter: () => {
-        if (window.innerWidth <= 768) setIsFooter(true); // Activate only for mobile view
+        if (window.innerWidth <= 768) setIsFooter(true);
       },
       onLeave: () => {
-        if (window.innerWidth <= 768) setIsFooter(false); // Deactivate only for mobile view
+        if (window.innerWidth <= 768) setIsFooter(false);
       },
       onEnterBack: () => {
-        if (window.innerWidth <= 768) setIsFooter(true); // Activate only for mobile view
+        if (window.innerWidth <= 768) setIsFooter(true);
       },
       onLeaveBack: () => {
-        if (window.innerWidth <= 768) setIsFooter(false); // Deactivate only for mobile view
+        if (window.innerWidth <= 768) setIsFooter(false);
       },
     });
 
-    // Purple Sections
-    const purpleSections = document.querySelectorAll(".header_purple");
-    purpleSections.forEach((section) => {
-      ScrollTrigger.create({
-        trigger: section,
-        start: "top center",
-        end: "bottom center",
-        onEnter: () => setActivePurpleSection(section),
-        onLeave: () => setActivePurpleSection(null),
-        onEnterBack: () => setActivePurpleSection(section),
-        onLeaveBack: () => setActivePurpleSection(null),
-      });
-    });
-
-    // Purple Sections
+    // Black Text Sections (keep existing)
     const blackTextSections = document.querySelectorAll(".header_color_black");
     blackTextSections.forEach((section) => {
       ScrollTrigger.create({
@@ -215,6 +238,7 @@ function Navbar({ activeSlide }) {
 
     // Cleanup
     return () => {
+      window.removeEventListener("resize", checkScreenSize);
       ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
     };
   }, []);

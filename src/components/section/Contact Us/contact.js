@@ -2,6 +2,7 @@ import SlidedownCard from "@/components/common/slidedownCard/SlidedownCard";
 import React from "react";
 import WorldImage from "@/assests/contact/33.png";
 import Image from "next/image";
+import Link from "next/link";
 
 function Contact() {
   const data = [
@@ -63,7 +64,7 @@ function Contact() {
   ];
 
   return (
-    <div className="bg-[#0A2B72] xl:py-36 py-20 flex flex-col justify-between items-center relative overflow-hidden">
+    <div className="bg-[#0A2B72] w-full xl:py-36 py-20 flex flex-col justify-between items-center relative overflow-hidden">
       <div className="absolute z-0 w-full h-full lg:top-0 md:top-[20%] top-[25%]">
         <Image
           src={WorldImage}
@@ -79,7 +80,8 @@ function Contact() {
       <div className="w-full flex flex-col md:items-center mt-32 z-10 relative">
         <SlidedownCard data={data} />
         <div className="w-[50%] my-2 flex-col gap-4 font-branding-medium text-3xl text-white flex items-start cursor-pointer px-5 md:px-0 ">
-          <p>Careers</p>
+          {/* <p>Careers</p> */}
+          <Link href="/life-at-nesco">Life at Nesco</Link>
           <p>Investors</p>
         </div>
       </div>
