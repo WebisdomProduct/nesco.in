@@ -435,7 +435,10 @@ function Navbar({ activeSlide }) {
                 isScrolled || textBlack ? "text-gray-700" : "text-white"
               } -translate-y-1/2 right-3`}
             >
-              <GoSearch className="text-[20px]" strokeWidth={1} />
+              <GoSearch
+                className={`text-[20px] ${getTextColor()}`}
+                strokeWidth={1}
+              />
             </span>
 
             {/* Search results dropdown */}
@@ -499,7 +502,9 @@ function Navbar({ activeSlide }) {
             value={searchQuery}
             onChange={handleSearchChange}
           />
-          <span className="inline-block absolute top-1/2 -translate-y-1/2 right-5">
+          <span
+            className={`inline-block absolute top-1/2 -translate-y-1/2 right-5`}
+          >
             <FaSearch />
           </span>
 
