@@ -136,7 +136,7 @@ function AnnouncementFilter() {
               <thead>
                 <tr>
                   <th className="bg-[#2b2a76] text-gray-200 shadow-sm pl-8 py-3 text-3xl">
-                    Title
+                    Announcements
                   </th>
                 </tr>
               </thead>

@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import {
   FaSearch,
   FaBars,
@@ -15,7 +15,7 @@ import Link from "next/link";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { GoSearch } from "react-icons/go";
-
+import searchSuggestions from "@/utils/seachData";
 function Navbar({ activeSlide }) {
   const NavData = [
     {
@@ -86,11 +86,43 @@ function Navbar({ activeSlide }) {
   const [expandedMenuIndex, setExpandedMenuIndex] = useState(null); // State to track expanded mobile menu
   const [isClosing, setIsClosing] = useState(false);
   const [isAnimating, setIsAnimating] = useState(false);
+  const [searchQuery, setSearchQuery] = useState("");
+  const [showSearchResults, setShowSearchResults] = useState(false);
+  const [searchResults, setSearchResults] = useState([]);
+  const searchRef = useRef(null);
 
   const logo = {
     imagePath: Nescologo,
     link: "/",
   };
+
+  const handleSearchChange = (e) => {
+    const query = e.target.value;
+    setSearchQuery(query);
+
+    if (query.length > 0) {
+      const results = searchSuggestions.filter((item) =>
+        item.title.toLowerCase().includes(query.toLowerCase())
+      );
+      setSearchResults(results);
+      setShowSearchResults(true);
+    } else {
+      setSearchResults([]);
+      setShowSearchResults(false);
+    }
+  };
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (searchRef.current && !searchRef.current.contains(event.target)) {
+        setShowSearchResults(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
 
   const toggleSidebar = () => setIsSidebarOpen(!isSidebarOpen);
 
@@ -311,8 +343,8 @@ function Navbar({ activeSlide }) {
 
       setHoverStyle({
         height: !isThirdItemHovered
-          ? NavData[isOpen].subMenu.length * 64 + 50
-          : NavData[isOpen].subMenu.length * 60 + 50,
+          ? NavData[isOpen].subMenu.length * 64 + 60
+          : NavData[isOpen].subMenu.length * 60 + 60,
         opacity: 0,
       });
     } else {
@@ -335,7 +367,7 @@ function Navbar({ activeSlide }) {
   return (
     <nav
       // className={`py-6 md:px-6 px-8 flex items-center justify-between w-full z-[999] fixed transition-all duration-50 ${changeNavbar()} ${changeNavbar1()}`}
-      className={`py-6 md:px-6 px-8 flex items-center justify-between w-full z-[999] fixed transition-all duration-200 ${changeNavbar()} ${changeNavbar1()}`}
+      className={`py-6 md:px-6 px-8 flex items-center justify-between w-full z-[999] fixed top-0 transition-all duration-200 ${changeNavbar()} ${changeNavbar1()}`}
     >
       {!isScrolled && (
         <div className="fixed top-0 left-0 py-6 md:px-16 px-8 w-full h-20"></div>
@@ -384,12 +416,59 @@ function Navbar({ activeSlide }) {
         </ul>
 
         {/* Search bar */}
-        <div className="h-[30px] w-[200px] xl:w-[110px] relative">
-          <span
-            className={`inline-block cursor-pointer absolute top-1/2 ${getTextColor()} -translate-y-1/2 right-5`}
-          >
-            <GoSearch className="text-[20px] " strokeWidth={1} />
-          </span>
+        <div className=" w-[200px] relative" ref={searchRef}>
+          <div className="relative">
+            <input
+              type="text"
+              placeholder="Search..."
+              className={`w-full h-10 pl-4 pr-10 rounded-full bg-opacity-20 ${
+                isScrolled || textBlack
+                  ? "bg-gray-200 text-black"
+                  : "bg-white text-white"
+              } focus:outline-none`}
+              value={searchQuery}
+              onChange={handleSearchChange}
+              onClick={() => setShowSearchResults(true)}
+            />
+            <span
+              className={`inline-block cursor-pointer absolute top-1/2 ${
+                isScrolled || textBlack ? "text-gray-700" : "text-white"
+              } -translate-y-1/2 right-3`}
+            >
+              <GoSearch className="text-[20px]" strokeWidth={1} />
+            </span>
+
+            {/* Search results dropdown */}
+            {showSearchResults && (
+              <div className="absolute top-12 right-0 w-fit bg-white shadow-lg rounded-md z-50">
+                <ul className="py-2">
+                  {searchResults.length > 0 ? (
+                    searchResults.map((result, index) => (
+                      <li
+                        key={index}
+                        className="px-4 py-2 hover:bg-gray-100 whitespace-nowrap"
+                      >
+                        <Link
+                          href={result.route}
+                          className="text-gray-800 block"
+                          onClick={() => {
+                            setShowSearchResults(false);
+                            setSearchQuery("");
+                          }}
+                        >
+                          {result.title}
+                        </Link>
+                      </li>
+                    ))
+                  ) : (
+                    <li className="px-4 py-2 text-gray-500 italic">
+                      No results found
+                    </li>
+                  )}
+                </ul>
+              </div>
+            )}
+          </div>
         </div>
       </div>
 
@@ -416,10 +495,35 @@ function Navbar({ activeSlide }) {
           <input
             type="text"
             className="w-full h-full rounded-full pl-6 pr-12"
+            placeholder="Search..."
+            value={searchQuery}
+            onChange={handleSearchChange}
           />
           <span className="inline-block absolute top-1/2 -translate-y-1/2 right-5">
             <FaSearch />
           </span>
+
+          {/* Mobile search results */}
+          {searchQuery && searchResults.length > 0 && (
+            <div className="absolute top-10 left-0 w-full bg-white shadow-lg rounded-md z-50 mt-2">
+              <ul className="py-2">
+                {searchResults.map((result, index) => (
+                  <li key={index} className="px-4 py-2 hover:bg-gray-100">
+                    <Link
+                      href={result.route}
+                      className="text-gray-800 block"
+                      onClick={() => {
+                        setSearchQuery("");
+                        toggleSidebar();
+                      }}
+                    >
+                      {result.title}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
         </div>
         <ul className="flex flex-col gap-6">
           {NavData.map((data, index) => (
@@ -454,7 +558,7 @@ function Navbar({ activeSlide }) {
       </div>
 
       <div
-        className="absolute left-0 w-full -mt-20 bg-black bg-opacity-90 z-40 transition-all duration-300 overflow-hidden  hidden xl:block"
+        className="absolute left-0 w-full -mt-24 bg-black bg-opacity-90 z-40 transition-all duration-300 overflow-hidden  hidden xl:block"
         style={{
           top: "100%",
           height: hoverStyle.height,
@@ -475,7 +579,7 @@ function Navbar({ activeSlide }) {
                 // }`}
                 style={{
                   top: "100%",
-                  height: hoverStyle.height,
+                  // height: hoverStyle.height,
                 }}
                 onMouseEnter={handleDropdownEnter}
                 onMouseLeave={handleDropdownLeave}

@@ -13,6 +13,7 @@ function LeadershipMentor2() {
         backgroundPosition: "center",
         backgroundRepeat: "no-repeat",
       }}
+      id="krishna"
     >
       <div className="z-20 relative lg:w-[100%] w-[90%] flex flex-col items-center justify-center mx-auto mt-12 lg:mb-0 mb-10 h-full goal-section1">
         <div className="flex lg:flex-row flex-col h-full w-full items-center">
