@@ -8,6 +8,24 @@ import { Button, Modal } from "antd";
 export const MentorModal = ({ isOpen, onClose, data, lenis }) => {
   const [loading, setLoading] = useState(false);
   const modalRef = useRef(null);
+  const [mobileView, setMobileView] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth < 1024) {
+        setMobileView(true);
+      } else {
+        setMobileView(false);
+      }
+    };
+
+    handleResize(); // Initial check
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
 
   useEffect(() => {
     function handleClickOutside(event) {
@@ -47,7 +65,7 @@ export const MentorModal = ({ isOpen, onClose, data, lenis }) => {
         open={isOpen}
         onOk={handleOk}
         onCancel={onClose}
-        width="60%"
+        width={mobileView ? "90%" : "60%"}
         style={{
           top: "50%",
           transform: "translateY(-50%)",

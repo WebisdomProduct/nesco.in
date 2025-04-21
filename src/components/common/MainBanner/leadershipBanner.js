@@ -67,7 +67,7 @@ function LeadershipBanner1({
             {SliderData.map((data, index) => (
               <SwiperSlide
                 key={index}
-                className="bg-black text-white flex justify-center items-center text-2xl h-[100vh] relative transition-all duration-700"
+                className="bg-black text-white flex justify-center items-center text-2xl h-[100vh] relative transition-all duration-700 min-h-[800px]"
               >
                 <div
                   className={`w-full flex justify-center items-center text-2xl h-[100vh] relative`}

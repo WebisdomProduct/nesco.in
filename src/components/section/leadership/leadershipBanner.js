@@ -78,7 +78,7 @@ function LeadershipBanner() {
   ];
 
   return (
-    <div className="w-full">
+    <div className="w-full ">
       {/* <Navbar activeSlide={activeSlide} /> */}
       {/* <Banner SliderData={SliderData}  onSlideChange={handleSlideChange} /> */}
       <LeadershipBanner1
