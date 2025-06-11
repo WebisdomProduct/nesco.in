@@ -32,7 +32,7 @@ function Navbar({ activeSlide }) {
       title: "Businesses",
       route: "",
       subMenu: [
-        { title: "Bombay Exhibition Center", route: "" },
+        { title: "Bombay Exhibition Center", route: "/bombay-exhibition-center" },
         { title: "Nesco Realty", route: "" },
         { title: "Hospitality", route: "" },
         { title: "Nesco Events", route: "" },
