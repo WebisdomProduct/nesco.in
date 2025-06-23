@@ -41,7 +41,7 @@ function IndabratorStats() {
               />
             </div>
             <h3 
-              className="text-[1.8rem] sm:text-[2rem] md:text-[2.5rem] font-bold mb-2 text-white"
+              className="text-[2.8rem] sm:text-[3rem] md:text-[3.5rem] font-bold mb-2 text-white"
               style={{ fontFamily: "BrandingSemibold" }}
             >
               {stat.value}

@@ -40,7 +40,7 @@ function IndabratorProfile() {
             </h3>
             <p
               className="text-[1.2rem] sm:text-[1.3rem] md:text-[1.4rem] text-gray-700 mb-6"
-              style={{ fontFamily: "BrandingRegular" }}
+              style={{ fontFamily: "BrandingMedium" }}
             >
               Vice-President- Sales & Operations
             </p>
@@ -62,7 +62,7 @@ function IndabratorProfile() {
             <div className="space-y-4">
               <p
                 className="text-[0.9rem] sm:text-[1rem] md:text-[1.1rem] leading-relaxed"
-                style={{ fontFamily: "BrandingRegular" }}
+                style={{ fontFamily: "BrandingMedium" }}
               >
                 Dr. Pawan Kumar Singh is heading the Indabrator division as
                 Vice-President- Sales & Operations. In his role, he oversees and
@@ -72,7 +72,7 @@ function IndabratorProfile() {
 
               <p
                 className="text-[0.9rem] sm:text-[1rem] md:text-[1.1rem] leading-relaxed"
-                style={{ fontFamily: "BrandingRegular" }}
+                style={{ fontFamily: "BrandingMedium" }}
               >
                 His expertise extends to various aspects of business management,
                 including P&L management in multi-plant operations within heavy
@@ -84,7 +84,7 @@ function IndabratorProfile() {
 
               <p
                 className="text-[0.9rem] sm:text-[1rem] md:text-[1.1rem] leading-relaxed"
-                style={{ fontFamily: "BrandingRegular" }}
+                style={{ fontFamily: "BrandingMedium" }}
               >
                 He has has a proven track record in Operational Excellence and
                 Efficiencies, Value Engineering, Sustainability, Safety,

@@ -75,8 +75,8 @@ function IndabratorUnitss() {
             <p className="text-sm text-gray-600 mb-3">Karamsad, Gujarat</p>
 
             <p
-              className="text-[0.9rem] md:text-[1rem] leading-relaxed"
-              style={{ fontFamily: "BrandingRegular" }}
+              className="text-[1.1rem] md:text-[1.2rem] leading-relaxed"
+              style={{ fontFamily: "BrandingMedium" }}
             >
               The Indabrator foundry and abrasive plant is located within 60
               acres of land in Karamsad, Gujarat. Lauded as one of India's
@@ -84,8 +84,8 @@ function IndabratorUnitss() {
               treatment facilities and physical and chemical tests laboratories.
             </p>
             <p
-              className="text-[0.9rem] md:text-[1rem] leading-relaxed mt-2"
-              style={{ fontFamily: "BrandingRegular" }}
+              className="text-[1.1rem] md:text-[1.2rem] leading-relaxed mt-2"
+              style={{ fontFamily: "BrandingMedium" }}
             >
               The state-of-the-art alloy iron foundry enables the manufacture of
               highly wear-resistant shell-molded alloy iron castings and spares.

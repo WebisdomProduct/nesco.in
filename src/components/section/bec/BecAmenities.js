@@ -87,7 +87,7 @@ function BecAmenities() {
             </h3>
             <p 
               className="text-[0.7rem] sm:text-[0.8rem] md:text-[0.9rem] text-[#fdc95d]"
-              style={{ fontFamily: "BrandingRegular" }}
+              style={{ fontFamily: "BrandingMedium" }}
             >
               {item.desc}
             </p>

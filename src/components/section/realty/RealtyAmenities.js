@@ -11,27 +11,30 @@ import entertainmentIcon from "@/assests/nesco-business-page/nesco-reality-eleme
 import sportsIcon from "@/assests/nesco-business-page/nesco-reality-elements/17.jpg";
 
 function RealtyAmenities() {
-  const amenities = [
+  const topRowAmenities = [
     {
       icon: parkingIcon,
       title: "Ample Parking Space",
-      description: "at any given time"
+      description: "for over 2,000 vehicles at any given time"
     },
     {
       icon: shoppingIcon,
-      title: "Simplified Living",
-      description: "with onsite shopping stores"
+      title: "Simplified Living with",
+      description: "creche & convenience stores"
     },
     {
       icon: foodIcon,
       title: "Versatile Food & Beverage",
-      description: "options, including open air cafes & food courts"
+      description: "options including open air cafes & food courts"
     },
     {
       icon: greenIcon,
       title: "Lush Open Spaces",
-      description: "with over 5,000 trees"
-    },
+      description: "with over 1,000 trees"
+    }
+  ];
+
+  const bottomRowAmenities = [
     {
       icon: transportIcon,
       title: "Transportation",
@@ -39,8 +42,8 @@ function RealtyAmenities() {
     },
     {
       icon: entertainmentIcon,
-      title: "Prime Entertainment",
-      description: "in proximity"
+      title: "Prime Entertainment in",
+      description: "proximity"
     },
     {
       icon: sportsIcon,
@@ -49,41 +52,89 @@ function RealtyAmenities() {
     }
   ];
 
+  const allAmenities = [...topRowAmenities, ...bottomRowAmenities];
+
   return (
-    <section className="w-full h-screen flex flex-col overflow-hidden bg-white">
-      <h2 
-        className="text-[2rem] font-bold px-[5%] pt-12 pb-8"
-        style={{ fontFamily: "BrandingSemibold" }}
-      >
+    <section className="w-full bg-white py-8 sm:py-12 px-4 sm:px-8 lg:px-16">
+      {/* Main Title */}
+      <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-black mb-8 sm:mb-12 lg:mb-16">
         Amenities
       </h2>
       
-      <div className="w-full flex-1 px-[5%] grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-8">
-        {amenities.map((amenity, index) => (
-          <div key={index} className="flex flex-col items-center text-center">
-            <div className="w-[160px] h-[160px] mb-4">
-              <Image
-                src={amenity.icon}
-                alt={amenity.title}
-                width={160}
-                height={160}
-                className="object-contain"
-              />
+      {/* Desktop Layout - Two separate rows */}
+      <div className="hidden lg:block">
+        {/* Top Row - 4 items */}
+        <div className="grid grid-cols-4 gap-12 mb-16">
+          {topRowAmenities.map((amenity, index) => (
+            <div key={index} className="flex flex-col items-center text-center">
+              <div className="w-30 h-30 mb-6 flex items-center justify-center">
+                <Image
+                  src={amenity.icon}
+                  alt={amenity.title}
+                  width={160}
+                  height={160}
+                  className="object-contain"
+                />
+              </div>
+              <h3 className="text-lg font-bold mb-3 text-black leading-tight">
+                {amenity.title}
+              </h3>
+              <p className="text-sm text-gray-700 leading-relaxed">
+                {amenity.description}
+              </p>
             </div>
-            <h3 
-              className="text-[1rem] md:text-[1.2rem] font-bold mb-2"
-              style={{ fontFamily: "BrandingSemibold" }}
-            >
-              {amenity.title}
-            </h3>
-            <p 
-              className="text-[0.8rem] md:text-[0.9rem] text-gray-600"
-              style={{ fontFamily: "BrandingRegular" }}
-            >
-              {amenity.description}
-            </p>
+          ))}
+        </div>
+
+        {/* Bottom Row - 3 items centered */}
+        <div className="flex justify-center">
+          <div className="grid grid-cols-3 gap-24 max-w-4xl">
+            {bottomRowAmenities.map((amenity, index) => (
+              <div key={index} className="flex flex-col items-center text-center">
+                <div className="w-30 h-30 mb-6 flex items-center justify-center">
+                  <Image
+                    src={amenity.icon}
+                    alt={amenity.title}
+                    width={180}
+                    height={180}
+                    className="object-contain"
+                  />
+                </div>
+                <h3 className="text-lg font-bold mb-3 text-black leading-tight">
+                  {amenity.title}
+                </h3>
+                <p className="text-sm text-gray-700 leading-relaxed">
+                  {amenity.description}
+                </p>
+              </div>
+            ))}
           </div>
-        ))}
+        </div>
+      </div>
+
+      {/* Mobile/Tablet Layout - Single responsive grid */}
+      <div className="lg:hidden">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 sm:gap-8">
+          {allAmenities.map((amenity, index) => (
+            <div key={index} className="flex flex-col items-center text-center">
+              <div className="w-24 h-24 sm:w-28 sm:h-28 md:w-32 md:h-32 mb-4 sm:mb-6 flex items-center justify-center">
+                <Image
+                  src={amenity.icon}
+                  alt={amenity.title}
+                  width={120}
+                  height={120}
+                  className="object-contain w-full h-full"
+                />
+              </div>
+              <h3 className="text-base sm:text-lg font-bold mb-2 sm:mb-3 text-black leading-tight px-2">
+                {amenity.title}
+              </h3>
+              <p className="text-xs sm:text-sm text-gray-700 leading-relaxed px-2">
+                {amenity.description}
+              </p>
+            </div>
+          ))}
+        </div>
       </div>
     </section>
   );

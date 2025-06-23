@@ -14,7 +14,7 @@ function BecFacilities() {
     {
       id: 1,
       name: "The Hall",
-      image: cafeteriaImage,
+      image: orchardImage,
       description: "An expansive multi-function exhibition hall with over 25,000 sq.ft of open space. Perfect for large-scale events, exhibitions, and corporate functions. Equipped with state-of-the-art lighting systems and utility connections throughout the space."
     },
     {
@@ -26,13 +26,13 @@ function BecFacilities() {
     {
       id: 3,
       name: "The Pavilion",
-      image: foodCourtImage,
+      image: orchardImage,
       description: "A versatile indoor-outdoor space that combines the comfort of a sheltered venue with the natural ambiance of open surroundings. The Pavilion offers 12,000 sq.ft of flexible space for product launches, networking events or casual gatherings."
     },
     {
       id: 4,
       name: "Conference Center",
-      image: restaurantImage,
+      image: orchardImage,
       description: "Our premium meeting space equipped with advanced audio-visual technology and comfortable seating for up to 200 attendees. The Conference Center includes breakout rooms and dedicated catering areas for productive business meetings."
     }
   ];
@@ -102,8 +102,8 @@ function BecFacilities() {
           </div>
           
           <p 
-            className="text-[0.9rem] sm:text-[1rem] md:text-[1.1rem] leading-[1.6] sm:leading-[1.7]"
-            style={{ fontFamily: "BrandingRegular" }}
+            className="text-[1.5rem] sm:text-[1.7rem] md:text-[1.6rem] leading-[1.6] sm:leading-[1.7]"
+            style={{ fontFamily: "BrandingMedium" }}
           >
             {currentFacility.description}
           </p>

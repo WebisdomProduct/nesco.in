@@ -23,21 +23,23 @@ function RealtyInitiative() {
         </h3>
         <p 
           className="text-[1.5rem] leading-relaxed"
-          style={{ fontFamily: "BrandingRegular" }}
+          style={{ fontFamily: "BrandingMedium" }}
         >
           Envisioned with foresight, the Incubation Centre is enabling promising, young businesses to take on bigger challenges. A fully-operational Incubator, the Centre functions as a catalyst for the new-age companies that are redefining business, operations and workplace culture in the startup era.
         </p>
       </div>
       
       {/* Right column - image */}
-      <div className="md:w-1/2 w-full relative h-[300px] md:h-auto">
-        <Image
-          src={incubationImage}
-          alt="Incubation Centre"
-          fill
-          className="object-cover"
-        />
-      </div>
+      <div className="md:w-1/2 w-full flex items-center justify-center px-12 py-16">
+          <div className="w-full max-w-2xl h-96 relative bg-gray-100  overflow-hidden shadow-lg">
+            <Image
+              src={incubationImage}
+              alt="Modern incubation centre workspace with yellow and blue workstations"
+              fill
+              className="object-cover"
+            />
+          </div>
+        </div>
     </section>
   );
 }

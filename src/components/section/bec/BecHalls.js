@@ -7,7 +7,7 @@ import celebrationImg from "@/assests/nesco-business-page/bec-elements/34.jpg";
 import miceImg from "@/assests/nesco-business-page/bec-elements/35.jpg";
 
 function BecHalls() {
-  const halls = [
+  const spaces = [
     {
       title: "Exhibitions",
       image: exhibitionImg,
@@ -26,47 +26,37 @@ function BecHalls() {
   ];
 
   return (
-    <section className="w-full h-auto min-h-screen bg-white flex flex-col overflow-hidden">
-      {/* Keep significant top padding to maintain position */}
-      <div className="w-full pt-24 sm:pt-32 md:pt-40 px-[5%] flex flex-col h-full">
-        {/* Optional header or title area */}
-        <div className="mb-4 sm:mb-8">
-          {/* You could add a title here if needed */}
-        </div>
-        
-        {/* Halls layout with TALLER images */}
-        <div className="w-full max-w-7xl mx-auto flex flex-col sm:flex-row gap-6 sm:gap-8 flex-1">
-          {halls.map((hall, index) => (
-            <div 
-              key={index} 
-              className="flex-1 flex flex-col h-[65vh] sm:h-[70vh] md:h-[75vh]"
-            >
-              {/* Image container with INCREASED height */}
-              <div className="relative flex-1 w-full overflow-hidden rounded-md">
-                <Image
-                  src={hall.image}
-                  alt={hall.alt}
-                  fill
-                  className="object-cover object-center"
-                  sizes="(max-width: 640px) 90vw, (max-width: 768px) 45vw, 30vw"
-                />
-              </div>
-
-              {/* Title below image */}
-              <p
-                className="text-center w-full py-3 sm:py-4 italic text-[#2c3e50] text-[1rem] sm:text-[1.1rem] md:text-[1.2rem]"
-                style={{ fontFamily: "TimesNewRoman" }}
-              >
-                {hall.title}
-              </p>
+    <section className="w-full bg-white py-8 sm:py-12 lg:py-16 px-4 sm:px-6 lg:px-8">
+          {/* Main Title */}
+          <div className="text-center mb-8 sm:mb-10 lg:mb-12">
+    
+          </div>
+          
+          {/* Spaces Grid */}
+          <div className="max-w-7xl mx-auto">
+            {/* Mobile: Single column, Tablet: 2 columns, Desktop: 3 columns */}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 lg:gap-12">
+              {spaces.map((space, index) => (
+                <div key={index} className="flex flex-col items-center">
+                  {/* Image Container - Responsive heights */}
+                  <div className="w-full max-w-sm h-64 sm:h-80 md:h-96 lg:h-[36rem] mb-4 sm:mb-6 overflow-hidden relative rounded-lg">
+                    <Image
+                      src={space.image}
+                      alt={space.alt}
+                      fill
+                      className="object-cover"
+                    />
+                  </div>
+                  
+                  {/* Title Below Image */}
+                  <h3 className="text-black text-lg sm:text-xl lg:text-2xl font-light italic text-center px-2">
+                    {space.title}
+                  </h3>
+                </div>
+              ))}
             </div>
-          ))}
-        </div>
-        
-        {/* Reduced bottom padding to allow more space for taller images */}
-        <div className="pb-4 sm:pb-8"></div>
-      </div>
-    </section>
+          </div>
+        </section>
   );
 }
 

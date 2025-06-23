@@ -6,31 +6,31 @@ import profileImage from "@/assests/nesco-business-page/nesco-reality-elements/1
 
 function RealtyProfile() {
   return (
-    <section className="w-full h-screen overflow-hidden bg-[#f9f9f9] flex items-center">
-      <div className="px-[5%] w-full h-full flex items-center">
-        <div className="w-[90%] mx-auto flex flex-col md:flex-row items-center">
+    <section className="w-full min-h-screen bg-[#f9f9f9] py-8 sm:py-12 lg:py-16">
+      <div className="px-4 sm:px-6 lg:px-[5%] w-full h-full flex items-center">
+        <div className="w-full mx-auto flex flex-col lg:flex-row items-center lg:items-start gap-8 lg:gap-12">
           {/* Text Content */}
-          <div className="flex-[2] pr-0 md:pr-12 mb-8 md:mb-0">
+          <div className="flex-1 lg:flex-[2] w-full lg:pr-8">
             <h3 
-              className="text-[2rem] md:text-[2.2rem] font-bold mb-2"
+              className="text-2xl sm:text-3xl lg:text-4xl xl:text-[2.2rem] font-bold mb-2 text-center lg:text-left"
               style={{ fontFamily: "BrandingSemibold" }}
             >
               Dharmesh Joshi
             </h3>
             <p 
-              className="text-[1.4rem] text-[#666] mb-6"
+              className="text-lg sm:text-xl lg:text-2xl xl:text-[1.4rem] text-[#666] mb-4 sm:mb-6 text-center lg:text-left"
               style={{ fontFamily: "BrandingMedium" }}
             >
               Sr. General Manager - Special Projects
             </p>
             <p 
-              className="text-[1.7rem] font-bold mb-5"
+              className="text-lg sm:text-xl lg:text-2xl xl:text-[1.7rem] font-bold mb-4 sm:mb-5 text-center lg:text-left leading-tight"
               style={{ fontFamily: "BrandingSemibold" }}
             >
               Belief: Action is better than Words. Quit talking and lets start Doing!
             </p>
             <p 
-              className="text-[1.5rem] leading-[1.8]"
+              className="text-base sm:text-lg lg:text-xl xl:text-[1.5rem] leading-relaxed lg:leading-[1.8] text-center lg:text-left"
               style={{ fontFamily: "BrandingMedium" }}
             >
               Dharmesh is a multifaceted professional with good understanding of various industries. With techno-commercial experience and working with top management, enables him to add value in Corporate Strategy & Infrastructure projects. Dharmesh is very passionate about whatever he does. Currently handling Special Projects, he is involved in Nesco's various Divisions. Dharmesh enjoys reading, music and spending his time with family.
@@ -38,14 +38,16 @@ function RealtyProfile() {
           </div>
 
           {/* Image Container */}
-          <div className="flex-1 relative h-[350px] md:h-[450px] w-full">
-            <Image
-              src={profileImage}
-              alt="Dharmesh Joshi"
-              fill
-              className="object-cover rounded-md"
-              priority
-            />
+          <div className="flex-1 w-full max-w-sm sm:max-w-md lg:max-w-none">
+            <div className="relative h-80 sm:h-96 md:h-[28rem] lg:h-[450px] xl:h-[500px] w-full">
+              <Image
+                src={profileImage}
+                alt="Dharmesh Joshi"
+                fill
+                className="object-cover rounded-md shadow-lg"
+                priority
+              />
+            </div>
           </div>
         </div>
       </div>
