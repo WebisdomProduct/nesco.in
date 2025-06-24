@@ -10,7 +10,7 @@ function HospitalityRoot() {
       <div className="w-full h-full px-[5%]">
         {/* Responsive title with better scaling */}
         <h2 
-          className="text-[1.8rem] sm:text-[2.2rem] md:text-[2.5rem] lg:text-[2.7rem] font-bold mb-4 sm:mb-6"
+          className="text-[1.8rem] sm:text-[2.2rem] md:text-[2.5rem] lg:text-[2.7rem] font-bold mb-2 pt-14 sm:mb-4"
           style={{ fontFamily: "BrandingSemibold" }}
         >
           The Root

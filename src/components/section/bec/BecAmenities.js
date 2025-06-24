@@ -59,7 +59,7 @@ function BecAmenities() {
     <section className="w-full h-screen flex flex-col overflow-hidden bg-white py-4 sm:py-8">
       {/* Section Title - Responsive typography and spacing */}
       <h2 
-        className="text-[1.6rem] sm:text-[1.8rem] md:text-[2rem] font-bold px-[5%] pt-8 pb-6 sm:pb-8"
+        className="text-[2.6rem] sm:text-[2.8rem] md:text-[3rem] font-bold px-[5%] pt-8 pb-6 sm:pb-8"
         style={{ fontFamily: "BrandingSemibold" }}
       >
         Amenities
@@ -80,13 +80,13 @@ function BecAmenities() {
               />
             </div>
             <h3 
-              className="text-[0.9rem] sm:text-[1rem] md:text-[1.1rem] lg:text-[1.2rem] font-bold mb-1 sm:mb-2 text-[#fdc95d]"
+              className="text-[1rem] sm:text-[1.1rem] md:text-[1.2rem] lg:text-[1.3rem] font-bold mb-1 sm:mb-2 text-[#fdc95d]"
               style={{ fontFamily: "BrandingSemibold" }}
             >
               {item.name}
             </h3>
             <p 
-              className="text-[0.7rem] sm:text-[0.8rem] md:text-[0.9rem] text-[#fdc95d]"
+              className="text-[0.9rem] sm:text-[1rem] md:text-[1.1rem] text-[#fdc95d]"
               style={{ fontFamily: "BrandingMedium" }}
             >
               {item.desc}

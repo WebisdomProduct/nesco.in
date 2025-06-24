@@ -6,7 +6,7 @@ function BecDescription() {
       {/* Left column - Main heading with improved responsive text */}
       <div className="md:w-1/2 w-full p-[5%] flex flex-col justify-center flex-1">
         <h1 
-          className="text-[2.5rem] sm:text-[3.2rem] md:text-[4rem] lg:text-[4.5rem] font-bold leading-tight mb-6"
+          className="text-[3.5rem] sm:text-[4.2rem] md:text-[5rem] lg:text-[5.5rem] font-bold leading-tight mb-6"
           style={{ fontFamily: "BrandingSemibold" }}
         >
           A Confluence of business & cultures

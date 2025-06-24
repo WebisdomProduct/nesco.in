@@ -57,7 +57,7 @@ function RealtyAmenities() {
   return (
     <section className="w-full bg-white py-8 sm:py-12 px-4 sm:px-8 lg:px-16">
       {/* Main Title */}
-      <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-black mb-8 sm:mb-12 lg:mb-16">
+      <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-black pt-14 mb-8 sm:mb-12 lg:mb-16">
         Amenities
       </h2>
       
@@ -76,7 +76,7 @@ function RealtyAmenities() {
                   className="object-contain"
                 />
               </div>
-              <h3 className="text-lg font-bold mb-3 text-black leading-tight">
+              <h3 className="text-lg font-extrabold mb-3 text-black leading-tight">
                 {amenity.title}
               </h3>
               <p className="text-sm text-gray-700 leading-relaxed">

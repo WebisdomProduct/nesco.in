@@ -6,8 +6,8 @@ import profileImage from "@/assests/nesco-business-page/nesco-reality-elements/1
 
 function RealtyProfile() {
   return (
-    <section className="w-full min-h-screen bg-[#f9f9f9] py-8 sm:py-12 lg:py-16">
-      <div className="px-4 sm:px-6 lg:px-[5%] w-full h-full flex items-center">
+    <section className="w-full min-h-screen bg-white py-8 sm:py-12 lg:py-16">
+      <div className="px-4 sm:px-6 lg:px-[5%] w-full h-full flex pt-12 sm:pt-16 lg:pt-24">
         <div className="w-full mx-auto flex flex-col lg:flex-row items-center lg:items-start gap-8 lg:gap-12">
           {/* Text Content */}
           <div className="flex-1 lg:flex-[2] w-full lg:pr-8">
@@ -33,7 +33,13 @@ function RealtyProfile() {
               className="text-base sm:text-lg lg:text-xl xl:text-[1.5rem] leading-relaxed lg:leading-[1.8] text-center lg:text-left"
               style={{ fontFamily: "BrandingMedium" }}
             >
-              Dharmesh is a multifaceted professional with good understanding of various industries. With techno-commercial experience and working with top management, enables him to add value in Corporate Strategy & Infrastructure projects. Dharmesh is very passionate about whatever he does. Currently handling Special Projects, he is involved in Nesco's various Divisions. Dharmesh enjoys reading, music and spending his time with family.
+              Dharmesh is a multifaceted professional with good understanding of various industries.
+            </p>
+            <p 
+              className="text-base sm:text-lg lg:text-xl xl:text-[1.5rem] leading-relaxed lg:leading-[1.8] text-center lg:text-left"
+              style={{ fontFamily: "BrandingMedium" }}
+            >
+              With techno-commercial experience and working with top management, enables him to add value in Corporate Strategy & Infrastructure projects. Dharmesh is very passionate about whatever he does. Currently handling Special Projects, he is involved in Nesco's various Divisions. Dharmesh enjoys reading, music and spending his time with family.
             </p>
           </div>
 

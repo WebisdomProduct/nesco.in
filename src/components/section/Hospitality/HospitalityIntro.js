@@ -6,7 +6,7 @@ function HospitalityIntro() {
       {/* Left column - Main heading with better mobile sizing */}
       <div className="md:w-1/2 w-full p-4 sm:p-[5%] flex flex-col justify-center">
         <h1 
-          className="text-[2.5rem] sm:text-[3.5rem] md:text-[4rem] lg:text-[4.5rem] font-bold leading-[1.1] sm:leading-tight mb-4 sm:mb-6"
+          className="text-[4.5rem] sm:text-[5.5rem] md:text-[6rem] lg:text-[6.5rem] font-bold leading-[1.1] sm:leading-tight mb-4 sm:mb-6"
           style={{ fontFamily: "BrandingSemibold" }}
         >
           Creating a myriad of gourmet experiences

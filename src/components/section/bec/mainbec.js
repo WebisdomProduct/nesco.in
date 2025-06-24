@@ -2,6 +2,7 @@
 import React, { useState } from "react";
 import Pagewrapper from "@/components/layout/pagewrapper";
 import ScrollSnip from "@/components/layout/scrollSnipEffect/scrollSnip";
+import AnimateOnScroll from "@/components/common/animateContent/animation";
 
 // Import all BEC components
 import BecHero from "./BecHero";

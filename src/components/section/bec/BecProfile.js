@@ -6,7 +6,7 @@ import profileImage from "@/assests/nesco-business-page/bec-elements/49.jpg";
 
 function BecProfile() {
   return (
-    <section className="w-full min-h-screen h-auto overflow-hidden bg-[#f9f9f9] flex items-center py-8 sm:py-10 md:py-16">
+    <section className="w-full min-h-screen h-auto overflow-hidden bg-white flex items-center py-8 sm:py-10 md:py-16">
       <div className="px-[5%] w-full">
         <div className="w-[90%] mx-auto flex flex-col md:flex-row items-center">
           {/* Text Content - Improved responsive typography */}

@@ -6,10 +6,9 @@ import profileImage from "@/assests/nesco-business-page/Indabrator-Elements/65.j
 
 function IndabratorProfile() {
   return (
-    <section className="w-full min-h-screen h-auto overflow-hidden bg-white flex flex-col items-center py-8 sm:py-10 md:py-16">
-      {/* Reduced horizontal padding from 5% to 3% and removed max-width constraint */}
-      <div className="px-[3%] w-full">
-        {/* Main heading - full width */}
+    <section className="w-full min-h-screen bg-white py-8 sm:py-12 md:py-16">
+      <div className="container px-6 sm:px-10 md:px-16 lg:px-24 mx-auto">
+        {/* Main heading */}
         <h2
           className="text-[2rem] sm:text-[2.5rem] md:text-[3rem] lg:text-[3.2rem] font-bold mb-8 sm:mb-10 md:mb-12"
           style={{ fontFamily: "BrandingSemibold" }}
@@ -17,21 +16,23 @@ function IndabratorProfile() {
           Meet the people who make it possible.
         </h2>
 
-        {/* Profile container - adjusted width proportions */}
-        <div className="flex flex-col md:flex-row items-start gap-6 md:gap-8">
-          <div className="md:w-[45%] w-full">
-            <div className="flex-1 relative h-[450px] md:h-[650px] w-full">
+        {/* Profile container */}
+        <div className="flex flex-col md:flex-row items-start gap-8 md:gap-12">
+          {/* Image container - fixed aspect ratio */}
+          <div className="md:w-[40%] w-full">
+            <div className="aspect-[3/4] w-full relative rounded-md overflow-hidden shadow-lg">
               <Image
                 src={profileImage}
-                alt="Dharmesh Joshi"
+                alt="Dr. Pawan Kumar Singh"
                 fill
-                className="object-cover rounded-md"
+                className="object-cover object-top"
                 priority
               />
             </div>
           </div>
 
-          <div className="md:w-[55%] w-full">
+          {/* Text content */}
+          <div className="md:w-[60%] w-full">
             <h3
               className="text-[1.8rem] sm:text-[2rem] md:text-[2.2rem] font-bold mb-1"
               style={{ fontFamily: "BrandingSemibold" }}

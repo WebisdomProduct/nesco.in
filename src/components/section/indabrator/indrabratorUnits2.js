@@ -72,7 +72,7 @@ function IndabratorUnitss() {
             >
               Works II
             </h3>
-            <p className="text-sm text-gray-600 mb-3">Karamsad, Gujarat</p>
+            <p className="text-md text-gray-600 mb-3">Karamsad, Gujarat</p>
 
             <p
               className="text-[1.1rem] md:text-[1.2rem] leading-relaxed"

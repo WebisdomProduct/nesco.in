@@ -62,7 +62,7 @@ function BecFacilities() {
       {/* Section Title with yellow top border - Reduced bottom padding */}
       <div className="px-[5%] w-full border-t-2 border-[#f9d342] pt-14 pb-2">
         <h2 
-          className="text-[1.5rem] sm:text-[1.8rem] md:text-[2rem] lg:text-[2.2rem] font-bold text-black"
+          className="text-[1.5rem] sm:text-[1.8rem] md:text-[2rem] lg:text-[2.2rem] font-bold text-black pt-14"
           style={{ fontFamily: "BrandingSemibold" }}
         >
           Facilities
