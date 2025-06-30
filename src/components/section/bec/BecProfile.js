@@ -8,9 +8,9 @@ function BecProfile() {
   return (
     <section className="w-full min-h-auto h-auto overflow-hidden bg-white flex">
       <div className="w-full">
-        <div className="w-[90%] mx-auto flex flex-col md:flex-row">
-          {/* Text Content - Improved responsive typography */}
-          <div className="md:w-[55%] w-full  mb-8 md:mb-0">
+        <div className="w-[100%] mx-auto flex flex-col md:flex-row">
+          {/* Text Content - Expanded width */}
+          <div className="md:w-[65%] w-full pr-0  mb-8 md:mb-0 ml-16">
             <h3 
               className="text-[2rem] sm:text-[2.5rem] md:text-[2.8rem] lg:text-[3rem] font-bold mb-2"
               style={{ fontFamily: "BrandingSemibold" }}
@@ -37,15 +37,15 @@ function BecProfile() {
             </p>
           </div>
 
-          {/* Image Container - Increased size */}
-          <div className="md:w-[55%] w-full relative h-[500px] sm:h-[550px] md:h-[650px] lg:h-[700px]">
+          {/* Image Container - Smaller size, shifted right */}
+          <div className="md:w-[65%] w-full relative h-[750px] sm:h-[700px] md:h-[750px] lg:h-[800px] ml-auto">
             <Image
               src={profileImage}
               alt="Harsh Mukherjee"
               fill
-              className="object-cover rounded-md"
+              className="object-contain rounded-md"
               priority
-              sizes="(max-width: 768px) 90vw, 45vw"
+              sizes="(max-width: 768px) 90vw, 40vw"
             />
           </div>
         </div>

@@ -23,12 +23,12 @@ function RealtyAmenities() {
       description: "creche & convenience stores"
     },
     {
-      icon: foodIcon,
+      icon: transportIcon,
       title: "Versatile Food & Beverage",
       description: "options including open air cafes & food courts"
     },
     {
-      icon: greenIcon,
+      icon: entertainmentIcon,
       title: "Lush Open Spaces",
       description: "with over 1,000 trees"
     }
@@ -36,14 +36,14 @@ function RealtyAmenities() {
 
   const bottomRowAmenities = [
     {
-      icon: transportIcon,
+      icon: foodIcon,
       title: "Transportation",
       description: "services available"
     },
     {
-      icon: entertainmentIcon,
-      title: "Prime Entertainment in",
-      description: "proximity"
+      icon: greenIcon,
+      title: "Prime Entertainment in proximity",
+      description: ""
     },
     {
       icon: sportsIcon,
@@ -57,7 +57,7 @@ function RealtyAmenities() {
   return (
     <section className="w-full bg-white py-6 sm:py-10 px-4 sm:px-8 lg:px-16">
       {/* Main Title */}
-      <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-black  mb-8 sm:mb-12 lg:mb-16">
+      <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-black mb-8 sm:mb-12 lg:mb-16">
         Amenities
       </h2>
       
@@ -76,11 +76,9 @@ function RealtyAmenities() {
                   className="object-contain"
                 />
               </div>
-              <h3 className="text-lg font-extrabold mb-3 text-black leading-tight">
-                {amenity.title}
-              </h3>
-              <p className="text-sm text-gray-700 leading-relaxed">
-                {amenity.description}
+              <p className="text-xl text-black leading-relaxed">
+                <span style={{ fontFamily: "BrandingSemibold" }}>{amenity.title}</span>
+                <span style={{ fontFamily: "BrandingMedium" }}> {amenity.description}</span>
               </p>
             </div>
           ))}
@@ -100,11 +98,9 @@ function RealtyAmenities() {
                     className="object-contain"
                   />
                 </div>
-                <h3 className="text-lg font-bold mb-3 text-black leading-tight">
-                  {amenity.title}
-                </h3>
-                <p className="text-sm text-gray-700 leading-relaxed">
-                  {amenity.description}
+                <p className="text-xl text-black leading-relaxed">
+                  <span style={{ fontFamily: "BrandingSemibold" }}>{amenity.title}</span>
+                  <span style={{ fontFamily: "BrandingMedium" }}> {amenity.description}</span>
                 </p>
               </div>
             ))}
@@ -126,11 +122,9 @@ function RealtyAmenities() {
                   className="object-contain w-full h-full"
                 />
               </div>
-              <h3 className="text-base sm:text-lg font-bold mb-2 sm:mb-3 text-black leading-tight px-2">
-                {amenity.title}
-              </h3>
-              <p className="text-xs sm:text-sm text-gray-700 leading-relaxed px-2">
-                {amenity.description}
+              <p className="text-base sm:text-lg text-black leading-relaxed px-2">
+                <span style={{ fontFamily: "BrandingSemibold" }}>{amenity.title}</span>
+                <span style={{ fontFamily: "BrandingMedium" }}> {amenity.description}</span>
               </p>
             </div>
           ))}

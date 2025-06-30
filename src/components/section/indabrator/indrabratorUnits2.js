@@ -7,9 +7,9 @@ import factoryImg2 from "@/assests/nesco-business-page/Indabrator-Elements/64.jp
 
 function IndabratorUnitss() {
   return (
-    <section className="w-full h-screen bg-white flex flex-col overflow-hidden">
+    <section className="w-full h-auto bg-white flex flex-col overflow-hidden">
       {/* Title with padding */}
-      <div className="w-full pt-16 pb-4 px-[5%]">
+      <div className="w-full pt-10 pb-4 px-[5%]">
         {/* <h2 
           className="text-[2rem] md:text-[2.2rem] font-bold"
           style={{ fontFamily: "BrandingSemibold" }}

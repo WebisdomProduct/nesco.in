@@ -11,7 +11,7 @@ function RealtyStats() {
     {
       icon: employeesIcon,
       value: "25k",
-      label: "Employees at our 17 parks"
+      label: "Employees at our IT parks"
     },
     {
       icon: foodBrandsIcon,
@@ -47,7 +47,7 @@ function RealtyStats() {
               {stat.value}
             </h3>
             <p 
-              className="text-center text-[0.9rem] sm:text-[1rem] text-[#483bb0]"
+              className="text-center text-[1.4rem] sm:text-[1.5rem] text-[#483bb0]"
               style={{ fontFamily: "BrandingMedium" }}
             >
               {stat.label}

@@ -54,7 +54,7 @@ function IndabratorServices() {
   const bottomRowServices = services.slice(4);
 
   return (
-    <section className="w-full min-h-auto bg-[#0e129f] flex flex-col justify-center items-center px-4 sm:px-6 lg:px-8 py-8 sm:py-12 lg:py-16">
+    <section className="w-full min-h-auto bg-[#0e129f] flex flex-col justify-center items-center px-8 sm:px-12 lg:px-16 py-8 sm:py-12 lg:py-16">
       {/* Small screens only - Single column layout */}
       <div className="block lg:hidden w-full space-y-6 mb-6">
         {services.map((service, index) => (
@@ -76,9 +76,9 @@ function IndabratorServices() {
         ))}
       </div>
 
-      {/* Large screens - Original layout (unchanged) */}
+      {/* Large screens - Reduced side gaps */}
       {/* Top row - 4 items */}
-      <div className="hidden lg:grid grid-cols-4 gap-12 mb-16 w-full max-w-7xl">
+      <div className="hidden lg:grid grid-cols-4 gap-12 mb-16 w-full">
         {topRowServices.map((service, index) => (
           <div key={`desktop-top-${index}`} className="flex flex-col items-center">
             <div className="relative w-full h-56 mb-4 overflow-hidden rounded-lg shadow-lg">

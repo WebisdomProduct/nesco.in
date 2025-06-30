@@ -60,9 +60,9 @@ function HospitalityFacilities() {
   return (
     <section className="w-full h-screen overflow-hidden bg-white">
       {/* Section Title with yellow top border - Reduced bottom padding */}
-      <div className="px-[5%] w-full border-t-2 border-white pt-8 pb-2">
+      <div className="px-[3%] w-full border-t-2 border-white  pb-2">
         <h2 
-          className="text-[1.5rem] sm:text-[1.8rem] md:text-[2rem] lg:text-[2.2rem] font-bold text-black"
+          className="text-[1.7rem] sm:text-[1.9rem] md:text-[2.1rem] lg:text-[2.3rem] font-bold text-black"
           style={{ fontFamily: "BrandingSemibold" }}
         >
           Facilities
@@ -82,7 +82,7 @@ function HospitalityFacilities() {
         />
 
         {/* White Card Overlay - Responsive width and positioning */}
-        <div className="absolute left-[5%] top-[50%] transform -translate-y-1/2 bg-white p-5 sm:p-6 md:p-8 
+        <div className="absolute left-[5%] bottom-0 bg-white p-5 sm:p-6 md:p-8 
                       w-[280px] sm:w-[350px] md:w-[450px] lg:w-[500px] shadow-md 
                       h-auto min-h-[320px] sm:min-h-[380px] md:min-h-[420px] lg:min-h-[480px]">
           <div className="flex justify-between items-center mb-3 sm:mb-4">

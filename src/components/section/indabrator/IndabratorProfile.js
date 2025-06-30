@@ -6,7 +6,7 @@ import profileImage from "@/assests/nesco-business-page/Indabrator-Elements/65.j
 
 function IndabratorProfile() {
   return (
-    <section className="w-full min-h-screen bg-white py-8 sm:py-12 md:py-16">
+    <section className="w-full min-h-screen bg-white py-2 sm:py-4 md:py-8">
       <div className="container px-6 sm:px-10 md:px-16 lg:px-24 mx-auto">
         {/* Main heading */}
         <h2
@@ -62,7 +62,7 @@ function IndabratorProfile() {
 
             <div className="space-y-4">
               <p
-                className="text-[0.9rem] sm:text-[1rem] md:text-[1.1rem] leading-relaxed"
+                className="text-[1.2rem] sm:text-[1.3rem] md:text-[1.4rem] leading-relaxed"
                 style={{ fontFamily: "BrandingMedium" }}
               >
                 Dr. Pawan Kumar Singh is heading the Indabrator division as
@@ -72,7 +72,7 @@ function IndabratorProfile() {
               </p>
 
               <p
-                className="text-[0.9rem] sm:text-[1rem] md:text-[1.1rem] leading-relaxed"
+                className="text-[1.2rem] sm:text-[1.3rem] md:text-[1.4rem] leading-relaxed"
                 style={{ fontFamily: "BrandingMedium" }}
               >
                 His expertise extends to various aspects of business management,
@@ -84,7 +84,7 @@ function IndabratorProfile() {
               </p>
 
               <p
-                className="text-[0.9rem] sm:text-[1rem] md:text-[1.1rem] leading-relaxed"
+                className="text-[1.2rem] sm:text-[1.3rem] md:text-[1.4rem] leading-relaxed"
                 style={{ fontFamily: "BrandingMedium" }}
               >
                 He has has a proven track record in Operational Excellence and

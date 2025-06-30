@@ -79,16 +79,17 @@ function BecAmenities() {
                 className="object-contain w-full h-full"
               />
             </div>
-            <h3 
-              className="text-[1rem] sm:text-[1.1rem] md:text-[1.2rem] lg:text-[1.3rem] font-bold mb-1 sm:mb-2 text-[#fdc95d]"
-              style={{ fontFamily: "BrandingSemibold" }}
-            >
-              {item.name}
-            </h3>
             <p 
-              className="text-[0.9rem] sm:text-[1rem] md:text-[1.1rem] text-[#fdc95d]"
+              className="text-[1.1rem] sm:text-[1.2rem] md:text-[1.3rem] text-[#fdc95d]"
               style={{ fontFamily: "BrandingMedium" }}
             >
+              <span 
+                className="font-bold"
+                style={{ fontFamily: "BrandingSemibold" }}
+              >
+                {item.name}
+              </span>
+              {" "}
               {item.desc}
             </p>
           </div>

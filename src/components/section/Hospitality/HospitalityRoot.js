@@ -6,8 +6,8 @@ import kitchenImage from "@/assests/nesco-business-page/nesco-food-elements/28.j
 
 function HospitalityRoot() {
   return (
-    <section className="w-full min-h-auto bg-white flex flex-col overflow-hidden py-6 sm:py-8 md:py-12">
-      <div className="w-full h-full px-[5%]">
+    <section className="w-full min-h-auto bg-white flex flex-col overflow-hidden py-4 sm:py-6 md:py-8">
+      <div className="w-full h-full px-[3%]">
         {/* Responsive title with better scaling */}
         <h2 
           className="text-[1.8rem] sm:text-[2.2rem] md:text-[2.5rem] lg:text-[2.7rem] font-bold mb-2 sm:mb-4"
