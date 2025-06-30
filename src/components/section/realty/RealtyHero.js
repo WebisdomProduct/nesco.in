@@ -23,17 +23,22 @@ function RealtyHero() {
       </div>
       
       {/* Logo positioned in top right - size unchanged */}
-      <div className="absolute bottom-8 sm:right-[-200px] right-[-80px] px-4 sm:px-8 py-3 sm:py-4 bg-white bg-opacity-70 z-20 flex items-center rounded-full w-[180px] sm:w-[320px] md:w-[500px] hidden sm:flex overflow-hidden">
-        <div className="relative flex items-center overflow-hidden pl-2 sm:pl-4 md:pl-6">
-          <Image
-            src={realtyLogo}
-            alt="nesco realty Logo"
-            width={250}
-            height={90}
-            className="object-contain scale-[1.3] sm:scale-[1.4] md:scale-[1.5] transform-gpu"
-          />
-        </div>
-      </div>
+      <div 
+  className="absolute bottom-8 sm:right-[-200px] right-[-80px] px-4 sm:px-8 py-1 sm:py-2 bg-white bg-opacity-70 z-20 flex items-center w-[200px] sm:w-[380px] md:w-[600px] hidden sm:flex overflow-hidden"
+  style={{ borderRadius: "5rem" }}
+>
+  {/* Fixed-size container for the logo */}
+  <div className="w-[180px] sm:w-[340px] md:w-[540px] relative flex items-center justify-start overflow-hidden">
+    <Image
+      src={realtyLogo}
+      alt="Nesco Realty Logo"
+      width={210}
+      height={60}
+      className="object-contain scale-[1.65] sm:scale-[1.8] md:scale-[1.95] transform-gpu"
+      style={{ marginLeft: "5rem" }}
+    />
+  </div>
+</div>
     </section>
   );
 }

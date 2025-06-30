@@ -65,7 +65,7 @@ function IndabratorUnitss() {
             priority
           />
 
-          <div className="absolute left-[5%] top-[65%] transform -translate-y-1/2 bg-white p-5 md:p-6 max-w-[95%] md:max-w-[580px] min-h-[420px] shadow-md">
+          <div className="absolute left-[5%] bottom-0 bg-white p-5 md:p-6 max-w-[95%] md:max-w-[580px] min-h-[420px] shadow-md">
             <h3
               className="text-[1.2rem] md:text-[1.4rem] font-bold mb-1"
               style={{ fontFamily: "BrandingSemibold" }}

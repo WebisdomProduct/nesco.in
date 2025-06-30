@@ -2,7 +2,7 @@ import React from "react";
 
 function HospitalityIntro() {
   return (
-    <section className="w-full min-h-screen h-auto bg-white flex flex-col md:flex-row overflow-hidden">
+    <section className="w-full min-h-auto h-auto bg-white flex flex-col md:flex-row overflow-hidden">
       {/* Left column - Main heading with better mobile sizing */}
       <div className="md:w-1/2 w-full p-4 sm:p-[5%] flex flex-col justify-center">
         <h1 
@@ -14,7 +14,7 @@ function HospitalityIntro() {
       </div>
       
       {/* Right column - Description with responsive typography */}
-      <div className="md:w-1/2 w-full p-4 sm:p-[5%] bg-gray-50 flex flex-col justify-center">
+      <div className="md:w-1/2 w-full p-4 sm:p-[5%] bg-white flex flex-col justify-center">
         <p 
           className="text-[1.1rem] sm:text-[1.3rem] md:text-[1.5rem] lg:text-[1.7rem] mb-3 sm:mb-5 leading-[1.4] sm:leading-relaxed"
           style={{ fontFamily: "BrandingMedium" }}

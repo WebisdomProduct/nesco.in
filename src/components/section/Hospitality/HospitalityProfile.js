@@ -6,7 +6,7 @@ import profileImage from "@/assests/nesco-business-page/nesco-food-elements/30.j
 
 function HospitalityProfile() {
   return (
-    <section className="w-full min-h-screen h-auto overflow-hidden bg-[#f9f9f9] py-8 sm:py-10 md:py-12 flex items-center">
+    <section className="w-full min-h-auto h-auto overflow-hidden bg-[#f9f9f9] py-8 sm:py-10 md:py-12 flex items-center">
       <div className="px-[5%] w-full">
         <div className="w-full sm:w-[95%] md:w-[90%] mx-auto flex flex-col md:flex-row items-start md:items-center">
           {/* Text Content - Better responsive scaling */}

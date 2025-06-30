@@ -54,7 +54,7 @@ function IndabratorServices() {
   const bottomRowServices = services.slice(4);
 
   return (
-    <section className="w-full min-h-screen bg-[#0e129f] flex flex-col justify-center items-center px-4 sm:px-6 lg:px-8 py-8 sm:py-12 lg:py-16">
+    <section className="w-full min-h-auto bg-[#0e129f] flex flex-col justify-center items-center px-4 sm:px-6 lg:px-8 py-8 sm:py-12 lg:py-16">
       {/* Small screens only - Single column layout */}
       <div className="block lg:hidden w-full space-y-6 mb-6">
         {services.map((service, index) => (

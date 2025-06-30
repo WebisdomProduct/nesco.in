@@ -23,14 +23,19 @@ function HospitalityHero() {
       </div>
       
       {/* Logo positioned in top right - with reduced scaling */}
-      <div className="absolute bottom-8 sm:right-[-200px] right-[-80px] px-4 sm:px-8 py-3 sm:py-4 bg-white bg-opacity-70 z-20 flex items-center rounded-full w-[180px] sm:w-[320px] md:w-[500px] hidden sm:flex overflow-hidden">
-        <div className="relative flex items-center overflow-hidden pl-2 sm:pl-4 md:pl-6">
+            <div 
+        className="absolute bottom-8 sm:right-[-200px] right-[-80px] px-4 sm:px-8 py-1 sm:py-2 bg-white bg-opacity-70 z-20 flex items-center w-[200px] sm:w-[380px] md:w-[600px] hidden sm:flex overflow-hidden"
+        style={{ borderRadius: "5rem" }}
+      >
+        {/* Fixed-size container for the logo */}
+        <div className="w-[180px] sm:w-[340px] md:w-[540px] relative flex items-center justify-start overflow-hidden">
           <Image
             src={foodsLogo}
-            alt="Nesco Foods Logo"
+            alt="Nesco Realty Logo"
             width={210}
             height={60}
-            className="object-contain scale-[1.0] sm:scale-[1.1] md:scale-[1.2] transform-gpu"
+            className="object-contain scale-[1.45] sm:scale-[1.7] md:scale-[1.85] transform-gpu"
+            style={{ marginLeft: "5rem" }}
           />
         </div>
       </div>

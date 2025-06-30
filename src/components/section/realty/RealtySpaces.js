@@ -26,14 +26,14 @@ function RealtySpaces() {
   ];
 
   return (
-    <section className="w-full bg-blue-800 py-8 sm:py-12 lg:py-16 px-4 sm:px-6 lg:px-8">
+    <section className=" w-full bg-blue-800 py-2 sm:py-4 lg:py-8 px-4 sm:px-6 lg:px-8">
       {/* Main Title */}
-      <div className="text-center mb-8 sm:mb-10 lg:mb-12">
+      {/* <div className="text-center mb-8 sm:mb-10 lg:mb-12"> */}
 
-      </div>
+      {/* </div> */}
       
       {/* Spaces Grid */}
-      <div className="max-w-7xl mx-auto">
+      <div className="max-w-7xl mx-auto header_white">
         {/* Mobile: Single column, Tablet: 2 columns, Desktop: 3 columns */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 lg:gap-12">
           {spaces.map((space, index) => (

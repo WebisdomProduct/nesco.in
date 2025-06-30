@@ -6,8 +6,8 @@ import profileImage from "@/assests/nesco-business-page/nesco-reality-elements/1
 
 function RealtyProfile() {
   return (
-    <section className="w-full min-h-screen bg-white py-8 sm:py-12 lg:py-16">
-      <div className="px-4 sm:px-6 lg:px-[5%] w-full h-full flex pt-12 sm:pt-16 lg:pt-24">
+    <section className="w-full min-h-auto bg-white py-4 sm:py-8 lg:py-12">
+      <div className="px-4 sm:px-6 lg:px-[5%] w-full h-full flex pt-4 sm:pt-8 lg:pt-16">
         <div className="w-full mx-auto flex flex-col lg:flex-row items-center lg:items-start gap-8 lg:gap-12">
           {/* Text Content */}
           <div className="flex-1 lg:flex-[2] w-full lg:pr-8">

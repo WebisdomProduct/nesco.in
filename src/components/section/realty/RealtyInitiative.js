@@ -6,7 +6,7 @@ import incubationImage from "@/assests/nesco-business-page/nesco-reality-element
 
 function RealtyInitiative() {
   return (
-    <section className="w-full h-screen flex flex-col md:flex-row overflow-hidden bg-white">
+    <section className="w-full h-auto flex flex-col md:flex-row overflow-hidden bg-white">
       {/* Left column - description */}
       <div className="md:w-1/2 w-full p-[5%] flex flex-col justify-center">
         <h2 

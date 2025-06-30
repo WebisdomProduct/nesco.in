@@ -1,11 +1,11 @@
-.becContainer {
+/* .becContainer {
   width: 100%;
   max-width: 1200px;
   margin: 0 auto;
   font-family: Arial, sans-serif;
 }
 
-/* Hero Section */
+
 .heroSection {
   position: relative;
   height: 400px;
@@ -49,7 +49,7 @@
   object-fit: contain;
 }
 
-/* Description Section */
+
 .descriptionSection {
   padding: 40px 50px;
   background-color: white;
@@ -62,7 +62,7 @@
   color: #333;
 }
 
-/* Halls Section */
+
 .hallsSection {
   display: flex;
   justify-content: space-between;
@@ -88,7 +88,7 @@
   font-size: 1.1rem;
 }
 
-/* Display Section */
+
 .displaySection {
   padding: 0 50px;
 }
@@ -100,7 +100,7 @@
   border-radius: 5px;
 }
 
-/* Stats Section */
+
 .statsSection {
   display: flex;
   justify-content: space-around;
@@ -131,7 +131,7 @@
   font-size: 0.9rem;
 }
 
-/* Facilities Section */
+
 .facilitiesSection {
   padding: 40px 50px;
   background-color: #f9f9f9;
@@ -179,7 +179,6 @@
   object-fit: cover;
 }
 
-/* Amenities Section */
 .amenitiesSection {
   padding: 40px 50px;
   background-color: white;
@@ -214,7 +213,7 @@
   color: #666;
 }
 
-/* Profile Section */
+
 .profileSection {
   padding: 40px 50px;
   display: flex;
@@ -258,7 +257,7 @@
   border-radius: 5px;
 }
 
-/* Enquiry Section */
+
 .enquirySection {
   padding: 40px 50px;
   background-color: white;
@@ -287,9 +286,8 @@
   width: 20px;
   height: 20px;
   margin-right: 10px;
-}
-
-/* Responsive Adjustments */
+} */
+/* 
 @media (max-width: 768px) {
   .heroTitle {
     font-size: 2.2rem;
@@ -324,4 +322,4 @@
     padding-right: 0;
     margin-bottom: 20px;
   }
-}
+} */

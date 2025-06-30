@@ -24,15 +24,22 @@ function IndabratorHero() {
       </div>
       
       {/* Logo positioned for all screen sizes */}
-      <div className="absolute bottom-8 sm:right-[-200px] right-[-80px] px-4 sm:px-8 py-3 sm:py-4 bg-white bg-opacity-70 z-20 flex items-center rounded-full w-[180px] sm:w-[320px] md:w-[500px] hidden sm:flex">
-              <Image
-                src={indabratorLogo}
-                alt="nesco realty Logo"
-                width={210}
-                height={60}
-                className="object-contain mr-auto ml-2 sm:ml-6"
-              />
-     </div>
+      <div 
+              className="absolute bottom-8 sm:right-[-200px] right-[-80px] px-4 sm:px-8 py-1 sm:py-2 bg-white bg-opacity-70 z-20 flex items-center w-[200px] sm:w-[380px] md:w-[600px] hidden sm:flex overflow-hidden"
+              style={{ borderRadius: "5rem" }}
+            >
+              {/* Fixed-size container for the logo */}
+              <div className="w-[180px] sm:w-[340px] md:w-[540px] relative flex items-center justify-start overflow-hidden">
+                <Image
+                  src={indabratorLogo}
+                  alt="Nesco Realty Logo"
+                  width={210}
+                  height={60}
+                  className="object-contain scale-[1.45] sm:scale-[1.6] md:scale-[1.75] transform-gpu"
+                  style={{ marginLeft: "5rem" }}
+                />
+              </div>
+            </div>
     </section>
   );
 }

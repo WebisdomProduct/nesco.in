@@ -9,7 +9,7 @@ import foodCourtImage from "@/assests/nesco-business-page/bec-elements/34.jpg";
 import restaurantImage from "@/assests/nesco-business-page/bec-elements/35.jpg";
 
 function BecFacilities() {
-  // Dummy data for facilities
+  // Facilities data
   const facilities = [
     {
       id: 1,
@@ -60,9 +60,9 @@ function BecFacilities() {
   return (
     <section className="w-full h-screen overflow-hidden bg-white">
       {/* Section Title with yellow top border - Reduced bottom padding */}
-      <div className="px-[5%] w-full border-t-2 border-[#f9d342] pt-14 pb-2">
+      <div className="px-[5%] w-full border-t-2 border-[#f9d342]  pb-2">
         <h2 
-          className="text-[1.5rem] sm:text-[1.8rem] md:text-[2rem] lg:text-[2.2rem] font-bold text-black pt-14"
+          className="text-[1.5rem] sm:text-[1.8rem] md:text-[2rem] lg:text-[2.2rem] font-bold text-black"
           style={{ fontFamily: "BrandingSemibold" }}
         >
           Facilities
@@ -81,8 +81,8 @@ function BecFacilities() {
           sizes="100vw"
         />
 
-        {/* White Card Overlay - Responsive width and positioning */}
-        <div className="absolute left-[5%] top-[50%] transform -translate-y-1/2 bg-white p-5 sm:p-6 md:p-8 
+        {/* White Card Overlay - Now positioned at bottom left */}
+        <div className="absolute left-[5%] bottom-0 bg-white p-5 sm:p-6 md:p-8 
                       w-[280px] sm:w-[350px] md:w-[450px] lg:w-[500px] shadow-md 
                       h-auto min-h-[320px] sm:min-h-[380px] md:min-h-[420px] lg:min-h-[480px]">
           <div className="flex justify-between items-center mb-3 sm:mb-4">
@@ -102,14 +102,14 @@ function BecFacilities() {
           </div>
           
           <p 
-            className="text-[1.5rem] sm:text-[1.7rem] md:text-[1.6rem] leading-[1.6] sm:leading-[1.7]"
+            className="text-[1.5rem] sm:text-[1.7rem] md:text-[1.6rem] leading-[1.6] sm:leading-[1.7] mb-16 sm:mb-20"
             style={{ fontFamily: "BrandingMedium" }}
           >
             {currentFacility.description}
           </p>
           
-          {/* Carousel Navigation Controls - Positioned at bottom */}
-          <div className="flex justify-between items-center absolute bottom-4 sm:bottom-5 md:bottom-6 left-4 sm:left-5 md:left-6 right-4 sm:right-5 md:right-6">
+          {/* Carousel Navigation Controls - Positioned higher */}
+          <div className="flex justify-between items-center absolute bottom-16 sm:bottom-20 md:bottom-24 left-6 sm:left-7 md:left-9 right-6 sm:right-7 md:right-8">
             <button 
               className="text-black/70 hover:text-black transition-colors"
               onClick={goToPrevious}
@@ -120,7 +120,7 @@ function BecFacilities() {
               </svg>
             </button>
             
-            {/* Dot indicators - Dynamic based on current index */}
+            {/* Dot indicators */}
             <div className="flex gap-1 sm:gap-1.5 md:gap-2">
               {facilities.map((_, index) => (
                 <div 

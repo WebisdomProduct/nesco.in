@@ -1,37 +1,31 @@
 import React from "react";
 import Image from "next/image";
 
-// Import stat icons
-import facilityIcon from "@/assests/nesco-business-page/Indabrator-Elements/60.png";
-import projectsIcon from "@/assests/nesco-business-page/Indabrator-Elements/61.png";
-import experienceIcon from "@/assests/nesco-business-page/Indabrator-Elements/62.png";
+// Import the stat icons
+import icon1 from "@/assests/nesco-business-page/nesco-events/72.png";
+import icon2 from "@/assests/nesco-business-page/nesco-events/71.png";
 
-function IndabratorStats() {
+function EventStats() {
   const stats = [
     {
-      icon: facilityIcon,
-      value: "11 Lac",
-      label: "sq.ft manufacturing capacity"
+      value: "60K",
+      label: "Sq.ft of Space",
+      icon: icon1
     },
     {
-      icon: projectsIcon,
-      value: "15k+",
-      label: "completed installations"
-    },
-    {
-      icon: experienceIcon,
-      value: "47",
-      label: "years of excellence"
+      value: "#1 Host",
+      label: "for best exhibitions in Mumbai",
+      icon: icon2
     }
   ];
 
   return (
-    <section className="w-full h-auto flex items-center justify-center bg-[#4dbeaf]">
-      <div className="w-[90%] max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-10 py-12">
+    <section className="w-full h-auto flex items-center justify-center bg-[#f44554]">
+      <div className="w-[90%] max-w-7xl mx-auto flex flex-col md:flex-row justify-center items-center gap-8 md:gap-16 py-12">
         {stats.map((stat, index) => (
           <div key={index} className="flex flex-col items-center text-center px-4">
             {/* Responsive image size - larger on desktop */}
-            <div className="w-[120px] h-[120px] sm:w-[180px] sm:h-[180px] md:w-[280px] md:h-[280px] lg:w-[360px] lg:h-[360px] mb-[-50px]">
+            <div className="w-[120px] h-[120px] sm:w-[180px] sm:h-[180px] md:w-[280px] md:h-[280px] lg:w-[360px] lg:h-[360px] mb-[-30px]">
               <Image
                 src={stat.icon}
                 alt={`${stat.label} icon`}
@@ -59,4 +53,4 @@ function IndabratorStats() {
   );
 }
 
-export default IndabratorStats;
+export default EventStats;

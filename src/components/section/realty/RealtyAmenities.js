@@ -55,9 +55,9 @@ function RealtyAmenities() {
   const allAmenities = [...topRowAmenities, ...bottomRowAmenities];
 
   return (
-    <section className="w-full bg-white py-8 sm:py-12 px-4 sm:px-8 lg:px-16">
+    <section className="w-full bg-white py-6 sm:py-10 px-4 sm:px-8 lg:px-16">
       {/* Main Title */}
-      <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-black pt-14 mb-8 sm:mb-12 lg:mb-16">
+      <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-black  mb-8 sm:mb-12 lg:mb-16">
         Amenities
       </h2>
       

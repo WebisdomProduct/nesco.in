@@ -31,7 +31,7 @@ function RealtyStats() {
         {stats.map((stat, index) => (
           <div key={index} className="flex flex-col items-center text-center px-4">
             {/* Responsive image size - larger on desktop */}
-            <div className="w-[120px] h-[120px] sm:w-[180px] sm:h-[180px] md:w-[280px] md:h-[280px] lg:w-[360px] lg:h-[360px] mb-6">
+            <div className="w-[120px] h-[120px] sm:w-[180px] sm:h-[180px] md:w-[280px] md:h-[280px] lg:w-[360px] lg:h-[360px] mb-[-70px]">
               <Image
                 src={stat.icon}
                 alt={`${stat.label} icon`}
@@ -48,7 +48,7 @@ function RealtyStats() {
             </h3>
             <p 
               className="text-center text-[0.9rem] sm:text-[1rem] text-[#483bb0]"
-              style={{ fontFamily: "BrandingRegular" }}
+              style={{ fontFamily: "BrandingMedium" }}
             >
               {stat.label}
             </p>

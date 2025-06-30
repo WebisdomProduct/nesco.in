@@ -26,7 +26,7 @@ function BecHalls() {
   ];
 
   return (
-    <section className="w-full bg-white py-8 sm:py-12 lg:py-16 px-4 sm:px-6 lg:px-8">
+    <section className="w-full bg-white pb-[1%] px-4 sm:px-6 lg:px-8">
           {/* Main Title */}
           <div className="text-center mb-8 sm:mb-10 lg:mb-12">
     

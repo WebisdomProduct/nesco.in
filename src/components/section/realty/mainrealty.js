@@ -1,7 +1,6 @@
 "use client";
 import React, { useState } from "react";
 import Pagewrapper from "@/components/layout/pagewrapper";
-import ScrollSnip from "@/components/layout/scrollSnipEffect/scrollSnip";
 
 // Import all Realty components
 import RealtyHero from "./RealtyHero";
@@ -17,48 +16,17 @@ import RealtyEnquiries from "./RealtyEnquiries";
 function MainRealty() {
   const [activeSlide, setActiveSlide] = useState(0);
 
-  const Children = [
-    {
-      comp: <RealtyHero />,
-      classCss: "section",
-    },
-    {
-      comp: <RealtyIntro />,
-      classCss: "section",
-    },
-    {
-      comp: <RealtySpaces />,
-      classCss: "section",
-    },
-    {
-      comp: <RealtyCollaboration />,
-      classCss: "section",
-    },
-    {
-      comp: <RealtyStats />,
-      classCss: "section",
-    },
-    {
-      comp: <RealtyInitiative />,
-      classCss: "section",
-    },
-    {
-      comp: <RealtyAmenities />,
-      classCss: "section",
-    },
-    {
-      comp: <RealtyProfile />,
-      classCss: "section",
-    },
-    {
-      comp: <RealtyEnquiries />,
-      classCss: "section",
-    },
-  ];
-
   return (
     <Pagewrapper activeSlide={activeSlide}>
-      <ScrollSnip Children={Children} />
+      <RealtyHero />
+      <RealtyIntro />
+      <RealtySpaces />
+      <RealtyCollaboration />
+      <RealtyStats />
+      <RealtyInitiative />
+      <RealtyAmenities />
+      <RealtyProfile />
+      <RealtyEnquiries />
     </Pagewrapper>
   );
 }

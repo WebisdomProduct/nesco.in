@@ -63,6 +63,9 @@ function ScrollSnip({ Children }) {
       });
     });
 
+    // Debug - check for header_white sections
+    console.log("Header white sections:", document.querySelectorAll(".header_white").length);
+
     return () => ScrollTrigger.getAll().forEach((t) => t.kill());
   }, [isDesktop]);
 
@@ -71,15 +74,22 @@ function ScrollSnip({ Children }) {
       ref={containerRef}
       className="container1 font-branding-medium scroll-smooth"
     >
-      {Children.map((data, index) => (
-        <section
-          key={index}
-          className={` flex items-center justify-center ${data.classCss}`}
-          style={{ scrollSnapAlign: "start", transform: "translateZ(0)" }} // Performance boost
-        >
-          {data.comp}
-        </section>
-      ))}
+      {Children.map((data, index) => {
+        // Split the classCss into individual classes
+        const classes = data.classCss.split(' ');
+        const hasHeaderWhite = classes.includes('header_white');
+        
+        return (
+          <section
+            key={index}
+            className={`flex items-center justify-center ${data.classCss}`}
+            data-header-white={hasHeaderWhite ? "true" : "false"}
+            style={{ scrollSnapAlign: "start", transform: "translateZ(0)" }} // Performance boost
+          >
+            {data.comp}
+          </section>
+        );
+      })}
     </div>
   );
 }

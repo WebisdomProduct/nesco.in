@@ -35,7 +35,7 @@ function Navbar({ activeSlide }) {
         { title: "Bombay Exhibition Center", route: "/bombay-exhibition-center" },
         { title: "Nesco Realty", route: "/realty" },
         { title: "Hospitality", route: "/hospitality" },
-        { title: "Nesco Events", route: "" },
+        { title: "Nesco Events", route: "/nescoevent" },
         { title: "Engineering", route: "/indrabrator" },
       ],
     },

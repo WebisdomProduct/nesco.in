@@ -9,7 +9,7 @@ function IndabratorUnits() {
   return (
     <section className="w-full h-screen bg-white flex flex-col overflow-hidden">
       {/* Title with padding */}
-      <div className="w-full pt-16 pb-4 px-[5%]">
+      <div className="w-full pt-12 pb-4 px-[5%]">
         <h2
           className="text-[2rem] md:text-[2.2rem] font-bold"
           style={{ fontFamily: "BrandingSemibold" }}
@@ -30,7 +30,7 @@ function IndabratorUnits() {
             priority
           />
 
-          <div className="absolute right-[5%] top-[65%] transform -translate-y-1/2 bg-white p-5 md:p-6 max-w-[95%] md:max-w-[580px] min-h-[420px] shadow-md">
+          <div className="absolute right-[5%] bottom-0 bg-white p-5 md:p-6 max-w-[95%] md:max-w-[580px] min-h-[420px] shadow-md">
             <h3
               className="text-[1.2rem] md:text-[1.4rem] font-bold mb-1"
               style={{ fontFamily: "BrandingSemibold" }}
