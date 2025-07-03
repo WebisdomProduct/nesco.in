@@ -44,7 +44,7 @@ function HospitalityStats() {
               />
             </div>
             <h3
-              className="text-[2rem] sm:text-[2.5rem] md:text-[3rem] lg:text-[3.5rem] font-bold mb-2 text-white"
+              className="text-[2rem] sm:text-[2.5rem] md:text-[3rem] lg:text-[3.5rem] font-bold text-white"
               style={{ fontFamily: "BrandingSemibold" }}
             >
               {stat.value}

@@ -45,13 +45,13 @@ function BecStats() {
               />
             </div>
             <h3
-              className="text-[2.8rem] sm:text-[3rem] md:text-[3.5rem] font-bold mb-2 text-white"
+              className="text-[2.8rem] sm:text-[3rem] md:text-[3.5rem] font-bold text-white"
               style={{ fontFamily: "BrandingSemibold" }}
             >
               {stat.value}
             </h3>
             <p
-              className="text-center text-[0.9rem] sm:text-[1rem] text-white px-2"
+              className="text-center text-[0.9rem] sm:text-[1rem] text-white px-2 lg:mt-[-10px]"
               style={{ fontFamily: "BrandingMedium" }}
             >
               {stat.label}
