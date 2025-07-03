@@ -10,7 +10,7 @@ function EventProfile() {
     <div className="w-full lg:min-h-screen bg-white py-8 lg:py-12 relative overflow-hidden">
       {/* Watermark - 76 image in background */}
       <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-        <div className="relative w-full h-full opacity-20">
+        <div className="relative w-full h-full opacity-80">
           <Image
             src={watermark}
             alt="76 Watermark"
