@@ -9,6 +9,7 @@ import greenIcon from "@/assests/nesco-business-page/nesco-reality-elements/14.j
 import transportIcon from "@/assests/nesco-business-page/nesco-reality-elements/15.jpg";
 import entertainmentIcon from "@/assests/nesco-business-page/nesco-reality-elements/16.jpg";
 import sportsIcon from "@/assests/nesco-business-page/nesco-reality-elements/17.jpg";
+import gymIcon from "@/assests/nesco-business-page/nesco-reality-elements/19.png";
 
 function RealtyAmenities() {
   const topRowAmenities = [
@@ -50,6 +51,11 @@ function RealtyAmenities() {
       title: "Unwind",
       description: "at Futsal Turf & Golfing Greens",
     },
+    {
+      icon: gymIcon,
+      title: "Hitech Gym",
+      description: "state-of-the-art fitness facilities",
+    },
   ];
 
   const allAmenities = [...topRowAmenities, ...bottomRowAmenities];
@@ -90,34 +96,32 @@ function RealtyAmenities() {
         </div>
 
         {/* Bottom Row - 3 items centered */}
-        <div className="flex justify-center">
-          <div className="grid grid-cols-3 gap-12 xl:gap-16 max-w-6xl">
-            {bottomRowAmenities.map((amenity, index) => (
-              <div
-                key={index}
-                className="flex flex-col items-center text-center"
-              >
-                <div className="w-40 h-40 xl:w-40 xl:h-40 mb-6 flex items-center justify-center">
-                  <Image
-                    src={amenity.icon}
-                    alt={amenity.title}
-                    width={180}
-                    height={180}
-                    className="object-contain w-full h-full"
-                  />
-                </div>
-                <p className="text-xl text-black leading-relaxed">
-                  <span style={{ fontFamily: "BrandingSemibold" }}>
-                    {amenity.title}
-                  </span>
-                  <span style={{ fontFamily: "BrandingMedium" }}>
-                    {" "}
-                    {amenity.description}
-                  </span>
-                </p>
+      <div className="hidden lg:block space-y-16">
+        {/* Top Row - 4 items */}
+        <div className="grid grid-cols-4 gap-6 xl:gap-8">
+          {bottomRowAmenities.map((amenity, index) => (
+            <div key={index} className="flex flex-col items-center text-center">
+              <div className="w-40 h-40 xl:w-40 xl:h-40 mb-6 flex items-center justify-center">
+                <Image
+                  src={amenity.icon}
+                  alt={amenity.title}
+                  width={160}
+                  height={160}
+                  className="object-contain w-full h-full"
+                />
               </div>
-            ))}
-          </div>
+              <p className="text-xl text-black leading-relaxed">
+                <span style={{ fontFamily: "BrandingSemibold" }}>
+                  {amenity.title}
+                </span>
+                <span style={{ fontFamily: "BrandingMedium" }}>
+                  {" "}
+                  {amenity.description}
+                </span>
+              </p>
+            </div>
+          ))}
+        </div>
         </div>
       </div>
 

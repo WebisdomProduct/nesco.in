@@ -22,3 +22,4 @@ export const apiUrls = {
     corner: "/api/v1/shareholder/corner",
   },
 };
+

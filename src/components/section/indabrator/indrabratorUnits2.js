@@ -88,7 +88,7 @@ function IndabratorUnitss() {
               style={{ fontFamily: "BrandingMedium" }}
             >
               The state-of-the-art alloy iron foundry enables the manufacture of
-              highly wear-resistant shell-molded alloy iron castings and spares.
+              highly wear-resistant shell moulded alloy iron castings and finest quality abrasives i.e. steel shots & grits. .
             </p>
           </div>
         </div>

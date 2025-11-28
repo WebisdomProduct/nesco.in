@@ -3,7 +3,6 @@ import Image from "next/image";
 
 // Import service images
 import shotBlastingImg from "@/assests/nesco-business-page/Indabrator-Elements/52.jpg";
-import airPollutionImg from "@/assests/nesco-business-page/Indabrator-Elements/53.jpg";
 import sparesImg from "@/assests/nesco-business-page/Indabrator-Elements/54.jpg";
 import abrasivesImg from "@/assests/nesco-business-page/Indabrator-Elements/55.jpg";
 import omImg from "@/assests/nesco-business-page/Indabrator-Elements/56.jpg";
@@ -18,9 +17,9 @@ function IndabratorServices() {
       alt: "Shot-Blasting Machine",
     },
     {
-      title: "Air Pollution Control Systems",
-      image: airPollutionImg,
-      alt: "Air Pollution Control System",
+      title: "Painting Systems",
+      image: paintingImg,
+      alt: "Industrial Painting Systems",
     },
     {
       title: "Spares",
@@ -42,16 +41,11 @@ function IndabratorServices() {
       image: amcImg,
       alt: "Annual Maintenance Contract",
     },
-    {
-      title: "Painting Systems",
-      image: paintingImg,
-      alt: "Industrial Painting Systems",
-    },
   ];
 
-  // Split services for desktop layout
-  const topRowServices = services.slice(0, 4);
-  const bottomRowServices = services.slice(4);
+  // Split services for desktop layout - 3 items each row
+  const topRowServices = services.slice(0, 3);
+  const bottomRowServices = services.slice(3);
 
   return (
     <div className="w-full min-h-auto bg-[#0e129f] flex flex-col justify-center items-center px-8 sm:px-12 lg:px-16 py-8 sm:py-12 lg:py-16 lg:pt-24 lg:h-screen pt-12">
@@ -76,9 +70,8 @@ function IndabratorServices() {
         ))}
       </div>
 
-      {/* Large screens - Reduced side gaps */}
-      {/* Top row - 4 items */}
-      <div className="hidden lg:grid grid-cols-4 gap-12 mb-16 w-full">
+      {/* Large screens - Top row - 3 items */}
+      <div className="hidden lg:grid grid-cols-3 gap-12 mb-16 w-full max-w-5xl">
         {topRowServices.map((service, index) => (
           <div
             key={`desktop-top-${index}`}
@@ -90,7 +83,7 @@ function IndabratorServices() {
                 alt={service.alt}
                 fill
                 className="object-cover"
-                sizes="(min-width: 1024px) 25vw"
+                sizes="(min-width: 1024px) 30vw"
               />
               <div className="absolute inset-0 bg-black/10 hover:bg-black/5 transition-all"></div>
             </div>
@@ -101,7 +94,7 @@ function IndabratorServices() {
         ))}
       </div>
 
-      {/* Bottom row - 3 items centered */}
+      {/* Bottom row - 3 items */}
       <div className="hidden lg:grid grid-cols-3 gap-12 w-full max-w-5xl">
         {bottomRowServices.map((service, index) => (
           <div

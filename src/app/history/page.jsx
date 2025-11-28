@@ -52,9 +52,22 @@ const Timeline = ({ years, isFooterVisible }) => {
     return () => sections.forEach((section) => observer.unobserve(section));
   }, []);
 
+  // --- NEW FUNCTIONALITY: CLICK TO SCROLL ---
+  const handleYearClick = (year) => {
+    // We select the element based on the data-year attribute used by your Year components
+    // If there are multiple sections for a year (like 2017Sec2), querySelector will grab the first one, which is correct.
+    const section = document.querySelector(`[data-year="${year}"]`);
+    if (section) {
+      section.scrollIntoView({ behavior: "smooth", block: "center" });
+      // Optional: Manually set active year immediately for instant feedback
+      setActiveYear(year.toString());
+    }
+  };
+  // ------------------------------------------
+
   return (
     <div
-      className={`sideProgress  flex-col items-center 
+      className={`sideProgress flex-col items-center 
         fixed top-[10%] right-2 md:left-auto md:right-auto md:w-auto 
         lg:w-[13%] p-4 rounded-lg z-50 hidden
         md:flex transition-opacity duration-500 ${
@@ -63,7 +76,12 @@ const Timeline = ({ years, isFooterVisible }) => {
     >
       <ul className="relative pl-4">
         {years.map((year, index) => (
-          <li key={index} className="relative flex items-center space-x-2 mb-3">
+          <li 
+            key={index} 
+            // Added cursor-pointer and onClick handler
+            className="relative flex items-center space-x-2 mb-3 cursor-pointer group"
+            onClick={() => handleYearClick(year)}
+          >
             <motion.span
               className="w-3 h-3 rounded-full relative z-10"
               animate={{
@@ -71,10 +89,11 @@ const Timeline = ({ years, isFooterVisible }) => {
                   year.toString() === activeYear ? "#3B82F6" : "#6B7280",
                 scale: year.toString() === activeYear ? 1.5 : 1,
               }}
+              whileHover={{ scale: 1.5 }} // Added hover effect for better UX
               transition={{ duration: 0.3, ease: "easeInOut" }}
             ></motion.span>
             <motion.p
-              className="text-xl font-poppins transition-all"
+              className="text-xl font-poppins transition-all group-hover:text-black" // Added hover text color change
               animate={{
                 color: year.toString() === activeYear ? "#000000" : "#6B7280",
                 fontWeight: year.toString() === activeYear ? 700 : 400,
@@ -111,7 +130,7 @@ const page = () => {
   const footerRef = useRef(null);
 
   const { ref: footerObserver } = useInView({
-    threshold: 0.1, // Adjust threshold if needed
+    threshold: 0.1, 
     triggerOnce: false,
     onChange: (inView) => setIsFooterVisible(inView),
   });
@@ -134,7 +153,7 @@ const page = () => {
       <div className="historyDiv header_purple max-w-full flex flex-col overflow-x-hidden overflow-y-auto scrollbar-hide">
         <Timeline years={years} isFooterVisible={isFooterVisible} />
 
-        <div className="rightSectionContainer w-fit m-2  lg:ml-[10%]">
+        <div className="rightSectionContainer w-fit m-2 lg:ml-[10%]">
           <div
             ref={upperObserver}
             className="upperDiv w-fit md:w-[87%] flex flex-col relative md:left-2 lg:left-[0%] ml-auto transform translate-y-[10vh] "
@@ -154,7 +173,7 @@ const page = () => {
             </motion.div>
 
             <motion.div
-              className="sideContentDiv flex flex-col relative bg-sky-500 transform text-justify p-8 left-0 md:left-[35%]  md:bottom-[5vh] lg:bottom-[45vh] w-full sm:w-[60%] md:w-[65%] lg:w-[65%] z-50 transition-all ease-in-out duration-300 hover:-translate-y-1 "
+              className="sideContentDiv flex flex-col relative bg-sky-500 transform text-justify p-8 left-0 md:left-[35%] md:bottom-[5vh] lg:bottom-[45vh] w-full sm:w-[60%] md:w-[65%] lg:w-[65%] z-50 transition-all ease-in-out duration-300 hover:-translate-y-1 "
               initial={{ opacity: 0, x: 100 }}
               animate={upperInView ? { opacity: 1, x: 0 } : {}}
               transition={{ duration: 1.5, delay: 1 }}
@@ -186,7 +205,7 @@ const page = () => {
 
           <div ref={bottomObserver}>
             <motion.div
-              className="bottomContentDiv w-fit md:w-[80%]  ml-auto text-gray-500 transition-all ease-in-out duration-300 hover:-translate-y-1  lg:z-10 lg:top-[-10rem] transform flex flex-col md:flex-row relative"
+              className="bottomContentDiv w-fit md:w-[80%] ml-auto text-gray-500 transition-all ease-in-out duration-300 hover:-translate-y-1 lg:z-10 lg:top-[-10rem] transform flex flex-col md:flex-row relative"
               initial={{ opacity: 0, y: 50 }}
               animate={bottomInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 1, delay: 0.5 }}
@@ -207,12 +226,12 @@ const page = () => {
               </motion.div>
 
               <motion.div
-                className="flex flex-col relative w-full md:w-[50%]  items-center justify-center md:left-[4%]"
+                className="flex flex-col relative w-full md:w-[50%] items-center justify-center md:left-[4%]"
                 initial={{ opacity: 0, x: 50 }}
                 animate={bottomInView ? { opacity: 1, x: 0 } : {}}
                 transition={{ duration: 1, delay: 1 }}
               >
-                <p className="sm:text-3xl md:text-2xl lg:text-4xl lg:w-[95%]  font-branding-semibold text-center">
+                <p className="sm:text-3xl md:text-2xl lg:text-4xl lg:w-[95%] font-branding-semibold text-center">
                   ‘Your right is in action, never to its fruits, let not the
                   fruits of action be your motive.’
                 </p>

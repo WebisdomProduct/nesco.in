@@ -77,7 +77,7 @@ function FinancialResult() {
           selectedYears.length > 0 ? selectedYears.includes(item.year) : true;
         const quarterFilter =
           selectedQuarters.length > 0
-            ? selectedQuarters.includes(item.quarter.toString()) // Ensure quarter is defined before calling toString()
+            ? selectedQuarters.includes(item.quarter.toString())
             : true;
         return yearFilter && quarterFilter;
       }
@@ -109,6 +109,15 @@ function FinancialResult() {
           item.option === "subsidiary" &&
           (selectedYears?.length > 0 ? selectedYears.includes(item.year) : true)
       );
+    } else if (click === "annualReturn") {
+      // Filter annual reports that contain "Annual Return" in the title
+      return transformedData.filter(
+        (item) =>
+          item.option === "annual" &&
+          item.title &&
+          item.title.toLowerCase().includes("annual return") &&
+          (selectedYears?.length > 0 ? selectedYears.includes(item.year) : true)
+      );
     } else {
       return [];
     }
@@ -128,7 +137,7 @@ function FinancialResult() {
     <div>
       <div className="flex justify-center mt-16 lg:mt-28 mb-10 header_purple goal-section1">
         <div className="flex items-end flex-col border-2 w-[90%] lg:px-12 px-5">
-          <div className="w-full flex md:flex-row flex-col justify-between items-center z-50 gap-6 lg:w-[70%] transform md:-translate-y-1/2">
+          <div className="w-full flex md:flex-row flex-col justify-between items-center z-50 gap-6 lg:w-[85%] transform md:-translate-y-1/2">
             <div
               className={`${
                 click === "financials"
@@ -144,9 +153,9 @@ function FinancialResult() {
             <div
               className={`${
                 click === "annual"
-                  ? "bg-white text-cyan-500 border-cyan-500"
-                  : "bg-cyan-500 text-white"
-              } hover:text-cyan-500 hover:bg-white hover:border-cyan-500 border-2 px-4 transition-all duration-300  py-2 text-center font-branding-medium text-2xl`}
+                  ? "bg-white text-blue-600 border-blue-600"
+                  : "bg-blue-600 text-white"
+              } hover:text-blue-600 hover:bg-white hover:border-blue-600 border-2 px-4 transition-all duration-300 py-2 text-center font-branding-medium text-2xl`}
             >
               <button className="" onClick={() => setClick("annual")}>
                 Annual Reports
@@ -156,12 +165,24 @@ function FinancialResult() {
             <div
               className={`${
                 click === "subsidiary"
-                  ? "bg-white text-purple-500 border-purple-500"
-                  : "bg-purple-500 text-white"
-              } hover:text-purple-500 hover:bg-white hover:border-purple-500 border-2 px-4 transition-all duration-300 py-2 text-center font-branding-medium text-2xl`}
+                  ? "bg-white text-blue-600 border-blue-600"
+                  : "bg-blue-600 text-white"
+              } hover:text-blue-600 hover:bg-white hover:border-blue-600 border-2 px-4 transition-all duration-300 py-2 text-center font-branding-medium text-2xl`}
             >
               <button className="" onClick={() => setClick("subsidiary")}>
                 Subsidiary Accounts
+              </button>
+            </div>
+
+            <div
+              className={`${
+                click === "annualReturn"
+                  ? "bg-white text-blue-600 border-blue-600"
+                  : "bg-blue-600 text-white"
+              } hover:text-blue-600 hover:bg-white hover:border-blue-600 border-2 px-4 transition-all duration-300 py-2 text-center font-branding-medium text-2xl`}
+            >
+              <button className="" onClick={() => setClick("annualReturn")}>
+                Annual Return
               </button>
             </div>
           </div>
@@ -244,8 +265,7 @@ function FinancialResult() {
                               rel="noopener noreferrer"
                               className="px-4 hover:text-blue-700"
                             >
-                              {data.title} - {data.year}{" "}
-                              {/* Use `data.title` instead of `data.description` */}
+                              {data.title} - {data.year}
                             </a>
                           </div>
                         </td>

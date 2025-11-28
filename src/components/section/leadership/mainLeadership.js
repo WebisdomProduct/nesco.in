@@ -6,6 +6,8 @@ import LeadershipBanner from "./leadershipBanner";
 import Believe from "./believe";
 import LeadershipMentor from "./leadershipMentor";
 import LeadershipMentor2 from "./leadershipMentor2";
+import LeadershipMentor3 from "./leadershipMentor3";
+import LeadershipMentor4 from "./leadershipMentor4";
 import BoardOfDirector from "./boardOfDirector";
 import VisionaryLeader from "./visionaryLeader";
 import ScrollSnip from "@/components/layout/scrollSnipEffect/scrollSnip";
@@ -37,6 +39,22 @@ function MainLeadership() {
       comp: (
         <AnimateOnScroll>
           <LeadershipMentor2 />
+        </AnimateOnScroll>
+      ),
+      classCss: "section",
+    },
+    {
+      comp: (
+        <AnimateOnScroll>
+          <LeadershipMentor3 />
+        </AnimateOnScroll>
+      ),
+      classCss: "section",
+    },
+    {
+      comp: (
+        <AnimateOnScroll>
+          <LeadershipMentor4 />
         </AnimateOnScroll>
       ),
       classCss: "section",

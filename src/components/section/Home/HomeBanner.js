@@ -61,7 +61,7 @@ function HomeBanner({activeSlide, setActiveSlide}) {
     {
       image: BannerImage4,
       description:
-        "Manufactures abrasives & shot blasting machine for industries like automotive and aerospace since 1975",
+        "Renowned & undisputed market leader of surface preparation machines like Shot blasting, peening & painting systems, catering to all mechanical industries since 1964",
       hexaImage: hexaImage4,
       hexaLogo: hexaLogo4,
     },

@@ -29,7 +29,7 @@ function EventProfile() {
               className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-8 text-left"
               style={{ fontFamily: "BrandingSemibold" }}
             >
-              Balachandran Nambisan
+              Balakrishnan Balram
             </h3>
             <p
               className="text-xl sm:text-2xl lg:text-3xl text-[#666] mb-12 text-left"
@@ -43,7 +43,7 @@ function EventProfile() {
                 className="text-xl lg:text-2xl text-justify"
                 style={{ fontFamily: "BrandingMedium" }}
               >
-                Balachandran Nambisan is a seasoned leader in strategic brand
+                Balakrishnan Balram is a seasoned leader in strategic brand
                 and experiential marketing, with over two decades of expertise
                 spanning luxury, banking, real estate, and media. He has been
                 instrumental in enhancing brand equity and driving consumer
@@ -55,7 +55,7 @@ function EventProfile() {
                 style={{ fontFamily: "BrandingMedium" }}
               >
                 As the former Chief Business Officer at Laqshya Live
-                Experiences, Balu spearheaded new business development, luxury
+                Experiences, Balakrishnan Balram spearheaded new business development, luxury
                 experiences, and live event portfolios. He also shaped the
                 Laqshya Luxury brand through impactful collaborations with names
                 like Abu Jani Sandeep Khosla, Gauri Khan Designs, and Manchester

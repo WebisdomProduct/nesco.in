@@ -38,7 +38,11 @@ function IndabratorUnits() {
               Works I
             </h3>
             <p className="text-md font-bold text-gray-600 mb-3">
-              Vataman, Gujarat
+              Nesco Limited (INDABRATOR division), Nadiad- Petlad Road, Vishnoli - 388 130, Dist: Anand, Gujarat, INDIA               
+              <br />
+              Email: indabrator.sales@nesco.in; indabrator.spares@nesco.in      
+              <br />         
+              Phone: +91 (0) 2697 265800 , +91-63587 29669,  +91-70439 35577  
             </p>
 
             <p
@@ -46,16 +50,14 @@ function IndabratorUnits() {
               style={{ fontFamily: "BrandingMedium" }}
             >
               The Vataman units are situated within 31 acres of green expanses.
-              At this location, over 1500 skilled workers are engaged in the
+              At this location, over 250+ skilled workers are engaged in the
               manufacturing of shot-blasting machines and other equipment.
             </p>
             <p
               className="text-[1.1rem] md:text-[1.2rem] leading-relaxed mt-2"
               style={{ fontFamily: "BrandingMedium" }}
             >
-              The unit produces numerous shot blasting, painting and air
-              pollution control equipments every year. The R&D Centre
-              facilitates in creating customized solutions for all applications.
+            The unit produces numerous shot blasting, painting systems every year. The R&D Centre facilitates in creating customized solutions for all applications.
             </p>
           </div>
         </div>

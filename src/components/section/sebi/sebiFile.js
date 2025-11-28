@@ -162,6 +162,16 @@ export function PolicyAndCodeBRSR() {
       filePath:
         "/resources/images/pdf/policies-on-brsr/Grievance%20Management%20System.docx", //docx file
     },
+    {
+      fileName: "Public Advocacy Policy",
+      filePath:
+        "/resources/images/pdf/policies-on-brsr/public-advocacy-policy.pdf", //docx file
+    },
+    {
+      fileName: "Code of Business Conduct and Ethics for Employees and Workers",
+      filePath:
+        "/resources/images/pdf/policies-on-brsr/code-of-business-conduct-and-ethics-for-employees-and-workers.pdf", //docx file
+    }
   ];
 }
 
@@ -409,6 +419,28 @@ export function NoticeBoard() {
       filePath:
         "/assets/pdfs/investors/news/notices/Notice-of-Board-Meeting-17.03.16.pdf",
     },
+
+    {
+      fileName: "692887abbdcab1cfa766fcc9",
+      filePath:
+        "/assets/pdfs/investors/news/notices/Intimation-of Board-Meeting-2025-26-may16.pdf",
+    },
+
+    {
+      fileName: "692887abbdcab1cfa766fcca",
+      filePath:
+        "/assets/pdfs/investors/news/notices/Notice_2025-26-30july.pdf",
+    },
+    {
+      fileName: "692887abbdcab1cfa766fccb",
+      filePath:
+        "/assets/pdfs/investors/news/notices/Notice-of-Board-Meeting-6th-nov.pdf",
+    },
+    {
+      fileName: "692887abbdcab1cfa766fccc",
+      filePath:
+        "/assets/pdfs/investors/news/notices/Notice-of-Board-Meeting-30-07-2025-board-meeting.pdf",
+    },
   ];
 }
 
@@ -580,6 +612,12 @@ export function AnnualResult() {
 // ANNUAL REPORTS OF THE COMPANY
 export function AnnualReport() {
   return [
+    {
+      year: "2024-25",
+      fileName: "66th Annual Report",
+      filePath:
+        "/assets/pdfs/investors/financials/annual-reports/66th-Annual-Report.pdf",
+    },
     {
       year: "2023-24",
       fileName: "65th Annual Report",

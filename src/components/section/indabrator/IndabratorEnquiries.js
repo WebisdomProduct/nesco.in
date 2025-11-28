@@ -19,9 +19,10 @@ function IndabratorEnquiries() {
 
           <div className="space-y-3 sm:space-y-5">
             <div className="flex items-center text-gray-600">
-              <MdEmail className="w-5 h-5 mr-4 text-gray-500" />
+              <MdEmail className="w-10 h-10 mr-4 text-gray-500" />
               <span className="text-base sm:text-lg text-gray-500">
-                sales@indabrator.com
+                Machines related: indabrator.sales@nesco.in 
+                Spares & abrasive related : indabrator.spares@nesco.in 
               </span>
             </div>
 

@@ -50,7 +50,7 @@ function SebiDetails() {
   const transformedData = useMemo(() => {
     if (!Array.isArray(getData)) return [];
 
-    return getData.map((item) => {
+    const transformed = getData.map((item) => {
       // Handle address tables if they exist
       if (Array.isArray(item.addressTables) && item.addressTables.length > 0) {
         return {
@@ -158,6 +158,63 @@ function SebiDetails() {
         tables: [],
       };
     });
+
+    // Group items by title and merge their tables
+    const groupedByTitle = {};
+    
+    transformed.forEach((item) => {
+      const title = item.title;
+      
+      if (!groupedByTitle[title]) {
+        // First occurrence of this title
+        groupedByTitle[title] = {
+          ...item,
+          _ids: [item._id], // Keep track of all IDs
+        };
+      } else {
+        // Merge tables from duplicate titles
+        groupedByTitle[title]._ids.push(item._id);
+        
+        // Merge tables based on option type
+        if (item.tables && item.tables.length > 0) {
+          groupedByTitle[title].tables = [
+            ...groupedByTitle[title].tables,
+            ...item.tables
+          ];
+        }
+      }
+    });
+
+    // Convert back to array and sort tables
+    return Object.values(groupedByTitle).map(item => {
+      // Sort tables by year (descending - newest first)
+      if (item.tables && item.tables.length > 0) {
+        item.tables.sort((a, b) => {
+          const yearA = a.year || a.pdfYear || '';
+          const yearB = b.year || b.pdfYear || '';
+          return yearB.localeCompare(yearA);
+        });
+
+        // Sort fields within each table by date (descending - newest first)
+        item.tables.forEach(table => {
+          if (table.fields && table.fields.length > 0) {
+            table.fields.sort((a, b) => {
+              // Get the date from either documentDate or pdfDate
+              const dateA = a.documentDate || a.pdfDate;
+              const dateB = b.documentDate || b.pdfDate;
+              
+              if (!dateA && !dateB) return 0;
+              if (!dateA) return 1;
+              if (!dateB) return -1;
+              
+              return new Date(dateB) - new Date(dateA);
+            });
+          }
+        });
+      }
+      
+      return item;
+    });
   }, [getData]);
 
   useEffect(() => {
@@ -170,30 +227,95 @@ function SebiDetails() {
     setOpenIndex(index === openIndex ? null : index);
   };
 
+  // Helper function to get file path from hardcoded data
+  const getFilePath = (title, field) => {
+    const titleFileMap = {
+      "NEWSPAPER ADVERTISEMENTS PURSUANT TO REGULATION 47(1) OF SEBI (LODR) REGULATIONS, 2015": {
+        data: NewsAd(),
+        key: "fileName",
+        match: "_id"
+      },
+      "FINANCIAL STATEMENTS OF SUBSIDIARY OF THE COMPANY": {
+        data: FinancialStatement(),
+        key: "fileName",
+        match: "_id"
+      },
+      "SECRETARIAL COMPLIANCE REPORT": {
+        data: Secretarial(),
+        key: "fileName",
+        match: "documentName"
+      },
+      "VOTING RESULTS": {
+        data: VotingResult(),
+        key: "fileName",
+        match: "documentName"
+      },
+      "SRUTINIZER'S REPORT": {
+        data: SrutinizerReport(),
+        key: "fileName",
+        match: "documentName"
+      },
+      "AGM PROCEEDINGS": {
+        data: AgmProceeding(),
+        key: "fileName",
+        match: "documentName"
+      },
+      "SCHEDULE OF AND PRESENTATIONS MADE TO ANALYSTS OR INSTITUTIONAL INVESTORS": {
+        data: SCHEDULE(),
+        key: "fileName",
+        match: "documentName"
+      }
+    };
+
+    const mapping = titleFileMap[title];
+    if (!mapping) return null;
+
+    const matchValue = field[mapping.match];
+    const fileData = mapping.data.find(item => item[mapping.key] === matchValue);
+    return fileData?.filePath || null;
+  };
+
+  // Helper function to get PDF file path
+  const getPdfFilePath = (title, fieldId) => {
+    const pdfTitleMap = {
+      "Investor Grievances Reports": InvestorReport(),
+      "Corporate Governance Reports": CorporateReport(),
+      "SHAREHOLDING PATTERN OF THE COMPANY": ShareHoldingPattern(),
+      "QUARTERLY / ANNUAL FINANCIAL RESULTS OF THE COMPANY": AnnualResult(),
+      "NOTICES OF BOARD AND SHAREHOLDERS MEETINGS": NoticeBoard()
+    };
+
+    const data = pdfTitleMap[title];
+    if (!data) return null;
+
+    const fileData = data.find(item => item.fileName === fieldId);
+    return fileData?.filePath || null;
+  };
+
   const renderTableContent = (item) => {
     switch (item.option) {
       case "addressTables":
         return (
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 bg-[#F3F3F3]">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 bg-[#F3F3F3] p-4">
             {item.tables.map((table, tableIndex) => (
-              <div key={tableIndex} className="p-4 ">
+              <div key={tableIndex} className="p-4 border rounded bg-white">
                 <div className="">
-                  <h4 className="font-branding-bold py-2 px-6 bg-[#D6D6D6]">
+                  <h4 className="font-branding-bold py-2 px-6 bg-[#D6D6D6] uppercase mb-3">
                     {table.tableAddressTitle}
                   </h4>
-                  <div className="">
+                  <div className="space-y-3">
                     {table.fields.map((field, fieldIndex) => (
                       <div key={fieldIndex} className="border p-3 rounded">
                         <p className="font-branding-bold">{field.data.name}</p>
                         <p>{field.data.position}</p>
-                        <p>{field.data.full_address.split(",")}</p>
+                        <p>{field.data.full_address}</p>
                         {field.data?.email && (
-                          <a href={`mailto:${field.data.email}`} className="">
+                          <p>
                             Email:{" "}
-                            <span className="underline hover:text-blue-500">
+                            <a href={`mailto:${field.data.email}`} className="underline hover:text-blue-500">
                               {field.data.email}
-                            </span>
-                          </a>
+                            </a>
+                          </p>
                         )}
                         {field.data?.phone && <p>Phone: {field.data.phone}</p>}
                         {field.data?.tel && <p>Tel: {field.data.tel}</p>}
@@ -209,19 +331,17 @@ function SebiDetails() {
 
       case "documentLink":
         return (
-          <ul className="p-5 bg-[#F3F3F3] w-full grid grid-cols-2 gap-5">
+          <ul className="p-5 bg-[#F3F3F3] w-full grid grid-cols-1 md:grid-cols-2 gap-5">
             {item.tables.map((doc, docIndex) => (
               <li key={docIndex} className="">
-                <p className="w-full overflow-hidden flex">
-                  <a
-                    href={doc.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className=" px-6 py-2 border-[#CCCCCC] border underline w-full hover:text-blue-400"
-                  >
-                    {doc.DocumentName}
-                  </a>
-                </p>
+                <a
+                  href={doc.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block px-6 py-3 border-[#CCCCCC] border underline hover:text-blue-500 hover:bg-white transition-colors"
+                >
+                  {doc.DocumentName}
+                </a>
               </li>
             ))}
           </ul>
@@ -229,153 +349,158 @@ function SebiDetails() {
 
       case "documentPdf":
         return (
-          <div className="bg-[#F3F3F3] gap-4">
-            {item.title ===
-            "TERMS AND CONDITIONS OF APPOINTMENT OF INDEPENDENT DIRECTORS OF THE COMPANY"
-              ? TermsAndCondition().map((data, index) => (
-                  <div key={index} className="border p-3 rounded">
-                    <p className="flex items-center text-left gap-1">
-                      <FaRegFilePdf className="text-red-500 w-10" />
-                      <a
-                        href={data.filePath}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="underline"
-                      >
-                        {data.fileName}
-                      </a>
-                    </p>
-                  </div>
-                ))
-              : item.title === "Policies & Codes"
-              ? PolicyAndCode().map((data, index) => (
-                  <div key={index} className="border p-3 rounded">
-                    <p className="flex items-center text-left gap-1">
-                      <FaRegFilePdf className="text-red-500 w-10" />
-                      <a
-                        href={data.filePath}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="underline"
-                      >
-                        {data.fileName}
-                      </a>
-                    </p>
-                  </div>
-                ))
-              : item.title === "POLICIES ON BRSR"
-              ? PolicyAndCodeBRSR().map((data, index) => (
-                  <div key={index} className="border p-3 rounded">
-                    <p className="flex items-center text-left gap-1">
-                      <FaRegFilePdf className="text-red-500 w-10" />
-                      <a
-                        href={data.filePath}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="underline"
-                      >
-                        {data.fileName}
-                      </a>
-                    </p>
-                  </div>
-                ))
-              : item.title ===
-                "CRITERIA OF MAKING PAYMENTS TO NON-EXECUTIVE DIRECTORS OF THE COMPANY"
-              ? Criteria().map((data, index) => (
-                  <div key={index} className="border p-3 rounded">
-                    <p className="flex items-center text-left gap-1">
-                      <FaRegFilePdf className="text-red-500 w-10" />
-                      <a
-                        href={data.filePath}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="underline"
-                      >
-                        {data.fileName}
-                      </a>
-                    </p>
-                  </div>
-                ))
-              : item.title ===
-                "DETAILS OF DIRECTORS' FAMILIARISATION PROGRAMMES OF THE COMPANY"
-              ? Details().map((data, index) => (
-                  <div key={index} className="border p-3 rounded">
-                    <p className="flex items-center text-left gap-1">
-                      <FaRegFilePdf className="text-red-500 w-10" />
-                      <a
-                        href={data.filePath}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="underline"
-                      >
-                        {data.fileName}
-                      </a>
-                    </p>
-                  </div>
-                ))
-              : item.title === "MEMORANDUM AND ARTICLES OF ASSOCIATION"
-              ? Memorandum().map((data, index) => (
-                  <div key={index} className="border p-3 rounded">
-                    <p className="flex items-center text-left gap-1">
-                      <FaRegFilePdf className="text-red-500 w-10" />
-                      <a
-                        href={data.filePath}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="underline"
-                      >
-                        {data.fileName}
-                      </a>
-                    </p>
-                  </div>
-                ))
-              : item.title === "AMALGAMATION"
-              ? Amalgamation().map((data, index) => (
-                  <div key={index} className="border p-3 rounded">
-                    <p className="flex items-center text-left gap-1">
-                      <FaRegFilePdf className="text-red-500 w-10" />
-                      <a
-                        href={data.filePath}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="underline"
-                      >
-                        {data.fileName}
-                      </a>
-                    </p>
-                  </div>
-                ))
-              : item.tables.map((doc, docIndex) => (
-                  <div key={docIndex} className="border p-3 rounded">
-                    <p className="flex items-center text-left gap-1">
-                      <FaRegFilePdf className="text-red-500 w-10" />
-                      <a
-                        href={doc.documentPdfFile}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="underline"
-                      >
-                        {doc.DocumentPdfName}
-                      </a>
-                    </p>
-                  </div>
-                ))}
+          <div className="bg-[#F3F3F3] p-4 space-y-3">
+            {/* Handle hardcoded data based on title */}
+            {item.title === "TERMS AND CONDITIONS OF APPOINTMENT OF INDEPENDENT DIRECTORS OF THE COMPANY" && 
+              TermsAndCondition().map((data, index) => (
+                <div key={index} className="border p-3 rounded bg-white hover:bg-gray-50 transition-colors">
+                  <a
+                    href={data.filePath}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center text-left gap-3 group"
+                  >
+                    <FaRegFilePdf className="text-red-500 w-6 h-6 flex-shrink-0" />
+                    <span className="underline group-hover:text-blue-500">{data.fileName}</span>
+                  </a>
+                </div>
+              ))
+            }
+            
+            {item.title === "Policies & Codes" && 
+              PolicyAndCode().map((data, index) => (
+                <div key={index} className="border p-3 rounded bg-white hover:bg-gray-50 transition-colors">
+                  <a
+                    href={data.filePath}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center text-left gap-3 group"
+                  >
+                    <FaRegFilePdf className="text-red-500 w-6 h-6 flex-shrink-0" />
+                    <span className="underline group-hover:text-blue-500">{data.fileName}</span>
+                  </a>
+                </div>
+              ))
+            }
+            
+            {item.title === "POLICIES ON BRSR" && 
+              PolicyAndCodeBRSR().map((data, index) => (
+                <div key={index} className="border p-3 rounded bg-white hover:bg-gray-50 transition-colors">
+                  <a
+                    href={data.filePath}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center text-left gap-3 group"
+                  >
+                    <FaRegFilePdf className="text-red-500 w-6 h-6 flex-shrink-0" />
+                    <span className="underline group-hover:text-blue-500">{data.fileName}</span>
+                  </a>
+                </div>
+              ))
+            }
+            
+            {item.title === "CRITERIA OF MAKING PAYMENTS TO NON-EXECUTIVE DIRECTORS OF THE COMPANY" && 
+              Criteria().map((data, index) => (
+                <div key={index} className="border p-3 rounded bg-white hover:bg-gray-50 transition-colors">
+                  <a
+                    href={data.filePath}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center text-left gap-3 group"
+                  >
+                    <FaRegFilePdf className="text-red-500 w-6 h-6 flex-shrink-0" />
+                    <span className="underline group-hover:text-blue-500">{data.fileName}</span>
+                  </a>
+                </div>
+              ))
+            }
+            
+            {item.title === "DETAILS OF DIRECTORS' FAMILIARISATION PROGRAMMES OF THE COMPANY" && 
+              Details().map((data, index) => (
+                <div key={index} className="border p-3 rounded bg-white hover:bg-gray-50 transition-colors">
+                  <a
+                    href={data.filePath}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center text-left gap-3 group"
+                  >
+                    <FaRegFilePdf className="text-red-500 w-6 h-6 flex-shrink-0" />
+                    <span className="underline group-hover:text-blue-500">{data.fileName}</span>
+                  </a>
+                </div>
+              ))
+            }
+            
+            {item.title === "MEMORANDUM AND ARTICLES OF ASSOCIATION" && 
+              Memorandum().map((data, index) => (
+                <div key={index} className="border p-3 rounded bg-white hover:bg-gray-50 transition-colors">
+                  <a
+                    href={data.filePath}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center text-left gap-3 group"
+                  >
+                    <FaRegFilePdf className="text-red-500 w-6 h-6 flex-shrink-0" />
+                    <span className="underline group-hover:text-blue-500">{data.fileName}</span>
+                  </a>
+                </div>
+              ))
+            }
+            
+            {item.title === "AMALGAMATION" && 
+              Amalgamation().map((data, index) => (
+                <div key={index} className="border p-3 rounded bg-white hover:bg-gray-50 transition-colors">
+                  <a
+                    href={data.filePath}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center text-left gap-3 group"
+                  >
+                    <FaRegFilePdf className="text-red-500 w-6 h-6 flex-shrink-0" />
+                    <span className="underline group-hover:text-blue-500">{data.fileName}</span>
+                  </a>
+                </div>
+              ))
+            }
+
+            {/* Render API data if no hardcoded match */}
+            {!["TERMS AND CONDITIONS OF APPOINTMENT OF INDEPENDENT DIRECTORS OF THE COMPANY",
+                "Policies & Codes",
+                "POLICIES ON BRSR",
+                "CRITERIA OF MAKING PAYMENTS TO NON-EXECUTIVE DIRECTORS OF THE COMPANY",
+                "DETAILS OF DIRECTORS' FAMILIARISATION PROGRAMMES OF THE COMPANY",
+                "MEMORANDUM AND ARTICLES OF ASSOCIATION",
+                "AMALGAMATION"].includes(item.title) &&
+              item.tables.map((doc, docIndex) => (
+                <div key={docIndex} className="border p-3 rounded bg-white hover:bg-gray-50 transition-colors">
+                  <a
+                    href={doc.documentPdfFile}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center text-left gap-3 group"
+                  >
+                    <FaRegFilePdf className="text-red-500 w-6 h-6 flex-shrink-0" />
+                    <span className="underline group-hover:text-blue-500">{doc.DocumentPdfName}</span>
+                  </a>
+                </div>
+              ))
+            }
           </div>
         );
 
       case "positionTable":
         return (
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 bg-[#F3F3F3]">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 bg-[#F3F3F3] p-4">
             {item.tables.map((table, tableIndex) => (
-              <div key={tableIndex} className="p-4 w-full bg-[#F3F3F3]">
+              <div key={tableIndex} className="p-4 w-full bg-white rounded border">
                 <div>
-                  <h4 className="font-branding-bold py-2 px-6 bg-[#D6D6D6]">
+                  <h4 className="font-branding-bold py-2 px-6 bg-[#D6D6D6] uppercase mb-3">
                     {table.tablePositionTitle}
                   </h4>
                   <table className="w-full border-collapse">
                     <tbody>
                       {table.fields.map((field, fieldIndex) => (
-                        <tr key={fieldIndex}>
+                        <tr key={fieldIndex} className="hover:bg-gray-50">
                           <td className="border p-2">{field.name1}</td>
                           <td className="border p-2">{field.position}</td>
                         </tr>
@@ -389,19 +514,59 @@ function SebiDetails() {
         );
 
       case "documentAll":
-        return (
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 bg-[#F3F3F3]">
-            {item.tables.map((table, tableIndex) => (
-              <div key={tableIndex} className="p-4">
-                {item.title !== "ANNUAL REPORTS OF THE COMPANY" && (
-                  <h4 className="font-branding-bold py-2 px-6 bg-[#D6D6D6]">
-                    {table.year}
+        // Special handling for Annual Reports
+        if (item.title === "ANNUAL REPORTS OF THE COMPANY") {
+          const groupedReports = AnnualReport().reduce((acc, data) => {
+            const existingYear = acc.find((item) => item.year === data.year);
+            if (existingYear) {
+              existingYear.files.push(data);
+            } else {
+              acc.push({ year: data.year, files: [data] });
+            }
+            return acc;
+          }, []);
+
+          // Sort by year descending
+          groupedReports.sort((a, b) => b.year.localeCompare(a.year));
+
+          return (
+            <div className="bg-[#F3F3F3] p-4">
+              {groupedReports.map((group, groupIndex) => (
+                <div key={groupIndex} className="mb-4">
+                  <h4 className="font-branding-bold py-2 px-6 bg-[#D6D6D6] uppercase mb-3">
+                    {group.year}
                   </h4>
-                )}
-                <div className="">
+                  <div className="space-y-2">
+                    {group.files.map((file, fileIndex) => (
+                      <div key={fileIndex} className="px-4 py-2 bg-white border rounded hover:bg-gray-50 transition-colors">
+                        <a
+                          href={file.filePath}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="flex items-center gap-3 group"
+                        >
+                          <FaRegFilePdf className="text-red-500 w-6 h-6 flex-shrink-0" />
+                          <span className="hover:text-blue-500 underline">{file.fileName}</span>
+                        </a>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              ))}
+            </div>
+          );
+        }
+
+        // For all other documentAll types - now displayed in single column
+        return (
+          <div className="bg-[#F3F3F3] p-4">
+            {item.tables.map((table, tableIndex) => (
+              <div key={tableIndex} className="mb-6">
+                <h4 className="font-branding-bold py-2 px-6 bg-[#D6D6D6] uppercase mb-3">
+                  {table.year}
+                </h4>
+                <div className="space-y-3 bg-white p-4 rounded border">
                   {table.fields.map((field, fieldIndex) => {
-                    // Format the date
-                    // console.log(table.fields);
                     const formatDate = (dateString) => {
                       const date = new Date(dateString);
                       const day = date.getDate();
@@ -412,184 +577,24 @@ function SebiDetails() {
                       return `${day} ${month} ${year}`;
                     };
 
-                    return (
-                      <div
-                        key={fieldIndex}
-                        className=" px-4 py-2 rounded w-full"
-                      >
-                        {item.title === "ANNUAL REPORTS OF THE COMPANY" ? (
-                          AnnualReport()
-                            .reduce((acc, data) => {
-                              const existingYear = acc.find(
-                                (item) => item.year === data.year
-                              );
-                              if (existingYear) {
-                                existingYear.files.push(data);
-                              } else {
-                                acc.push({ year: data.year, files: [data] });
-                              }
-                              return acc;
-                            }, [])
-                            .map((group, groupIndex) => (
-                              <div key={groupIndex}>
-                                <h4 className="font-branding-bold py-2 px-6 bg-[#D6D6D6] my-4">
-                                  {group.year}
-                                </h4>
-                                {group.files.map((file, fileIndex) => (
-                                  <div key={fileIndex} className="w-[100%] ">
-                                    <p className="flex items-center">
-                                      <span className="h-full w-fit">
-                                        <FaRegFilePdf className="text-red-500 w-10" />
-                                      </span>
-                                      <a
-                                        href={file.filePath}
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        className="hover:text-blue-500 underline inline-block w-full"
-                                      >
-                                        {file.fileName}
-                                      </a>
-                                    </p>
-                                  </div>
-                                ))}
-                              </div>
-                            ))
-                        ) : (
-                          <>
-                            {field.documentDate && (
-                              <div className="font-branding-bold ml-5 my-2">
-                                <p>{formatDate(field.documentDate)}</p>
-                              </div>
-                            )}
-                            <div className="w-[100%]">
-                              <p className="flex items-center">
-                                <span className="h-full w-fit">
-                                  <FaRegFilePdf className="text-red-500 w-10" />
-                                </span>
+                    const filePath = getFilePath(item.title, field);
 
-                                {item.title ===
-                                "NEWSPAPER ADVERTISEMENTS PURSUANT TO REGULATION 47(1) OF SEBI (LODR) REGULATIONS, 2015" ? (
-                                  NewsAd().map((data) => (
-                                    <>
-                                      {data.fileName === field._id && (
-                                        <a
-                                          href={data.filePath}
-                                          target="_blank"
-                                          rel="noopener noreferrer"
-                                          className="hover:text-blue-500 underline inline-block w-full"
-                                        >
-                                          {field.documentName}
-                                        </a>
-                                      )}
-                                    </>
-                                  ))
-                                ) : item.title ===
-                                  "FINANCIAL STATEMENTS OF SUBSIDIARY OF THE COMPANY" ? (
-                                  FinancialStatement().map((data) => (
-                                    <>
-                                      {data.fileName === field._id && (
-                                        <a
-                                          href={data.filePath}
-                                          target="_blank"
-                                          rel="noopener noreferrer"
-                                          className="hover:text-blue-500 underline inline-block w-full"
-                                        >
-                                          {field.documentName}
-                                        </a>
-                                      )}
-                                    </>
-                                  ))
-                                ) : item.title ===
-                                  "SECRETARIAL COMPLIANCE REPORT" ? (
-                                  Secretarial().map((data) => (
-                                    <>
-                                      {data.fileName === field.documentName && (
-                                        <a
-                                          href={data.filePath}
-                                          target="_blank"
-                                          rel="noopener noreferrer"
-                                          className="hover:text-blue-500 underline inline-block w-full"
-                                        >
-                                          {field.documentName}
-                                        </a>
-                                      )}
-                                    </>
-                                  ))
-                                ) : item.title === "VOTING RESULTS" ? (
-                                  VotingResult().map((data) => (
-                                    <>
-                                      {data.fileName === field.documentName && (
-                                        <a
-                                          href={data.filePath}
-                                          target="_blank"
-                                          rel="noopener noreferrer"
-                                          className="hover:text-blue-500 underline inline-block w-full"
-                                        >
-                                          {field.documentName}
-                                        </a>
-                                      )}
-                                    </>
-                                  ))
-                                ) : item.title === "SRUTINIZER’S REPORT" ? (
-                                  SrutinizerReport().map((data) => (
-                                    <>
-                                      {data.fileName === field.documentName && (
-                                        <a
-                                          href={data.filePath}
-                                          target="_blank"
-                                          rel="noopener noreferrer"
-                                          className="hover:text-blue-500 underline inline-block w-full"
-                                        >
-                                          {field.documentName}
-                                        </a>
-                                      )}
-                                    </>
-                                  ))
-                                ) : item.title === "AGM PROCEEDINGS" ? (
-                                  AgmProceeding().map((data) => (
-                                    <>
-                                      {data.fileName === field.documentName && (
-                                        <a
-                                          href={data.filePath}
-                                          target="_blank"
-                                          rel="noopener noreferrer"
-                                          className="hover:text-blue-500 underline inline-block w-full"
-                                        >
-                                          {field.documentName}
-                                        </a>
-                                      )}
-                                    </>
-                                  ))
-                                ) : item.title ===
-                                  "SCHEDULE OF AND PRESENTATIONS MADE TO ANALYSTS OR INSTITUTIONAL INVESTORS" ? (
-                                  SCHEDULE().map((data) => (
-                                    <>
-                                      {data.fileName === field.documentName && (
-                                        <a
-                                          href={data.filePath}
-                                          target="_blank"
-                                          rel="noopener noreferrer"
-                                          className="hover:text-blue-500 underline inline-block w-full"
-                                        >
-                                          {data.fileName}
-                                        </a>
-                                      )}
-                                    </>
-                                  ))
-                                ) : (
-                                  <a
-                                    href={field.documentFile}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="hover:text-blue-500 underline inline-block w-full"
-                                  >
-                                    {field.documentName}
-                                  </a>
-                                )}
-                              </p>
-                            </div>
-                          </>
+                    return (
+                      <div key={fieldIndex} className="border-b pb-3 last:border-b-0 last:pb-0">
+                        {field.documentDate && (
+                          <div className="font-branding-bold text-sm text-gray-600 mb-1">
+                            {formatDate(field.documentDate)}
+                          </div>
                         )}
+                        <a
+                          href={filePath || field.documentFile}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="flex items-center gap-3 group hover:bg-gray-50 p-2 rounded transition-colors"
+                        >
+                          <FaRegFilePdf className="text-red-500 w-6 h-6 flex-shrink-0" />
+                          <span className="hover:text-blue-500 underline break-words">{field.documentName}</span>
+                        </a>
                       </div>
                     );
                   })}
@@ -600,16 +605,16 @@ function SebiDetails() {
         );
 
       case "pdfTables":
+        // Display in single column with year grouping
         return (
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 bg-[#F3F3F3]">
+          <div className="bg-[#F3F3F3] p-4">
             {item.tables.map((table, tableIndex) => (
-              <div key={tableIndex} className="p-4">
-                <h4 className="font-branding-bold py-2 px-6 bg-[#D6D6D6]">
+              <div key={tableIndex} className="mb-6">
+                <h4 className="font-branding-bold py-2 px-6 bg-[#D6D6D6] uppercase mb-3">
                   {table.year}
                 </h4>
-                <div className="">
+                <div className="space-y-3 bg-white p-4 rounded border">
                   {table.fields.map((field, fieldIndex) => {
-                    // Format the date
                     const formatDate = (dateString) => {
                       const date = new Date(dateString);
                       const day = date.getDate();
@@ -620,108 +625,33 @@ function SebiDetails() {
                       return `${day} ${month} ${year}`;
                     };
 
+                    const filePath = getPdfFilePath(item.title, field._id);
+                    const displayDate = field.pdfDate ? formatDate(field.pdfDate) : field.quater;
+
                     return (
                       <div
                         key={fieldIndex}
-                        className="border px-4 py-2 rounded flex w-full"
+                        className="border-b pb-3 last:border-b-0 last:pb-0"
                       >
-                        <div className="w-[30%]">
-                          {field.pdfDate ? (
-                            <p>{formatDate(field.pdfDate)}</p>
-                          ) : (
-                            <p>{field.quater}</p>
-                          )}
-                        </div>
-                        <div className="w-[70%] ">
-                          <p className="flex items-center">
-                            <span className="h-full w-fit">
-                              <FaRegFilePdf className="text-red-500 w-10" />
+                        <div className="flex items-start gap-3">
+                          <div className="w-[120px] flex-shrink-0">
+                            <span className="text-sm font-branding-semibold text-gray-600">
+                              {displayDate}
                             </span>
-                            {item.title === "Investor Grievances Reports" ? (
-                              InvestorReport().map(
-                                (data) =>
-                                  data.fileName === field._id && (
-                                    <a
-                                      href={data.filePath}
-                                      target="_blank"
-                                      rel="noopener noreferrer"
-                                      className="hover:text-blue-500 underline inline-block w-full"
-                                    >
-                                      {field.pdfName}
-                                    </a>
-                                  )
-                              )
-                            ) : item.title ===
-                              "Corporate Governance Reports" ? (
-                              CorporateReport().map(
-                                (data) =>
-                                  data.fileName === field._id && (
-                                    <a
-                                      href={data.filePath}
-                                      target="_blank"
-                                      rel="noopener noreferrer"
-                                      className="hover:text-blue-500 underline inline-block w-full"
-                                    >
-                                      {field.pdfName}
-                                    </a>
-                                  )
-                              )
-                            ) : item.title ===
-                              "SHAREHOLDING PATTERN OF THE COMPANY" ? (
-                              ShareHoldingPattern().map(
-                                (data) =>
-                                  data.fileName === field._id && (
-                                    <a
-                                      href={data.filePath}
-                                      target="_blank"
-                                      rel="noopener noreferrer"
-                                      className="hover:text-blue-500 underline inline-block w-full"
-                                    >
-                                      {field.pdfName}
-                                    </a>
-                                  )
-                              )
-                            ) : item.title ===
-                              "QUARTERLY / ANNUAL FINANCIAL RESULTS OF THE COMPANY" ? (
-                              AnnualResult().map(
-                                (data) =>
-                                  data.fileName === field._id && (
-                                    <a
-                                      href={data.filePath}
-                                      target="_blank"
-                                      rel="noopener noreferrer"
-                                      className="hover:text-blue-500 underline inline-block w-full"
-                                    >
-                                      {field.pdfName}
-                                    </a>
-                                  )
-                              )
-                            ) : item.title ===
-                              "NOTICES OF BOARD AND SHAREHOLDERS MEETINGS" ? (
-                              NoticeBoard().map(
-                                (data) =>
-                                  data.fileName === field._id && (
-                                    <a
-                                      href={data.filePath}
-                                      target="_blank"
-                                      rel="noopener noreferrer"
-                                      className="hover:text-blue-500 underline inline-block w-full"
-                                    >
-                                      {field.pdfName}
-                                    </a>
-                                  )
-                              )
-                            ) : (
-                              <a
-                                href={field.pdfFile}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="hover:text-blue-500 underline inline-block w-full"
-                              >
-                                {field.pdfName}
-                              </a>
-                            )}
-                          </p>
+                          </div>
+                          <div className="flex-1">
+                            <a
+                              href={filePath || field.pdfFile}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="flex items-center gap-2 group hover:bg-gray-50 p-2 rounded transition-colors"
+                            >
+                              <FaRegFilePdf className="text-red-500 w-6 h-6 flex-shrink-0" />
+                              <span className="hover:text-blue-500 underline break-words">
+                                {field.pdfName || "Download PDF"}
+                              </span>
+                            </a>
+                          </div>
                         </div>
                       </div>
                     );
@@ -731,44 +661,45 @@ function SebiDetails() {
             ))}
           </div>
         );
+        
       default:
-        return <p className="text-gray-500">No data available</p>;
+        return <p className="text-gray-500 p-4">No data available</p>;
     }
   };
 
   return (
-    <div className="flex justify-center h-fit">
+    <div className="flex justify-center min-h-screen py-6">
       {loading ? (
-        "Loading...."
+        <div className="text-center py-10 text-lg">Loading....</div>
       ) : (
-        <div className=" lg:w-[80%] w-[90%]  mt-0">
+        <div className="lg:w-[80%] w-[90%]">
           {transformedData.map((item, index) => (
-            <div key={item._id || index} className="mb-3">
+            <div key={item._ids ? item._ids.join('-') : item._id || index} className="mb-3">
               <div
-                className="border-2 border-gray-300 px-4 py-2 font-bold flex justify-between mb-0 cursor-pointer"
+                className="border-2 border-gray-300 px-4 py-3 font-bold flex justify-between items-center cursor-pointer hover:bg-gray-50 transition-colors"
                 onClick={() => handleToggle(index)}
               >
-                <p className="text-gray-600 font-branding-semibold w-[95%]">
+                <p className="text-gray-700 font-branding-semibold w-[95%] uppercase text-sm md:text-base">
                   {item.title}
                 </p>
-                <p className="text-blue-800 overflow-hidden p-0 h-6 flex justify-center items-center w-[5%]">
+                <div className="text-blue-800 w-[5%] flex justify-center items-center">
                   <span
-                    className={`transition-transform duration-300 font-bold text-3xl inline-block ${
+                    className={`transition-transform duration-300 font-bold text-2xl md:text-3xl inline-block ${
                       openIndex === index ? "rotate-45" : "rotate-0"
                     }`}
                   >
                     +
                   </span>
-                </p>
+                </div>
               </div>
               <div
-                className={`font-bold transition-all duration-700 ease-in-out overflow-hidden ${
+                className={`transition-all duration-700 ease-in-out overflow-hidden ${
                   openIndex === index
                     ? "opacity-100 max-h-[5000px]"
                     : "opacity-0 max-h-0"
                 }`}
               >
-                <div className="border-2 border-gray-300 border-t-0 w-full">
+                <div className="border-2 border-gray-300 border-t-0">
                   {renderTableContent(item)}
                 </div>
               </div>

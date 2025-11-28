@@ -10,17 +10,17 @@ function IndabratorStats() {
   const stats = [
     {
       icon: facilityIcon,
-      value: "11 Lac",
+      value: "1.1 Lac",
       label: "sq.ft manufacturing capacity",
     },
     {
       icon: projectsIcon,
-      value: "15k+",
+      value: "5k+",
       label: "completed installations",
     },
     {
       icon: experienceIcon,
-      value: "47",
+      value: "60+",
       label: "years of excellence",
     },
   ];
