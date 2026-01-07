@@ -22,9 +22,9 @@ function EventProfile() {
       </div> */}
 
       <div className="w-[90%] mx-auto lg:mt-20 relative">
-        <div className="flex flex-col lg:flex-row items-center justify-between gap-[5vh] lg:gap-[3vw]">
+        <div className="flex flex-col lg:flex-row items-center justify-between gap-10 lg:gap-0">
           {/* Text Content - Left side */}
-          <div className="w-full lg:w-[50%] xl:w-[45%] space-y-[2vh]">
+          <div className="w-full lg:w-1/2 space-y-6 flex flex-col justify-center pr-8">
             <h3
               className="text-[clamp(2rem,4vw,3.5rem)] font-bold leading-tight"
               style={{ fontFamily: "BrandingSemibold" }}
@@ -76,7 +76,7 @@ function EventProfile() {
           </div>
 
           {/* Image Container - Right side */}
-          <div className="w-full lg:w-[45%] xl:w-[50%] relative h-[60vh] sm:h-[70vh] lg:h-[75vh] flex items-center justify-end">
+          <div className="w-full lg:w-1/2 relative h-[60vh] sm:h-[70vh] lg:h-[80vh] flex items-center justify-center">
             {/* Background Image */}
             <div className="absolute w-full h-full ">
               <Image
@@ -93,7 +93,7 @@ function EventProfile() {
                 src={profileImage}
                 alt="Balachandran Nambisan"
                 fill
-                className="object-cover sm:object-contain lg:object-cover object-top"
+                className="object-contain"
                 priority
                 sizes="(max-width: 768px) 100vw, 50vw"
               />

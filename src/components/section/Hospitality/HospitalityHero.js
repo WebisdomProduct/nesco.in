@@ -26,12 +26,12 @@ function HospitalityHero() {
 
       {/* Logo Container - unified style */}
       <div className="absolute bottom-8 right-0 px-8 py-2 bg-white bg-opacity-70 z-20 flex items-center w-[480px] h-[200px] overflow-hidden rounded-l-[5rem]">
-        <div className="w-[350px] h-[180px] relative flex items-center justify-center overflow-hidden">
+        <div className="w-[250px] h-[140px] relative flex items-center justify-center overflow-hidden">
           <Image
             src={foodsLogo}
             alt="Nesco Hospitality Logo"
-            width={350}
-            height={180}
+            width={250}
+            height={140}
             className="object-contain"
           />
         </div>
