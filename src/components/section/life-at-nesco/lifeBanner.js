@@ -14,7 +14,7 @@ function LifeBanner() {
     {
       image: bannerImage,
       data: (
-        <div className="absolute md:top-[50%] md:left-[10%] md:px-20 px-10 py-6  text-white z-20 text-4xl font-branding-medium">
+        <div className="absolute md:top-[50%] md:left-[10%] top:[20%] md:px-20 px-10 py-6  text-white z-20 text-4xl font-branding-medium">
             <p className="mb-2">Be celebrated, recognised</p>
             <p className="mb-2">And valued.</p>
             <p className="text-[#08A8DD] md:text-7xl text-4xl mb-4">Believe</p>

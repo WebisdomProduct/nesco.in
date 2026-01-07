@@ -10,7 +10,7 @@ function AnimateOnScroll({ children }) {
     const elements = ref.current?.querySelectorAll(".goal-section1");
     elements?.forEach((el) => {
       el.style.opacity = inView ? "1" : "0";
-      el.style.transform = inView ? "translateY(0px)" : "translateY(150px)";
+      el.style.transform = inView ? "translateY(0px)" : "translateY(130px)";
       el.style.transition = "opacity 1s ease-out, transform 0.8s ease-out";
     });
   }, [inView]);

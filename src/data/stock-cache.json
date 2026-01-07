@@ -1,7 +1,7 @@
 {
   "quote_bse": {
     "data": {
-      "symbol": "NESCO.BSE",
+      "symbol": "505355.BSE",
       "regularMarketPrice": 1246.7,
       "regularMarketPreviousClose": 1228.65,
       "regularMarketOpen": 1224,
@@ -13,16 +13,16 @@
       "currency": "INR",
       "exchange": "BSE",
       "name": "NESCO Limited",
-      "datetime": "2026-01-04T23:51:12.688Z",
+      "datetime": "2026-01-05T09:57:21.329Z",
       "change": 18.05,
       "changePercent": 1.4691
     },
-    "expiresAt": 1767587952688,
-    "updatedAt": 1767570672688
+    "expiresAt": 1767624321331,
+    "updatedAt": 1767607041331
   },
   "quote_nse": {
     "data": {
-      "symbol": "NESCO.BSE",
+      "symbol": "505355.BSE",
       "regularMarketPrice": 1246.7,
       "regularMarketPreviousClose": 1228.65,
       "regularMarketOpen": 1224,
@@ -34,12 +34,12 @@
       "currency": "INR",
       "exchange": "NSE",
       "name": "NESCO Limited",
-      "datetime": "2026-01-04T23:56:44.027Z",
+      "datetime": "2026-01-05T10:40:59.417Z",
       "change": 18.05,
       "changePercent": 1.4691
     },
-    "expiresAt": 1767588284027,
-    "updatedAt": 1767571004027
+    "expiresAt": 1767626939419,
+    "updatedAt": 1767609659419
   },
   "chart_nse_1d": {
     "data": {

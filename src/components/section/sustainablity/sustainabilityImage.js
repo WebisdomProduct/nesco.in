@@ -13,8 +13,8 @@ function SustainabilityImage() {
             alt="awardsImage"
           />
         </div>
-        <div className="border-2 md:w-1/2 overflow-hidden">
-          <div className="w-full border-b-2 px-10">
+        <div className="md:w-1/2 overflow-hidden">
+          <div className="w-full  px-10">
             <p className="text-[#04A8E3] text-3xl font-branding-bold py-3">
               Awards and Recognition
             </p>

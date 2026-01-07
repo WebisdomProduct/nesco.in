@@ -38,65 +38,68 @@ function Shares() {
   }, []);
 
   const transformDisplayData = (stockData) => {
-    if (!stockData) return null;
+  if (!stockData) return null;
 
-    const currentPrice = stockData.currentPrice;
-    const previousClose = stockData.previousClose;
-    const open = stockData.open;
-    const dayHigh = stockData.dayHigh;
-    const dayLow = stockData.dayLow;
-    const fiftyTwoWeekHigh = stockData.fiftyTwoWeekHigh;
-    const fiftyTwoWeekLow = stockData.fiftyTwoWeekLow;
-    const volume = stockData.volume;
-    const change = stockData.change;
-    const changePercent = stockData.changePercent;
+  const {
+    currentPrice,
+    previousClose,
+    open,
+    dayHigh,
+    dayLow,
+    fiftyTwoWeekHigh,
+    fiftyTwoWeekLow,
+    volume,
+    change,
+    changePercent
+  } = stockData;
 
-    return {
-      NseData: {
-        title: "CURRENCY",
-        dataIndex: "currency",
-        header: [
-          { title: "PRICE", dataIndex: "price" },
-          { title: "PREVIOUS CLOSE", dataIndex: "bid" },
-          { title: "CHANGE", dataIndex: "offer" },
-          { title: "CHANGE IN (%)", dataIndex: "change" },
-          { title: "VOLUME", dataIndex: "volume" },
-        ],
-        rows: [
-          {
-            currency: "Rupees",
-            price: `₹ ${currentPrice}`,
-            bid: `₹ ${previousClose}`,
-            offer: `₹ ${change}`,
-            change: `${changePercent}%`,
-            volume: volume,
-          },
-        ],
-      },
-      NseData2: {
-        title: "TODAY'S OPEN",
-        dataIndex: "todayOpen",
-        header: [
-          { title: "PREVIOUS CLOSE", dataIndex: "previousClose" },
-          { title: "TODAY'S OPEN", dataIndex: "todayOpen" },
-          { title: "INTRADAY HIGH", dataIndex: "intradayHigh" },
-          { title: "INTRADAY LOW", dataIndex: "intradayLow" },
-          { title: "52 WEEK HIGH", dataIndex: "weekHigh" },
-          { title: "52 WEEK LOW", dataIndex: "weekLow" },
-        ],
-        rows: [
-          {
-            todayOpen: `₹ ${open}`,
-            previousClose: `₹ ${previousClose}`,
-            intradayHigh: `₹ ${dayHigh}`,
-            intradayLow: `₹ ${dayLow}`,
-            weekHigh: `₹ ${fiftyTwoWeekHigh}`,
-            weekLow: `₹ ${fiftyTwoWeekLow}`,
-          },
-        ],
-      },
-    };
+  return {
+    NseData: {
+      title: "CURRENCY",
+      dataIndex: "currency",
+      header: [
+        { title: "PRICE", dataIndex: "price" },
+        { title: "PREVIOUS CLOSE", dataIndex: "bid" },
+        { title: "CHANGE", dataIndex: "offer" },
+        { title: "CHANGE IN (%)", dataIndex: "change" },
+        { title: "VOLUME", dataIndex: "volume" }
+      ],
+      rows: [
+        {
+          currency: "Rupees",
+          price: `₹ ${currentPrice}`,
+          bid: `₹ ${previousClose}`,
+          offer: `₹ ${change}`,
+          change: `${changePercent}%`,
+          volume
+        }
+      ]
+    },
+    NseData2: {
+      title: "TODAY'S OPEN",
+      dataIndex: "todayOpen",
+      header: [
+        { title: "PREVIOUS CLOSE", dataIndex: "previousClose" },
+        { title: "TODAY'S OPEN", dataIndex: "todayOpen" },
+        { title: "INTRADAY HIGH", dataIndex: "intradayHigh" },
+        { title: "INTRADAY LOW", dataIndex: "intradayLow" },
+        { title: "52 WEEK HIGH", dataIndex: "weekHigh" },
+        { title: "52 WEEK LOW", dataIndex: "weekLow" }
+      ],
+      rows: [
+        {
+          todayOpen: `₹ ${open}`,
+          previousClose: `₹ ${previousClose}`,
+          intradayHigh: `₹ ${dayHigh}`,
+          intradayLow: `₹ ${dayLow}`,
+          weekHigh: fiftyTwoWeekHigh ?? "-",
+          weekLow: fiftyTwoWeekLow ?? "-"
+        }
+      ]
+    }
   };
+};
+
 
   const currentDisplayData = select === "nse" ? nseDisplayData : bseDisplayData;
 

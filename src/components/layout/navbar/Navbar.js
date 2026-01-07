@@ -378,8 +378,8 @@ function Navbar({ activeSlide }) {
 
   return (
     <nav
-      className={`py-6 md:px-6 px-8 flex items-center justify-between w-full z-[999] fixed top-0 transition-all duration-200 ${isScrolled ? "bg-white" : "bg-white/45"
-        } ${changeNavbar()} ${changeNavbar1()}`}
+      className={`py-6 md:px-6 px-8 flex items-center justify-between w-full z-[999] fixed top-0 transition-all duration-200 ${isScrolled ? "bg-white" : "bg-white"
+        }`}
     >
 
       {!isScrolled && (
