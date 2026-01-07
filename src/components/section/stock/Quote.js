@@ -5,9 +5,18 @@ import React, { useState, useEffect } from "react";
 import { fetchChartData, transformChartData as transformChartDataUtil } from "@/utils/stockDataFetcher";
 
 function Quote() {
+  const today = new Date();
   const [exchange, setExchange] = useState("BSE");
-  const [startDate, setStartDate] = useState({ day: 18, month: 3, year: 2025 });
-  const [endDate, setEndDate] = useState({ day: 18, month: 3, year: 2025 });
+  const [startDate, setStartDate] = useState({
+    day: today.getDate(),
+    month: today.getMonth() + 1,
+    year: today.getFullYear()
+  });
+  const [endDate, setEndDate] = useState({
+    day: today.getDate(),
+    month: today.getMonth() + 1,
+    year: today.getFullYear()
+  });
   const [historicalData, setHistoricalData] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
@@ -20,7 +29,7 @@ function Quote() {
     try {
       const exchangeKey = exchange.toLowerCase();
       const rawChartData = await fetchChartData(exchangeKey, "1y");
-      
+
       if (rawChartData && rawChartData.length > 0) {
         const rows = rawChartData.map((item) => ({
           date: new Date(item.date).toLocaleDateString(),
@@ -70,7 +79,7 @@ function Quote() {
     try {
       const exchangeKey = exchange.toLowerCase();
       const rawChartData = await fetchChartData(exchangeKey, "1y");
-      
+
       // Filter data based on selected date range
       const startDateObj = new Date(startDate.year, startDate.month - 1, startDate.day);
       const endDateObj = new Date(endDate.year, endDate.month - 1, endDate.day);
@@ -244,9 +253,8 @@ function Quote() {
           {/* Search Button */}
           <div>
             <button
-              className={`${
-                loading === true ? "px-10" : "px-12"
-              } py-2 text-xl text-primary border-2 border-primary rounded-full font-branding-bold`}
+              className={`${loading === true ? "px-10" : "px-12"
+                } py-2 text-xl text-primary border-2 border-primary rounded-full font-branding-bold`}
               onClick={handleSearch}
               disabled={loading}
             >

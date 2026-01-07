@@ -15,27 +15,27 @@ const Year1960 = () => {
     onChange: (inView) => setYear1960InView(inView),
   });
 
-    useEffect(() => {
-        if (year1960InView) {
-          const interval = setInterval(() => {
-            setCount((prevCount) => {
-              const nextCount = prevCount + 5;
-              if (nextCount >= 1960) {
-                clearInterval(interval);
-                return 1960; // Stop exactly at 1960
-              }
-              return nextCount;
-            });
-          }, 10); // Fast counting interval
-    
-          return () => clearInterval(interval);
-        }
-      }, [year1960InView]);
+  useEffect(() => {
+    if (year1960InView) {
+      const interval = setInterval(() => {
+        setCount((prevCount) => {
+          const nextCount = prevCount + 5;
+          if (nextCount >= 1960) {
+            clearInterval(interval);
+            return 1960; // Stop exactly at 1960
+          }
+          return nextCount;
+        });
+      }, 10); // Fast counting interval
+
+      return () => clearInterval(interval);
+    }
+  }, [year1960InView]);
 
   return (
     <motion.div
       ref={year1960Observer}
-      className="year1960 mt-[8vh] flex flex-col sm:flex-col p-6 "
+      className="year1960 min-h-screen flex flex-col justify-center p-6"
       initial={{ opacity: 0, x: 50 }}
       animate={year1960InView ? { opacity: 1, x: 0 } : {}}
       transition={{ duration: 0.8, ease: "easeOut" }}
@@ -100,7 +100,7 @@ const Year1960 = () => {
 
         {/* Right Image */}
         <motion.div
-          className="imgDiv flex relative z-20 sm:mt-6 md:top-[10vh] lg:top-[15vh] right-0 flex-col sm:w-full md:w-[50%] lg:w-[50%]  "
+          className="imgDiv flex relative z-20 sm:mt-6 right-0 flex-col sm:w-full md:w-[50%] lg:w-[50%] "
           initial={{ opacity: 0, x: 50 }}
           animate={year1960InView ? { opacity: 1, x: 0 } : {}}
           transition={{ duration: 0.8, delay: 0.9 }}

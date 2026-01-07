@@ -1,5 +1,5 @@
 "use client";
-import { React, useState , useEffect} from "react";
+import { React, useState, useEffect } from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
@@ -13,27 +13,27 @@ const Year1966 = () => {
     triggerOnce: true,
     onChange: (inView) => setYear1966InView(inView),
   });
-    useEffect(() => {
-        if (year1966InView) {
-          const interval = setInterval(() => {
-            setCount((prevCount) => {
-              const nextCount = prevCount + 5;
-              if (nextCount >= 1966) {
-                clearInterval(interval);
-                return 1966; // Stop exactly at 1966
-              }
-              return nextCount;
-            });
-          }, 10); // Fast counting interval
-    
-          return () => clearInterval(interval);
-        }
-      }, [year1966InView]);
+  useEffect(() => {
+    if (year1966InView) {
+      const interval = setInterval(() => {
+        setCount((prevCount) => {
+          const nextCount = prevCount + 5;
+          if (nextCount >= 1966) {
+            clearInterval(interval);
+            return 1966; // Stop exactly at 1966
+          }
+          return nextCount;
+        });
+      }, 10); // Fast counting interval
+
+      return () => clearInterval(interval);
+    }
+  }, [year1966InView]);
 
   return (
     <motion.div
       ref={year1966Observer}
-      className="year1966 md:mt-[10vh] lg:mt-[35vh] flex flex-col sm:flex-col p-6"
+      className="year1966 min-h-screen flex flex-col justify-center p-6"
       initial={{ opacity: 0, x: 50 }}
       animate={year1966InView ? { opacity: 1, x: 0 } : {}}
       transition={{ duration: 0.8, ease: "easeOut" }}
@@ -65,13 +65,13 @@ const Year1966 = () => {
           transition={{ duration: 0.7, delay: 0.3 }}
           className="leftDiv flex flex-col sm:w-full md:w-[50%] lg:w-[50%] relative "
         >
-          <div className="contentDiv flex flex-col relative gap-4 bg-cyan-400 p-12 sm:left-0 md:left-[15%] lg:left-[0%] z-20 lg:h-[60vh] lg:top-[35vh] transition-shadow duration-300 hover:shadow-lg hover:shadow-cyan-500/50">
+          <div className="contentDiv flex flex-col relative gap-4 bg-cyan-400 p-12 sm:left-0 md:left-[15%] lg:left-[0%] z-20 transition-shadow duration-300 hover:shadow-lg hover:shadow-cyan-500/50">
             {/* Year Heading */}
             <motion.p
               initial={{ opacity: 0, y: -20 }}
               animate={year1966InView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, delay: 0.5 }}
-              className=" h-fit w-fit relative text-6xl md:text-7xl lg:text-9xl font-branding-bold text-blue-700 left-2 sm:left-0 top-2 sm:top-0 lg:top-[2vh] m-2"
+              className=" h-fit w-fit relative text-6xl md:text-7xl lg:text-9xl font-branding-bold text-blue-700 left-2 sm:left-0 top-2 sm:top-0 m-2"
             >
               {count}
               <motion.div
@@ -87,7 +87,7 @@ const Year1966 = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={year1966InView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.7, delay: 0.7 }}
-              className="bottomText flex relative sm:w-full  md:w-full lg:w-[70%]  sm:left-0 lg:left-2 lg:top-[3vh] p-2"
+              className="bottomText flex relative sm:w-full  md:w-full lg:w-[70%]  sm:left-0 lg:left-2 p-2"
             >
               <p className="text-sm sm:text-lg md:text-lg lg:text-xl text-white font-poppins">
                 The New Standard Engineering Company builds India's first

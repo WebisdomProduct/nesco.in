@@ -1,4 +1,5 @@
 "use client";
+
 import gsap from "gsap";
 import React, { useEffect, useRef, useState } from "react";
 import Image from "next/image";
@@ -12,12 +13,8 @@ import EImage2 from "@/assests/philosophy/07-e.png";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 function PhilosophyForUs() {
-  useEffect(() => {
-    import("./index.css");
-    import("./main.css");
-    import("./media.css");
-    import("./plugin.css");
-  }, []);
+
+
   const blueSqRef = useRef(null);
   const believeAnimRef = useRef(null);
   const [activeIndex, setActiveIndex] = useState(0);
@@ -397,15 +394,14 @@ function PhilosophyForUs() {
               {images.map((img, index) => (
                 <div
                   key={index}
-                  className={`img-item ${
-                    index === activeIndex ? "active" : ""
-                  }`}
+                  className={`img-item ${index === activeIndex ? "active" : ""
+                    }`}
                 >
                   <Image
                     src={img}
                     alt="Believe Letter"
-                    // width={50}
-                    // height={50}
+                  // width={50}
+                  // height={50}
                   />
                 </div>
               ))}

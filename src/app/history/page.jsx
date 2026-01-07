@@ -47,7 +47,7 @@ const Timeline = ({ years, isFooterVisible }) => {
           }
         });
       },
-      { root: scrollRoot || null, threshold: 0.5 }
+      { root: null, threshold: 0.5 }
     );
 
     sections.forEach(section => observer.observe(section));
@@ -64,20 +64,12 @@ const Timeline = ({ years, isFooterVisible }) => {
         document.querySelector('nav') || document.querySelector('.navbar');
       const navHeight = navbar ? navbar.offsetHeight : 0;
 
-      if (scrollRoot) {
-        // Calculate top relative to the scroll container
-        const top =
-          section.getBoundingClientRect().top -
-          scrollRoot.getBoundingClientRect().top +
-          scrollRoot.scrollTop;
-        scrollRoot.scrollTo({ top: top - navHeight - 16, behavior: 'smooth' });
-      } else {
-        const sectionTop = section.getBoundingClientRect().top + window.scrollY;
-        window.scrollTo({
-          top: sectionTop - navHeight - 16,
-          behavior: 'smooth',
-        });
-      }
+      const sectionTop = section.getBoundingClientRect().top + window.scrollY;
+
+      window.scrollTo({
+        top: sectionTop - navHeight - 16,
+        behavior: "smooth",
+      });
 
       setActiveYear(year.toString());
     }
@@ -89,8 +81,7 @@ const Timeline = ({ years, isFooterVisible }) => {
       className={`sideProgress flex-col items-center 
         fixed top-[10%] right-2 md:left-auto md:right-auto md:w-auto 
         lg:w-[13%] p-4 rounded-lg z-50 hidden
-        md:flex transition-opacity duration-500 ${
-          isFooterVisible ? 'opacity-0 pointer-events-none' : 'opacity-100'
+        md:flex transition-opacity duration-500 ${isFooterVisible ? 'opacity-0 pointer-events-none' : 'opacity-100'
         }`}
       style={{
         maxHeight: '80vh',

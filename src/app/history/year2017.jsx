@@ -36,7 +36,7 @@ const Year2017 = () => {
   return (
     <motion.div
       ref={year2017Observer}
-      className="year2017 mt-0 md:mt-[5vh] lg:mt-[20vh] flex flex-col sm:flex-col p-6 md:ml-4"
+      className="year2017 min-h-screen flex flex-col justify-center p-6 md:ml-4"
       initial={{ opacity: 0, x: 50 }}
       animate={year2017InView ? { opacity: 1, x: 0 } : {}}
       transition={{ duration: 0.8, ease: 'easeOut' }}
@@ -49,15 +49,15 @@ const Year2017 = () => {
           initial={{ opacity: 0, x: -50 }}
           animate={year2017InView ? { opacity: 1, x: 0 } : {}}
           transition={{ duration: 0.7, delay: 0.3 }}
-          className="leftDiv flex flex-col sm:w-full md:w-[50%] lg:w-[50%] lg:top-[40vh]  relative "
+          className="leftDiv flex flex-col sm:w-full md:w-[50%] lg:w-[50%] relative "
         >
-          <div className="contentDiv flex flex-col relative gap-4 bg-[#001F9C] p-12 sm:left-0 md:left-[15%] lg:left-[20%] lg:h-[80vh] transition-shadow duration-300 hover:shadow-lg hover:shadow-blue-500/50">
+          <div className="contentDiv flex flex-col relative gap-4 bg-[#001F9C] p-12 sm:left-0 md:left-[15%] lg:left-[20%] transition-shadow duration-300 hover:shadow-lg hover:shadow-blue-500/50">
             {/* Year Heading */}
             <motion.p
               initial={{ opacity: 0, y: -20 }}
               animate={year2017InView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, delay: 0.5 }}
-              className=" h-fit w-fit relative text-6xl md:text-7xl lg:text-9xl font-poppins  text-cyan-500 left-2 sm:left-0  sm:top-0 lg:top-[5vh] m-2"
+              className=" h-fit w-fit relative text-6xl md:text-7xl lg:text-9xl font-poppins  text-cyan-500 left-2 sm:left-0  sm:top-0 m-2"
             >
               {count}
               <motion.div
@@ -73,7 +73,7 @@ const Year2017 = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={year2017InView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.7, delay: 0.7 }}
-              className="bottomText flex relative sm:w-full md:w-[70%]  lg:top-[10vh] left-0 sm:left-0  p-2"
+              className="bottomText flex relative sm:w-full md:w-[70%] left-0 sm:left-0  p-2"
             >
               <p className="text-sm sm:text-lg md:text-lg lg:text-xl text-white font-poppins">
                 Nesco Events comes to life, delighting patrons with intellectual
@@ -85,7 +85,7 @@ const Year2017 = () => {
 
         {/* Right Image */}
         <motion.div
-          className="imgDiv flex relative z-20 sm:mt-6 md:top-[10vh]  right-0 flex-col sm:w-full md:w-[50%] lg:w-[50%] "
+          className="imgDiv flex relative z-20 sm:mt-6 right-0 flex-col sm:w-full md:w-[50%] lg:w-[50%] "
           initial={{ opacity: 0, x: 50 }}
           animate={year2017InView ? { opacity: 1, x: 0 } : {}}
           transition={{ duration: 0.8, delay: 0.9 }}

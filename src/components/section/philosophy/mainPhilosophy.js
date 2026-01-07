@@ -1,4 +1,8 @@
 import React from "react";
+import "./index.css";
+import "./main.css";
+import "./media.css";
+import "./plugin.css";
 import PhilosophyBelieve from "./philosophyBelieve";
 import Pagewrapper from "@/components/layout/pagewrapper";
 import ScrollSnip from "@/components/layout/scrollSnipEffect/scrollSnip";
@@ -33,7 +37,7 @@ function MainPhilosophy() {
 
   return (
     <Pagewrapper>
-      <ScrollSnip Children={Children} />
+      <ScrollSnip Children={Children} useWindowScroll={true} />
     </Pagewrapper>
   );
 }

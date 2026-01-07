@@ -6,7 +6,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(ScrollTrigger);
 
-function ScrollSnip({ Children }) {
+function ScrollSnip({ Children, useWindowScroll = false }) {
   const containerRef = useRef(null);
   const lenisRef = useRef(null);
   const [isDesktop, setIsDesktop] = useState(false);
@@ -69,22 +69,34 @@ function ScrollSnip({ Children }) {
     return () => ScrollTrigger.getAll().forEach((t) => t.kill());
   }, [isDesktop]);
 
+  const containerStyle = useWindowScroll
+    ? {}
+    : { scrollSnapType: "y mandatory", height: "100vh", overflowY: "auto" };
+
   return (
     <div
       ref={containerRef}
       className="container1 font-branding-medium scroll-smooth"
-      style={{ scrollSnapType: 'y mandatory', height: '100vh', overflowY: 'auto' }}
+      style={containerStyle}
     >
       {Children.map((data, index) => {
         // Split the classCss into individual classes
-        const classes = data.classCss.split(' ');
-        const hasHeaderWhite = classes.includes('header_white');
+        const classes = data.classCss.split(" ");
+        const hasHeaderWhite = classes.includes("header_white");
+        const sectionStyle = useWindowScroll
+          ? { minHeight: "100vh", width: "100vw", transform: "translateZ(0)" }
+          : {
+            scrollSnapAlign: "start",
+            minHeight: "100vh",
+            width: "100vw",
+            transform: "translateZ(0)",
+          };
         return (
           <section
             key={index}
             className={`flex items-center justify-center ${data.classCss}`}
             data-header-white={hasHeaderWhite ? "true" : "false"}
-            style={{ scrollSnapAlign: "start", minHeight: '100vh', width: '100vw', transform: "translateZ(0)" }}
+            style={sectionStyle}
           >
             {data.comp}
           </section>

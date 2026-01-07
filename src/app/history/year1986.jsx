@@ -18,7 +18,7 @@ const Year1986 = () => {
   return (
     <motion.div
       ref={year1986Observer}
-      className="relative flex flex-col md:flex-row-reverse items-center md:items-start w-full md:w-[95%] mt-[4vh] lg:mt-[30vh] md:left-20 "
+      className="relative flex flex-col items-center justify-center min-h-screen w-full md:w-[95%] md:left-20"
       data-year="1986"
       initial={{ opacity: 0, y: 50 }}
       animate={year1986InView ? { opacity: 1, x: 0 } : {}}
@@ -30,7 +30,7 @@ const Year1986 = () => {
 
       {/* Image Container */}
       <motion.div
-        className="relative z-10 w-[85%] mt-[50px] mt-2 top-6 lg:right-[5vh]"
+        className="relative z-10 w-[85%] lg:right-[5vh]"
         initial={{ opacity: 0, x: 50 }}
         animate={year1986InView ? { opacity: 1, x: 0 } : {}}
         transition={{ duration: 0.7, delay: 0.3 }}

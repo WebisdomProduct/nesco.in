@@ -2,44 +2,44 @@
   "quote_bse": {
     "data": {
       "symbol": "505355.BSE",
-      "regularMarketPrice": 1253.65,
-      "regularMarketPreviousClose": 1246.7,
-      "regularMarketOpen": 1222.05,
-      "regularMarketDayHigh": 1258,
-      "regularMarketDayLow": 1222.05,
-      "regularMarketVolume": 1693,
+      "regularMarketPrice": 1246,
+      "regularMarketPreviousClose": 1253.65,
+      "regularMarketOpen": 1253.7,
+      "regularMarketDayHigh": 1256,
+      "regularMarketDayLow": 1230,
+      "regularMarketVolume": 1137,
       "fiftyTwoWeekHigh": 0,
       "fiftyTwoWeekLow": 0,
       "currency": "INR",
       "exchange": "BSE",
       "name": "NESCO Limited",
-      "datetime": "2026-01-06T17:49:22.099Z",
-      "change": 6.95,
-      "changePercent": 0.5575
+      "datetime": "2026-01-07T04:05:41.646Z",
+      "change": -7.65,
+      "changePercent": -0.6102
     },
-    "expiresAt": 1767739042100,
-    "updatedAt": 1767721762100
+    "expiresAt": 1767776021647,
+    "updatedAt": 1767758741647
   },
   "quote_nse": {
     "data": {
       "symbol": "505355.BSE",
-      "regularMarketPrice": 1253.65,
-      "regularMarketPreviousClose": 1246.7,
-      "regularMarketOpen": 1222.05,
-      "regularMarketDayHigh": 1258,
-      "regularMarketDayLow": 1222.05,
-      "regularMarketVolume": 1693,
+      "regularMarketPrice": 1246,
+      "regularMarketPreviousClose": 1253.65,
+      "regularMarketOpen": 1253.7,
+      "regularMarketDayHigh": 1256,
+      "regularMarketDayLow": 1230,
+      "regularMarketVolume": 1137,
       "fiftyTwoWeekHigh": 0,
       "fiftyTwoWeekLow": 0,
       "currency": "INR",
       "exchange": "NSE",
       "name": "NESCO Limited",
-      "datetime": "2026-01-06T18:06:44.521Z",
-      "change": 6.95,
-      "changePercent": 0.5575
+      "datetime": "2026-01-07T04:05:42.340Z",
+      "change": -7.65,
+      "changePercent": -0.6102
     },
-    "expiresAt": 1767740084522,
-    "updatedAt": 1767722804522
+    "expiresAt": 1767776022341,
+    "updatedAt": 1767758742341
   },
   "chart_nse_1d": {
     "data": {

@@ -21,7 +21,7 @@ const Year2001 = () => {
       initial={{ opacity: 0, y: 50 }}
       animate={year2001InView ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.8, ease: "easeOut" }}
-      className="year2001 flex flex-col items-center justify-center relative mt-[4vh] lg:mt-[12vh] xl:mt-[15vh] px-4"
+      className="year2001 min-h-screen flex flex-col items-center justify-center relative px-4"
       data-year="2001"
     >
       {/* Image Container with Hover */}

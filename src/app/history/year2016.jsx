@@ -35,7 +35,7 @@ const Year2016 = () => {
   return (
     <motion.div
       ref={year2016Observer}
-      className="year2016 md:mt-[10vh] lg:mt-[20vh] mt-0 flex flex-col sm:flex-col p-6"
+      className="year2016 min-h-screen flex flex-col justify-center p-6"
       initial={{ opacity: 0, x: 50 }}
       animate={year2016InView ? { opacity: 1, x: 0 } : {}}
       transition={{ duration: 0.8, ease: 'easeOut' }}
@@ -67,13 +67,13 @@ const Year2016 = () => {
           transition={{ duration: 0.7, delay: 0.3 }}
           className="leftDiv flex flex-col sm:w-full md:w-[50%] lg:w-[50%] relative "
         >
-          <div className="contentDiv flex flex-col relative gap-4 bg-cyan-400 p-12 sm:left-0 md:left-[15%] lg:left-[0%]  lg:h-[80vh] lg:top-[35vh] transition-shadow duration-300 hover:shadow-lg hover:shadow-cyan-500/50">
+          <div className="contentDiv flex flex-col relative gap-4 bg-cyan-400 p-12 sm:left-0 md:left-[15%] lg:left-[0%] transition-shadow duration-300 hover:shadow-lg hover:shadow-cyan-500/50">
             {/* Year Heading */}
             <motion.p
               initial={{ opacity: 0, y: -20 }}
               animate={year2016InView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, delay: 0.5 }}
-              className=" h-fit w-fit relative text-6xl md:text-7xl lg:text-9xl font-branding-bold text-white left-2 sm:left-0 lg:left-[30%] top-2 sm:top-0 lg:top-[2vh] m-2"
+              className=" h-fit w-fit relative text-6xl md:text-7xl lg:text-9xl font-branding-bold text-white left-2 sm:left-0 lg:left-[30%] top-2 sm:top-0 m-2"
             >
               {count}
               <motion.div
@@ -89,7 +89,7 @@ const Year2016 = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={year2016InView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.7, delay: 0.7 }}
-              className="bottomText flex relative sm:w-full  md:w-full lg:w-[70%]  sm:left-0 lg:left-[30%] lg:top-[3vh] p-2"
+              className="bottomText flex relative sm:w-full  md:w-full lg:w-[70%]  sm:left-0 lg:left-[30%] p-2"
             >
               <p className="text-sm sm:text-lg md:text-lg lg:text-xl text-white font-poppins">
                 The beginning of Nesco Foods. Mumbai gains one<br></br> of the
