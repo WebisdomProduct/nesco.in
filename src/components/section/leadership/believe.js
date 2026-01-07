@@ -26,7 +26,7 @@ function believe() {
             />
           </div>
           {/* Center Text */}
-          <div className=" w-full max-w-[650px] flex flex-col gap-5 md:text-[1.18rem] text-[1.08rem] font-poppins z-10 bg-white/90 p-4 rounded-xl shadow-sm">
+          <div className=" w-full max-w-[650px] flex flex-col gap-5 md:text-[1.18rem] text-[1.08rem] font-poppins z-10">
             <p className="leading-8 md:leading-9">
               Leadership at Nesco is more than just management, it is a
               principle. Our founder, J. V. Patel was a first-generation
@@ -45,7 +45,7 @@ function believe() {
             <Image
               src={LeaderIcon}
               alt="icon"
-              className="w-[220px] xl:w-[300px] 2xl:w-[350px] h-auto object-contain opacity-80"
+              className="w-[180px] xl:w-[250px] 2xl:w-[300px] h-auto object-contain opacity-80"
             />
           </div>
         </div>

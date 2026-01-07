@@ -13,12 +13,12 @@
       "currency": "INR",
       "exchange": "BSE",
       "name": "NESCO Limited",
-      "datetime": "2026-01-07T04:05:41.646Z",
+      "datetime": "2026-01-07T08:58:09.811Z",
       "change": -7.65,
       "changePercent": -0.6102
     },
-    "expiresAt": 1767776021647,
-    "updatedAt": 1767758741647
+    "expiresAt": 1767793569813,
+    "updatedAt": 1767776289813
   },
   "quote_nse": {
     "data": {
@@ -34,12 +34,12 @@
       "currency": "INR",
       "exchange": "NSE",
       "name": "NESCO Limited",
-      "datetime": "2026-01-07T04:05:42.340Z",
+      "datetime": "2026-01-07T08:58:11.254Z",
       "change": -7.65,
       "changePercent": -0.6102
     },
-    "expiresAt": 1767776022341,
-    "updatedAt": 1767758742341
+    "expiresAt": 1767793571256,
+    "updatedAt": 1767776291256
   },
   "chart_nse_1d": {
     "data": {

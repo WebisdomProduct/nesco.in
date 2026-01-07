@@ -98,7 +98,7 @@ function News() {
       description:
         "Nesco Foods will soon be opening two swanky new lounge bars that let patrons sample the best of the world's F&B in an ambiance of luxury and style.",
       arrowColor: '#18565A',
-      href: 'https://nescofoods.in/',
+      href: '/hospitality',
       isExternal: true,
     },
   ];
@@ -137,21 +137,19 @@ function News() {
                     <div className="flex flex-col my-2 md:px-10 z-10 items-center relative">
                       <div className="flex justify-between w-full mb-2">
                         <button
-                          className={`text-2xl font-semibold ${
-                            selectedExchange === 'bse'
+                          className={`text-2xl font-semibold ${selectedExchange === 'bse'
                               ? 'text-primary'
                               : 'text-[#445F53]'
-                          }`}
+                            }`}
                           onClick={() => setSelectedExchange('bse')}
                         >
                           BSE
                         </button>
                         <button
-                          className={`text-2xl font-semibold ${
-                            selectedExchange === 'nse'
+                          className={`text-2xl font-semibold ${selectedExchange === 'nse'
                               ? 'text-primary'
                               : 'text-[#445F53]'
-                          }`}
+                            }`}
                           onClick={() => setSelectedExchange('nse')}
                         >
                           NSE
@@ -166,8 +164,8 @@ function News() {
                             ? '--'
                             : bseData.currentPrice
                           : loading || error || !nseData
-                          ? '--'
-                          : nseData.currentPrice}
+                            ? '--'
+                            : nseData.currentPrice}
                       </p>
                       <p
                         className="  text-[1.6rem] font-branding-medium leading-[2.2rem]"
@@ -178,8 +176,8 @@ function News() {
                             ? '--'
                             : `${bseData.change} (${bseData.changePercent}%)`
                           : loading || error || !nseData
-                          ? '--'
-                          : `${nseData.change} (${nseData.changePercent}%)`}
+                            ? '--'
+                            : `${nseData.change} (${nseData.changePercent}%)`}
                       </p>
                       <div className="flex w-full mt-5 text-[1.2rem] font-branding-medium leading-[2.2rem]">
                         {selectedExchange === 'bse' ? (

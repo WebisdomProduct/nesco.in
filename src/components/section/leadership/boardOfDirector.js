@@ -80,13 +80,13 @@ He  serves on the Board of Sintex-Bapl Limited, Anuh Pharma Limited, Unichem Lab
 
   return (
     <div
-      className="w-full py-10 bg-[#EDEDED] header_purple goal-section1"
+      className="w-full pt-24 pb-10 bg-[#EDEDED] header_purple goal-section1"
       id="board"
     >
       <h3 className="text-center text-4xl font-branding-bold  pb-5">
         Board of Directors
       </h3>
-      <Cards CardData={initialCardData} />
+      <Cards CardData={initialCardData} gridClassName="w-[90%] xl:w-[85%]" />
     </div>
   );
 }

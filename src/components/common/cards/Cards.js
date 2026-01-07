@@ -79,9 +79,8 @@ export const MentorModal = ({ isOpen, onClose, data, lenis }) => {
           </h2>
           <p className="text-gray-700 mb-5 text-[1.1rem]">{data.position}</p>
           <div
-            className={`grid gap-8 ${
-              data.image ? "grid-cols-1 md:grid-cols-2" : "grid-cols-1"
-            }`}
+            className={`grid gap-8 ${data.image ? "grid-cols-1 md:grid-cols-2" : "grid-cols-1"
+              }`}
           >
             <div className="flex flex-col gap-4">
               <p className="text-gray-800 ">{data.description}</p>
@@ -104,7 +103,7 @@ export const MentorModal = ({ isOpen, onClose, data, lenis }) => {
   );
 };
 
-function Cards({ CardData, lenis }) {
+function Cards({ CardData, lenis, gridClassName = "w-[70%]" }) {
   const [CardDatas, setCardDatas] = useState(CardData);
   const [selectedCard, setSelectedCard] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -121,7 +120,7 @@ function Cards({ CardData, lenis }) {
 
   return (
     <div className="w-full py-3 flex justify-center">
-      <div className="grid xl:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-5 w-[70%]">
+      <div className={`grid xl:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-5 ${gridClassName}`}>
         {CardDatas?.map((data, index) => (
           <div
             key={index}

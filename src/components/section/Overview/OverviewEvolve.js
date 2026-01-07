@@ -13,7 +13,7 @@ function OverviewEvolve() {
         </div>
 
         <div className="flex md:w-[50%] mt-10 items-center">
-          <div className="p-4 text-gray-700 md:text-2xl text-xl font-branding-medium max-h-[400px] overflow-y-scroll scrollbar-hide">
+          <div className="p-4 text-gray-700 md:text-2xl text-xl font-branding-medium max-h-[400px] overflow-y-scroll">
             With business verticals as varied as exhibitions, events,
             hospitality, MICE, and realty, our steady expansion <br />
             augments our growth as we watch several new ideas find form.

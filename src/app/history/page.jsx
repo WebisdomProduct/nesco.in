@@ -289,8 +289,6 @@ const page = () => {
 
           <Year2017Sec2 />
 
-          <Year2017Sec3 />
-
           <Year2019 />
 
           <Year2023 />
