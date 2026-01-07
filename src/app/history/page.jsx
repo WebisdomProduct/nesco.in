@@ -289,6 +289,8 @@ const page = () => {
 
           <Year2017Sec2 />
 
+          <div className="h-[20vh] w-full bg-white"></div>
+
           <Year2019 />
 
           <Year2023 />
