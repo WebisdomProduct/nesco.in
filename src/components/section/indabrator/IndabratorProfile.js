@@ -61,7 +61,7 @@ function IndabratorProfile() {
                   {profile.description.map((paragraph, i) => (
                     <p
                       key={i}
-                      className="text-[clamp(1rem,2.2vw,1.6rem)] leading-relaxed text-justify"
+                      className="text-[clamp(1rem,2.2vw,1.6rem)] leading-relaxed"
                       style={{ fontFamily: "BrandingMedium" }}
                     >
                       {paragraph}
