@@ -17,31 +17,34 @@ function PhilosophyValue() {
       // Safety check: If elements aren't found, ensure they are visible (fallback)
       if (leftItems.length === 0 && rightItems.length === 0) return;
 
-      if (leftItems.length > 0) {
-        gsap.set(leftItems, { autoAlpha: 1 }); // Fallback visibility
-      }
-      if (rightItems.length > 0) {
-        gsap.set(rightItems, { autoAlpha: 1 }); // Fallback visibility
-      }
+      // Animate Left Items (Come from left)
+      gsap.from(leftItems, {
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: 'top 85%',
+          once: true,
+        },
+        x: -80,
+        autoAlpha: 0,
+        duration: 1.2,
+        ease: 'power3.out',
+        stagger: 0.25,
+      });
 
-      gsap
-        .timeline({
-          scrollTrigger: {
-            trigger: sectionRef.current,
-            start: 'top 75%',
-            once: true,
-          },
-        })
-        .fromTo(leftItems,
-          { x: -80, autoAlpha: 0 },
-          { x: 0, autoAlpha: 1, duration: 1.2, ease: 'power3.out', stagger: 0.25 }
-        )
-        .fromTo(
-          rightItems,
-          { x: 80, autoAlpha: 0 },
-          { x: 0, autoAlpha: 1, duration: 1.2, ease: 'power3.out', stagger: 0.25 },
-          '-=0.8'
-        );
+      // Animate Right Items (Come from right)
+      gsap.from(rightItems, {
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: 'top 85%',
+          once: true,
+        },
+        x: 80,
+        autoAlpha: 0,
+        duration: 1.2,
+        ease: 'power3.out',
+        stagger: 0.25,
+        delay: 0.2, // Slight delay after left items start
+      });
 
       ScrollTrigger.refresh();
     }, sectionRef);

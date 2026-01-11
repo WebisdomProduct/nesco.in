@@ -46,19 +46,19 @@ function Banner({
         end: "bottom center",
         onEnter: () => {
           swiperInstance.slideTo(0); // Start from slide 0
-          swiperInstance.autoplay.start();
+          swiperInstance.autoplay?.start();
         },
         onLeave: () => {
           swiperInstance.slideTo(1); // Stop at slide 1
-          swiperInstance.autoplay.stop();
+          swiperInstance.autoplay?.stop();
         },
         onEnterBack: () => {
           swiperInstance.slideTo(0); // Start from slide 0 again
-          swiperInstance.autoplay.start();
+          swiperInstance.autoplay?.start();
         },
         onLeaveBack: () => {
           swiperInstance.slideTo(1); // Stop at slide 1 when leaving back
-          swiperInstance.autoplay.stop();
+          swiperInstance.autoplay?.stop();
         },
       });
     }
@@ -70,15 +70,13 @@ function Banner({
 
   return (
     <div
-      className={`w-full ${
-        heightClassName ? heightClassName : "h-[100vh]"
-      } banner-section relative`}
+      className={`w-full ${heightClassName ? heightClassName : "h-[100vh]"
+        } banner-section relative`}
     >
       <div className="relative">
         <div
-          className={`flex justify-center w-full overflow-hidden ${
-            heightClassName ? heightClassName : "h-[100vh]"
-          } relative`}
+          className={`flex justify-center w-full overflow-hidden ${heightClassName ? heightClassName : "h-[100vh]"
+            } relative`}
         >
           {SliderData.length === 1 ? (
             <div
@@ -122,9 +120,8 @@ function Banner({
                         {index !== 0 ? (
                           <div
                             className={`absolute z-10 w-full h-full flex items-center justify-end overflow-hidden 
-                            ${
-                              index === 3 || index === 5 ? "bottom-[17px]" : ""
-                            }`}
+                            ${index === 3 || index === 5 ? "bottom-[17px]" : ""
+                              }`}
                           >
                             <div className="relative">
                               <div className="absolute z-20 md:top-[35%] top-[28%] transform -translate-y-1/2 w-1/2 md:translate-x-[52%] translate-x-[48%] text-center">
@@ -138,15 +135,14 @@ function Banner({
                                 <div className="relative w-full h-full">
                                   {/* Description */}
                                   <div
-                                    className={`absolute z-20 ${
-                                      index === 5
+                                    className={`absolute z-20 ${index === 5
                                         ? "md:top-[48%] lg:top-[48%] md:w-[47%] top-[40%] md:left-[27%] left-[18%]"
                                         : index === 3
-                                        ? "md:top-[49%] lg:top-[49%] md:w-[50%]"
-                                        : index === 4
-                                        ? "md:top-[47%] lg:top-[47%] md:w-[47%]"
-                                        : "md:top-[47%] lg:top-[47%] md:w-[47%] "
-                                    } md:top-[45%] top-[45%] md:left-[27%] left-[22%] w-[60%] text-center md:text-2xl text-lg`}
+                                          ? "md:top-[49%] lg:top-[49%] md:w-[50%]"
+                                          : index === 4
+                                            ? "md:top-[47%] lg:top-[47%] md:w-[47%]"
+                                            : "md:top-[47%] lg:top-[47%] md:w-[47%] "
+                                      } md:top-[45%] top-[45%] md:left-[27%] left-[22%] w-[60%] text-center md:text-2xl text-lg`}
                                   >
                                     {data?.description}
                                   </div>
