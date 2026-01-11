@@ -41,6 +41,15 @@ She was a Strategy Consultant and Board Advisory Consultant for various Fortune 
 She is currently on the Board of Simmonds Marshall Limited,Techcrew Solutions Private Limited, D and B Foodarts Private Limited, ZF Commercial Vehicle Control System India Limited and some of the group companies of Mahindra Group namely Mahindra Lifespace Developers Limited, Mahindra World City (Jaipur) Limited, Mahindra World City Developers Limited, Mahindra Bloomdale Developers Limited and Mahindra Happinest Developers Limited.`,
     },
     {
+      image: MentorImage5,
+      name: "Mr. Arun L. Todarwal",
+      position: "Independent Director",
+      link: "",
+      description: `Mr. Arun L. Todarwal is a fellow member of the Institute of Chartered Accountants of India and has been practicing as a Chartered Accountant for more than 40 years. During his years of practice, he has handled various professional assignments including Management Consultancy, Statutory Audits, Internal Audits, Management and Systems Audits, Due Diligences, Taxation, International Taxation, etc. in India, Dubai, and several other countries. He is well-versed in tax matters and has travelled abroad on several occasions’ to deliver talks on Indian Taxation as well as investments in India. He has carried out professional assignments in more than 25 countries. He is also a member of the Institute of Internal Auditors, National Centre for Quality Management, Bombay Management Association and Bombay Chartered Accountants Society. His vast experience has put him on panel of Auditors with the Registrar of Co-operatives Societies and the Official Liquidator, Mumbai High Court. He is also the Global Chairman of IAPA International, a leading global association of independent accounting, audit, tax, legal, advisory, financial, immigration and technology services firms. The association has more than 200 Chartered Accountants in more than 70 countries around the world. He has been an independent director in several companies and over his tenure has helped companies in strengthening their corporate governance structure, compliances, risk assessment and plans to mitigate them as well as implementation of recommendations given by the auditors on strengthening the controls and processes of Companies.
+
+He  serves on the Board of Sintex-Bapl Limited, Anuh Pharma Limited, Unichem Laboratories Limited, Unichem Paharmaceuticals (USA) Inc, Laxmi Organics Industries Limited,  Bharat FIH Limited,  Lakecity Ventures Private Limited, PTC Cables Private Limited and Welspun Transformation Services Limited and is the Designated Partner at Arun Todarwal & Associates LLP and Arun Todarwal & Co LLP.`,
+    },
+    {
       image: MentorImage,
       name: "Manish Ishwarlal Panchal",
       position: "Independent Director",
@@ -66,15 +75,6 @@ In each role, Dr. Ram contributed to significant Organisational Transformation l
 He was the Chairman of the Industry and Trade Committee of the IMC Chamber of Commerce and Industry. He currently serves on the Board of The Indian Society of Advertisers and Chembur Golf Welfare Foundation.
 
 Dr. Ram has completed his Ph.D. in Management Studies from Narsee Monjee Institute of Management Studies, Mumbai and is the recipient of the prestigious Maharashtra Sanman Award 2021 received from the Governor of Maharashtra for his contribution to Philanthropy and Corporates. He was conferred the XLRI’s Distinguished Alumnus Award – Practising Manager in 2019.`,
-    },
-    {
-      image: MentorImage5,
-      name: "Mr. Arun L. Todarwal",
-      position: "Independent Director",
-      link: "",
-      description: `Mr. Arun L. Todarwal is a fellow member of the Institute of Chartered Accountants of India and has been practicing as a Chartered Accountant for more than 40 years. During his years of practice, he has handled various professional assignments including Management Consultancy, Statutory Audits, Internal Audits, Management and Systems Audits, Due Diligences, Taxation, International Taxation, etc. in India, Dubai, and several other countries. He is well-versed in tax matters and has travelled abroad on several occasions’ to deliver talks on Indian Taxation as well as investments in India. He has carried out professional assignments in more than 25 countries. He is also a member of the Institute of Internal Auditors, National Centre for Quality Management, Bombay Management Association and Bombay Chartered Accountants Society. His vast experience has put him on panel of Auditors with the Registrar of Co-operatives Societies and the Official Liquidator, Mumbai High Court. He is also the Global Chairman of IAPA International, a leading global association of independent accounting, audit, tax, legal, advisory, financial, immigration and technology services firms. The association has more than 200 Chartered Accountants in more than 70 countries around the world. He has been an independent director in several companies and over his tenure has helped companies in strengthening their corporate governance structure, compliances, risk assessment and plans to mitigate them as well as implementation of recommendations given by the auditors on strengthening the controls and processes of Companies.
-
-He  serves on the Board of Sintex-Bapl Limited, Anuh Pharma Limited, Unichem Laboratories Limited, Unichem Paharmaceuticals (USA) Inc, Laxmi Organics Industries Limited,  Bharat FIH Limited,  Lakecity Ventures Private Limited, PTC Cables Private Limited and Welspun Transformation Services Limited and is the Designated Partner at Arun Todarwal & Associates LLP and Arun Todarwal & Co LLP.`,
     },
   ];
 

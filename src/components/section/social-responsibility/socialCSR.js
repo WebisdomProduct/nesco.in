@@ -1,7 +1,12 @@
-'use client';
 import React, { useState } from 'react';
 import chessImage from '@/assests/social/42.png';
 import Image from 'next/image';
+import { FaChevronDown } from "react-icons/fa";
+
+// Import PDFs
+const pdf23_24 = '/assets/social/CSR-annual-action-plan for-FY-2023-24.pdf';
+const pdf24_25 = '/assets/social/CSR-annual-action-plan-for-FY-2024-25.pdf';
+const pdf25_26 = '/assets/social/CSR-action-plan-2025-26.pdf';
 
 function SocialCSR() {
   const buttonData = [
@@ -21,11 +26,17 @@ function SocialCSR() {
       title: 'Proposed Action Plan',
       buttonColor: '#4E53A4',
       buttonColor1: '#474B92',
-      link: 'https://nescodoucmentsandpdfs.s3.ap-south-1.amazonaws.com/proposed.pdf',
+      isDropdown: true,
+      subItems: [
+        { label: "CSR annual action plan for FY 2023-24", link: pdf23_24 },
+        { label: "CSR annual action plan for FY 2024-25", link: pdf24_25 },
+        { label: "CSR annual action plan for FY 2025-26", link: pdf25_26 },
+      ]
     },
   ];
 
   const [isEnter, setIsEnter] = useState(null);
+  const [openDropdown, setOpenDropdown] = useState(false);
 
   return (
     <section className="goal-section1 w-full relative flex flex-col justify-center items-center md:py-10 xl:py-0 xl:h-screen">
@@ -55,35 +66,72 @@ function SocialCSR() {
               positive impact, enhancing both social welfare and environmental
               sustainability.
             </p>
-            <div className="grid xl:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-5 mt-5">
+            <div className="grid xl:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-5 mt-5 items-start">
               {buttonData.map((data, index) => (
-                <button
-                  key={index}
-                  className={`px-6 py-4 text-xl font-branding-semibold text-white rounded-lg relative overflow-hidden`}
-                  style={{
-                    backgroundColor: data.buttonColor1,
-                  }}
-                  onMouseEnter={() => setIsEnter(index)}
-                  onMouseLeave={() => setIsEnter(null)}
-                  aria-label={data.title}
-                >
-                  <a
-                    href={data.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    key={index}
+                <div key={index} className="flex flex-col w-full relative">
+                  <button
+                    className={`px-6 py-4 text-xl font-branding-semibold text-white rounded-lg relative overflow-hidden w-full text-left flex justify-between items-center`}
+                    style={{
+                      backgroundColor: data.buttonColor1,
+                    }}
+                    onMouseEnter={() => setIsEnter(index)}
+                    onMouseLeave={() => setIsEnter(null)}
+                    onClick={() => {
+                      if (data.isDropdown) setOpenDropdown(!openDropdown);
+                    }}
+                    aria-label={data.title}
                   >
+                    {!data.isDropdown ? (
+                      <a
+                        href={data.link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="w-full h-full block"
+                      >
+                        <div
+                          className={`absolute h-full top-0 left-0 z-10 rounded-lg transition-all duration-200 ${isEnter === index ? 'w-full' : 'w-1/2'
+                            }`}
+                          style={{
+                            backgroundColor: data.buttonColor,
+                          }}
+                        ></div>
+                        <span className="z-20 relative">{data.title}</span>
+                      </a>
+                    ) : (
+                      <>
+                        <div
+                          className={`absolute h-full top-0 left-0 z-10 rounded-lg transition-all duration-200 ${isEnter === index ? 'w-full' : 'w-1/2'
+                            }`}
+                          style={{
+                            backgroundColor: data.buttonColor,
+                          }}
+                        ></div>
+                        <span className="z-20 relative">{data.title}</span>
+                        <FaChevronDown className={`z-20 relative transition-transform duration-300 ${openDropdown ? "rotate-180" : ""}`} />
+                      </>
+                    )}
+                  </button>
+
+                  {/* Dropdown Items */}
+                  {data.isDropdown && openDropdown && (
                     <div
-                      className={`absolute h-full top-0 left-0 z-10 rounded-lg transition-all duration-200 ${
-                        isEnter === index ? 'w-full' : 'w-1/2'
-                      }`}
-                      style={{
-                        backgroundColor: data.buttonColor,
-                      }}
-                    ></div>
-                    <span className="z-20 relative">{data.title}</span>
-                  </a>
-                </button>
+                      className="flex flex-col w-full mt-2 rounded-lg overflow-hidden transition-all duration-300 z-30"
+                      style={{ backgroundColor: data.buttonColor }}
+                    >
+                      {data.subItems.map((item, idx) => (
+                        <a
+                          key={idx}
+                          href={item.link}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="px-4 py-3 text-white text-base hover:bg-white/20 transition-colors border-b last:border-b-0 border-white/20"
+                        >
+                          {item.label}
+                        </a>
+                      ))}
+                    </div>
+                  )}
+                </div>
               ))}
             </div>
           </div>

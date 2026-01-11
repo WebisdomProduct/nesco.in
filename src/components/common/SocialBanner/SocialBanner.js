@@ -67,11 +67,11 @@ function SocialBanner1({ SliderData, title, onReadMore, isModalOpen, selectedCar
         <div className="flex justify-center w-full overflow-hidden h-[80vh] relative">
           {SliderData.length === 1 ? (
             <div className="bg-black text-white flex w-full justify-center items-center text-2xl h-[100vh] relative transition-all duration-700">
-              <div className="absolute w-full h-full flex flex-col justify-center items-center font-branding-medium">
+              <div className="absolute w-full h-full flex flex-col justify-center items-center font-branding-medium z-10">
                 <p className="text-3xl text-center">{SliderData[0].title1}</p>
                 <p className="text-3xl text-center">{SliderData[0].title2}</p>
                 <button className="border border-white px-6 py-3 text-white mt-8"
-                onClick={() => onReadMore(SliderData[0])}>
+                  onClick={() => onReadMore(SliderData[0])}>
                   <Link href={SliderData[0].link}> </Link>
                   Read More
                 </button>
@@ -79,6 +79,7 @@ function SocialBanner1({ SliderData, title, onReadMore, isModalOpen, selectedCar
               <Image
                 src={SliderData[0].bImage}
                 alt="banner image"
+                fill
                 className="mx-auto w-full h-full object-cover "
               />
             </div>
@@ -89,7 +90,7 @@ function SocialBanner1({ SliderData, title, onReadMore, isModalOpen, selectedCar
                   key={index}
                   className="bg-black text-white flex justify-center items-center text-2xl h-[100vh] relative transition-all duration-700"
                 >
-                  <div className="absolute w-full h-full flex flex-col justify-center items-center font-branding-medium">
+                  <div className="absolute w-full h-full flex flex-col justify-center items-center font-branding-medium z-10">
                     <p className="text-4xl text-center">{data.title1}</p>
                     <p className="text-4xl text-center">{data.title2}</p>
                     <button
@@ -102,6 +103,7 @@ function SocialBanner1({ SliderData, title, onReadMore, isModalOpen, selectedCar
                   <Image
                     src={data.bImage}
                     alt="banner image"
+                    fill
                     className="mx-auto w-full h-full object-cover "
                   />
                 </div>

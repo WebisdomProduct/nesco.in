@@ -35,11 +35,9 @@ function Mentor() {
           <div className="relative lg:w-[50%] h-full flex flex-col justify-center xl:pt-32 lg:pl-10 lg:pr-16">
             <div className=" mt-4">
               <h2 className="text-[2rem] leading-10 font-branding-semibold text-[#0638A5]">
-                Sumant J. Patel
+                Sumant J. Patel (Late)
               </h2>
-              <p className="font-branding-medium text-[1rem] mb-4">
-                (15th August 1935 – 17th November 2021)
-              </p>
+
             </div>
 
             <hr className=" bg-black border-1 border-black mb-4" />

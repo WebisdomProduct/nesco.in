@@ -27,7 +27,7 @@ function believe() {
           </div>
           {/* Center Text */}
           <div className=" w-full max-w-[650px] flex flex-col gap-5 md:text-[1.18rem] text-[1.08rem] font-poppins z-10">
-            <p className="leading-8 md:leading-9">
+            <p className="leading-8 md:leading-9 text-justify">
               Leadership at Nesco is more than just management, it is a
               principle. Our founder, J. V. Patel was a first-generation
               industrialist in independent India and a peerless entrepreneur. He

@@ -36,19 +36,19 @@ function AnnouncementFilter() {
   // Transform and sort data in descending order (newest first)
   const transformedData = Array.isArray(getData)
     ? getData
-        .map((item, index) => {
-          // LOGIC UPDATED: Use the helper to ensure 'year' property matches FY logic
-          const year = getFinancialYear(item.date);
-          
-          return {
-            year, 
-            description: item.title,
-            file: item.file,
-            date: item.date.split("T")[0],
-            rawDate: new Date(item.date), // Keep raw date for sorting
-          };
-        })
-        .sort((a, b) => b.rawDate - a.rawDate) // Sort by date descending (newest first)
+      .map((item, index) => {
+        // LOGIC UPDATED: Use the helper to ensure 'year' property matches FY logic
+        const year = getFinancialYear(item.date);
+
+        return {
+          year,
+          description: item.title,
+          file: item.file,
+          date: item.date.split("T")[0],
+          rawDate: new Date(item.date), // Keep raw date for sorting
+        };
+      })
+      .sort((a, b) => b.rawDate - a.rawDate) // Sort by date descending (newest first)
     : [];
 
   const [visibleCheckboxes, setVisibleCheckboxes] = useState(8);
@@ -75,19 +75,19 @@ function AnnouncementFilter() {
   const filteredData = transformedData.filter((item) => {
     if (selectedYears.length === 0) return true;
     const itemDate = new Date(item.date);
-    
+
     return selectedYears.some((year) => {
       const [startYear, endYear] = year.split("-").map(Number);
-      
+
       // FIX: Month is 0-indexed. 
       // 0=Jan, 1=Feb, 2=Mar, 3=April.
-      
+
       // Start: April 1st of the Start Year
-      const startDate = new Date(startYear, 3, 1); 
-      
+      const startDate = new Date(startYear, 3, 1);
+
       // End: March 31st of the End Year
       // We add 23:59:59 to ensure we include announcements made on the very last day
-      const endDate = new Date(endYear, 2, 31, 23, 59, 59); 
+      const endDate = new Date(endYear, 2, 31, 23, 59, 59);
 
       return itemDate >= startDate && itemDate <= endDate;
     });
@@ -107,9 +107,7 @@ function AnnouncementFilter() {
         <div className="my-12 flex md:flex-row flex-col justify-between w-[90%]">
           {/* Filters Section */}
           <div className="md:w-[20%] py-6 mt-2 mb-2 flex flex-col">
-            <p className="mt-2 font-branding-medium text-gray-500 text-2xl">
-              FILTERS
-            </p>
+
             <button
               className="mt-4 mb-2 font-branding-medium text-gray-500 text-left hover:text-gray-700 transition-colors"
               onClick={handleSelectAll}

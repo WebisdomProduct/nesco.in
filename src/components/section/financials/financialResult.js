@@ -63,11 +63,35 @@ function FinancialResult() {
       let cleanOption = item.option ? item.option.toLowerCase().trim() : "";
       if (cleanOption === "financial") cleanOption = "financials";
 
-      // 2. Calculate Year
-      const year = getFinancialYear(item.date);
+      // 2. Calculate Year - PRIORITY: Title > Date
+      let year = getFinancialYear(item.date);
 
-      // 3. Normalize Quarter (ensure it's a string for comparison)
-      const quarter = item.quater ? String(item.quater) : null;
+      // Attempt to extract year from Title (e.g., "Annual Return 2020-21" or "2020-2021")
+      if (item.title) {
+        // Matches "2020-21", "2020-2021", "FY 2020-21"
+        const yearMatch = item.title.match(/(\d{4})-(\d{2,4})/);
+        if (yearMatch) {
+          const startYear = parseInt(yearMatch[1]);
+          const endPart = yearMatch[2];
+          // Normalize "2020-21" to "2020-2021"
+          const endYear = endPart.length === 2 ? `20${endPart}` : endPart;
+          // Basic validity check (end year should be start + 1)
+          if (parseInt(endYear) === startYear + 1) {
+            year = `${startYear}-${endYear}`;
+          }
+        }
+      }
+
+      // 3. Normalize Quarter
+      let quarter = item.quater ? String(item.quater) : null;
+
+      // Fallback: Extract Quarter from Title if missing
+      if (!quarter && item.title) {
+        const qMatch = item.title.match(/Q([1-4])/i);
+        if (qMatch) {
+          quarter = qMatch[1];
+        }
+      }
 
       const transformedItem = {
         ...item,
@@ -201,9 +225,7 @@ function FinancialResult() {
 
             {/* --- FILTERS SIDEBAR --- */}
             <div className="md:w-[30%] py-6 mt-2 mb-2 flex flex-col">
-              <p className="mt-2 font-branding-medium text-gray-500 text-2xl">
-                FILTERS
-              </p>
+
 
               <button
                 className="mt-4 mb-2 font-branding-medium text-gray-500 text-left hover:text-gray-700 transition-colors"
@@ -291,7 +313,7 @@ function FinancialResult() {
                     <thead>
                       <tr>
                         <th className="bg-[#2b2a76] text-gray-200 shadow-sm pl-8 py-3 text-3xl rounded-t-sm">
-                          Title
+                          Year | {activeTab === "financials" ? "Financial Results" : activeTab === "annual" ? "Annual Reports" : activeTab === "subsidiary" ? "Subsidiary Accounts" : "Annual Return"}
                           <span className="text-sm ml-4 font-normal text-gray-300">
                             ({filteredData.length} Found)
                           </span>
