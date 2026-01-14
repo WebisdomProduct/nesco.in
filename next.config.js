@@ -18,8 +18,12 @@ const nextConfig = {
       },
     ];
   },
+
   images: {
-    domains: ["nesco.in"],
+    domains: [
+      "nesco.in",
+      "nescodoucmentsandpdfs.s3.ap-south-1.amazonaws.com", // <-- added S3 domain
+    ],
   },
 };
 

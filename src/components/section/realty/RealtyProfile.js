@@ -1,95 +1,99 @@
-import React from "react";
-import Image from "next/image";
+'use client';
+import React, { useEffect, useState } from 'react';
+import Image from 'next/image';
+import { apiBaseUrl } from '@/apis';
+function RealityProfile() {
+  const MENTOR_ID = '69673271ec4b200ef09d7715'; // Replace with actual mentor ID
+  const [mentor, setMentor] = useState(null);
+  const [loading, setLoading] = useState(true);
 
-// Import profile image
-// Note: Using the same image for both as requested until the new photo is shared
-import profileImage from "@/assests/nesco-business-page/nesco-reality-elements/22.png";
+  useEffect(() => {
+    const fetchMentor = async () => {
+      try {
+        const res = await fetch(`${apiBaseUrl}/api/v1/mentors/${MENTOR_ID}`);
+        console.log(res);
+        if (!res.ok) throw new Error('Failed to fetch mentor data');
+        const data = await res.json();
+        setMentor(data);
+      } catch (err) {
+        console.error(err);
+      } finally {
+        setLoading(false);
+      }
+    };
 
+    fetchMentor();
+  }, []);
 
-function RealtyProfile() {
-  const profiles = [
-    {
-      id: 1,
-      name: "Dharmesh Joshi",
-      title: "Head- Special Project",
-      // Dharmesh has a specific belief quote
-      belief: "Belief: Action is better than Words. Quit talking and lets start Doing!",
-      description: [
-        "Dharmesh is a multifaceted professional with good understanding of various industries.",
-        "With techno-commercial experience and working with top management, enables him to add value in Corporate Strategy & Infrastructure projects. Dharmesh is very passionate about whatever he does. Currently handling Special Projects, he is involved in Nesco's various Divisions. Dharmesh enjoys reading, music and spending his time with family.",
-      ],
-      image: profileImage,
-    },
-
-  ];
+  if (loading) return <p className="text-center mt-10">Loading mentor info...</p>;
+  if (!mentor) return <p className="text-center mt-10">Mentor not found</p>;
 
   return (
-    <div className="w-full lg:min-h-screen bg-white pt-8 lg:pt-12 pb-20">
-      {profiles.map((profile, index) => (
-        <div key={profile.id}>
-          {/* Add a separator/spacing for the second profile onwards */}
-          <div
-            className={`w-[90%] mx-auto lg:mt-20 ${index !== 0 ? "mt-16 pt-16 border-t border-gray-200" : ""
-              }`}
-          >
-            <div className="flex flex-col lg:flex-row items-center justify-between gap-[5vh] lg:gap-[3vw]">
-              {/* Text Content - Left side */}
-              <div className="w-full lg:w-[50%] xl:w-[45%] space-y-[2vh]">
-                <h3
-                  className="text-[clamp(2rem,4vw,3.5rem)] font-bold leading-tight"
-                  style={{ fontFamily: "BrandingSemibold" }}
-                >
-                  {profile.name}
-                </h3>
-                <p
-                  className="text-[clamp(1.2rem,2.5vw,1.8rem)] text-[#666]"
-                  style={{ fontFamily: "BrandingMedium" }}
-                >
-                  {profile.title}
-                </p>
+    <div className="w-full lg:h-screen flex items-center bg-white px-[2vw] lg:px-[5vw] mt-10 lg:mt-0">
+      <div className="w-full max-w-[95vw] mx-auto h-full flex">
+        <div className="flex flex-col lg:flex-row items-center justify-between gap-[5vh] lg:gap-[3vw]">
 
-                {/* Only render Belief section if it exists */}
-                {profile.belief && (
-                  <p
-                    className="text-[clamp(1.2rem,2.5vw,1.8rem)] font-bold leading-tight"
-                    style={{ fontFamily: "BrandingSemibold" }}
-                  >
-                    {profile.belief}
-                  </p>
-                )}
-
-                <div className="space-y-[2vh]">
-                  {profile.description.map((paragraph, i) => (
-                    <p
-                      key={i}
-                      className="text-[clamp(1rem,2.2vw,1.6rem)] leading-relaxed text-justify"
-                      style={{ fontFamily: "BrandingMedium" }}
-                    >
-                      {paragraph}
-                    </p>
-                  ))}
-                </div>
-              </div>
-
-              {/* Image Container - Right side */}
-              <div className="w-full lg:w-[45%] xl:w-[50%] relative h-[60vh] sm:h-[70vh] lg:h-[75vh] flex items-center justify-end">
-                <div className="relative h-[400px] sm:h-[500px] lg:h-full w-full overflow-hidden rounded-lg shadow-lg">
-                  <Image
-                    src={profile.image}
-                    alt={profile.name}
-                    fill
-                    className="object-contain" // Changed to object-cover if you want it to fill the box fully, keep contain to show full photo
-                    priority={index === 0} // Only prioritize the first image for performance
-                    sizes="(max-width: 768px) 100vw, 50vw"
-                  />
-                </div>
-              </div>
+          {/* Text Content */}
+          <div className="w-full lg:w-[50%] xl:w-[45%] space-y-[2vh]">
+            <h3
+              className="text-[clamp(2rem,4vw,3.5rem)] font-bold leading-tight"
+              style={{ fontFamily: 'BrandingSemibold' }}
+            >
+              {mentor.name}
+            </h3>
+            <p
+              className="text-[clamp(1.2rem,2.5vw,1.8rem)] text-[#666]"
+              style={{ fontFamily: 'BrandingMedium' }}
+            >
+              {mentor.designation}
+            </p>
+            <p
+              className="text-[clamp(1.2rem,2.5vw,1.8rem)] font-bold"
+              style={{ fontFamily: 'BrandingSemibold' }}
+            >
+              {mentor.noteTitle}
+            </p>
+            <div
+              className="text-[clamp(0.95rem,2.2vw,1.4rem)] leading-relaxed"
+              style={{ fontFamily: 'BrandingMedium' }}
+            >
+              {mentor.noteText && Array.isArray(mentor.noteText)
+                ? mentor.noteText.map((paragraph, idx) => <p key={idx}>{paragraph}</p>)
+                : <p>No note available.</p>
+              }
             </div>
           </div>
+
+          {/* Image Container */}
+          <div className="w-full lg:w-[45%] xl:w-[50%] relative h-[60vh] sm:h-[70vh] lg:h-full">
+            {/* Background Image (optional) */}
+            <div className="absolute inset-0 w-full h-full">
+              <Image
+                src={mentor.backgroundImage || '/assests/nesco-business-page/bec-elements/back.png'}
+                alt="Background"
+                fill
+                className="object-cover rounded-lg shadow-lg scale-105 lg:scale-105 lg:translate-y-8 xl:translate-y-16"
+                priority
+                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 45vw, 50vw"
+              />
+            </div>
+            {/* Mentor Profile Image (not background) */}
+            <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-[85%] sm:w-[80%] lg:w-[80%] h-[75%] sm:h-[70%] lg:h-[70%]">
+              <Image
+                src={mentor.mentorImage || '/assests/nesco-business-page/bec-elements/49.png'}
+                alt={mentor.name}
+                fill
+                className="object-contain object-bottom"
+                priority
+                sizes="(max-width: 640px) 85vw, (max-width: 1024px) 36vw, 40vw"
+              />
+            </div>
+          </div>
+
         </div>
-      ))}
+      </div>
     </div>
   );
 }
 
-export default RealtyProfile;
+export default RealityProfile;

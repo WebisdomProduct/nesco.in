@@ -1,62 +1,27 @@
+'use client';
+
 import SlidedownCard from "@/components/common/slidedownCard/SlidedownCard";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import WorldImage from "@/assests/contact/33.png";
 import Image from "next/image";
-import Link from "next/link";
-
+import axios from "axios";
+import { apiBaseUrl } from "@/apis";
 function Contact() {
-  const data = [
-    {
-      title: "Bombay Exhibition Center",
-      description: {
-        address1: "Nesco Centre, Hall No. 1",
-        address2: "Western Express Highway",
-        city: "Goregaon (East) Mumbai 400063",
-        phone1: "022 66450123",
-        contact: "contact@bombayexhibitioncenter.in",
-      },
-    },
-    {
-      title: "Nesco Events",
-      description: {
-        address1: "Nesco Centre, Hall No. 1",
-        address2: "Western Express Highway",
-        city: "Goregaon (East) Mumbai 400063",
-        phone1: "+91 99099 44444",
-        contact: "events@nesco.co.in",
-      },
-    },
-    {
-      title: "Nesco Foods",
-      description: {
-        address1: "Nesco Centre, Hall No. 1",
-        address2: "Western Express Highway",
-        city: "Goregaon (East) Mumbai 400063",
-        phone1: "022 66450123",
-        contact: "foods@nesco.in",
-      },
-    },
-    {
-      title: "Nesco Realty",
-      description: {
-        address1: "Nesco Centre, Hall No. 3",
-        address2: "Western Express Highway",
-        city: "Goregaon (East) Mumbai 400063",
-        phone1: "022 66450123",
-        contact: "contact@nescoreality.in",
-      },
-    },
-    {
-      title: "Indabrator",
-      description: {
-        address1: "Indabrator, Nesco Limited",
-        address2: "Western Express Highway",
-        city: "Goregaon (East) Mumbai 400063",
-        phone1: "+91 99099 44443",
-        contact: "Machines: indabrator.sales@nesco.in | Spares: indabrator.spares@nesco.in",
-      },
-    },
-  ];
+  const [data, setData] = useState([]);
+
+  useEffect(() => {
+    const fetchContacts = async () => {
+      try {
+        const res = await axios.get(`${apiBaseUrl}/api/v1/contact`);
+
+        setData(Array.isArray(res.data) ? [...res.data].reverse() : []);
+      } catch (error) {
+        console.error("Failed to fetch contact data", error);
+      }
+    };
+
+    fetchContacts();
+  }, []);
 
   return (
     <div className="bg-[#0A2B72] w-full xl:py-36 py-20 flex flex-col justify-between items-center relative overflow-hidden">
@@ -64,14 +29,16 @@ function Contact() {
         <Image
           src={WorldImage}
           alt="World Image"
-          className="w-[90%] object-cover mx-auto "
+          className="w-[90%] object-cover mx-auto"
         />
       </div>
+
       <div>
         <h1 className="font-branding-medium text-white text-6xl z-10 relative">
           Contact Us
         </h1>
       </div>
+
       <div className="w-full flex flex-col md:items-center mt-32 z-10 relative">
         <SlidedownCard data={data} />
       </div>

@@ -1,65 +1,78 @@
-import React from 'react';
-import MentorImage from '@/assests/Home/mentorNew/2.png';
-import backgroundImage from '@/assests/Home/mentorNew/SumanBack.jpg';
+'use client';
+import React, { useEffect, useState } from 'react';
 import Image from 'next/image';
+import { apiBaseUrl } from '@/apis';
+function Mentor() {
+  const MENTOR_ID = '6965f970a5a2758ecc55eef8';
+  const [mentor, setMentor] = useState(null);
+  const [loading, setLoading] = useState(true);
 
-function LeadershipMentor() {
+  useEffect(() => {
+    const fetchMentor = async () => {
+      try {
+        const res = await fetch(`${apiBaseUrl}/api/v1/mentors/${MENTOR_ID}`);
+        if (!res.ok) throw new Error('Failed to fetch mentor data');
+        const data = await res.json();
+        setMentor(data);
+      } catch (err) {
+        console.error(err);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchMentor();
+  }, []);
+
+  if (loading) return <p className="text-center mt-10">Loading mentor info...</p>;
+  if (!mentor) return <p className="text-center mt-10">Mentor not found</p>;
+
   return (
     <section
-      className="header_white flex flex-col items-center justify-center relative w-full h-full overflow-hidden xl:h-screen min-h-[500px]"
+      className="header_white flex flex-col items-center justify-center relative w-full h-full overflow-hidden lg:h-screen min-h-[800px]"
       style={{
-        backgroundImage: `url(${backgroundImage.src})`,
+        backgroundImage: `url(${mentor.backgroundImage || '/assests/Home/mentorNew/SumanBack.jpg'})`,
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         backgroundRepeat: 'no-repeat',
       }}
-      id="sumant"
     >
-      <div className="z-20 relative lg:w-[100%] w-[90%] flex flex-col items-center justify-center mx-auto mt-12 lg:mb-0 mb-10 h-full  goal-section1">
+      <div className="z-20 relative lg:w-[100%] w-[90%] flex flex-col items-center justify-center mx-auto mt-12 lg:mb-0 mb-10 h-full goal-section1">
         <div className="flex lg:flex-row flex-col lg:items-start items-center h-full w-full">
-          <div className="flex flex-col lg:w-[50%] w-1/2 h-full xl:justify-end justify-center z-10 relative">
-            <Image
-              src={MentorImage}
-              alt="Mentor"
-              width={650}
-              height={400}
-              className="w-full h-auto"
+          
+          {/* Mentor Image */}
+          <div className="flex flex-col lg:w-[50%] w-full h-full lg:justify-end justify-center z-10 relative mb-6 lg:mb-0">
+            <img
+              src={mentor.mentorImage || '/assests/Home/mentorNew/2.png'}
+              alt={mentor.name || 'Mentor'}
+              className="w-full h-auto rounded"
             />
           </div>
+
+          {/* Mentor Info */}
           <div className="relative lg:w-[50%] h-full flex flex-col justify-center xl:pt-32 lg:pl-10 lg:pr-16">
-            <div className=" mt-4">
-              <h2 className="text-[2rem] leading-10 font-branding-semibold text-[#0638A5]">
-                Sumant J. Patel (Late)
-              </h2>
+            <h2 className="text-[2rem] leading-10 font-bold text-[#0638A5] mb-4">
+              {mentor.name}
+            </h2>
 
-            </div>
+            <p className="italic text-gray-700 mb-4">{mentor.designation}</p>
 
-            <hr className=" bg-black border-1 border-black mb-4" />
-            <div className="relative">
-              <div className="space-y-2 mt-2 ">
-                <p className="font-branding-medium">
-                  A fearless pioneer, Sumant Patels crystal clear vision had
-                  been instrumental in shaping the Nesco Group. A mechanical
-                  engineer from the University of Pennsylvania, USA and a
-                  business graduate from the prestigious Wharton School, he
-                  returned to India in 1960 and Successfully founded the
-                  engineering heavyweights GMM and Indabrator, in the decades
-                  that followed, Sumant's eye on the big picture emboldened
-                  teams to innovatively face challenges in each new sector. As
-                  the architect of Nescos diversification, he created a
-                  state-of-the-art IT Park with unique offerings. His foresight
-                  established in dia's largest exhibition venue in the private
-                  sector, also known as the BEC. His wisdom guided our growth at
-                  Nesco and led the progress of many charitable ventures he was
-                  passionate about.
-                </p>
-              </div>
+            <h3 className="font-semibold text-lg">{mentor.noteTitle}</h3>
+
+            <div className="space-y-3 mt-3">
+              {mentor.noteText && Array.isArray(mentor.noteText)
+                ? mentor.noteText.map((paragraph, idx) => (
+                    <p key={idx} className="text-base leading-7">{paragraph}</p>
+                  ))
+                : <p>No message available.</p>
+              }
             </div>
           </div>
+
         </div>
       </div>
     </section>
   );
 }
 
-export default LeadershipMentor;
+export default Mentor;
