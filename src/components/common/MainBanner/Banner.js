@@ -24,7 +24,7 @@ function Banner({
   const navigationPrevRef = useRef(null);
   const navigationNextRef = useRef(null);
   const mainBannerRef = useRef(null); // Ref for Main Banner section
-
+  console.log("slider data is here", SliderData);
   useEffect(() => {
     if (swiperInstance) {
       swiperInstance.on("slideChange", (swiper) => {
@@ -89,10 +89,11 @@ function Banner({
                 <div className={`w-full h-full ${apperentClassName}`}></div>
               )}
               <img
-                src={SliderData[0].image.src}
+                src={SliderData[0]?.image}
                 alt="banner image"
-                className={`w-full object-cover h-full ${height1}  ${filter}`}
+                className={`w-full object-cover h-full ${height1} ${filter}`}
               />
+
             </div>
           ) : (
             <Swiper
@@ -126,7 +127,7 @@ function Banner({
                             <div className="relative">
                               <div className="absolute z-20 md:top-[35%] top-[28%] transform -translate-y-1/2 w-1/2 md:translate-x-[52%] translate-x-[48%] text-center">
                                 <img
-                                  src={data?.hexaLogo?.src}
+                                  src={data?.hexaLogo}
                                   alt="hexa image"
                                   className="object-cover md:scale-50 scale-[.6]"
                                 />
@@ -136,12 +137,12 @@ function Banner({
                                   {/* Description */}
                                   <div
                                     className={`absolute z-20 ${index === 5
-                                        ? "md:top-[48%] lg:top-[48%] md:w-[47%] top-[40%] md:left-[27%] left-[18%]"
-                                        : index === 3
-                                          ? "md:top-[49%] lg:top-[49%] md:w-[50%]"
-                                          : index === 4
-                                            ? "md:top-[47%] lg:top-[47%] md:w-[47%]"
-                                            : "md:top-[47%] lg:top-[47%] md:w-[47%] "
+                                      ? "md:top-[48%] lg:top-[48%] md:w-[47%] top-[40%] md:left-[27%] left-[18%]"
+                                      : index === 3
+                                        ? "md:top-[49%] lg:top-[49%] md:w-[50%]"
+                                        : index === 4
+                                          ? "md:top-[47%] lg:top-[47%] md:w-[47%]"
+                                          : "md:top-[47%] lg:top-[47%] md:w-[47%] "
                                       } md:top-[45%] top-[45%] md:left-[27%] left-[22%] w-[60%] text-center md:text-2xl text-lg`}
                                   >
                                     {data?.description}
@@ -150,7 +151,7 @@ function Banner({
                               </div>
 
                               <img
-                                src={data?.hexaImage?.src}
+                                src={data?.hexaImage}
                                 alt="hexa image"
                                 className="object-cover md:scale-75 scale-[1.2] "
                               />
@@ -192,7 +193,7 @@ function Banner({
                         )}
 
                         <img
-                          src={data.image.src}
+                          src={data.image}
                           alt="banner image"
                           className="mx-auto w-full h-full object-cover "
                         />
@@ -208,7 +209,7 @@ function Banner({
                           <div className="w-full h-full absolute bg-black opacity-30 z-10"></div>
                         )}
                         <img
-                          src={data.image.src}
+                          src={data.image}
                           alt="banner image"
                           className={`w-full h-full object-cover ${filter}`}
                         />

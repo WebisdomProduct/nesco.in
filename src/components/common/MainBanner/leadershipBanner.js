@@ -1,9 +1,10 @@
 "use client";
+
 import React, { useEffect, useState, useRef } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Navigation } from "swiper/modules";
 
-// Import Swiper styles
+// Swiper styles
 import "swiper/css";
 import "swiper/css/navigation";
 
@@ -11,97 +12,116 @@ import "swiper/css/navigation";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 
 function LeadershipBanner1({
-  SliderData,
-  onSlideChange,
-  filter,
-  heightClassName,
+  SliderData = [],
+  onSlideChange = () => {},
+  filter = "",
+  heightClassName = "",
 }) {
   const [activeIndex, setActiveIndex] = useState(0);
+
   const navigationPrevRef = useRef(null);
   const navigationNextRef = useRef(null);
   const swiperRef = useRef(null);
 
+  /* ================= NOTIFY PARENT ================= */
+
   useEffect(() => {
     onSlideChange(activeIndex);
-  }, [activeIndex, onSlideChange]);
+  }, [activeIndex]);
+
+  /* ================= UI ================= */
 
   return (
     <div
       className={`w-full ${
-        heightClassName ? heightClassName : "h-[100vh]"
+        heightClassName || "h-[100vh]"
       } banner-section relative`}
     >
-      <div className="relative">
-        <div
-          className={`flex justify-center w-full overflow-hidden ${
-            heightClassName ? heightClassName : "h-[100vh]"
-          } relative`}
+      <div
+        className={`flex justify-center w-full overflow-hidden ${
+          heightClassName || "h-[100vh]"
+        } relative`}
+      >
+        {/* ================= SWIPER ================= */}
+
+        <Swiper
+          ref={swiperRef}
+          modules={[Autoplay, Navigation]}
+          spaceBetween={0}
+          slidesPerView={1}
+          loop={true}
+          speed={1000}
+          autoplay={{
+            delay: activeIndex === 0 ? 5000 : 3000,
+            disableOnInteraction: false,
+          }}
+          navigation={{
+            prevEl: navigationPrevRef.current,
+            nextEl: navigationNextRef.current,
+          }}
+          onSlideChange={(swiper) =>
+            setActiveIndex(swiper.realIndex)
+          }
+          onSwiper={(swiper) => {
+            setTimeout(() => {
+              swiper.params.navigation.prevEl =
+                navigationPrevRef.current;
+              swiper.params.navigation.nextEl =
+                navigationNextRef.current;
+              swiper.navigation.init();
+              swiper.navigation.update();
+            });
+          }}
+          className="w-full h-[100vh]"
         >
-          <Swiper
-            ref={swiperRef}
-            modules={[Autoplay, Navigation]}
-            spaceBetween={0}
-            slidesPerView={1}
-            loop={true}
-            autoplay={{
-              delay: activeIndex === 0 ? 5000 : 3000,
-              disableOnInteraction: false,
-            }}
-            speed={1000}
-            navigation={{
-              prevEl: navigationPrevRef.current,
-              nextEl: navigationNextRef.current,
-            }}
-            onSlideChange={(swiper) => setActiveIndex(swiper.realIndex)}
-            onSwiper={(swiper) => {
-              // Delay navigation buttons initialization until swiper is ready
-              setTimeout(() => {
-                swiper.params.navigation.prevEl = navigationPrevRef.current;
-                swiper.params.navigation.nextEl = navigationNextRef.current;
-                swiper.navigation.init();
-                swiper.navigation.update();
-              });
-            }}
-            className="w-full h-[100vh]"
-          >
-            {SliderData.map((data, index) => (
+          {/* ================= SLIDES ================= */}
+
+          {SliderData.length > 0 &&
+            SliderData.map((data, index) => (
               <SwiperSlide
                 key={index}
-                className="bg-black text-white flex justify-center items-center text-2xl h-[100vh] relative transition-all duration-700 min-h-[800px]"
+                className="relative w-full h-[100vh]"
               >
-                <div
-                  className={`w-full flex justify-center items-center text-2xl h-[100vh] relative`}
-                >
-                  {data.data}
-                  {data.isOpacity ? (
-                    ""
-                  ) : (
-                    <div className="w-full h-full absolute bg-black opacity-30 z-10"></div>
+                <div className="w-full h-full relative flex justify-center items-center">
+
+                  {/* ===== CONTENT ===== */}
+                  {data.data && data.data}
+
+                  {/* ===== DARK OVERLAY ===== */}
+                  {!data.isOpacity && (
+                    <div className="absolute inset-0 bg-black opacity-30 z-10" />
                   )}
+
+                  {/* ===== IMAGE ===== */}
                   <img
-                    src={data.image.src}
-                    alt="banner image"
+                    src={
+                      typeof data.image === "string"
+                        ? data.image
+                        : data.image?.src
+                    }
+                    alt="banner"
                     className={`w-full h-full object-cover ${filter}`}
                   />
                 </div>
               </SwiperSlide>
             ))}
-          </Swiper>
+        </Swiper>
 
-          {/* Navigation buttons */}
-          <button
-            ref={navigationPrevRef}
-            className="absolute left-4 top-[60%] transform -translate-y-1/2 text-gray-200 p-3 rounded-full z-10"
-          >
-            <IoIosArrowBack size={40} />
-          </button>
-          <button
-            ref={navigationNextRef}
-            className="absolute right-4 top-[60%] transform -translate-y-1/2 text-gray-200 p-3 rounded-full z-10"
-          >
-            <IoIosArrowForward size={40} />
-          </button>
-        </div>
+        {/* ================= NAVIGATION ================= */}
+
+        <button
+          ref={navigationPrevRef}
+          className="absolute left-4 top-1/2 -translate-y-1/2 text-white p-3 z-20"
+        >
+          <IoIosArrowBack size={40} />
+        </button>
+
+        <button
+          ref={navigationNextRef}
+          className="absolute right-4 top-1/2 -translate-y-1/2 text-white p-3 z-20"
+        >
+          <IoIosArrowForward size={40} />
+        </button>
       </div>
     </div>
   );

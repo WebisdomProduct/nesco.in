@@ -18,7 +18,7 @@ function Mentor() {
         console.error(err);
       } finally {
         setLoading(false);
-      }
+      } 
     };
 
     fetchMentor();
