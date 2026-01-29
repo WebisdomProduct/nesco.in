@@ -1,39 +1,35 @@
+"use client";
+
 import VideoBanner from "@/components/common/videoBanner/videoBanner";
-import React from "react";
-// import SampleVideo from "@/assests/careers/sample.mp4";
+import React, { useEffect, useState } from "react";
+import axios from "axios";
+
+const API_BASE =
+  "http://localhost:8040/api/v1/life_at_nesco/life_voices";
+
 function LifeVoice() {
-  const SliderData = [
-    {
-      video:
-        "https://nescodoucmentsandpdfs.s3.ap-south-1.amazonaws.com/Tanveer.mp4",
-      type: "mp4",
-    },
-    {
-      video:
-        "https://nescodoucmentsandpdfs.s3.ap-south-1.amazonaws.com/Neha.mp4",
-      type: "mp4",
-    },
-    {
-      video:
-        "https://nescodoucmentsandpdfs.s3.ap-south-1.amazonaws.com/Suhas.mp4",
-      type: "mp4",
-    },
-    {
-      video:
-        "https://nescodoucmentsandpdfs.s3.ap-south-1.amazonaws.com/Mini.mp4",
-      type: "mp4",
-    },
-    {
-      video:
-        "https://nescodoucmentsandpdfs.s3.ap-south-1.amazonaws.com/Amber.mp4",
-      type: "mp4",
-    },
-    {
-      video:
-        "https://nescodoucmentsandpdfs.s3.ap-south-1.amazonaws.com/Bait.mp4",
-      type: "mp4",
-    },
-  ];
+  const [sliderData, setSliderData] = useState([]);
+
+  /* ================= FETCH VIDEOS ================= */
+  const fetchLifeVoices = async () => {
+    try {
+      const res = await axios.get(API_BASE);
+
+      // Map backend response → VideoBanner format
+      const formatted = res.data.data.map((item) => ({
+        video: item.video,
+        type: item.type || "mp4",
+      }));
+
+      setSliderData(formatted);
+    } catch (error) {
+      console.error("Failed to fetch life voices:", error);
+    }
+  };
+
+  useEffect(() => {
+    fetchLifeVoices();
+  }, []);
 
   return (
     <section className="header_color_black goal-section1 w-full relative overflow-hidden xl:h-screen flex justify-center items-center">
@@ -46,13 +42,15 @@ function LifeVoice() {
         >
           Voices of Nesco
         </h2>
-        {/* <div className="lg:w-[80%] scale-75 -mt-10">
-          <video controls className=" ">
-            <source src="/sample.mp4" type="video/mp4" />
-          </video>
-        </div> */}
+
         <div className="w-full overflow-hidden h-[100%]">
-          <VideoBanner SliderData={SliderData} />
+          {sliderData.length > 0 ? (
+            <VideoBanner SliderData={sliderData} />
+          ) : (
+            <p className="text-center text-gray-400 mt-10">
+              Loading videos...
+            </p>
+          )}
         </div>
       </div>
     </section>

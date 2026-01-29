@@ -1,23 +1,46 @@
-import React from 'react';
+"use client";
+
+import React, { useEffect, useState } from "react";
+import axios from "axios";
+
+const API = "http://localhost:8040/api/v1/life_at_nesco/passion";
 
 function LifePassion() {
+
+  const [content, setContent] = useState(null);
+
+  const fetchPassion = async () => {
+    try {
+      const res = await axios.get(API);
+      // assuming array comes from backend
+      setContent(res.data.data[0]); 
+    } catch (error) {
+      console.error("Failed to fetch passion section", error);
+    }
+  };
+
+  useEffect(() => {
+    fetchPassion();
+  }, []);
+
+  if (!content) return null; // or loader
+
   return (
     <section className="goal-section1 flex flex-col justify-center items-center py-20">
-      <div className="w-[90%] font-branding-medium ">
+      <div className="w-[90%] font-branding-medium">
+
         <h1 className="text-[#1e3a8a] text-2xl text-center md:text-5xl lg:text-6xl font-branding-semibold font-bold">
-          Where Passion Meets Purpose
+          {content.heading}
         </h1>
-        <p className="md:text-xl lg:text-3xl  font-branding-medium pt-5">
-          At Nesco, we cherish honest efforts and inspire a love for work. As a
-          reimagined legacy brand with the energy of a start-up, we lead
-          breakthrough industries and pioneer firsts for India.
+
+        <p className="md:text-xl lg:text-3xl font-branding-medium pt-5">
+          {content.paragraph1}
         </p>
-        <p className="md:text-xl lg:text-3xl  font-branding-medium pt-5">
-          Here, work means challenging the ordinary, embracing bold ideas, and
-          shaping the future. If innovation excites you and impact drives you, a
-          fulfilling career at Nesco awaits. Join us and redefine what&#39;s
-          possible!
+
+        <p className="md:text-xl lg:text-3xl font-branding-medium pt-5">
+          {content.paragraph2}
         </p>
+
       </div>
     </section>
   );
