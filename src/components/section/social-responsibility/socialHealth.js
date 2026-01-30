@@ -1,43 +1,60 @@
-import React, { useState } from "react";
-import bannerImage from "@/assests/social/31.png";
+"use client";
+
+import React, { useEffect, useState } from "react";
+import axios from "axios";
+
 import SocialBanner1 from "@/components/common/SocialBanner/SocialBanner";
 import { MentorModal } from "@/components/common/cards/Cards";
-import { createPortal } from "react-dom";
 
+const API =
+  "http://localhost:8040/api/v1/our_impact/csr/social_schema";
 
+const MAIN_TITLE = "Powering Healthcare";
 
 function SocialHealth() {
   const title = "Powering Healthcare";
+
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedCard, setSelectedCard] = useState(null);
+  const [sliderData, setSliderData] = useState([]);
 
-  const SliderData = [
-    {
-      title1: "J.V. Patel Surgical ICU ",
-      title2: "Shree Krishna Hospital, Karamsad",
-      link: "",
-      name: "J.V. Patel Surgical ICU ",
-      position: "Shree Krishna Hospital, Karamsad",
-      bImage: bannerImage,
-      description:
-        "The Karamsad region was in dire need of updated medical facilities. Realising this need, we offered our support to the Charotar Arogya Mandal to set up the area’s first surgical ICU. Incidentally, J. V.  Patel himself was closely associated with H. M. Patel in setting up the Charotar Arogya Mandal decades ago. Now functioning as a modern medical complex with close to 1,000 beds, the facility offers comprehensive and affordable healthcare services round the clock.",
-    },
-  ];
+  // ============================
+  // FETCH DATA
+  // ============================
+  const fetchData = async () => {
+    try {
+      const res = await axios.get(
+        `${API}/main-title/${MAIN_TITLE}`
+      );
 
+      setSliderData(res.data.data || []);
+    } catch (error) {
+      console.log("Error fetching healthcare data:", error);
+    }
+  };
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+  // ============================
+  // MODAL
+  // ============================
   const openModal = (data) => {
     setSelectedCard(data);
     setIsModalOpen(true);
   };
 
   const closeModal = () => {
-    setSelectedCard(false);
-    setIsModalOpen(null);
+    setSelectedCard(null);
+    setIsModalOpen(false);
   };
 
   return (
     <section className="w-full mt-5 goal-section1" id="healthcare">
+
       <SocialBanner1
-        SliderData={SliderData}
+        SliderData={sliderData}
         title={title}
         onReadMore={openModal}
       />
@@ -48,8 +65,8 @@ function SocialHealth() {
           onClose={closeModal}
           data={selectedCard}
         />
-       
       )}
+
     </section>
   );
 }

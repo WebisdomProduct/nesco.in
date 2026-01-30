@@ -1,66 +1,60 @@
-import React, { useState } from "react";
+"use client";
 
+import React, { useEffect, useState } from "react";
+import axios from "axios";
 
-import bannerImage from "@/assests/social/12.png";
 import SocialBanner1 from "@/components/common/SocialBanner/SocialBanner";
 import { MentorModal } from "@/components/common/cards/Cards";
-import { createPortal } from "react-dom";
-// import Cards from "@/components/common/cards/Cards";
+
+const API =
+  "http://localhost:8040/api/v1/our_impact/csr/social_schema";
+
+const MAIN_TITLE = "Powering Infrastructure";
 
 function SocialInfra() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedCard, setSelectedCard] = useState(null);
+  const [sliderData, setSliderData] = useState([]);
+
   const title = "Powering Infrastructure";
 
-  const SliderData = [
-    {
-      title1: "Water Supply System",
-      title2: "Karamsad",
-      link: "",
-      bImage: bannerImage,
-      name: "Water Supply System",
-      position: "Karamsad",
-      description:
-        "Our focus on boosting public infrastructure is continually expanding. We are hard at work in villages that lack basic hygiene facilities, bringing them water and sanitation.\
-        In Karamsad, we installed a modern water supply system to revolutionise the long distances and costs people endure in the transportation of water. Our contribution transformed life in the neighbourhoods, finally bringing in household water connections which were a dream to the community.",
-    },
-    {
-      title1: "J.V. Patel Community Hall",
-      title2: "V.V. Nagar",
-      link: "",
-      name: "J.V. Patel Community Hall",
-      position: "V.V. Nagar",
-      bImage: bannerImage,
-      description:
-        "Places for congregation and commingling are essential for any healthy, thriving community. Vallabh Vidhyanagar got their first multi-purpose community hall thanks to Nesco. The J. V. Patel Community Hall was built under the banner of Pragati Mandal, so that citizens could enjoy the benefit of an affordable venue for community events. The hall is open for any type of social gathering, celebrations, exhibitions and public meetings. The meetings of the city council or Vallabh Vidhyanagar Nagar Palika are occasionally held here.\
-",
-    },
-    {
-      title1: "Toilet Block",
-      title2: "Karamsad",
-      link: "",
-      name: "Toilet Block",
-      position: "Karamsad",
-      bImage: bannerImage,
-      description:
-        "We built toilets for migrant families and those who lived outside the village limits when it was made apparent that these areas were grossly lacking in sanitation or hygiene facilities.",
-    },
-  ];
+  // ============================
+  // FETCH DATA
+  // ============================
+  const fetchData = async () => {
+    try {
+      const res = await axios.get(
+        `${API}/main-title/${MAIN_TITLE}`
+      );
 
+      setSliderData(res.data.data || []);
+    } catch (error) {
+      console.log("Error fetching infrastructure data:", error);
+    }
+  };
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+  // ============================
+  // MODAL HANDLERS
+  // ============================
   const openModal = (data) => {
     setSelectedCard(data);
     setIsModalOpen(true);
   };
 
   const closeModal = () => {
-    setSelectedCard(false);
-    setIsModalOpen(null);
+    setSelectedCard(null);
+    setIsModalOpen(false);
   };
 
   return (
     <section className="goal-section1" id="infra">
+
       <SocialBanner1
-        SliderData={SliderData}
+        SliderData={sliderData}
         title={title}
         onReadMore={openModal}
       />
@@ -72,6 +66,7 @@ function SocialInfra() {
           data={selectedCard}
         />
       )}
+
     </section>
   );
 }

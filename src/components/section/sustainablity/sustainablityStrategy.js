@@ -1,45 +1,92 @@
-import React from 'react';
-import materiality from '@/assests/sustainability/materiality.png';
-import Image from 'next/image';
+"use client";
+
+import React, { useEffect, useState } from "react";
+import Image from "next/image";
+import axios from "axios";
+import materialityPlaceholder from "@/assests/sustainability/materiality.png";
 
 function SustainablityStrategy() {
+  const [data, setData] = useState(null); // Backend data
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  const API = "http://localhost:8040/api/v1/our_impact/sustainablility/stakeholder";
+  const MAIN_TITLE = "Materiality shaping our business strategy";
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const res = await axios.get(`${API}/title/${encodeURIComponent(MAIN_TITLE)}`);
+
+        // Normalize response: array or object
+        let fetchedData = null;
+        if (res.data?.data) {
+          fetchedData = Array.isArray(res.data.data) ? res.data.data[0] : res.data.data;
+        }
+
+        if (fetchedData) {
+          setData(fetchedData);
+        } else {
+          setError("No data found.");
+        }
+
+        setLoading(false);
+      } catch (err) {
+        console.error(err);
+        setError("Failed to fetch data from backend.");
+        setLoading(false);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  if (loading) {
+    return (
+      <div className="flex justify-center items-center py-20">
+        <p className="text-lg">Loading...</p>
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="flex justify-center items-center py-20">
+        <p className="text-red-600">{error}</p>
+      </div>
+    );
+  }
+
+  if (!data) {
+    return (
+      <div className="flex justify-center items-center py-20">
+        <p className="text-gray-600">No data available.</p>
+      </div>
+    );
+  }
+
   return (
     <div className="goal-section1 flex justify-center items-center flex-col ">
       <div className="my-10 text-center w-[90%]">
-        <div className="text-left ">
-          <h1 className="text-3xl font-bold px-5 py-3 bg-[#bfe9e2] text-gray-900 inline-block text-center ">
-            {' '}
-            Materiality shaping our business strategy
+        <div className="text-left md:mr-24">
+          <h1 className="text-3xl font-bold px-5 py-3 bg-[#C7E6F3] text-gray-900 inline-block">
+            {data.title || MAIN_TITLE}
           </h1>
         </div>
 
-        <div className="md:flex mt-16">
-          <div className="basis-[60%]  md:mb-0 mb-8">
-            <p className="lg:text-[21px] md:text-[16px] text-[14px] w-[93%] ">
-              {' '}
-              Nesco undertook a Materiality Assessment to identify key ESG
-              issues relevant to its operations and stakeholders. This included
-              obtaining inputs from internal and external stakeholders based on
-              our engagements. The material issues identified in the process
-              have been prioritized which has helped Nesco to allocate resources
-              effectively and strategically address critical issues that
-              resonate with both internal objectives and external stakeholder
-              expectations. Nesco has defined KPIs and a roadmap to drive
-              impacts for these material topics and the leadership team has been
-              tasked with the implementation of these priorities. Nesco is
-              integrating these ESG priorities into its operations through
-              comprehensive policies, regular monitoring, and continuous
-              improvement initiatives. Stakeholder engagement on these material
-              priorities is at the core of our approach, ensuring alignment with
-              external expectations while fostering transparency and
-              accountability.
-            </p>
-          </div>
-          <div className="basis-[40%]">
+        <div className="md:flex mt-16"> <div className="basis-[60%] md:mb-0 mb-8"> <p className="lg:text-[21px] md:text-[16px] text-[14px] w-[93%] "> {' '}
+
+          {data.description || "Description not available."}
+        </p>
+        </div>
+
+          <div className="basis-[40%] w-full md:w-auto">
             <Image
-              src={materiality}
-              alt="stakeholder"
-              className=" border-[4px] border-green-200 w-[99%]"
+              src={data.image || materialityPlaceholder}
+              alt={data.title || "Materiality"}
+              className="border-[4px] border-green-200 w-[99%] object-cover rounded-md"
+              width={500}
+              height={500}
             />
           </div>
         </div>

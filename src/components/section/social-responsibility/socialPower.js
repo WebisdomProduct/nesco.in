@@ -1,28 +1,74 @@
-import React from 'react';
+"use client";
+import React, { useEffect, useState } from "react";
+import axios from "axios";
+
+const API = "http://localhost:8040/api/v1/our_impact/csr/second_section";
 
 function SocialPower() {
+  const [data, setData] = useState({
+    paragraph1: "",
+    paragraph2: "",
+    paragraph3: ""
+  });
+
+  const [loading, setLoading] = useState(true);
+
+  const fetchContent = async () => {
+    try {
+      const res = await axios.get(API);
+
+      if (res?.data?.data?.length > 0) {
+        const item = res.data.data[0];
+
+        setData({
+          paragraph1: item.paragraph1 || "",
+          paragraph2: item.paragraph2 || "",
+          paragraph3: item.paragraph3 || ""
+        });
+      }
+    } catch (error) {
+      console.error("CSR fetch error:", error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    fetchContent();
+  }, []);
+
+  if (loading) {
+    return (
+      <section className="goal-section1 header_white flex justify-center items-center py-20 bg-[#21409A]">
+        <p className="text-white text-xl">Loading...</p>
+      </section>
+    );
+  }
+
   return (
     <section className="goal-section1 header_white flex flex-col justify-center items-center py-20 bg-[#21409A]">
       <div className="w-[90%] font-branding-medium">
+
+        {/* Heading */}
         <h1 className="flex flex-col text-secondary md:text-5xl text-2xl mb-5 text-center">
-          <span className="font-branding-bold"> Believe you have the</span>
-          <span className="mt-2 ">power to make a difference! </span>
+          {data.paragraph1 && (
+            <span className="font-branding-bold">
+              {data.paragraph1}
+            </span>
+          )}
+          {data.paragraph2 && (
+            <span className="mt-2">
+              {data.paragraph2}
+            </span>
+          )}
         </h1>
-        <p className="mt-10 md:text-2xl text-white">
-          Across our many sectors, we at Nesco have gone beyond the purview of
-          profitability to prioritise benefit. The logic, we felt, was
-          incomplete without impacting local communities, the youth and rural
-          society. Our founder, Mr. J. V. Patel was regarded as a man of strong
-          social conscience who emphasised the need to "give back" as a vital
-          aspect of nation-building. Corporate accountability at Nesco is,
-          therefore embedded into the very foundation of the company. His
-          efforts toward promoting education and self-sustenance are still close
-          to the heart of the organisation as they remain our pioneer
-          initiatives. Over the years, we have changed the lives of thousands
-          that have graduated from our schools and training institute. These are
-          the lives we touch via our organised welfare initiatives and as a
-          result, we are now one big family.
-        </p>
+        {/* Paragraph 3 */}
+        {data.paragraph3 && (
+          <p className="mt-6 md:text-2xl text-white">
+            {data.paragraph3}
+          </p>
+        )}
+
       </div>
     </section>
   );

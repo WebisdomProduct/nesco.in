@@ -1,38 +1,56 @@
 "use client";
+
 import Banner from "@/components/common/MainBanner/Banner";
-import React, { useState } from "react";
-import bannerImage from "@/assests/social/43.png";
-import Navbar from "@/components/layout/navbar/Navbar";
+import React, { useEffect, useState } from "react";
+import axios from "axios";
+
 function SocialBanner() {
   const [activeSlide, setActiveSlide] = useState(0);
+  const [sliderData, setSliderData] = useState([]);
+
+  const API = "http://localhost:8040/api/v1/our_impact/csr/banner/all"; 
+  // 🔁 change this to your real endpoint
 
   const handleSlideChange = () => {
     setActiveSlide(1);
   };
 
-  const SliderData = [
-    {
-      image: bannerImage,
-      data: (
-        <div className="absolute md:top-[70%] top-[60%] right-0 px-20 py-6 bg-[#21409A] bg-opacity-50 text-white z-20">
-          <p>A smile can speak volumes.</p>
-          <p>It can also brighten up the future.</p>
-        </div>
-      ),
-    },
-  ];
+  // ✅ Fetch banner from backend
+  const fetchBanner = async () => {
+    try {
+      const res = await axios.get(API);
+
+      const formattedData = res.data.data.map((item) => ({
+        image: item.image,
+        data: (
+          <div className="absolute md:top-[70%] top-[60%] right-0 px-20 py-6 bg-[#21409A] bg-opacity-50 text-white z-20">
+            <p>{item.paragraph1}</p>
+            <p>{item.paragraph2}</p>
+          </div>
+        ),
+      }));
+
+      setSliderData(formattedData);
+    } catch (error) {
+      console.error("Failed to fetch social banner:", error);
+    }
+  };
+
+  useEffect(() => {
+    fetchBanner();
+  }, []);
 
   const filter = "filter grayscale contrast-125";
 
   return (
     <div className="w-full">
-      {/* <Navbar activeSlide={activeSlide} /> */}
-      {/* <Banner SliderData={SliderData}  onSlideChange={handleSlideChange} /> */}
-      <Banner
-        SliderData={SliderData}
-        onSlideChange={handleSlideChange}
-        filter={filter}
-      />
+      {sliderData.length > 0 && (
+        <Banner
+          SliderData={sliderData}
+          onSlideChange={handleSlideChange}
+          filter={filter}
+        />
+      )}
     </div>
   );
 }
