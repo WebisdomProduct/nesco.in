@@ -20,6 +20,7 @@ export const apiUrls = {
     documents: "/api/v1/shareholder/documentDetail",
     unclaimed: "/api/v1/shareholder/unclaimed",
     corner: "/api/v1/shareholder/corner",
+    contacts: "/api/v1/shareholder/contact",
   },
 };
 
