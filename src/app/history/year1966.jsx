@@ -1,0 +1,105 @@
+"use client";
+import { React, useState, useEffect } from "react";
+import Image from "next/image";
+import { motion } from "framer-motion";
+import { useInView } from "react-intersection-observer";
+import historyNine from "@/assests/history/historyNine.png";
+
+const Year1966 = () => {
+  const [year1966InView, setYear1966InView] = useState(false);
+  const [count, setCount] = useState(1000);
+  const { ref: year1966Observer } = useInView({
+    threshold: 0.2,
+    triggerOnce: true,
+    onChange: (inView) => setYear1966InView(inView),
+  });
+  useEffect(() => {
+    if (year1966InView) {
+      const interval = setInterval(() => {
+        setCount((prevCount) => {
+          const nextCount = prevCount + 5;
+          if (nextCount >= 1966) {
+            clearInterval(interval);
+            return 1966; // Stop exactly at 1966
+          }
+          return nextCount;
+        });
+      }, 10); // Fast counting interval
+
+      return () => clearInterval(interval);
+    }
+  }, [year1966InView]);
+
+  return (
+    <motion.div
+      ref={year1966Observer}
+      className="year1966 min-h-screen flex flex-col justify-center p-6"
+      initial={{ opacity: 0, x: 50 }}
+      animate={year1966InView ? { opacity: 1, x: 0 } : {}}
+      transition={{ duration: 0.8, ease: "easeOut" }}
+      whileHover={{ scale: 1.02, y: -5 }}
+      data-year="1966"
+    >
+      <div className="container flex flex-col sm:flex-col md:flex-row lg:flex-row relative m-auto mt-4 mb-4  p-4">
+        {/* Left Content */}
+
+        {/* Right Image */}
+        <motion.div
+          className="imgDiv flex relative z-20 sm:mt-6  md:left-[6vh] lg:left-[15vh] flex-col sm:w-full md:w-[80%] lg:w-[50%] "
+          initial={{ opacity: 0, x: 50 }}
+          animate={year1966InView ? { opacity: 1, x: 0 } : {}}
+          transition={{ duration: 0.8, delay: 0.9 }}
+        >
+          <Image
+            src={historyNine}
+            alt="Historic Event"
+            width={700}
+            height={500}
+            className="w-full h-auto object-cover transition-shadow duration-300 hover:shadow-lg hover:shadow-gray-700/50"
+          />
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, x: -50 }}
+          animate={year1966InView ? { opacity: 1, x: 0 } : {}}
+          transition={{ duration: 0.7, delay: 0.3 }}
+          className="leftDiv flex flex-col sm:w-full md:w-[50%] lg:w-[50%] relative "
+        >
+          <div className="contentDiv flex flex-col relative gap-4 bg-cyan-400 p-12 sm:left-0 md:left-[15%] lg:left-[0%] z-20 transition-shadow duration-300 hover:shadow-lg hover:shadow-cyan-500/50">
+            {/* Year Heading */}
+            <motion.p
+              initial={{ opacity: 0, y: -20 }}
+              animate={year1966InView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.6, delay: 0.5 }}
+              className=" h-fit w-fit relative text-6xl md:text-7xl lg:text-9xl font-branding-bold text-blue-700 left-2 sm:left-0 top-2 sm:top-0 m-2"
+            >
+              {count}
+              <motion.div
+                initial={{ opacity: 0, width: 0 }}
+                animate={year1966InView ? { opacity: 1, width: "90%" } : {}}
+                transition={{ duration: 0.6, delay: 0.6 }}
+                className="mt-2 h-[2px] bg-white w-full"
+              ></motion.div>
+            </motion.p>
+
+            {/* Description Text */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={year1966InView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.7, delay: 0.7 }}
+              className="bottomText flex relative sm:w-full  md:w-full lg:w-[70%]  sm:left-0 lg:left-2 p-2"
+            >
+              <p className="text-sm sm:text-lg md:text-lg lg:text-xl text-white font-poppins">
+                The New Standard Engineering Company builds India's first
+                antenna for space communication, strengthening its decade-long
+                association with the Department of Atomic Energy.
+              </p>
+            </motion.div>
+          </div>
+        </motion.div>
+      </div>
+    </motion.div>
+  );
+};
+
+export default Year1966;

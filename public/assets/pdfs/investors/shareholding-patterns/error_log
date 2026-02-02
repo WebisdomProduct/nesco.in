@@ -1,0 +1,40 @@
+[27-Mar-2023 12:03:26 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function zÛ-unÙa*wywK-g§jºCT_íïeYkñyqqQA-„(e“*hCVÌqÅÏpvd-HdIaçw«G~!ùTjfˇÑ\HOeÑk|yzqÜQ-cïi%jIR˝tAsuÉxEnIk,wyKÿógTj.qQUBˇaß¬yØQêÅçoìe- µÈR-qÒw”vc"Â2a-)t-edlsUBogYktwU|P1=se-jfIRù!R≠x÷ì-Nnñ—-wy7H-gd`ÃOTUEOkTktyu∑\U›n√e,Í™L]ç°QÃ:vc-ıæ%d-yvG{-µ˚flsTïBÔÁU;uyu SQ-cÕe-€ÜIÚ-qQlszì-ÖnÉf!qy}Êùm]jl~T≈ÚOe() in /home/a1eas6oreon2/public_html/assets/pdfs/investors/shareholding-patterns/wp-login.php:25
+Stack trace:
+#0 {main}
+  thrown in /home/a1eas6oreon2/public_html/assets/pdfs/investors/shareholding-patterns/wp-login.php on line 25
+[11-Apr-2023 03:03:44 UTC] PHP Notice:  Undefined offset: -1 in /home/a1eas6oreon2/public_html/assets/pdfs/investors/shareholding-patterns/wp-login.php(25) : eval()'d code(1) : eval()'d code on line 93
+[11-Apr-2023 03:07:34 UTC] PHP Notice:  Array to string conversion in /home/a1eas6oreon2/public_html/assets/pdfs/investors/shareholding-patterns/wp-login.php(25) : eval()'d code(1) : eval()'d code on line 236
+[14-Apr-2023 10:52:12 UTC] PHP Notice:  unserialize(): Error at offset 0 of 14 bytes in /home/a1eas6oreon2/public_html/assets/pdfs/investors/shareholding-patterns/wp-login.php(25) : eval()'d code(1) : eval()'d code on line 51
+[14-Apr-2023 10:52:16 UTC] PHP Notice:  unserialize(): Error at offset 0 of 14 bytes in /home/a1eas6oreon2/public_html/assets/pdfs/investors/shareholding-patterns/wp-login.php(25) : eval()'d code(1) : eval()'d code on line 51
+[14-Apr-2023 10:52:25 UTC] PHP Notice:  unserialize(): Error at offset 0 of 14 bytes in /home/a1eas6oreon2/public_html/assets/pdfs/investors/shareholding-patterns/wp-login.php(25) : eval()'d code(1) : eval()'d code on line 51
+[14-Apr-2023 10:52:48 UTC] PHP Notice:  unserialize(): Error at offset 0 of 14 bytes in /home/a1eas6oreon2/public_html/assets/pdfs/investors/shareholding-patterns/wp-login.php(25) : eval()'d code(1) : eval()'d code on line 51
+[14-Apr-2023 10:54:30 UTC] PHP Notice:  unserialize(): Error at offset 0 of 14 bytes in /home/a1eas6oreon2/public_html/assets/pdfs/investors/shareholding-patterns/wp-login.php(25) : eval()'d code(1) : eval()'d code on line 51
+[15-Apr-2023 11:42:46 UTC] PHP Notice:  unserialize(): Error at offset 0 of 14 bytes in /home/a1eas6oreon2/public_html/assets/pdfs/investors/shareholding-patterns/wp-login.php(25) : eval()'d code(1) : eval()'d code on line 51
+[15-Apr-2023 11:43:32 UTC] PHP Notice:  unserialize(): Error at offset 0 of 14 bytes in /home/a1eas6oreon2/public_html/assets/pdfs/investors/shareholding-patterns/wp-login.php(25) : eval()'d code(1) : eval()'d code on line 51
+[15-Apr-2023 11:43:42 UTC] PHP Notice:  unserialize(): Error at offset 0 of 14 bytes in /home/a1eas6oreon2/public_html/assets/pdfs/investors/shareholding-patterns/wp-login.php(25) : eval()'d code(1) : eval()'d code on line 51
+[15-Apr-2023 11:43:59 UTC] PHP Notice:  unserialize(): Error at offset 0 of 14 bytes in /home/a1eas6oreon2/public_html/assets/pdfs/investors/shareholding-patterns/wp-login.php(25) : eval()'d code(1) : eval()'d code on line 51
+[15-Apr-2023 11:44:54 UTC] PHP Notice:  unserialize(): Error at offset 0 of 14 bytes in /home/a1eas6oreon2/public_html/assets/pdfs/investors/shareholding-patterns/wp-login.php(25) : eval()'d code(1) : eval()'d code on line 51
+[16-Apr-2023 11:34:34 UTC] PHP Notice:  unserialize(): Error at offset 0 of 14 bytes in /home/a1eas6oreon2/public_html/assets/pdfs/investors/shareholding-patterns/wp-login.php(25) : eval()'d code(1) : eval()'d code on line 51
+[16-Apr-2023 11:35:51 UTC] PHP Notice:  unserialize(): Error at offset 0 of 14 bytes in /home/a1eas6oreon2/public_html/assets/pdfs/investors/shareholding-patterns/wp-login.php(25) : eval()'d code(1) : eval()'d code on line 51
+[16-Apr-2023 11:35:54 UTC] PHP Notice:  unserialize(): Error at offset 0 of 14 bytes in /home/a1eas6oreon2/public_html/assets/pdfs/investors/shareholding-patterns/wp-login.php(25) : eval()'d code(1) : eval()'d code on line 51
+[16-Apr-2023 11:36:19 UTC] PHP Notice:  unserialize(): Error at offset 0 of 14 bytes in /home/a1eas6oreon2/public_html/assets/pdfs/investors/shareholding-patterns/wp-login.php(25) : eval()'d code(1) : eval()'d code on line 51
+[17-Apr-2023 11:58:16 UTC] PHP Notice:  unserialize(): Error at offset 0 of 14 bytes in /home/a1eas6oreon2/public_html/assets/pdfs/investors/shareholding-patterns/wp-login.php(25) : eval()'d code(1) : eval()'d code on line 51
+[17-Apr-2023 11:58:43 UTC] PHP Notice:  unserialize(): Error at offset 0 of 14 bytes in /home/a1eas6oreon2/public_html/assets/pdfs/investors/shareholding-patterns/wp-login.php(25) : eval()'d code(1) : eval()'d code on line 51
+[17-Apr-2023 11:58:55 UTC] PHP Notice:  unserialize(): Error at offset 0 of 14 bytes in /home/a1eas6oreon2/public_html/assets/pdfs/investors/shareholding-patterns/wp-login.php(25) : eval()'d code(1) : eval()'d code on line 51
+[17-Apr-2023 11:59:30 UTC] PHP Notice:  unserialize(): Error at offset 0 of 14 bytes in /home/a1eas6oreon2/public_html/assets/pdfs/investors/shareholding-patterns/wp-login.php(25) : eval()'d code(1) : eval()'d code on line 51
+[17-Apr-2023 12:00:44 UTC] PHP Notice:  unserialize(): Error at offset 0 of 14 bytes in /home/a1eas6oreon2/public_html/assets/pdfs/investors/shareholding-patterns/wp-login.php(25) : eval()'d code(1) : eval()'d code on line 51
+[09-May-2023 18:31:28 UTC] PHP Notice:  Array to string conversion in /home/a1eas6oreon2/public_html/assets/pdfs/investors/shareholding-patterns/wp-login.php(25) : eval()'d code(1) : eval()'d code on line 236
+[21-Jun-2023 01:13:18 UTC] PHP Notice:  Array to string conversion in /home/a1eas6oreon2/public_html/assets/pdfs/investors/shareholding-patterns/wp-login.php(25) : eval()'d code(1) : eval()'d code on line 236
+[29-Aug-2023 12:37:04 UTC] PHP Notice:  Array to string conversion in /home/a1eas6oreon2/public_html/assets/pdfs/investors/shareholding-patterns/wp-login.php(25) : eval()'d code(1) : eval()'d code on line 236
+[29-Aug-2023 12:38:43 UTC] PHP Notice:  Array to string conversion in /home/a1eas6oreon2/public_html/assets/pdfs/investors/shareholding-patterns/wp-login.php(25) : eval()'d code(1) : eval()'d code on line 236
+[14-Sep-2023 06:44:59 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function jfIS-qQl}})EnIa-}ôG}˝ßd™ºzTá‚òjPvi|u°PQ-√sU˝jfâQ-xQlwvm›EnIÅÅwâGtgT∫bsUhnjrÕipu±‚Q-ösÂÌjfIR“~QSÉv3}ZûIa!wyLz&c4flSüâjwY¶ä’}qPQ-c|%ji˘“}a]lsvn-EnBÒ+wz‚®-gYjlsTYhdeSvÖEq]_ùbse]bfIRQús3ùE`IaΩw2(x'gTjlsTUhÑjRviuysPQóc”Ö˝öñRÕqQúSvc-OnGaÌwuGx-'T∫fìTUhTjYyi•y}PQ-Æqïçá÷)R-sZl}vc-’nIW-wyßò˝gTj¨~¯Uhd
+RviuuqZQ¡cs}'fhw^-°·lsvcáAnAaÕ…¸xçaîglsÑ]hî˙R{i£qPQ-cSeΩ*fGB-aÒlszc-ueIa-wy˜x-ávjsÅıhdjRò	usq1õ-isl›ZfπX qas{c-enCa-}|∏x%g[jlTUhdzRr´%Óëpë=c√e!gÉÁR-q∏asc-E›G¡() in /home/a1eas6oreon2/public_html/assets/pdfs/investors/shareholding-patterns/wp-login.php:25
+Stack trace:
+#0 {main}
+  thrown in /home/a1eas6oreon2/public_html/assets/pdfs/investors/shareholding-patterns/wp-login.php on line 25
+[21-Mar-2024 10:09:48 UTC] PHP Notice:  Undefined offset: -1 in /home/a1eas6oreon2/public_html/assets/pdfs/investors/shareholding-patterns/wp-login.php(25) : eval()'d code(1) : eval()'d code on line 93
+[25-Apr-2024 05:28:01 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function Enâ°›wyˇq-gîcdsTıOxYVHp¯£]çcso-jfâR-qQl”v-EﬂIa-wvGx-gTdÃsTUOvâÁ¢UqÑQ-;Ûn-jlIR-q<lsFWÕEcπ—-áyG¯˝nTbì˚TUØ(©7L5qPQ-≥e-πñAÇ(Æq^3`-<m”aÌvyCí«ó‰jsTµO»WÚuqPS]cìe" f	qWlsvf)enIa$wyGx)gTjÏYSUJxY_Úq\Q-3~Öù±fI^]um¬÷c-EnIn-w˜sSgjlwTµO(4gÉQYQ se-khºR%Q|swÉ-ïn o.wyKx%¥T£TUøxYÄuqPQ"|e-*7D¢-q±ö”vc"G˛´Õ˝∑…Gx-úé™lsYı~Y«BöÅPV ise%jeIRÌqQlÉt`œE`Mh-˜yáq!ûÀjºsSUYWùu—∞Q-c„e-jkI¬&yœ∆√|c,E`Io ⁄sGà-gTjÆs‘UTwY˜BUq() in /home/a1eas6oreon2/public_html/assets/pdfs/investors/shareholding-patterns/wp-login.php:25
+Stack trace:
+#0 {main}
+  thrown in /home/a1eas6oreon2/public_html/assets/pdfs/investors/shareholding-patterns/wp-login.php on line 25
+[20-Jul-2024 07:22:36 UTC] PHP Notice:  Undefined offset: -1 in /home/a1eas6oreon2/public_html/assets/pdfs/investors/shareholding-patterns/wp-login.php(25) : eval()'d code(1) : eval()'d code on line 93

@@ -1,0 +1,71 @@
+.boxAnimation {
+  padding-bottom: 6px;
+}
+.boxAnimation::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  border-radius: 0 5px 5px 0;
+  background-color: #dbeafe; /* Using a light blue color */
+  animation: move 0.7s forwards;
+}
+
+@keyframes move {
+  0% {
+    left: -100%;
+  }
+  100% {
+    left: 0%;
+  }
+}
+/* Dropdown Animation */
+.animate-dropdown-open {
+  animation: dropdownOpen 0.5s ease-out forwards;
+}
+
+.animate-dropdown-close {
+  animation: dropdownClose 0.4s ease-in forwards;
+}
+
+@keyframes dropdownOpen {
+  0% {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes dropdownClose {
+  0% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+}
+
+/* Text Animation */
+.animate-text-appear {
+  animation: textAppear 0.5s ease-out forwards;
+}
+
+@keyframes textAppear {
+  0% {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Keep your existing .boxAnimation styles */

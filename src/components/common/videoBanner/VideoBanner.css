@@ -1,0 +1,5 @@
+/* Hide Swiper's default navigation icons */
+.swiper-button-prev::after,
+.swiper-button-next::after {
+  display: none;
+}

@@ -1,0 +1,44 @@
+"use client";
+import Banner from "@/components/common/MainBanner/Banner";
+import React, { useState } from "react";
+import bannerImage from "@/assests/sebi/image.jpg";
+// import sebiImage from "@/assests/sebi/image.png";
+import Navbar from "@/components/layout/navbar/Navbar";
+function SebiBanner() {
+  const [activeSlide, setActiveSlide] = useState(0);
+
+  const handleSlideChange = () => {
+    setActiveSlide(1);
+  };
+
+  const SliderData = [
+    {
+      image: bannerImage.src,
+      data: (
+        <div className="absolute z-20 flex justify-end md:top-[22%] md:right-5">
+          <div className="text-[3rem] leading-[3rem] text-center md:w-[55%]">
+            Disclosures under Regulation <br /> 46 of SEBI (LODR) Regulations,
+            2015 & others statuory information
+          </div>
+        </div>
+      ),
+      isOpacity: "true",
+    },
+  ];
+  const filter = "absolute object-right";
+
+  return (
+    <div className="w-full">
+      {/* <Navbar activeSlide={activeSlide} /> */}
+      {/* <Banner SliderData={SliderData}  onSlideChange={handleSlideChange} /> */}
+      <Banner
+        SliderData={SliderData}
+        onSlideChange={handleSlideChange}
+        heightClassName="h-[100vh] "
+        filter={filter}
+      />
+    </div>
+  );
+}
+
+export default SebiBanner;
