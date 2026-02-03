@@ -23,23 +23,23 @@
   "quote_nse": {
     "data": {
       "symbol": "505355.BSE",
-      "regularMarketPrice": 1136.65,
-      "regularMarketPreviousClose": 1099.15,
-      "regularMarketOpen": 1100.9,
-      "regularMarketDayHigh": 1144,
-      "regularMarketDayLow": 1100.9,
-      "regularMarketVolume": 2461,
+      "regularMarketPrice": 1137.65,
+      "regularMarketPreviousClose": 1136.65,
+      "regularMarketOpen": 1117.65,
+      "regularMarketDayHigh": 1140.7,
+      "regularMarketDayLow": 1112.5,
+      "regularMarketVolume": 2826,
       "fiftyTwoWeekHigh": 0,
       "fiftyTwoWeekLow": 0,
       "currency": "INR",
       "exchange": "NSE",
       "name": "NESCO Limited",
-      "datetime": "2026-02-02T11:33:56.181Z",
-      "change": 37.5,
-      "changePercent": 3.4117
+      "datetime": "2026-02-03T10:43:08.703Z",
+      "change": 1,
+      "changePercent": 0.088
     },
-    "expiresAt": 1770049316182,
-    "updatedAt": 1770032036182
+    "expiresAt": 1770132668704,
+    "updatedAt": 1770115388704
   },
   "chart_nse_1d": {
     "data": {

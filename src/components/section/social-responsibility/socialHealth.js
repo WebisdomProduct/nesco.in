@@ -29,7 +29,6 @@ function SocialHealth() {
 
       setSliderData(res.data.data || []);
     } catch (error) {
-      console.log("Error fetching healthcare data:", error);
     }
   };
 

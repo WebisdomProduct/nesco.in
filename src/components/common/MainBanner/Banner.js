@@ -24,7 +24,6 @@ function Banner({
   const navigationPrevRef = useRef(null);
   const navigationNextRef = useRef(null);
   const mainBannerRef = useRef(null); // Ref for Main Banner section
-  console.log("slider data is here", SliderData);
   useEffect(() => {
     if (swiperInstance) {
       swiperInstance.on("slideChange", (swiper) => {

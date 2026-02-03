@@ -39,13 +39,11 @@ const GraduateForm = () => {
   };
 
   const handleFinishFailed = (errorInfo) => {
-    console.log("Failed:", errorInfo);
   };
 
   const normFile = (e) => (Array.isArray(e) ? e : e?.fileList);
 
   const onSubmit = async (data) => {
-    console.log("Form Submission Triggered! Data:", data);
     setLoading(true);
     try {
       const file = data.resume?.[0]?.originFileObj;

@@ -15,7 +15,6 @@ function AnnouncementFilter() {
     getQuery({
       url: `${apiUrls?.announcements}`,
       onSuccess: (res) => {
-        console.log("API Response:", res);
         setGetData(res?.newDetail || []);
         setTimeout(() => setLoading(false), 2000);
       },

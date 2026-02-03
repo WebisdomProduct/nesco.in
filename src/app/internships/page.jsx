@@ -29,10 +29,8 @@ const InternshipForm = () => {
   const handleDocumentUpload = (file) => {
     return new Promise((resolve, reject) => {
       const reader = new FileReader();
-      // console.log(reader);
       reader.onloadend = () => {
         const base64String = reader.result;
-        // console.log(base64String);
         resolve(base64String);
       };
       reader.onerror = (error) => reject(error);
@@ -41,19 +39,16 @@ const InternshipForm = () => {
   };
 
   // const handleFinish = (values) => {
-  //   console.log("Form values:", values);
   //   message.success("Application submitted successfully!");
   //   form.resetFields(); // Reset form after submission
   // };
 
   const handleFinishFailed = (errorInfo) => {
-    console.log("Failed:", errorInfo);
   };
 
   const normFile = (e) => (Array.isArray(e) ? e : e?.fileList);
 
   const onSubmit = async (data) => {
-    console.log("Form Submission Triggered! Data:", data);
     setLoading(true); // Start loader
     try {
       const file = data.resume?.[0]?.originFileObj;

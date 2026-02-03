@@ -134,7 +134,7 @@ function PhilosophyBelieve() {
 
               {/* Description from backend */}
               <div className="text-left xl:h-full xl:w-[25%] w-full xl:block flex justify-center">
-                <p className="z-30 text-[#01aeec] xl:w-60 sm:w-1/2 w-[90%] relative xl:top-[58%] my-10 text-xl content2">
+                <p className="z-30 text-[#01aeec] xl:w-60 sm:w-1/2 w-[90%] relative xl:top-[58%] my-10 text-[24px] content2">
                   {description}
                 </p>
               </div>

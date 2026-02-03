@@ -92,7 +92,7 @@ function BecFacilities() {
     <div className="w-full h-screen overflow-hidden">
       {/* TITLE */}
       <div className="px-[5%] w-full border-t-2 py-6 lg:pt-24">
-        <h2 className="text-[2.2rem] font-bold text-black">
+        <h2 className="text-[48px] font-bold text-black">
           Facilities
         </h2>
       </div>

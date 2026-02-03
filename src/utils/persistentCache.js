@@ -65,14 +65,11 @@ export function getPersistentCache(key, includeStale = false) {
     const now = Date.now();
     if (now > entry.expiresAt) {
         if (includeStale) {
-            console.log(`Cache expired for ${key}, but returning stale data as requested.`);
             return { ...entry.data, isStale: true, expiresAt: entry.expiresAt };
         }
-        console.log(`Cache expired for ${key}. Expired at ${new Date(entry.expiresAt).toISOString()}, now ${new Date(now).toISOString()}`);
         return null;
     }
 
-    console.log(`Serving from persistent cache for ${key}. Valid until ${new Date(entry.expiresAt).toISOString()}`);
     return entry.data;
 }
 
@@ -93,5 +90,4 @@ export function setPersistentCache(key, data) {
     };
 
     writeCache(cache);
-    console.log(`Updated persistent cache for ${key}. Next fetch allowed after ${new Date(expiresAt).toISOString()}`);
 }

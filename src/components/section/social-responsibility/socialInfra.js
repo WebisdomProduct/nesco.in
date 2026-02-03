@@ -30,7 +30,6 @@ function SocialInfra() {
 
       setSliderData(res.data.data || []);
     } catch (error) {
-      console.log("Error fetching infrastructure data:", error);
     }
   };
 

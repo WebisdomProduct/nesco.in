@@ -30,7 +30,6 @@ const useDeleteQuery = () => {
           data: deleteData,
         }
       );
-      console.log("apiData", apiData);
       setData(apiData);
       await onSuccess(apiData);
       return apiData;

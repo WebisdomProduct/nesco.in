@@ -127,7 +127,6 @@ async function waitForRateLimit() {
   const timeSinceLastRequest = now - lastRequestTime;
   if (timeSinceLastRequest < RATE_LIMIT.minDelayBetweenRequests) {
     const waitTime = RATE_LIMIT.minDelayBetweenRequests - timeSinceLastRequest;
-    console.log(`Enforcing minimum delay: waiting ${waitTime}ms...`);
     await new Promise((resolve) => setTimeout(resolve, waitTime));
   }
   
@@ -135,7 +134,6 @@ async function waitForRateLimit() {
   while (!canMakeRequest()) {
     const oldestTimestamp = requestTimestamps[0];
     const waitTime = RATE_LIMIT.windowMs - (Date.now() - oldestTimestamp) + 100;
-    console.log(`Rate limit reached, waiting ${waitTime}ms...`);
     await new Promise((resolve) => setTimeout(resolve, Math.max(waitTime, 100)));
   }
   
@@ -183,18 +181,13 @@ export async function retryWithBackoff(fn, maxRetries = 3, initialDelay = 2000) 
       if (isRateLimited) {
         // Wait at least 60 seconds before retrying after a 429 error
         const delay = 60000 + (attempt * 30000); // 60s, 90s, 120s...
-        console.log(
-          `Rate limited (429) - waiting ${delay}ms before retry ${attempt + 1}/${maxRetries}...`
-        );
+     
         await new Promise((resolve) => setTimeout(resolve, delay));
       } else {
         // For other errors, use exponential backoff
         const baseDelay = initialDelay;
         const delay = baseDelay * Math.pow(2, attempt);
-        console.log(
-          `Attempt ${attempt + 1} failed, retrying in ${delay}ms...`,
-          error.message
-        );
+     
         await new Promise((resolve) => setTimeout(resolve, delay));
       }
     }
@@ -212,7 +205,6 @@ export async function retryWithBackoff(fn, maxRetries = 3, initialDelay = 2000) 
 export async function getOrCreateRequest(key, fn) {
   // If there's already a pending request for this key, wait for it
   if (pendingRequests.has(key)) {
-    console.log(`Deduplicating request for ${key}`);
     return pendingRequests.get(key);
   }
   

@@ -31,7 +31,6 @@ export async function GET(request) {
       return Response.json({ ...cachedData, fromCache: true });
     }
 
-    console.log(`Fetching fresh Quote data from Alpha Vantage for ${symbol}...`);
 
     // 2. Fetch from Alpha Vantage
     const url = `https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=${symbol}&apikey=${ALPHA_VANTAGE_API_KEY}`;

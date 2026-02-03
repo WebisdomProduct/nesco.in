@@ -32,7 +32,6 @@ export async function GET(request) {
       return Response.json({ ...cachedData, fromCache: true });
     }
 
-    console.log(`Fetching Chart data from Alpha Vantage for ${symbol}...`);
 
     // 2. Prepare for Fetch
     // Check if we have STALE data to decide between 'compact' and 'full'
@@ -43,7 +42,6 @@ export async function GET(request) {
     // Otherwise, fetch 'full' (20 years) to build history.
     const outputSize = hasHistory ? 'compact' : 'full';
 
-    console.log(`Existing history length: ${staleData?.quotes?.length || 0}. Using outputsize=${outputSize}`);
 
     const url = `https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=${symbol}&outputsize=${outputSize}&apikey=${ALPHA_VANTAGE_API_KEY}`;
 
@@ -113,7 +111,6 @@ export async function GET(request) {
 
       // Fallback: If we have stale data, return it despite error
       if (staleData) {
-        console.log("Serving stale data due to API failure.");
         return Response.json({
           ...staleData,
           fromCache: true,

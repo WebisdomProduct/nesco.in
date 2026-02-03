@@ -28,7 +28,6 @@ function SocialEducation() {
 
       setSliderData(res.data.data || []);
     } catch (error) {
-      console.log("Error fetching Powering Education data:", error);
     }
   };
 

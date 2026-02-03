@@ -13,11 +13,9 @@ const CACHE_CONFIG = {
 export function getFromCache(key) {
   const cached = cache.get(key);
   if (cached && Date.now() < cached.expireAt) {
-    console.log(`Cache HIT for key: ${key}`);
     return cached.data;
   }
   if (cached) {
-    console.log(`Cache EXPIRED for key: ${key}`);
     cache.delete(key);
   }
   return null;
@@ -32,7 +30,6 @@ export function setCache(key, data, type = 'quote') {
     data,
     expireAt: Date.now() + ttl,
   });
-  console.log(`Cache SET for key: ${key}, TTL: ${ttl}ms`);
 }
 
 /**
@@ -40,7 +37,6 @@ export function setCache(key, data, type = 'quote') {
  */
 export function clearCache(key) {
   cache.delete(key);
-  console.log(`Cache CLEARED for key: ${key}`);
 }
 
 /**
@@ -48,7 +44,6 @@ export function clearCache(key) {
  */
 export function clearAllCache() {
   cache.clear();
-  console.log('All cache cleared');
 }
 
 /**

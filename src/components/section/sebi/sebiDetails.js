@@ -40,7 +40,6 @@ function SebiDetails() {
       onSuccess: (res) => {
         setGetData(res?.data || []);
         setTimeout(() => setLoading(false), 2000);
-        console.log(getData);
       },
       onFail: (err) => {
         console.error("Failed to fetch announcements data:", err);
@@ -235,7 +234,6 @@ function SebiDetails() {
       setCurrentTitle(transformedData[openIndex]?.title);
     }
 
-    console.log("hello this is transoformed data ", transformedData);
   }, [openIndex, transformedData]);
 
   const handleToggle = (index) => {

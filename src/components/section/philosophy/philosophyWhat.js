@@ -107,11 +107,11 @@ function PhilosophyWhat() {
   return (
     <div
       ref={sectionRef1}
-      className="w-full md:h-screen relative flex justify-center items-center py-20"
+      className="w-full md:h-screen relative flex justify-center items-center py-20 md:py-40 bg-white overflow-hidden"
     >
       <div className="w-full h-fit flex md:flex-row flex-col justify-start items-center md:gap-0">
         <div
-          className="xl:w-[70%] md:w-[80%] sm:w-[50%] flex flex-col z-0 relative"
+          className="xl:w-[70%] md:w-[19%] sm:w-[50%] flex flex-col z-0 relative mr-50 pr-50"
           ref={textContainerRef}
         >
           {text[currentText].split(".").map((word, index) => (

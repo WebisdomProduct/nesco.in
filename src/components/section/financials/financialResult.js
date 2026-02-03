@@ -24,10 +24,8 @@ function FinancialResult() {
     getQuery({
       url: `${apiUrls?.financials}`,
       onSuccess: (res) => {
-        console.log("✅ API SUCCESS. Raw Data Received:", res?.data);
         setGetData(res?.data || []);
         setLoading(false);
-        console.log(getData);
       },
       onFail: (err) => {
         console.error("❌ API FAILED:", err);
@@ -56,7 +54,6 @@ function FinancialResult() {
   const transformedData = useMemo(() => {
     if (!Array.isArray(getData)) return [];
 
-    console.log("🔄 STARTING DATA TRANSFORMATION...");
 
     const processed = getData.map((item, index) => {
       // 1. Normalize Option (financial vs financials)
@@ -103,9 +100,7 @@ function FinancialResult() {
 
       // Log specific items to debug "Missing" documents
       if (item.title && (item.title.includes("Q4") || item.title.includes("Q3"))) {
-        console.log(
-          `   📄 Processing ${item.title}: Date=${item.date} -> Calculated FY=${year} | Option=${cleanOption}`
-        );
+      
       }
 
       return transformedItem;
@@ -114,7 +109,6 @@ function FinancialResult() {
     // Sort by Date Descending (Newest First)
     const sorted = processed.sort((a, b) => b.rawDate - a.rawDate);
 
-    console.log("✅ TRANSFORMATION COMPLETE. Total Items:", sorted.length);
     return sorted;
   }, [getData]);
 
@@ -127,10 +121,7 @@ function FinancialResult() {
 
   // --- 5. FILTER LOGIC ---
   const filteredData = useMemo(() => {
-    console.log("🔍 APPLYING FILTERS...");
-    console.log("   Current Tab:", activeTab);
-    console.log("   Selected Years:", selectedYears);
-    console.log("   Selected Quarters:", selectedQuarters);
+  
 
     let data = transformedData;
 
@@ -164,7 +155,6 @@ function FinancialResult() {
       );
     }
 
-    console.log(`✅ FILTERING COMPLETE. Showing ${data.length} items.`);
     return data;
   }, [transformedData, activeTab, selectedYears, selectedQuarters]);
 
@@ -186,7 +176,6 @@ function FinancialResult() {
   };
 
   const handleTabChange = (tabId) => {
-    console.log("👉 Tab Changed to:", tabId);
     setActiveTab(tabId);
     setVisibleRows(5);
   };

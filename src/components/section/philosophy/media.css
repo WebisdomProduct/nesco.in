@@ -3938,7 +3938,7 @@
     display: none !important;
   }
   .ledus-box {
-    height: auto;
+    height: 550px;
   }
   .ledus-box .box-lt {
     position: static;

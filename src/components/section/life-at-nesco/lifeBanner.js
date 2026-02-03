@@ -1,17 +1,18 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import axios from "axios";
 
 import Banner from "@/components/common/MainBanner/Banner";
-import Navbar from "@/components/layout/navbar/Navbar";
+// import Navbar from "@/components/layout/navbar/Navbar";
 
-// 🔁 Change this API to your actual endpoint
-const API_BASE = "https://nesco-backend-j567.onrender.com/api/v1/life_at_nesco/banner";
+const API_BASE =
+  "https://nesco-backend-j567.onrender.com/api/v1/life_at_nesco/banner";
 
 function LifeBanner() {
   const [activeSlide, setActiveSlide] = useState(0);
   const [banners, setBanners] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   const handleSlideChange = () => {
     setActiveSlide(1);
@@ -20,43 +21,53 @@ function LifeBanner() {
   /* ===========================
      Fetch Banner Data
   ============================ */
-  const fetchBanners = async () => {
-    try {
-      const res = await axios.get(API_BASE);
-      console.log(res);
-      setBanners(res.data.data || []);
-    } catch (error) {
-      console.error("Error fetching life banners:", error);
-    }
-  };
-
   useEffect(() => {
+    const fetchBanners = async () => {
+      try {
+        const res = await axios.get(API_BASE);
+        setBanners(res.data?.data || []);
+      } catch (error) {
+        console.error("Error fetching life banners:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
     fetchBanners();
   }, []);
 
   /* ===========================
-     Build Slider Data
+     Build Slider Data (SAFE)
   ============================ */
-  const SliderData = banners.map((item) => ({
-    image: item.image, // full image URL from backend
-    data: (
-      <div className="absolute md:top-[50%] md:left-[10%] md:px-20 px-10 py-6 text-white z-20 text-4xl font-branding-medium">
+  const SliderData = useMemo(() => {
+    return banners.map((item) => ({
+      image: item.image,
+      data: (
+        <div className="absolute top-1/2 left-[10%] -translate-y-1/2 px-10 md:px-20 text-white z-20">
+          <p className="mb-2 text-2xl md:text-4xl font-branding-medium">
+            {item.paragraph1}
+          </p>
 
-        <p className="mb-2">{item.paragraph1}</p>
+          <p className="mb-2 text-2xl md:text-4xl font-branding-medium">
+            {item.paragraph2}
+          </p>
 
-        <p className="mb-2">{item.paragraph2}</p>
+          <p className="text-[#08A8DD] text-4xl md:text-7xl mb-4 font-branding-medium">
+            {item.paragraph3}
+          </p>
 
-        <p className="text-[#08A8DD] md:text-7xl text-4xl mb-4">
-          {item.paragraph3}
-        </p>
+          <p className="text-lg md:text-2xl mt-6 font-branding-medium max-w-3xl">
+            {item.paragraph4}
+          </p>
+        </div>
+      ),
+    }));
+  }, [banners]);
 
-        <p className="text-lg md:text-2xl md:w-[100%] mt-6 font-branding-medium">
-          {item.paragraph4}
-        </p>
-
-      </div>
-    ),
-  }));
+  /* ===========================
+     Render Guard (CRITICAL)
+  ============================ */
+  if (loading || SliderData.length === 0) return null;
 
   return (
     <div className="w-full section">
