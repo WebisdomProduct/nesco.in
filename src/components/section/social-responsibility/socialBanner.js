@@ -22,6 +22,7 @@ function SocialBanner() {
 
       const formattedData = res.data.data.map((item) => ({
         image: item.image,
+        mobileImage:item.mobileImage,
         data: (
           <div className="absolute md:top-[70%] top-[60%] right-0 px-20 py-6 bg-[#21409A] bg-opacity-50 text-white z-20">
             <p>{item.paragraph1}</p>

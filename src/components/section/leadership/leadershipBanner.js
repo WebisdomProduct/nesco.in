@@ -31,7 +31,7 @@ function LeadershipBanner() {
   /* ================= BUILD SLIDER DATA ================= */
   const SliderData = banners.map((item) => ({
     image: item.image, // Image from backend
-
+    mobileImage:item.imageForMobile,
     data:
       item.paragraph1 ||
       item.paragraph2 ||

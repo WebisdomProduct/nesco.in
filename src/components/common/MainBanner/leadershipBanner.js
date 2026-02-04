@@ -4,11 +4,9 @@ import React, { useEffect, useState, useRef } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Navigation } from "swiper/modules";
 
-// Swiper styles
 import "swiper/css";
 import "swiper/css/navigation";
 
-// Icons
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 
 function LeadershipBanner1({
@@ -18,16 +16,44 @@ function LeadershipBanner1({
   heightClassName = "",
 }) {
   const [activeIndex, setActiveIndex] = useState(0);
+  const [isMobile, setIsMobile] = useState(false);
 
   const navigationPrevRef = useRef(null);
   const navigationNextRef = useRef(null);
   const swiperRef = useRef(null);
 
+  /* ================= MOBILE DETECTION ================= */
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () =>
+      window.removeEventListener("resize", handleResize);
+  }, []);
+
   /* ================= NOTIFY PARENT ================= */
 
   useEffect(() => {
     onSlideChange(activeIndex);
-  }, [activeIndex]);
+  }, [activeIndex, onSlideChange]);
+
+  /* ================= IMAGE SELECTOR ================= */
+
+  const getImage = (data) => {
+    if (isMobile && data?.mobileImage) {
+      return data.mobileImage;
+    }
+
+    if (typeof data?.image === "string") {
+      return data.image;
+    }
+
+    return data?.image?.src;
+  };
 
   /* ================= UI ================= */
 
@@ -84,21 +110,17 @@ function LeadershipBanner1({
               >
                 <div className="w-full h-full relative flex justify-center items-center">
 
-                  {/* ===== CONTENT ===== */}
+                  {/* CONTENT */}
                   {data.data && data.data}
 
-                  {/* ===== DARK OVERLAY ===== */}
+                  {/* DARK OVERLAY */}
                   {!data.isOpacity && (
                     <div className="absolute inset-0 bg-black opacity-30 z-10" />
                   )}
 
-                  {/* ===== IMAGE ===== */}
+                  {/* IMAGE */}
                   <img
-                    src={
-                      typeof data.image === "string"
-                        ? data.image
-                        : data.image?.src
-                    }
+                    src={getImage(data)}
                     alt="banner"
                     className={`w-full h-full object-cover ${filter}`}
                   />

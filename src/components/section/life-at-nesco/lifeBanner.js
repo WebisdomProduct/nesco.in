@@ -42,6 +42,7 @@ function LifeBanner() {
   const SliderData = useMemo(() => {
     return banners.map((item) => ({
       image: item.image,
+      mobileImage:item.mobileImage,
       data: (
         <div className="absolute top-1/2 left-[10%] -translate-y-1/2 px-10 md:px-20 text-white z-20">
           <p className="mb-2 text-2xl md:text-4xl font-branding-medium">
@@ -70,7 +71,7 @@ function LifeBanner() {
   if (loading || SliderData.length === 0) return null;
 
   return (
-    <div className="w-full section">
+    <div className="w-full section mt-20">
       {/* <Navbar activeSlide={activeSlide} /> */}
       <Banner SliderData={SliderData} onSlideChange={handleSlideChange} />
     </div>

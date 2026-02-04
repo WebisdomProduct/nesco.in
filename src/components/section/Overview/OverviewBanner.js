@@ -45,6 +45,7 @@ function OverviewBanner() {
 
   const SliderData = bannerData.map((item) => ({
     image: item.image,
+    mobileImage:item.mobileImage,
     data: (
       <div className="bg-[#4E4F9F] z-20 absolute left-0 bg-opacity-90">
         <div className="text-center px-10 py-8">

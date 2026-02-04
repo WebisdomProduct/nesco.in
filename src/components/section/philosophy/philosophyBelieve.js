@@ -1,21 +1,35 @@
 "use client";
+
 import React, { useEffect, useState } from "react";
 import { gsap } from "gsap";
 import axios from "axios";
 
-const API_BASE = "https://nesco-backend-j567.onrender.com/api/v1/about/philosophy";
+const API_BASE =
+  "https://nesco-backend-j567.onrender.com/api/v1/about/philosophy";
 
 function PhilosophyBelieve() {
   const [showContent, setShowContent] = useState(false);
   const [showContent1, setShowContent1] = useState(false);
   const [philosophy, setPhilosophy] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [isMobile, setIsMobile] = useState(false);
 
-  // Fetch philosophy data
+  /* ------------------ Detect Mobile ------------------ */
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  /* ------------------ Fetch Data ------------------ */
   const fetchPhilosophy = async () => {
     try {
       const res = await axios.get(API_BASE);
-      if (res.data.data && res.data.data.length > 0) {
+      if (res.data?.data?.length > 0) {
         setPhilosophy(res.data.data[0]);
       }
     } catch (err) {
@@ -25,6 +39,7 @@ function PhilosophyBelieve() {
     }
   };
 
+  /* ------------------ Initial Timers ------------------ */
   useEffect(() => {
     fetchPhilosophy();
 
@@ -37,52 +52,88 @@ function PhilosophyBelieve() {
     };
   }, []);
 
+  /* ------------------ GSAP Animations ------------------ */
   useEffect(() => {
     const ctx = gsap.context(() => {
       if (showContent) {
         gsap.fromTo(".blue-stripe", { opacity: 0 }, { opacity: 1, duration: 2 });
       }
+
       if (showContent1) {
-        gsap.fromTo(".content", { width: 0, opacity: 0 }, { width: "100%", opacity: 1, duration: 2 });
-        gsap.fromTo(".content2", { x: 2000, opacity: 0 }, { x: 0, opacity: 1, duration: 2 });
+        gsap.fromTo(
+          ".content",
+          { width: 0, opacity: 0 },
+          { width: "100%", opacity: 1, duration: 2 }
+        );
+
+        gsap.fromTo(
+          ".content2",
+          { x: 2000, opacity: 0 },
+          { x: 0, opacity: 1, duration: 2 }
+        );
       }
     });
 
     return () => ctx.revert();
   }, [showContent, showContent1]);
 
-  if (loading)
+  /* ------------------ Loading ------------------ */
+  if (loading) {
     return (
       <div className="w-full h-screen flex items-center justify-center">
         Loading...
       </div>
     );
+  }
 
-  // Use backend video or fallback
+  /* ------------------ Media ------------------ */
   const videoUrl =
-    philosophy?.videoUrl || philosophy?.video ||
+    philosophy?.videoUrl ||
+    philosophy?.video ||
     "https://anandrathiimages.s3.ap-south-1.amazonaws.com/5945347_Cluster_Galaxies_3840x2160.mp4";
+
+  const mobileImage =
+    philosophy?.mobileImage ||
+    "https://via.placeholder.com/800x1200";
 
   const description =
     philosophy?.description ||
     "A whole universe stands waiting to be explored. And yet it may remain undiscovered, unless you believe in taking the first step!";
 
+  /* ------------------ Render ------------------ */
   return (
     <div className="w-full h-screen flex justify-center items-center relative overflow-hidden">
-      {/* Video Background */}
+
+      {/* ================= Background Media ================= */}
       <div className="w-full h-full absolute">
-        <video autoPlay loop muted className="w-full h-full object-cover">
-          <source src={videoUrl} type="video/mp4" />
-        </video>
+        {isMobile ? (
+          <img
+            src={mobileImage}
+            alt="Philosophy Mobile"
+            className="w-full h-full object-cover"
+          />
+        ) : (
+          <video
+            autoPlay
+            loop
+            muted
+            playsInline
+            className="w-full h-full object-cover"
+          >
+            <source src={videoUrl} type="video/mp4" />
+          </video>
+        )}
       </div>
 
+      {/* ================= Animated Content ================= */}
       {showContent && (
         <div className="relative w-full h-full flex justify-center items-center overflow-hidden">
+
           {/* Overlay */}
           <div className="absolute w-full h-full bg-[#05547A] opacity-40"></div>
 
-          {/* Blue Stripe Container */}
-          <div className="blue-stripe absolute w-[550vw] h-[550vh] flex justify-center items-center lg:gap-32 md:gap-32 gap-20 rotate-[40deg] ml-[30rem] z-20">
+          {/* Blue Stripes */}
+          <div className="blue-stripe absolute w-[550vw] h-[550vh] flex justify-center items-center gap-20 rotate-[40deg] ml-[30rem] z-20">
             <div className="h-full w-32 bg-[#101485] opacity-80 hidden md:block"></div>
             <div className="h-full w-32 bg-[#101485] opacity-80"></div>
             <div className="h-full w-32 bg-[#101485] opacity-80"></div>
@@ -91,55 +142,24 @@ function PhilosophyBelieve() {
 
           {showContent1 && (
             <div className="content absolute left-0 w-full h-full flex xl:flex-row flex-col gap-10 items-center overflow-hidden">
-              <div className="relative xl:w-[75%] w-full h-[75%] flex justify-center items-center">
-                {/* BELIEVE Letters: exact same as original */}
-                <div className="absolute md:leading-[18rem] leading-[10rem] lg:text-[20rem] md:text-[15rem] text-[7rem] font-branding-bold text-white lg:left-[10%] md:left-[1%] left-0 z-20">
-                  <span className="lg:mx-10 mx-3 absolute -top-1/2 transform -translate-y-[90%] lg:left-[16.8rem] md:left-[16rem] left-[6rem]">
-                    E
-                  </span>
-                </div>
-                <div className="absolute md:leading-[18rem] leading-[10rem] lg:text-[20rem] md:text-[15rem] text-[7rem] font-branding-bold text-white lg:left-[10%] md:left-[0%] left-0 z-20 transform">
-                  <span className="lg:mx-10 mx-3 absolute -top-1/2 transform -translate-y-[90%] lg:left-[32.6rem] md:left-[25.6rem] left-[11rem]">
-                    L
-                  </span>
-                </div>
-                <div className="absolute md:leading-[18rem] leading-[10rem] lg:text-[20rem] md:text-[15rem] text-[7rem] font-branding-bold text-white lg:left-[10%] md:left-[1%] left-0 z-20 transform">
-                  <span className="lg:mx-10 mx-3 absolute transform md:top-7 top-4 left-2 md:left-[5.5rem] lg:left-0 ">
-                    I
-                  </span>
-                </div>
-                <div className="absolute md:leading-[18rem] leading-[10rem] lg:text-[20rem] md:text-[15rem] text-[7rem] font-branding-bold text-white lg:left-[10%] md:left-[1%] left-0 z-20 transform">
-                  <span className="lg:mx-10 mx-3 absolute transform md:top-7 top-4 left-[9.6rem] md:left-[19.8rem] lg:left-[26.5rem] ">
-                    V
-                  </span>
-                </div>
-                <div className="absolute md:leading-[18rem] leading-[10rem] lg:text-[20rem] md:text-[15rem] text-[7rem] font-branding-bold text-white lg:left-[10%] md:left-[1%] left-0 z-20 transform">
-                  <span className="lg:mx-10 mx-3 absolute transform md:top-7 top-4 left-[15.5rem] md:left-[30.5rem] lg:left-[44rem] ">
-                    E
-                  </span>
-                </div>
 
-                {/* BELIEVE Text Container (original spans) */}
-                <p className="absolute md:leading-[18rem] leading-[10rem] lg:text-[20rem] md:text-[15rem] text-[7rem] font-branding-bold text-white md:left-[10%] left-[1%] transform translate-y-[5%] overflow-hidden">
-                  <span className="lg:mx-10 mx-3 relative z-0 ">B</span>
-                  <span className="lg:mx-10 mx-3 relative opacity-0">E</span>
-                  <span className="lg:mx-10 mx-3 relative opacity-1">L</span>
-                  <br />
-                  <span className="lg:mx-10 mx-3 relative opacity-0">I</span>
-                  <span className="lg:mx-10 mx-3 relative">E</span>
-                  <span className="lg:mx-10 mx-3 relative opacity-0">V</span>
-                  <span className="lg:mx-10 mx-3 relative opacity-0">E</span>
+              {/* BELIEVE */}
+              <div className="relative xl:w-[75%] w-full h-[75%] flex justify-center items-center">
+                <p className="md:leading-[18rem] leading-[10rem] lg:text-[20rem] md:text-[15rem] text-[7rem] font-branding-bold text-white md:left-[10%] left-[1%] absolute">
+                  BEL<br />IEVE
                 </p>
               </div>
 
-              {/* Description from backend */}
+              {/* Description */}
               <div className="text-left xl:h-full xl:w-[25%] w-full xl:block flex justify-center">
                 <p className="z-30 text-[#01aeec] xl:w-60 sm:w-1/2 w-[90%] relative xl:top-[58%] my-10 text-[24px] content2">
                   {description}
                 </p>
               </div>
+
             </div>
           )}
+
         </div>
       )}
     </div>

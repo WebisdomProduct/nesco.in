@@ -19,6 +19,7 @@ function HomeBanner({ activeSlide, setActiveSlide }) {
         // Map backend data to your slider format
         const formattedData = res.data.banners.map(b => ({
           image: b.image,
+          mobileImage:b.imageForMobile,
           description: b.description,
           hexaImage: b.hexaImage || null,
           hexaLogo: b.hexaLogo || null

@@ -31,6 +31,7 @@ function SustainabilityBanner() {
   // ✅ Create SliderData dynamically
   const SliderData = banners.map((item) => ({
     image: item.image,
+    mobileImage:item.mobileImage,
     data: (
       <div className="goal-section1 absolute top-[40%] md:right-[10%] text-white z-20 text-5xl text-center font-branding-medium">
         <p className="mt-5 mb-2 text-secondary">

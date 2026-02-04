@@ -11,43 +11,59 @@ import fallbackWeldingImage from '@/assests/nesco-business-page/Indabrator-Eleme
 import indabratorLogo from '@/assests/nesco-business-page/Indabrator-Elements/50.png';
 
 const PAGE_NAME = 'Engineering';
+const BASE_URL = 'https://nesco-backend-j567.onrender.com/api/v1/business/banner';
 
 function IndabratorHero() {
-  const [bannerImage, setBannerImage] = useState(null);
+  const [banner, setBanner] = useState(null);
+  const [isMobile, setIsMobile] = useState(false);
 
+  /* ================= SCREEN SIZE CHECK ================= */
+  useEffect(() => {
+    const checkScreen = () => setIsMobile(window.innerWidth < 768);
+
+    checkScreen();
+    window.addEventListener('resize', checkScreen);
+    return () => window.removeEventListener('resize', checkScreen);
+  }, []);
+
+  /* ================= FETCH BANNER ================= */
   useEffect(() => {
     const fetchBanner = async () => {
       try {
-        const res = await axios.get(
-          `https://nesco-backend-j567.onrender.com/api/v1/business/banner/page/${PAGE_NAME}`
-        );
-
-        setBannerImage(res.data?.data?.image1 || null);
+        const res = await axios.get(`${BASE_URL}/page/${PAGE_NAME}`);
+        setBanner(res.data?.data || null);
       } catch (err) {
         console.error('Failed to load engineering hero banner');
+        setBanner(null);
       }
     };
 
     fetchBanner();
   }, []);
 
+  /* ================= IMAGE SOURCES ================= */
+  const backgroundImage = isMobile
+    ? banner?.mobileImage || fallbackWeldingImage
+    : banner?.image1 || fallbackWeldingImage;
+
+  /* ================= UI ================= */
   return (
     <div className="relative h-screen w-full overflow-hidden">
       {/* Background Image */}
       <div className="absolute inset-0">
         <Image
-          src={bannerImage || fallbackWeldingImage}
+          src={backgroundImage}
           alt="Industrial welding with sparks"
           fill
-          className="object-cover"
+          className="object-cover object-center"
           priority
           sizes="100vw"
         />
-        <div className="absolute inset-0 bg-black/30"></div>
+        <div className="absolute inset-0 bg-black/30" />
       </div>
 
-      {/* Logo Container — UNCHANGED */}
-      <div className="absolute bottom-8 right-0 px-8 py-2 bg-white bg-opacity-70 z-20 flex items-center w-[480px] h-[200px] overflow-hidden rounded-l-[5rem]">
+      {/* Logo Container */}
+      <div className="absolute bottom-8 right-0 px-8 py-2 bg-white/70 z-20 flex items-center w-[480px] h-[200px] overflow-hidden rounded-l-[5rem]">
         <div className="w-[350px] h-[180px] relative flex items-center justify-center overflow-hidden">
           <Image
             src={indabratorLogo}

@@ -279,18 +279,18 @@ function Navbar({ activeSlide }) {
   }, []);
 
   const getTextColor = () => {
-    if (activePurpleSection) return 'text-white border-white';
+    if (activePurpleSection) return 'text-black border-black';
     if (textWhite && !(isOpen === 4 || isOpen === 5))
-      return 'text-white border-white';
-    if (isFooter) return 'text-white border-white';
+      return 'text-black border-black';
+    if (isFooter) return 'text-black border-black';
     if (isOpen !== null && !(isOpen === 4 || isOpen === 5))
-      return 'text-white border-white';
-    if (isOpen === 0) return 'text-white border-white';
+      return 'text-black border-black';
+    if (isOpen === 0) return 'text-black border-black';
     if (activeSlide === 0) return 'text-black border-black';
-    if (isHeaderWhite) return 'text-white border-white';
+    if (isHeaderWhite) return 'text-black border-black';
     if (textBlack) return 'text-black border-black';
     if (isScrolled) return 'text-black border-black';
-    return 'text-white border-white';
+    return 'text-black border-black';
   };
 
   useEffect(() => {

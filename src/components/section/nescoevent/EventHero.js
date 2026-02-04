@@ -5,32 +5,38 @@ import Image from "next/image";
 import axios from "axios";
 
 /* ================= FALLBACK IMAGES (DO NOT REMOVE) ================= */
-
 import eventBackground from "@/assests/nesco-business-page/nesco-events/68.jpg";
 import nescoEventsLogo from "@/assests/nesco-business-page/nesco-events/69.png";
 
 /* ================= CONFIG ================= */
-
 const PAGE_NAME = "Nesco Events";
 const BASE_URL =
   "https://nesco-backend-j567.onrender.com/api/v1/business/banner";
 
 /* ================= COMPONENT ================= */
-
 function EventHero() {
   const [banner, setBanner] = useState(null);
+  const [isMobile, setIsMobile] = useState(false);
+
+  /* ================= SCREEN SIZE CHECK ================= */
+  useEffect(() => {
+    const checkScreen = () => setIsMobile(window.innerWidth < 768);
+
+    checkScreen();
+    window.addEventListener("resize", checkScreen);
+    return () => window.removeEventListener("resize", checkScreen);
+  }, []);
 
   /* ================= FETCH BANNER ================= */
-
   useEffect(() => {
     const fetchBanner = async () => {
       try {
-        const res = await axios.get(
-          `${BASE_URL}/page/${PAGE_NAME}`
-        );
+        const res = await axios.get(`${BASE_URL}/page/${PAGE_NAME}`);
         setBanner(res.data?.data || null);
       } catch (error) {
-        console.warn("Event banner CMS unavailable — using fallback images");
+        console.warn(
+          "Event banner CMS unavailable — using fallback images"
+        );
         setBanner(null);
       }
     };
@@ -39,12 +45,13 @@ function EventHero() {
   }, []);
 
   /* ================= IMAGE SOURCES ================= */
+  const backgroundSrc = isMobile
+    ? banner?.mobileImage || eventBackground
+    : banner?.image1 || eventBackground;
 
-  const backgroundSrc = banner?.image1 || eventBackground;
   const logoSrc = banner?.image2 || nescoEventsLogo;
 
   /* ================= UI ================= */
-
   return (
     <div className="relative h-screen w-full overflow-hidden">
       {/* Background Image */}
@@ -53,15 +60,15 @@ function EventHero() {
           src={backgroundSrc}
           alt="Nesco Events Concert Crowd"
           fill
-          className="object-cover"
+          className="object-cover object-center"
           priority
           sizes="100vw"
         />
         <div className="absolute inset-0 bg-black/30"></div>
       </div>
 
-      {/* Logo Container (UNCHANGED STYLING) */}
-      <div className="absolute bottom-8 right-0 px-8 py-2 bg-white bg-opacity-70 z-20 flex items-center w-[480px] h-[200px] overflow-hidden rounded-l-[5rem]">
+      {/* Logo Container */}
+      <div className="absolute bottom-8 right-0 px-8 py-2 bg-white/70 z-20 flex items-center w-[480px] h-[200px] overflow-hidden rounded-l-[5rem]">
         <div className="w-[350px] h-[180px] relative flex items-center justify-center overflow-hidden">
           <Image
             src={logoSrc}

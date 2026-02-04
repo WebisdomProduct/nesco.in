@@ -156,6 +156,7 @@ function SebiDetails() {
                 quater: field.quater, // Q1, Q2, Q3
                 pdfFile: field.pdfFile,
                 pdfName: field.pdfName,
+                pdfDate: field.pdfDate,
               })),
           })),
         };
@@ -198,8 +199,76 @@ function SebiDetails() {
     });
 
 
-    // Convert back to array and sort tables
+    // Convert back to array and process tables
     return Object.values(groupedByTitle).map(item => {
+      // NEW: Merge tables with the same year
+      if (item.tables && item.tables.length > 0) {
+        const yearMap = {};
+        
+        item.tables.forEach((table) => {
+          const year = table.year || table.pdfYear || "";
+          
+          if (!year) {
+            // If no year, keep as is
+            if (!yearMap["__no_year__"]) {
+              yearMap["__no_year__"] = [];
+            }
+            yearMap["__no_year__"].push(table);
+          } else {
+            // Group by year
+            if (!yearMap[year]) {
+              yearMap[year] = [];
+            }
+            yearMap[year].push(table);
+          }
+        });
+
+        // Merge tables with same year
+        const mergedTables = [];
+        
+        Object.entries(yearMap).forEach(([year, tables]) => {
+          if (year === "__no_year__") {
+            // Add tables without year as-is
+            mergedTables.push(...tables);
+          } else if (tables.length === 1) {
+            // Single table for this year, add as-is
+            mergedTables.push(tables[0]);
+          } else {
+            // Multiple tables for same year - merge them
+            const mergedTable = {
+              year: tables[0].year || tables[0].pdfYear,
+              fields: [],
+            };
+
+            // Collect all fields from all tables with this year
+            tables.forEach((table) => {
+              if (table.fields && Array.isArray(table.fields)) {
+                mergedTable.fields.push(...table.fields);
+              }
+            });
+
+            // Remove duplicate fields based on _id
+            const uniqueFields = [];
+            const seenIds = new Set();
+            
+            mergedTable.fields.forEach((field) => {
+              if (field._id && !seenIds.has(field._id)) {
+                seenIds.add(field._id);
+                uniqueFields.push(field);
+              } else if (!field._id) {
+                // If no _id, always add (fallback)
+                uniqueFields.push(field);
+              }
+            });
+
+            mergedTable.fields = uniqueFields;
+            mergedTables.push(mergedTable);
+          }
+        });
+
+        item.tables = mergedTables;
+      }
+
       // Sort tables by year (descending - newest first)
       if (item.tables && item.tables.length > 0) {
         item.tables.sort((a, b) => {
@@ -208,11 +277,18 @@ function SebiDetails() {
           return yearB.localeCompare(yearA);
         });
 
-        // Sort fields within each table by date (descending - newest first)
+        // Sort fields within each table by quarter and date
         item.tables.forEach(table => {
           if (table.fields && table.fields.length > 0) {
             table.fields.sort((a, b) => {
-              // Get the date from either documentDate or pdfDate
+              // For pdfTables with quarters, sort by quarter first
+              if (a.quater && b.quater) {
+                const qa = QUARTER_ORDER[a.quater?.toLowerCase()] ?? 99;
+                const qb = QUARTER_ORDER[b.quater?.toLowerCase()] ?? 99;
+                if (qa !== qb) return qa - qb;
+              }
+              
+              // Then sort by date (descending - newest first)
               const dateA = a.documentDate || a.pdfDate;
               const dateB = b.documentDate || b.pdfDate;
 
@@ -639,7 +715,8 @@ function SebiDetails() {
                     };
 
                     const filePath = getPdfFilePath(item.title, field._id);
-                    const displayDate = field.pdfDate ? formatDate(field.pdfDate) : field.quater;
+                    // Show quarter if present, otherwise show date
+                    const displayDate = field.quater ? field.quater : (field.pdfDate ? formatDate(field.pdfDate) : "");
 
                     return (
                       <div
