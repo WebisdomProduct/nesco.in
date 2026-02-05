@@ -20,10 +20,11 @@ function LeadershipBanner() {
   const fetchBanners = async () => {
     try {
       const res = await axios.get(API_BASE);
-
+      console.log(res);
       const data = Array.isArray(res.data?.data)
         ? res.data.data
         : [];
+      console.log(data);
 
       setBanners(data);
     } catch (err) {
