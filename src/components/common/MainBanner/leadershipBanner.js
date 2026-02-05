@@ -44,15 +44,9 @@ function LeadershipBanner1({
   /* ================= IMAGE SELECTOR ================= */
 
   const getImage = (data) => {
-    if (isMobile && data?.mobileImage) {
-      return data.mobileImage;
-    }
-
-    if (typeof data?.image === "string") {
-      return data.image;
-    }
-
-    return data?.image?.src;
+    if (isMobile && data?.mobileImage) return data.mobileImage;
+    if (typeof data?.image === "string") return data.image;
+    return data?.image?.src || "";
   };
 
   /* ================= UI ================= */
@@ -61,90 +55,92 @@ function LeadershipBanner1({
     <div
       className={`w-full ${
         heightClassName || "h-[100vh]"
-      } banner-section relative`}
+      } relative overflow-hidden`}
     >
-      <div
-        className={`flex justify-center w-full overflow-hidden ${
-          heightClassName || "h-[100vh]"
-        } relative`}
-      >
-        {/* ================= SWIPER ================= */}
+      {/* ================= SWIPER ================= */}
 
-        <Swiper
-          ref={swiperRef}
-          modules={[Autoplay, Navigation]}
-          spaceBetween={0}
-          slidesPerView={1}
-          loop={true}
-          speed={1000}
-          autoplay={{
-            delay: activeIndex === 0 ? 5000 : 3000,
-            disableOnInteraction: false,
-          }}
-          navigation={{
-            prevEl: navigationPrevRef.current,
-            nextEl: navigationNextRef.current,
-          }}
-          onSlideChange={(swiper) =>
-            setActiveIndex(swiper.realIndex)
-          }
-          onSwiper={(swiper) => {
-            setTimeout(() => {
+      <Swiper
+        modules={[Autoplay, Navigation]}
+        slidesPerView={1}
+        loop={true}
+        speed={800}
+        simulateTouch={true}
+        touchStartPreventDefault={false}
+        autoplay={{
+          delay: 4000,
+          disableOnInteraction: false,
+        }}
+        onSlideChange={(swiper) =>
+          setActiveIndex(swiper.realIndex)
+        }
+        onSwiper={(swiper) => {
+          swiperRef.current = swiper;
+
+          setTimeout(() => {
+            if (
+              navigationPrevRef.current &&
+              navigationNextRef.current
+            ) {
               swiper.params.navigation.prevEl =
                 navigationPrevRef.current;
               swiper.params.navigation.nextEl =
                 navigationNextRef.current;
+
+              swiper.navigation.destroy();
               swiper.navigation.init();
               swiper.navigation.update();
-            });
-          }}
-          className="w-full h-[100vh]"
-        >
-          {/* ================= SLIDES ================= */}
+            }
+          });
+        }}
+        className="w-full h-full"
+      >
+        {/* ================= SLIDES ================= */}
 
-          {SliderData.length > 0 &&
-            SliderData.map((data, index) => (
-              <SwiperSlide
-                key={index}
-                className="relative w-full h-[100vh]"
-              >
-                <div className="w-full h-full relative flex justify-center items-center">
+        {SliderData.map((data, index) => (
+          <SwiperSlide
+            key={index}
+            className="w-full h-full"
+          >
+            <div className="relative w-full h-full">
 
-                  {/* CONTENT */}
-                  {data.data && data.data}
+              {/* IMAGE */}
+              <img
+                src={getImage(data)}
+                alt="banner"
+                className={`w-full h-full object-cover ${filter}`}
+              />
 
-                  {/* DARK OVERLAY */}
-                  {!data.isOpacity && (
-                    <div className="absolute inset-0 bg-black opacity-30 z-10" />
-                  )}
+              {/* OVERLAY */}
+              {!data?.isOpacity && (
+                <div className="absolute inset-0 bg-black/30 z-10 pointer-events-none" />
+              )}
 
-                  {/* IMAGE */}
-                  <img
-                    src={getImage(data)}
-                    alt="banner"
-                    className={`w-full h-full object-cover ${filter}`}
-                  />
+              {/* CONTENT */}
+              {data?.data && (
+                <div className="absolute inset-0 z-20 pointer-events-none">
+                  {data.data}
                 </div>
-              </SwiperSlide>
-            ))}
-        </Swiper>
+              )}
+            </div>
+          </SwiperSlide>
+        ))}
+      </Swiper>
 
-        {/* ================= NAVIGATION ================= */}
+      {/* ================= NAVIGATION ================= */}
 
-        <button
-          ref={navigationPrevRef}
-          className="absolute left-4 top-1/2 -translate-y-1/2 text-white p-3 z-20"
-        >
-          <IoIosArrowBack size={40} />
-        </button>
+      <button
+        ref={navigationPrevRef}
+        className="absolute left-4 top-1/2 -translate-y-1/2 z-30 text-white"
+      >
+        <IoIosArrowBack size={40} />
+      </button>
 
-        <button
-          ref={navigationNextRef}
-          className="absolute right-4 top-1/2 -translate-y-1/2 text-white p-3 z-20"
-        >
-          <IoIosArrowForward size={40} />
-        </button>
-      </div>
+      <button
+        ref={navigationNextRef}
+        className="absolute right-4 top-1/2 -translate-y-1/2 z-30 text-white"
+      >
+        <IoIosArrowForward size={40} />
+      </button>
     </div>
   );
 }
