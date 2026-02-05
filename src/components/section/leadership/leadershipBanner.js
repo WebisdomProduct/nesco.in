@@ -58,13 +58,13 @@ function LeadershipBanner() {
               {item.paragraph1}
 
               {item.featherimage && (
-                <div className="absolute -top-[3rem] transform -translate-y-1/2 -left-9">
+                <span className="absolute -top-[3rem] transform -translate-y-1/2 -left-9">
                   <img
                     src={item.featherimage}
                     alt="feather"
                     className="md:w-[15rem] md:h-[15rem] w-[10rem] h-[10rem]"
                   />
-                </div>
+                </span>
               )}
             </p>
           )}
