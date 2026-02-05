@@ -69,7 +69,7 @@ function LeadershipBanner1({
               <img
                 src={getImage(data)}
                 alt="banner"
-                className={`w-full h-full object-cover ${filter}`}
+                className={`absolute inset-0 w-full h-full object-cover ${filter}`}
               />
 
               {!data?.isOpacity && <div className="absolute inset-0 bg-black/30 z-10" />}
