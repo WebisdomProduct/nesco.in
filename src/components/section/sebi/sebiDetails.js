@@ -10,7 +10,7 @@ function SebiDetails() {
   const [sebiData, setSebiData] = useState([]);
   const [openIndex, setOpenIndex] = useState(null);
 
-  // Sorting order for quaters (Q1 at top)
+  // Sorting order for quarters (Q1 at top)
   const quater_ORDER = { q1: 1, q2: 2, q3: 3, q4: 4 };
 
   /* ================= FETCH ================= */
@@ -34,8 +34,11 @@ function SebiDetails() {
     const titleMap = new Map();
 
     sebiData.forEach((item) => {
-      if (!titleMap.has(item.title)) {
-        titleMap.set(item.title, {
+      if (!item.title) return;
+
+      const key = item.title.trim().toLowerCase();
+      if (!titleMap.has(key)) {
+        titleMap.set(key, {
           ...item,
           documentLink: [...(item.documentLink || [])],
           documentPdf: [...(item.documentPdf || [])],
@@ -47,75 +50,104 @@ function SebiDetails() {
         return;
       }
 
-      const existing = titleMap.get(item.title);
-      existing.documentLink.push(...(item.documentLink || []));
-      existing.documentPdf.push(...(item.documentPdf || []));
+      const existing = titleMap.get(key);
 
-      // Merge Address and Position Tables
-      item.addressTables?.forEach((table) => {
-        if (!existing.addressTables.find((t) => t.tableAddressTitle === table.tableAddressTitle)) {
+      // Merge documentLink & documentPdf without duplicates
+      const addUnique = (arr, field) => {
+        (item[field] || []).forEach((el) => {
+          if (!arr.find((x) => JSON.stringify(x) === JSON.stringify(el))) arr.push(el);
+        });
+      };
+      addUnique(existing.documentLink, "documentLink");
+      addUnique(existing.documentPdf, "documentPdf");
+
+      // Merge addressTables
+      (item.addressTables || []).forEach((table) => {
+        if (!existing.addressTables.some((t) => t.tableAddressTitle?.trim().toLowerCase() === table.tableAddressTitle?.trim().toLowerCase())) {
           existing.addressTables.push(table);
         }
       });
-      item.positionTable?.forEach((table) => {
-        if (!existing.positionTable.find((t) => t.tablePositionTitle === table.tablePositionTitle)) {
+
+      // Merge positionTable
+      (item.positionTable || []).forEach((table) => {
+        if (!existing.positionTable.some((t) => t.tablePositionTitle?.trim().toLowerCase() === table.tablePositionTitle?.trim().toLowerCase())) {
           existing.positionTable.push(table);
         }
       });
 
-      // Merge documentAll (Year blocks)
-      item.documentAll?.forEach((doc) => {
-        const yearBlock = existing.documentAll.find((d) => d.year === doc.year);
-        if (yearBlock) {
+      // Merge documentAll using year as a key
+      (item.documentAll || []).forEach((doc) => {
+        const docYear = doc.year?.trim();
+        let yearBlock = existing.documentAll.find((d) => d.year?.trim() === docYear);
+        if (!yearBlock) {
+          yearBlock = { ...doc, documentfields: [...doc.documentfields] };
+          existing.documentAll.push(yearBlock);
+        } else {
           doc.documentfields.forEach((f) => {
-            if (!yearBlock.documentfields.find((ex) => ex.documentName === f.documentName)) {
+            // Check for duplicates using _id or combination of name and file
+            const isDuplicate = yearBlock.documentfields.some((ex) => 
+              ex._id === f._id || 
+              (ex.documentName === f.documentName && ex.documentFile === f.documentFile)
+            );
+            if (!isDuplicate) {
               yearBlock.documentfields.push(f);
             }
           });
-        } else {
-          existing.documentAll.push(doc);
         }
       });
 
-      // Merge pdfTables (Year blocks)
-      item.pdfTables?.forEach((table) => {
-        const yearBlock = existing.pdfTables.find((t) => t.pdfYear === table.pdfYear);
-        if (yearBlock) {
+      // Merge pdfTables using year as a key - FIXED VERSION
+      (item.pdfTables || []).forEach((table) => {
+        const tableYear = table.pdfYear?.trim();
+        let yearBlock = existing.pdfTables.find((t) => t.pdfYear?.trim() === tableYear);
+        if (!yearBlock) {
+          // Year doesn't exist, create new year block with deep copy of fields
+          yearBlock = { ...table, fields: JSON.parse(JSON.stringify(table.fields)) };
+          existing.pdfTables.push(yearBlock);
+        } else {
+          // Year exists, merge fields while avoiding duplicates
           table.fields.forEach((f) => {
-            if (!yearBlock.fields.find((ex) => ex.pdfName === f.pdfName)) {
-              yearBlock.fields.push(f);
+            // Check for duplicates using _id or combination of name and file
+            const isDuplicate = yearBlock.fields.some((ex) => 
+              ex._id === f._id || 
+              (ex.pdfName?.trim() === f.pdfName?.trim() && ex.pdfFile === f.pdfFile)
+            );
+            if (!isDuplicate) {
+              yearBlock.fields.push(JSON.parse(JSON.stringify(f)));
             }
           });
-        } else {
-          existing.pdfTables.push(table);
         }
       });
     });
 
+    // Sorting
     titleMap.forEach((item) => {
-      // 1. Sort Yearly Blocks Descending
+      // Sort years in descending order
       item.documentAll.sort((a, b) => b.year.localeCompare(a.year));
       item.pdfTables.sort((a, b) => b.pdfYear.localeCompare(a.pdfYear));
-
-      // 2. Sort documentAll fields by Date Descending
-      item.documentAll.forEach((block) => {
-        block.documentfields.sort((a, b) => new Date(b.documentDate) - new Date(a.documentDate));
-      });
-
-      // 3. Sort pdfTables fields: quaters first (Q1→Q4), then by date descending
-      item.pdfTables.forEach((block) => {
+      
+      // Sort documents within each year by date (most recent first)
+      item.documentAll.forEach((block) =>
+        block.documentfields.sort((a, b) => new Date(b.documentDate) - new Date(a.documentDate))
+      );
+      
+      // Sort PDFs within each year by quarter, then by date
+      item.pdfTables.forEach((block) =>
         block.fields.sort((a, b) => {
           const aKey = a.quater?.toLowerCase();
           const bKey = b.quater?.toLowerCase();
-
-          if (aKey && bKey) {
-            return (quater_ORDER[aKey] ?? 99) - (quater_ORDER[bKey] ?? 99);
-          }
-          if (aKey) return -1; // quater first
-          if (bKey) return 1;  // quater first
-          return new Date(b.pdfDate) - new Date(a.pdfDate); // fallback: date descending
-        });
-      });
+          
+          // If both have quarters, sort by quarter order
+          if (aKey && bKey) return (quater_ORDER[aKey] ?? 99) - (quater_ORDER[bKey] ?? 99);
+          
+          // If only one has quarter, prioritize it
+          if (aKey) return -1;
+          if (bKey) return 1;
+          
+          // If neither has quarter, sort by date (most recent first)
+          return new Date(b.pdfDate) - new Date(a.pdfDate);
+        })
+      );
     });
 
     return Array.from(titleMap.values());
@@ -233,14 +265,14 @@ function SebiDetails() {
             </div>
           ))}
 
-          {/* 3. Quaterly Reports (pdfTables) */}
+          {/* 3. Quarterly Reports (pdfTables) */}
           {item.pdfTables?.map((year) => (
             <div key={year.pdfYear}>
               <h4 className="font-bold py-2 px-6 bg-[#D6D6D6] uppercase mb-3 text-md">{year.pdfYear}</h4>
               <div className="space-y-3">
                 {year.fields.map((pdf) => (
                   <div key={pdf._id} className="bg-white border border-gray-200 p-5 flex items-center gap-6 group shadow-sm">
-                    {/* Quater or fallback date */}
+                    {/* Quarter or fallback date */}
                     <span className="min-w-[100px] text-[15px] font-bold text-gray-800 uppercase">
                       {pdf.quater || (pdf.pdfDate ? formatDate(pdf.pdfDate) : "N/A")}
                     </span>
@@ -259,11 +291,11 @@ function SebiDetails() {
   };
 
   return (
-    <div className="flex justify-center min-h-screen py-10 bg-white">
+    <div className="flex justify-center min-h-screen py-10 px-2 bg-white">
       {loading ? (
         <div className="py-20 text-gray-400 font-semibold animate-pulse">Loading...</div>
       ) : (
-        <div className="lg:w-[80%] w-[95%]">
+        <div className="lg:w-[70%] w-[90%]">
           {mergedData.map((item, index) => (
             <div key={index} className="mb-4">
               <div
@@ -271,7 +303,7 @@ function SebiDetails() {
                   }`}
                 onClick={() => handleToggle(index)}
               >
-                <p className="text-gray-800 font-bold uppercase text-[17px] tracking-tight">{item.title}</p>
+                <p className="text-gray-950 font-extrabold  uppercase text-[17px] tracking-tight">{item.title}</p>
                 <span className={`transition-transform duration-300 text-3xl font-light text-blue-900 ${openIndex === index ? "rotate-45" : ""}`}>+</span>
               </div>
               <div className={`transition-all duration-500 ease-in-out overflow-hidden ${openIndex === index ? "max-h-[30000px] opacity-100" : "max-h-0 opacity-0"}`}>
