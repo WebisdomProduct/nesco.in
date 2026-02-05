@@ -18,28 +18,23 @@ function LeadershipBanner1({
   const [activeIndex, setActiveIndex] = useState(0);
   const [isMobile, setIsMobile] = useState(false);
 
-  const navigationPrevRef = useRef(null);
-  const navigationNextRef = useRef(null);
-  const swiperRef = useRef(null);
+  const prevRef = useRef(null);
+  const nextRef = useRef(null);
 
   /* ================= MOBILE DETECTION ================= */
 
   useEffect(() => {
-    const handleResize = () => {
-      setIsMobile(window.innerWidth <= 768);
-    };
-
+    const handleResize = () => setIsMobile(window.innerWidth <= 768);
     handleResize();
     window.addEventListener("resize", handleResize);
-    return () =>
-      window.removeEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
   }, []);
 
   /* ================= NOTIFY PARENT ================= */
 
   useEffect(() => {
     onSlideChange(activeIndex);
-  }, [activeIndex, onSlideChange]);
+  }, [activeIndex]);
 
   /* ================= IMAGE SELECTOR ================= */
 
@@ -49,75 +44,48 @@ function LeadershipBanner1({
     return data?.image?.src || "";
   };
 
-  /* ================= UI ================= */
-
   return (
-    <div
-      className={`w-full ${
-        heightClassName || "h-[100vh]"
-      } relative overflow-hidden`}
-    >
-      {/* ================= SWIPER ================= */}
-
+    <div className={`w-full ${heightClassName || "h-screen"} relative overflow-hidden`}>
       <Swiper
         modules={[Autoplay, Navigation]}
         slidesPerView={1}
-        loop={true}
-        speed={800}
-        simulateTouch={true}
-        touchStartPreventDefault={false}
+        loop
+        speed={900}
         autoplay={{
           delay: 4000,
           disableOnInteraction: false,
+          pauseOnMouseEnter: false,
         }}
-        onSlideChange={(swiper) =>
-          setActiveIndex(swiper.realIndex)
-        }
-        onSwiper={(swiper) => {
-          swiperRef.current = swiper;
-
-          setTimeout(() => {
-            if (
-              navigationPrevRef.current &&
-              navigationNextRef.current
-            ) {
-              swiper.params.navigation.prevEl =
-                navigationPrevRef.current;
-              swiper.params.navigation.nextEl =
-                navigationNextRef.current;
-
-              swiper.navigation.destroy();
-              swiper.navigation.init();
-              swiper.navigation.update();
-            }
-          });
+        navigation={{
+          prevEl: prevRef.current,
+          nextEl: nextRef.current,
         }}
+        onBeforeInit={(swiper) => {
+          swiper.params.navigation.prevEl = prevRef.current;
+          swiper.params.navigation.nextEl = nextRef.current;
+        }}
+        onSlideChange={(swiper) => setActiveIndex(swiper.realIndex)}
         className="w-full h-full"
       >
-        {/* ================= SLIDES ================= */}
-
         {SliderData.map((data, index) => (
-          <SwiperSlide
-            key={index}
-            className="w-full h-full"
-          >
+          <SwiperSlide key={index}>
             <div className="relative w-full h-full">
 
               {/* IMAGE */}
               <img
                 src={getImage(data)}
                 alt="banner"
-                className={`w-full h-full object-cover ${filter}`}
+                className={`absolute inset-0 w-full h-full object-cover ${filter}`}
               />
 
               {/* OVERLAY */}
               {!data?.isOpacity && (
-                <div className="absolute inset-0 bg-black/30 z-10 pointer-events-none" />
+                <div className="absolute inset-0 bg-black/30 z-10" />
               )}
 
               {/* CONTENT */}
               {data?.data && (
-                <div className="absolute inset-0 z-20 pointer-events-none">
+                <div className="relative z-20 w-full h-full flex items-center justify-center">
                   {data.data}
                 </div>
               )}
@@ -126,17 +94,16 @@ function LeadershipBanner1({
         ))}
       </Swiper>
 
-      {/* ================= NAVIGATION ================= */}
-
+      {/* NAVIGATION */}
       <button
-        ref={navigationPrevRef}
+        ref={prevRef}
         className="absolute left-4 top-1/2 -translate-y-1/2 z-30 text-white"
       >
         <IoIosArrowBack size={40} />
       </button>
 
       <button
-        ref={navigationNextRef}
+        ref={nextRef}
         className="absolute right-4 top-1/2 -translate-y-1/2 z-30 text-white"
       >
         <IoIosArrowForward size={40} />

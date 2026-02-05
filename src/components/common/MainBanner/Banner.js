@@ -163,7 +163,7 @@ function Banner({
                               </div>
 
                               {/* Description */}
-                              <div className="absolute z-20 md:top-[47%] top-[45%] md:left-[27%] left-[22%] md:w-[47%] w-[60%] text-center md:text-2xl text-lg">
+                              <div className="absolute leading-6 z-20 md:top-[47%] top-[45%] md:left-[27%] left-[22%] md:w-[47%] w-[60%] text-center md:text-2xl text-lg">
                                 {data?.description}
                               </div>
 
@@ -171,7 +171,7 @@ function Banner({
                               <img
                                 src={data?.hexaImage}
                                 alt="hexa"
-                                className="object-cover md:scale-75 scale-[1.2]"
+                                className="object-cover md:scale-75 scale-[1.3]"
                               />
                             </div>
                           </div>
