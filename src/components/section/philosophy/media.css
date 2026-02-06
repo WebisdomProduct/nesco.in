@@ -3923,20 +3923,18 @@
   .vid-banner .lt-blue-band-overlay {
     margin: 10% 0 0 0;
   }
-  /*.vid-banner .vid-banner-text *{display:none !important}*/
+
   .blue-sq-box {
     transform: scale(0.36);
     height: 370px;
     margin: 0 auto 45px;
   }
   .blue-sq-box p {
-    font-size: 4.5em;
+    font-size: 5em;
     width: 100%;
     max-width: 100%;
   }
-  .blue-sq-box p * {
-    display: none !important;
-  }
+ 
   .ledus-box {
     height: 550px;
   }

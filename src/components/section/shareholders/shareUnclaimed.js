@@ -53,7 +53,8 @@ function ShareUnclaimed() {
             Unclaimed Dividends
           </p>
 
-          <p className="justify-center  text-3xl sm:text-2xl font-branding-medium">
+          <p className="justify-center  text-[22px] 
+md:text-[26px] md:leading-[26px] font-branding-medium">
             Pursuant to Sections 124(5) of the Companies Act, 2013, read with
             rules framed there under, the Company is required to transfer the
             amount of dividend remained unpaid/unclaimed for a period of seven

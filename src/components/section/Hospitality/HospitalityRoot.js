@@ -65,7 +65,8 @@ function HospitalityRoot() {
         </h2>
 
         <p
-          className="text-[32px] "
+          className="  text-[22px] leading-[42px]
+md:text-[26px] md:leading-[26px]"
           style={{ fontFamily: "BrandingMedium" }}
         >
           {data.paragraph}

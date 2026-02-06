@@ -226,19 +226,24 @@ function PhilosophyForUs() {
 
   return (
     <section className="mobile-full philosophy-blue-sect inview w-full ">
-      <div className="container">
+    
         <div className="blue-sq-box">
           <p
-            className="animatein slideinsmall--lr-500-ease-500 visible"
-            data-animation="slideinsmall--lr-500-ease-500"
-            data-animation-delay="2500"
+            className="relative z-10 text-center font-bold leading-tight
+             text-[32px] sm:text-[40px] md:text-[56px] lg:text-[72px]
+             text-white"
           >
-            For us, <span className="txt-lt-blue">'Believe'</span> is
+            For us,{" "}
+            <span className="text-[#00b7f1]">
+              'Believe'
+            </span>{" "}
+            is
             <br />
             more than a philosophy.
             <br />
             It is a way of life.
           </p>
+
           <div
             ref={blueSqRef}
             className="blue-sq-shape animatein visible lineform"
@@ -273,7 +278,11 @@ function PhilosophyForUs() {
             data-animation="fadein-300-ease-0 startanim"
             data-animation-delay="200"
           >
-            <div id="believe-anim" ref={believeAnimRef}>
+            <div id="believe-anim" ref={believeAnimRef}className="
+   relative
+  translate-y-8
+  md:translate-y-[-24px]
+  ">
               {images.map((img, index) => (
                 <div
                   key={index}
@@ -335,7 +344,6 @@ function PhilosophyForUs() {
 
 
         </div>
-      </div>
     </section>
   );
 }

@@ -51,7 +51,7 @@ function Mentor() {
     >
       <div className="z-20 relative lg:w-[100%] w-[90%] flex flex-col items-center justify-center mx-auto mt-12 lg:mb-0 mb-10 h-full goal-section1">
         <div className="flex lg:flex-row flex-col lg:items-start items-center h-full w-full">
-          
+
           {/* Mentor Image */}
           <div className="flex flex-col lg:w-[50%] w-full h-full lg:justify-end justify-center z-10 relative mb-6 lg:mb-0">
             <img
@@ -65,18 +65,19 @@ function Mentor() {
           <div className="relative lg:w-[50%] h-full flex flex-col justify-center xl:pt-32 lg:pl-10 lg:pr-16">
             <h2
               className="
-                font-extrabold text-[#0638A5] mb-4
-                text-[48px] leading-[44px] 
-                md:text-[48px] md:leading-[38px]
+                 text-[28px] leading-[32px] text-blue-800 font-bold
+md:text-[48px] md:leading-[44px]
+
               "
             >
               {mentor.name}
-            </h2>
- 
+            </h2> 
+
             <p
               className="
-                italic text-gray-700 mb-4
-                text-[26px] leading-[26px]
+                 text-[18px] leading-[22px]
+md:text-[26px] md:leading-[26px]
+
               "
             >
               {mentor.designation}
@@ -84,7 +85,7 @@ function Mentor() {
 
             <h3
               className="
-                font-semibold
+               font-semibold
                 text-[34px] leading-[46px]
                 md:text-[28px] md:leading-[40px]
               "
@@ -95,16 +96,16 @@ function Mentor() {
             <div className="space-y-3 mt-3">
               {mentor.noteText && Array.isArray(mentor.noteText)
                 ? mentor.noteText.map((paragraph, idx) => (
-                    <p
-                      key={idx}
-                      className="
-                        text-[36px] leading-[36px]
-                        md:text-[22px]
+                  <p
+                    key={idx}
+                    className="
+                          text-[20px] leading-[26px]
+md:text-[22px] md:leading-[32px]
                       "
-                    >
-                      {paragraph}
-                    </p>
-                  ))
+                  >
+                    {paragraph}
+                  </p>
+                ))
                 : (
                   <p className="text-[16px] leading-[26px]">
                     No message available.

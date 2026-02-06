@@ -34,7 +34,7 @@ const Year2019 = () => {
   return (
     <motion.div
       ref={Year2019Observer}
-      className="Year2019 min-h-screen flex flex-col justify-center p-6 md:mr-4"
+      className="Year2019 flex flex-col justify-center p-6 md:mr-4  mt-40"
       initial={{ opacity: 0, x: 50 }}
       animate={Year2019InView ? { opacity: 1, x: 0 } : {}}
       transition={{ duration: 0.8, ease: 'easeOut' }}

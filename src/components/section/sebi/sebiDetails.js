@@ -296,7 +296,8 @@ function SebiDetails() {
         <div className="py-20 text-gray-400 font-semibold animate-pulse">Loading...</div>
       ) : (
         <div className="lg:w-[70%] w-[90%]">
-          {mergedData.map((item, index) => (
+          <div className="w-[90%] m-auto">
+            {mergedData.map((item, index) => (
             <div key={index} className="mb-4">
               <div
                 className={`border-2 border-gray-200 px-6 py-5 flex justify-between items-center cursor-pointer transition-colors ${openIndex === index ? "bg-gray-50 border-blue-900/20" : "bg-white"
@@ -313,6 +314,7 @@ function SebiDetails() {
               </div>
             </div>
           ))}
+            </div>
         </div>
       )}
     </div>

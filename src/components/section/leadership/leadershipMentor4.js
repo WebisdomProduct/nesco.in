@@ -22,7 +22,7 @@ function LeadershipMentor4() {
               src={MentorImage}
               alt="Mentor"
               width={650}
-              height={400}
+              height={400} 
               className="w-full h-auto object-cover object-top"
             />
           </div>

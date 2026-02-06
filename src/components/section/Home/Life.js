@@ -23,7 +23,7 @@ function Life() {
             An inspired culture of progress
           </p>
           {/* <p className="text-white text-justify md:w-[70%] md:text-base text-lg"> */}
-          <p className=" text-white text-[22px] md:w-[80%] font-branding-medium leading-[2.2rem]">
+          <p className=" text-white  text-[36px] leading-[36px]  md:text-[22px] md:leading-[32px]  max-md:text-[28px] max-md:leading-[38px]  max-sm:text-[20px] max-sm:leading-[26px]">
             At Nesco, we foster an inspired culture of{' '}
             <span className="font-bold">
               {' '}

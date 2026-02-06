@@ -139,7 +139,6 @@ ul {
 
 .container {
   margin: 0 auto;
-  max-width: 1290px;
   width: 100%;
   padding: 0 25px;
 }
@@ -3937,7 +3936,7 @@ article.csr-section-5
   position: absolute;
   width: 36%;
   left: 26%;
-  top: 0;
+  top: 50%;
   height: 550px;
 }
 

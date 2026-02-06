@@ -22,7 +22,7 @@ function LeadershipMentor2() {
       } finally {
         setLoading(false);
       }
-    };
+    }; 
 
     fetchMentor();
   }, []);
@@ -63,9 +63,9 @@ function LeadershipMentor2() {
           <div className="relative lg:w-[50%] h-full flex flex-col justify-center xl:pt-32 lg:pl-10 lg:pr-16">
             <h2
               className="
-                font-extrabold text-blue-500 mb-4
-                text-[48px] leading-[44px]
-                md:text-[48px] md:leading-[38px]
+              text-[28px] leading-[32px] text-cyan-400 font-bold
+md:text-[48px] md:leading-[44px]
+
               "
             >
               {mentor.name}
@@ -73,8 +73,9 @@ function LeadershipMentor2() {
 
             <p
               className="
-                italic text-white  mb-4
-                text-[26px] leading-[26px]
+               text-[18px] leading-[22px] text-gray-400
+md:text-[26px] md:leading-[26px]
+
               "
             >
               {mentor.designation}
@@ -82,10 +83,9 @@ function LeadershipMentor2() {
 
              
               <h3
-                className=" text-white
-                  font-semibold 
-                  text-[34px] leading-[46px]
-                  md:text-[28px] md:leading-[40px]
+                className="  text-gray-100 text-[20px] leading-[22px] font-bold
+md:text-[26px] md:leading-[26px]
+
                 "
               >
           {mentor.noteTitle && mentor.noteTitle !== 'null' ? mentor.noteTitle : ''}
@@ -98,8 +98,8 @@ function LeadershipMentor2() {
                 <p
                   key={idx}
                   className="
-                    text-[36px] text-white leading-[36px]
-                    md:text-[22px]
+                  text-[18px] leading-[26px] text-gray-100
+md:text-[22px] md:leading-[32px]
                   "
                 >
                   {paragraph}

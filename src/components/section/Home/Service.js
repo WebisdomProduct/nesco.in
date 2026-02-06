@@ -21,7 +21,7 @@ function Service() {
             }}
           ></div> */}
         </div>
-        <div className="xl:w-[65%] md:w-[70%] z-[1] flex flex-col gap-5 mt-20 py-10 xl:px-20 md:px-10 px-5 lg:h-full">
+        <div className="xl:w-[65%] md:w-[35%] z-[1] flex flex-col gap-5 mt-20 py-10 xl:px-20 md:px-10 px-5 lg:h-full">
           {/* <p className="text-primary md:text-4xl text-3xl font-bold mt-10"> */}
 
           <p
@@ -32,7 +32,7 @@ function Service() {
           </p>
 
           {/* <p className="text-lg lg:text-xl text-justify"> */}
-          <p className=" md:w-[80%] text-[22px] font-branding-medium leading-[2rem] ">
+          <p className=" w-[75%] md:w-[50%] text-[22px] leading-[2rem] font-branding-medium ">
             For us, social responsibility is all about creating positive impact
             in the lives of the hopeful by working tirelessly to improve access
             to education, infrastructure & medical facilities in rural areas.

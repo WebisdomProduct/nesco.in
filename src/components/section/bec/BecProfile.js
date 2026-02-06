@@ -75,13 +75,12 @@ function BecProfile() {
           </div>
 
           {/* ================= MENTOR INFO ================= */}
-          <div className="relative lg:w-[50%] bg-white py-10 h-full flex flex-col justify-center xl:pt-32 lg:pl-10 lg:pr-16">
+          <div className="relative lg:w-[50%] bg-white px-5 py-10 h-full flex flex-col justify-center xl:pt-32 lg:pl-10 lg:pr-16">
             {/* NAME */}
             <h2
               className="
-                font-extrabold text-[#0638A5] mb-4
-                text-[48px] leading-[44px]
-                md:text-[48px] md:leading-[38px]
+               text-[28px] leading-[32px] text-blue-800 font-bold
+md:text-[48px] md:leading-[44px]
               "
             >
               {mentor.name}
@@ -90,8 +89,8 @@ function BecProfile() {
             {/* DESIGNATION */}
             <p
               className="
-                italic text-gray-700 mb-4
-                text-[26px] leading-[26px]
+              italic text-gray-700  text-[18px] leading-[22px]
+md:text-[26px] md:leading-[26px]
               "
             >
               {mentor.designation}
@@ -101,9 +100,8 @@ function BecProfile() {
             {mentor.noteTitle && (
               <h3
                 className="
-                  font-semibold
-                  text-[34px] leading-[46px]
-                  md:text-[28px] md:leading-[40px]
+                    text-[18px] leading-[22px]
+md:text-[26px] md:leading-[26px]
                 "
               >
                 {mentor.noteTitle}
@@ -117,8 +115,8 @@ function BecProfile() {
                   <p
                     key={idx}
                     className="
-                      text-[36px] leading-[36px]
-                      md:text-[22px]
+                     text-[20px] leading-[26px]
+md:text-[22px] md:leading-[32px]
                     "
                   >
                     {paragraph}

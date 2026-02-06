@@ -22,13 +22,15 @@ function LeadershipMentor3() {
               src={MentorImage}
               alt="Mentor"
               width={650}
-              height={400}
+              height={400} 
               className="w-full h-auto object-cover object-top"
             />
           </div>
           <div className="relative lg:w-[50%] h-full flex flex-col lg:justify-center xl:pt-32 lg:pl-10 lg:pr-16">
             <div className=" mt-4">
-              <h2 className="text-[2rem] leading-10 font-branding-semibold text-[#C3F0FB]">
+              <h2 className=" font-extrabold text-[#0638A5] mb-4
+                text-[48px] leading-[44px] 
+                md:text-[48px] md:leading-[38px]">
                 Dipesh R. Singhania
               </h2>
               <p className=" font-branding-medium text-[1rem] mb-4 text-white">

@@ -4,7 +4,7 @@ import Image from 'next/image';
 import { apiBaseUrl } from '@/apis';
 function Mentor() {
   const MENTOR_ID = '6965f970a5a2758ecc55eef8';
-  const [mentor, setMentor] = useState(null);
+  const [mentor, setMentor] = useState(null); 
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -53,9 +53,9 @@ function Mentor() {
           <div className="relative lg:w-[50%] h-full flex flex-col justify-center xl:pt-32 lg:pl-10 lg:pr-16">
             <h2
               className="
-                font-extrabold text-[#0638A5] mb-4
-                text-[48px] leading-[44px] 
-                md:text-[48px] md:leading-[38px]
+               text-[28px] leading-[32px] text-blue-800 font-bold
+md:text-[48px] md:leading-[44px]
+
               "
             >
               {mentor.name}
@@ -63,8 +63,9 @@ function Mentor() {
  
             <p
               className="
-                italic text-gray-700 mb-4
-                text-[26px] leading-[26px]
+                text-[18px] leading-[22px]
+md:text-[26px] md:leading-[26px]
+
               "
             >
               {mentor.designation}
@@ -86,8 +87,9 @@ function Mentor() {
                     <p
                       key={idx}
                       className="
-                        text-[36px] leading-[36px]
-                        md:text-[22px]
+                       text-[20px] leading-[26px]
+md:text-[22px] md:leading-[32px]
+
                       "
                     >
                       {paragraph}

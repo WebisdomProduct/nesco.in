@@ -38,7 +38,7 @@ function RealityProfile() {
       }}
     >
       <div className="z-20 relative bg-blue-50  lg:w-[100%] w-[90%] flex flex-col items-center justify-center mx-auto mt-12 lg:mb-0 mb-10 h-full goal-section1">
-        <div className="flex lg:flex-row flex-col lg:items-start items-center h-full w-full">
+        <div className="flex lg:flex-row flex-col lg:items-start items-center h-full w-full px-5 py-10">
 
           {/* Mentor Image */}
           <div className="flex flex-col lg:w-[40%] w-full h-[15%] lg:justify-end justify-center z-10 relative mb-6 lg:mb-0">
@@ -53,9 +53,8 @@ function RealityProfile() {
           <div className="relative lg:w-[50%] h-full flex flex-col justify-center xl:pt-32 lg:pl-10 lg:pr-16">
             <h2
               className="
-                font-extrabold text-[#0638A5] mb-4
-                text-[48px] leading-[44px]
-                md:text-[48px] md:leading-[38px]
+                 text-[28px] leading-[32px] text-blue-800 font-bold
+md:text-[48px] md:leading-[44px]
               "
             >
               {mentor.name}
@@ -63,8 +62,9 @@ function RealityProfile() {
 
             <p
               className="
-                italic text-gray-700 mb-4
-                text-[26px] leading-[26px]
+                italic text-gray-700  text-[18px] leading-[22px]
+md:text-[26px] md:leading-[26px]
+
               "
             >
               {mentor.designation}
@@ -73,9 +73,9 @@ function RealityProfile() {
             {mentor.noteTitle && (
               <h3
                 className="
-                  font-semibold
-                  text-[34px] leading-[46px]
-                  md:text-[28px] md:leading-[40px]
+                    font-semibold
+                text-[24px] 
+                md:text-[28px] 
                 "
               >
                 {mentor.noteTitle}
@@ -88,8 +88,8 @@ function RealityProfile() {
                   <p
                     key={idx}
                     className="
-                      text-[36px] leading-[36px]
-                      md:text-[22px]
+                     text-[20px] leading-[26px]
+md:text-[22px] md:leading-[32px]
                     "
                   >
                     {paragraph}
