@@ -176,14 +176,63 @@ function SebiDetails() {
                 </div>
                 <div className="p-7 space-y-4 text-gray-900 text-[15px]">
                   {table.fields?.map((field, fIdx) => (
-                    <div key={fIdx}>
-                      <p className="font-bold text-[17px] mb-0.5">{field.data?.name}</p>
-                      <p className="mb-2">{field.data?.position}</p>
-                      <p className="leading-relaxed mb-4 whitespace-pre-line">{field.data?.full_address}</p>
-                      <p>Email: <a href={`mailto:${field.data?.email}`} className="text-blue-700 underline font-medium">{field.data?.email}</a></p>
-                      <p>Phone: {field.data?.phone}</p>
-                      <p>Fax: {field.data?.fax}</p>
-                      <p className="pt-2 uppercase font-semibold text-xs text-gray-500">CIN: {field.data?.cin}</p>
+                     <div key={fIdx}>
+                      {field.data?.name && (
+                        <p className="font-bold text-[17px] mb-0.5">
+                          {field.data.name}
+                        </p>
+                      )}
+
+                      {field.data?.position && (
+                        <p className="mb-2">
+                          {field.data.position}
+                        </p>
+                      )}
+
+                      {field.data?.full_address && (
+                        <p className="leading-relaxed mb-4 whitespace-pre-line">
+                          {field.data.full_address}
+                        </p>
+                      )}
+
+                      {field.data?.email && (
+                        <p>
+                          Email:{" "}
+                          <a
+                            href={`mailto:${field.data.email}`}
+                            className="text-blue-700 underline font-medium"
+                          >
+                            {field.data.email}
+                          </a>
+                        </p>
+                      )}
+
+                      {field.data?.phone && (
+                        <p>
+                          Phone:{" "}
+                          <a
+                            href={`tel:${field.data.phone}`}
+                            className="text-blue-700 underline font-medium"
+                          >
+                            {field.data.phone}
+                          </a>
+                        </p>
+                      )}
+
+                      {field.data?.fax && (
+                        <p>
+                          Fax: {field.data.fax}
+                        </p>
+                      )}
+
+
+
+                      {field.data?.cin && (
+                        <p>
+                          CIN: {field.data.cin}
+                        </p>
+                      )}
+
                     </div>
                   ))}
                 </div>
