@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Navigation } from "swiper/modules";
 
@@ -17,9 +17,6 @@ function LeadershipBanner1({
 }) {
   const [isMobile, setIsMobile] = useState(false);
 
-  const prevRef = useRef(null);
-  const nextRef = useRef(null);
-
   /* ================= MOBILE ================= */
   useEffect(() => {
     const handleResize = () => setIsMobile(window.innerWidth <= 768);
@@ -34,7 +31,6 @@ function LeadershipBanner1({
     return data?.image || "";
   };
 
-  /* ================= UI ================= */
   return (
     <div className={`w-full ${heightClassName || "h-[100vh]"} relative overflow-hidden`}>
       <Swiper
@@ -42,18 +38,13 @@ function LeadershipBanner1({
         slidesPerView={1}
         loop
         speed={700}
-        autoplay={{ delay: 3000, disableOnInteraction: false }}
-        // 1. Initialize navigation with references
-        navigation={{
-          prevEl: prevRef.current,
-          nextEl: nextRef.current,
+        autoplay={{
+          delay: 3000,
+          disableOnInteraction: false,
         }}
-        // 2. IMPORTANT: Re-initialize navigation once swiper is mounted
-        onInit={(swiper) => {
-          swiper.params.navigation.prevEl = prevRef.current;
-          swiper.params.navigation.nextEl = nextRef.current;
-          swiper.navigation.init();
-          swiper.navigation.update();
+        navigation={{
+          prevEl: ".leader-prev",
+          nextEl: ".leader-next",
         }}
         onSlideChange={(swiper) => onSlideChange(swiper.realIndex)}
         className="w-full h-full"
@@ -67,26 +58,26 @@ function LeadershipBanner1({
                 className={`absolute inset-0 w-full h-full object-cover ${filter}`}
               />
 
-              {!data?.isOpacity && <div className="absolute inset-0 bg-black/30 z-10" />}
+              {!data?.isOpacity && (
+                <div className="absolute inset-0 bg-black/30 z-10" />
+              )}
 
-              {data?.data && <div className="absolute inset-0 z-20">{data.data}</div>}
+              {data?.data && (
+                <div className="absolute inset-0 z-20">
+                  {data.data}
+                </div>
+              )}
             </div>
           </SwiperSlide>
         ))}
       </Swiper>
 
       {/* NAV BUTTONS */}
-      <div
-        ref={prevRef}
-        className="absolute left-5 top-1/2 -translate-y-1/2 z-50 text-white cursor-pointer"
-      >
+      <div className="leader-prev absolute left-5 top-1/2 -translate-y-1/2 z-50 text-white cursor-pointer">
         <IoIosArrowBack size={40} />
       </div>
 
-      <div
-        ref={nextRef}
-        className="absolute right-5 top-1/2 -translate-y-1/2 z-50 text-white cursor-pointer"
-      >
+      <div className="leader-next absolute right-5 top-1/2 -translate-y-1/2 z-50 text-white cursor-pointer">
         <IoIosArrowForward size={40} />
       </div>
     </div>
