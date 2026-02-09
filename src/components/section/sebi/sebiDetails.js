@@ -85,8 +85,8 @@ function SebiDetails() {
         } else {
           doc.documentfields.forEach((f) => {
             // Check for duplicates using _id or combination of name and file
-            const isDuplicate = yearBlock.documentfields.some((ex) => 
-              ex._id === f._id || 
+            const isDuplicate = yearBlock.documentfields.some((ex) =>
+              ex._id === f._id ||
               (ex.documentName === f.documentName && ex.documentFile === f.documentFile)
             );
             if (!isDuplicate) {
@@ -108,8 +108,8 @@ function SebiDetails() {
           // Year exists, merge fields while avoiding duplicates
           table.fields.forEach((f) => {
             // Check for duplicates using _id or combination of name and file
-            const isDuplicate = yearBlock.fields.some((ex) => 
-              ex._id === f._id || 
+            const isDuplicate = yearBlock.fields.some((ex) =>
+              ex._id === f._id ||
               (ex.pdfName?.trim() === f.pdfName?.trim() && ex.pdfFile === f.pdfFile)
             );
             if (!isDuplicate) {
@@ -125,25 +125,25 @@ function SebiDetails() {
       // Sort years in descending order
       item.documentAll.sort((a, b) => b.year.localeCompare(a.year));
       item.pdfTables.sort((a, b) => b.pdfYear.localeCompare(a.pdfYear));
-      
+
       // Sort documents within each year by date (most recent first)
       item.documentAll.forEach((block) =>
         block.documentfields.sort((a, b) => new Date(b.documentDate) - new Date(a.documentDate))
       );
-      
+
       // Sort PDFs within each year by quarter, then by date
       item.pdfTables.forEach((block) =>
         block.fields.sort((a, b) => {
           const aKey = a.quater?.toLowerCase();
           const bKey = b.quater?.toLowerCase();
-          
+
           // If both have quarters, sort by quarter order
           if (aKey && bKey) return (quater_ORDER[aKey] ?? 99) - (quater_ORDER[bKey] ?? 99);
-          
+
           // If only one has quarter, prioritize it
           if (aKey) return -1;
           if (bKey) return 1;
-          
+
           // If neither has quarter, sort by date (most recent first)
           return new Date(b.pdfDate) - new Date(a.pdfDate);
         })
@@ -175,67 +175,97 @@ function SebiDetails() {
                   <h4 className="font-bold uppercase text-[15px]">{table.tableAddressTitle}</h4>
                 </div>
                 <div className="p-7 space-y-4 text-gray-900 text-[15px]">
-                  {table.fields?.map((field, fIdx) => (
-                     <div key={fIdx}>
-                      {field.data?.name && (
-                        <p className="font-bold text-[17px] mb-0.5">
-                          {field.data.name}
-                        </p>
-                      )}
+                  {table.fields?.map((field, fIdx) => {
+                    const getNumberLabel = (value = "", explicitType = "") => {
+                      const cleanValue = value.replace(/\s+/g, "");
 
-                      {field.data?.position && (
-                        <p className="mb-2">
-                          {field.data.position}
-                        </p>
-                      )}
+                      // Explicit fax from backend
+                      if (explicitType === "fax") {
+                        return "Fax";
+                      }
 
-                      {field.data?.full_address && (
-                        <p className="leading-relaxed mb-4 whitespace-pre-line">
-                          {field.data.full_address}
-                        </p>
-                      )}
+                      // Indian Mobile (starts 6–9)
+                      if (/^(\+91)?[6-9]\d{9}$/.test(cleanValue)) {
+                        return "Mobile";
+                      }
 
-                      {field.data?.email && (
+                      // Fax / Landline (STD code based)
+                      if (/^(\+91)?\d{2,4}\d{6,8}$/.test(cleanValue)) {
+                        return "Tel";
+                      }
+
+                      return "Contact";
+                    };
+
+                    const renderNumber = (value, type = "") => {
+                      if (!value) return null;
+
+                      const label = getNumberLabel(value, type);
+
+                      return (
                         <p>
-                          Email:{" "}
+                          {label}:{" "}
                           <a
-                            href={`mailto:${field.data.email}`}
+                            href={`tel:${value}`}
+                            title={label}
                             className="text-blue-700 underline font-medium"
                           >
-                            {field.data.email}
+                            {value}
                           </a>
                         </p>
-                      )}
+                      );
+                    };
 
-                      {field.data?.phone && (
-                        <p>
-                          Phone:{" "}
-                          <a
-                            href={`tel:${field.data.phone}`}
-                            className="text-blue-700 underline font-medium"
-                          >
-                            {field.data.phone}
-                          </a>
-                        </p>
-                      )}
+                    return (
+                      <div key={fIdx}>
+                        {field.data?.name && (
+                          <p className="font-bold text-[17px] mb-0.5">
+                            {field.data.name}
+                          </p>
+                        )}
 
-                      {field.data?.fax && (
-                        <p>
-                          Fax: {field.data.fax}
-                        </p>
-                      )}
+                        {field.data?.position && (
+                          <p className="mb-2">
+                            {field.data.position}
+                          </p>
+                        )}
 
+                        {field.data?.full_address && (
+                          <p className="leading-relaxed mb-4 whitespace-pre-line">
+                            {field.data.full_address}
+                          </p>
+                        )}
 
+                        {field.data?.email && (
+                          <p>
+                            Email:{" "}
+                            <a
+                              href={`mailto:${field.data.email}`}
+                              className="text-blue-700 underline font-medium"
+                            >
+                              {field.data.email}
+                            </a>
+                          </p>
+                        )}
 
-                      {field.data?.cin && (
-                        <p>
-                          CIN: {field.data.cin}
-                        </p>
-                      )}
+                        {/* Auto detected numbers */}
+                        {renderNumber(field.data?.phone)}
+                        {renderNumber(field.data?.tel)}
+                        {renderNumber(field.data?.mobile)}
 
-                    </div>
-                  ))}
+                        {/* Explicit fax */}
+                        {renderNumber(field.data?.fax, "fax")}
+
+                        {field.data?.cin && (
+                          <p>
+                            CIN: {field.data.cin}
+                          </p>
+                        )}
+                      </div>
+                    );
+                  })}
                 </div>
+
               </div>
             ))}
           </div>
@@ -347,23 +377,23 @@ function SebiDetails() {
         <div className="lg:w-[70%] w-[90%]">
           <div className="w-[90%] m-auto">
             {mergedData.map((item, index) => (
-            <div key={index} className="mb-4">
-              <div
-                className={`border-2 border-gray-200 px-6 py-5 flex justify-between items-center cursor-pointer transition-colors ${openIndex === index ? "bg-gray-50 border-blue-900/20" : "bg-white"
-                  }`}
-                onClick={() => handleToggle(index)}
-              >
-                <p className="text-gray-950 font-extrabold  uppercase text-[17px] tracking-tight">{item.title}</p>
-                <span className={`transition-transform duration-300 text-3xl font-light text-blue-900 ${openIndex === index ? "rotate-45" : ""}`}>+</span>
-              </div>
-              <div className={`transition-all duration-500 ease-in-out overflow-hidden ${openIndex === index ? "max-h-[30000px] opacity-100" : "max-h-0 opacity-0"}`}>
-                <div className="border-2 border-gray-200 border-t-0">
-                  {renderTableContent(item)}
+              <div key={index} className="mb-4">
+                <div
+                  className={`border-2 border-gray-200 px-6 py-5 flex justify-between items-center cursor-pointer transition-colors ${openIndex === index ? "bg-gray-50 border-blue-900/20" : "bg-white"
+                    }`}
+                  onClick={() => handleToggle(index)}
+                >
+                  <p className="text-gray-950 font-extrabold  uppercase text-[17px] tracking-tight">{item.title}</p>
+                  <span className={`transition-transform duration-300 text-3xl font-light text-blue-900 ${openIndex === index ? "rotate-45" : ""}`}>+</span>
+                </div>
+                <div className={`transition-all duration-500 ease-in-out overflow-hidden ${openIndex === index ? "max-h-[30000px] opacity-100" : "max-h-0 opacity-0"}`}>
+                  <div className="border-2 border-gray-200 border-t-0">
+                    {renderTableContent(item)}
+                  </div>
                 </div>
               </div>
-            </div>
-          ))}
-            </div>
+            ))}
+          </div>
         </div>
       )}
     </div>
