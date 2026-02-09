@@ -20,8 +20,6 @@ function LeadershipBanner1({
   const prevRef = useRef(null);
   const nextRef = useRef(null);
 
-  const swiperRef = useRef(null);
-
   /* ================= MOBILE ================= */
   useEffect(() => {
     const handleResize = () => setIsMobile(window.innerWidth <= 768);
@@ -45,20 +43,17 @@ function LeadershipBanner1({
         loop
         speed={700}
         autoplay={{ delay: 3000, disableOnInteraction: false }}
+        // 1. Initialize navigation with references
         navigation={{
           prevEl: prevRef.current,
           nextEl: nextRef.current,
         }}
-        onSwiper={(swiper) => {
-          swiperRef.current = swiper;
-
-          // Delay to make sure refs exist
-          setTimeout(() => {
-            swiper.params.navigation.prevEl = prevRef.current;
-            swiper.params.navigation.nextEl = nextRef.current;
-            swiper.navigation.init();
-            swiper.navigation.update();
-          });
+        // 2. IMPORTANT: Re-initialize navigation once swiper is mounted
+        onInit={(swiper) => {
+          swiper.params.navigation.prevEl = prevRef.current;
+          swiper.params.navigation.nextEl = nextRef.current;
+          swiper.navigation.init();
+          swiper.navigation.update();
         }}
         onSlideChange={(swiper) => onSlideChange(swiper.realIndex)}
         className="w-full h-full"

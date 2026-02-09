@@ -54,8 +54,7 @@ function FinancialResult() {
   const transformedData = useMemo(() => {
     if (!Array.isArray(getData)) return [];
 
-
-    const processed = getData.map((item, index) => {
+    const processed = getData.map((item) => {
       // 1. Normalize Option (financial vs financials)
       let cleanOption = item.option ? item.option.toLowerCase().trim() : "";
       if (cleanOption === "financial") cleanOption = "financials";
@@ -90,26 +89,35 @@ function FinancialResult() {
         }
       }
 
+      // --- FIX FOR DUPLICATE TEXT IN TITLE ---
+      // Define descriptions
+      const qDescMap = {
+        "1": "Apr - Jun",
+        "2": "Jul - Sep",
+        "3": "Oct - Dec",
+        "4": "Jan - Mar",
+      };
+
+      // Construct a clean title: "Qx Month - Month"
+      let cleanTitle = item.title || "";
+      if (quarter && qDescMap[quarter]) {
+        cleanTitle = `Q${quarter} ${qDescMap[quarter]}`;
+      }
+      // ----------------------------------------
+
       const transformedItem = {
         ...item,
         year,
         option: cleanOption,
         quarter,
+        title: cleanTitle, // Use the cleaned title
         rawDate: item.date ? new Date(item.date) : new Date(0),
       };
-
-      // Log specific items to debug "Missing" documents
-      if (item.title && (item.title.includes("Q4") || item.title.includes("Q3"))) {
-      
-      }
 
       return transformedItem;
     });
 
-    // Sort by Date Descending (Newest First)
-    const sorted = processed.sort((a, b) => b.rawDate - a.rawDate);
-
-    return sorted;
+    return processed;
   }, [getData]);
 
   // --- 4. EXTRACT YEARS ---
@@ -121,8 +129,6 @@ function FinancialResult() {
 
   // --- 5. FILTER LOGIC ---
   const filteredData = useMemo(() => {
-  
-
     let data = transformedData;
 
     // A. Filter by Tab
@@ -184,7 +190,6 @@ function FinancialResult() {
     <div>
       <div className="flex justify-center mt-16 lg:mt-28 mb-10 header_purple goal-section1">
         <div className="flex items-end flex-col border-2 w-[90%] lg:px-12 px-5">
-
           {/* --- TABS --- */}
           <div className="w-full flex md:flex-row flex-col justify-between items-center z-50 gap-6 lg:w-[85%] transform md:-translate-y-1/2">
             {[
@@ -211,11 +216,8 @@ function FinancialResult() {
           </div>
 
           <div className="my-12 flex md:flex-row flex-col justify-between w-[98%] md:w-full">
-
             {/* --- FILTERS SIDEBAR --- */}
             <div className="md:w-[30%] py-6 mt-2 mb-2 flex flex-col">
-
-
               <button
                 className="mt-4 mb-2 font-branding-medium text-gray-500 text-left hover:text-gray-700 transition-colors"
                 onClick={handleSelectAllYears}
@@ -313,8 +315,16 @@ function FinancialResult() {
                       {filteredData.length > 0 ? (
                         filteredData
                           .sort((a, b) => {
-                            const order = { Q1: 1, Q2: 2, Q3: 3, Q4: 4 };
-                            return order[a.title] - order[b.title];
+                            // 1. Sort by Year Descending (Newest First)
+                            if (b.year !== a.year) {
+                              return b.year.localeCompare(a.year);
+                            }
+                            // 2. Sort by Quarter Ascending (Q1 -> Q4)
+                            const getQNum = (item) => {
+                              const match = item.title?.match(/Q([1-4])/i);
+                              return match ? parseInt(match[1]) : 0;
+                            };
+                            return getQNum(a) - getQNum(b);
                           })
                           .slice(0, visibleRows)
                           .map((data, index) => (
@@ -328,26 +338,15 @@ function FinancialResult() {
                                 >
                                   {/* --- DISPLAY ROW --- */}
                                   <div className="flex flex-col md:flex-row md:items-center gap-1 md:gap-3 w-full">
-
                                     {/* Financial Year */}
                                     <span className="text-blue-600 font-semibold whitespace-nowrap text-base">
                                       {data.year}
                                     </span>
-
                                     <span className="hidden md:block text-gray-300">|</span>
-
-                                    {/* Title */}
+                                    {/* Cleaned Title */}
                                     <span className="flex-1">
                                       {data.title}
-                                      {" "}
-                                      {{
-                                        Q1: "Apr - Jun",
-                                        Q2: "Jul - Sep",
-                                        Q3: "Oct - Dec",
-                                        Q4: "Jan - Mar",
-                                      }[data.title] || ""}
                                     </span>
-
                                   </div>
                                 </a>
                               </td>
