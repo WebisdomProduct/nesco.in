@@ -62,7 +62,7 @@ const Year1939 = () => {
 
       {/* Text + Image */}
       <motion.div
-        className="flex flex-col w-[15%] absolute right-20"
+        className="flex flex-col w-[15%] absolute right-20 hidden md:flex"
         initial={{ opacity: 0, x: 50 }}
         animate={year1939InView ? { opacity: 1, x: 0 } : {}}
         transition={{ duration: 0.6, delay: 0.5, ease: "easeOut" }}

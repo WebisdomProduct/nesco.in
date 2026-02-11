@@ -3789,7 +3789,7 @@ article.csr-section-5
 
 .philosophy-blue-sect {
   background: #0f0e9f;
-  padding: 190px 0;
+  padding: 390px 0;
   overflow: hidden;
 }
 
@@ -3902,7 +3902,7 @@ article.csr-section-5
 
 .ledus-box {
   padding: 0;
-  height: 510px;
+  height: 610px;
   position: relative;
   z-index: 2;
 }
@@ -3924,12 +3924,13 @@ article.csr-section-5
   position: absolute;
   width: 35%;
   left: 62%;
-  top: 150px;
+  top: 450px;
   color: #fff;
   z-index: 2;
   font-size: 32px;
   max-width: 500px;
-  line-height: 1.4em;
+  line-height: 1.2em;
+
 }
 
 .ledus-box .b-shape-anim {

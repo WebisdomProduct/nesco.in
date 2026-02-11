@@ -225,7 +225,9 @@ const page = () => {
               transition={{ duration: 1, delay: 0.5 }}
             >
               <motion.div
-                className="imgDiv0 lg:w-fit justify-left z-50 w-full md:w-auto"
+                className="imgDiv0 lg:w-fit justify-left z-50 w-full md:w-auto mt-28 md:mt-16"
+
+
                 initial={{ opacity: 0, x: -50 }}
                 animate={bottomInView ? { opacity: 1, x: 0 } : {}}
                 transition={{ duration: 1, delay: 0.8 }}
@@ -240,7 +242,11 @@ const page = () => {
               </motion.div>
 
               <motion.div
-                className="flex flex-col relative w-full md:w-[50%] items-center justify-center md:left-[4%]"
+                className="flex flex-col relative w-full md:w-[50%] 
+           items-center justify-center 
+           md:left-[4%] 
+           min-h-[300px] md:min-h-[400px]"
+
                 initial={{ opacity: 0, x: 50 }}
                 animate={bottomInView ? { opacity: 1, x: 0 } : {}}
                 transition={{ duration: 1, delay: 1 }}

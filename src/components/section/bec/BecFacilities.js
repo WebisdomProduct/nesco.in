@@ -66,11 +66,11 @@ function BecFacilities() {
   const facilities =
     backendFacilities.length > 0
       ? backendFacilities.map((item, index) => ({
-          id: item._id || index,
-          name: item.name,
-          description: item.description,
-          image: item.image, // backend image URL
-        }))
+        id: item._id || index,
+        name: item.name,
+        description: item.description,
+        image: item.image, // backend image URL
+      }))
       : STATIC_FACILITIES;
 
   const currentFacility = facilities[currentIndex];
@@ -98,7 +98,9 @@ function BecFacilities() {
       </div>
 
       {/* IMAGE SECTION */}
-      <div className="relative w-full h-[calc(100%-140px)]">
+      <div className="relative w-full h-[70vh] md:h-[calc(100%-140px)]">
+
+        {/* Background Image */}
         <Image
           src={currentFacility.image}
           alt={currentFacility.name}
@@ -108,40 +110,57 @@ function BecFacilities() {
         />
 
         {/* CONTENT CARD */}
-        <div className="absolute left-[5%] bottom-20 bg-white p-8 w-[550px] shadow-md">
-          <div className="flex justify-between mb-4">
-            <h3 className="text-[1.8rem] font-bold">
+        <div className="
+      absolute 
+      left-4 right-4 bottom-6
+      md:left-[5%] md:bottom-20 md:right-auto
+      bg-white 
+      p-5 md:p-8 
+      w-auto md:w-[550px] 
+      shadow-lg
+      rounded-lg
+    "
+        >
+          {/* Header */}
+          <div className="flex justify-between items-center mb-3 md:mb-4">
+            <h3 className="text-lg md:text-[1.8rem] font-bold">
               {currentFacility.name}
             </h3>
-            <span className="text-sm border px-2 py-1">
+
+            <span className="text-xs md:text-sm border px-2 py-1">
               {currentIndex + 1}/{facilities.length}
             </span>
           </div>
 
-          <p className="text-[1.2rem] leading-[1.7] mb-20">
+          {/* Description */}
+          <p className="text-sm md:text-[1.2rem] leading-relaxed md:leading-[1.7] mb-8 md:mb-20">
             {currentFacility.description}
           </p>
 
           {/* CONTROLS */}
-          <div className="flex justify-between items-center absolute bottom-8 left-8 right-8">
-            <button onClick={goToPrevious}>‹</button>
+          <div className="flex justify-between items-center">
+            <button onClick={goToPrevious} className="text-xl md:text-2xl">
+              ‹
+            </button>
 
             <div className="flex gap-2">
               {facilities.map((_, index) => (
                 <span
                   key={index}
                   onClick={() => setCurrentIndex(index)}
-                  className={`w-2 h-2 rounded-full cursor-pointer ${
-                    index === currentIndex ? "bg-black" : "bg-gray-300"
-                  }`}
+                  className={`w-2 h-2 rounded-full cursor-pointer transition-all ${index === currentIndex ? "bg-black scale-125" : "bg-gray-300"
+                    }`}
                 />
               ))}
             </div>
 
-            <button onClick={goToNext}>›</button>
+            <button onClick={goToNext} className="text-xl md:text-2xl">
+              ›
+            </button>
           </div>
         </div>
       </div>
+
     </div>
   );
 }

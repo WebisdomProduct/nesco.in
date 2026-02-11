@@ -226,124 +226,124 @@ function PhilosophyForUs() {
 
   return (
     <section className="mobile-full philosophy-blue-sect inview w-full ">
-    
-        <div className="blue-sq-box">
-          <p
-            className="relative z-10 text-center font-bold leading-tight
+
+      <div className="blue-sq-box">
+        <p
+          className="relative z-10 text-center font-bold leading-tight
              text-[32px] sm:text-[40px] md:text-[56px] lg:text-[72px]
              text-white"
-          >
-            For us,{" "}
-            <span className="text-[#00b7f1]">
-              'Believe'
-            </span>{" "}
-            is
-            <br />
-            more than a philosophy.
-            <br />
-            It is a way of life.
-          </p>
+        >
+          For us,{" "}
+          <span className="text-[#00b7f1]">
+            'Believe'
+          </span>{" "}
+          is
+          <br />
+          more than a philosophy.
+          <br />
+          It is a way of life.
+        </p>
 
-          <div
-            ref={blueSqRef}
-            className="blue-sq-shape animatein visible lineform"
-            data-animation="lineform"
-            data-animation-delay="200"
-            style={{ opacity: 1 }}
-          >
-            <span className="l1"></span>
-            <span className="l2"></span>
-            <span className="l3"></span>
-            <span className="l4"></span>
-          </div>
+        <div
+          ref={blueSqRef}
+          className="blue-sq-shape animatein visible lineform"
+          data-animation="lineform"
+          data-animation-delay="200"
+          style={{ opacity: 1 }}
+        >
+          <span className="l1"></span>
+          <span className="l2"></span>
+          <span className="l3"></span>
+          <span className="l4"></span>
         </div>
+      </div>
 
-        <div className="ledus-box " style={{ height: "80vh" }}  >
-          <p
-            className="box-lt text-left text-[177px] animatein slidein--lr-800-ease-600 visible"
-            data-animation="slidein--lr-800-ease-600"
-            data-animation-delay="200"
-          >
-            It has led us to become
-            <br /> who we are and
-            <br /> who we can be.
-            <br /> As our founding
-            <br /> philosophy, it guides
-            <br /> us to enrich and make
-            <br /> a difference in people's
-            <br /> lives every day!
-          </p>
-          <div
-            className="b-shape-anim animatein fadein-300-ease-0 startanim visible"
-            data-animation="fadein-300-ease-0 startanim"
-            data-animation-delay="200"
-          >
-            <div id="believe-anim" ref={believeAnimRef}className="
+      <div className="ledus-box " style={{ height: "80vh" }}  >
+        <p
+          className="box-lt text-left text-[177px] animatein slidein--lr-800-ease-600 visible"
+          data-animation="slidein--lr-800-ease-600"
+          data-animation-delay="200"
+        >
+          It has led us to become
+          <br /> who we are and
+          <br /> who we can be.
+          <br /> As our founding
+          <br /> philosophy, it guides
+          <br /> us to enrich and make
+          <br /> a difference in people's
+          <br /> lives every day!
+        </p>
+        <div
+          className="b-shape-anim animatein fadein-300-ease-0 startanim visible"
+          data-animation="fadein-300-ease-0 startanim"
+          data-animation-delay="200"
+        >
+          <div id="believe-anim" ref={believeAnimRef} className="
    relative
   translate-y-8
   md:translate-y-[-24px]
   ">
-              {images.map((img, index) => (
-                <div
-                  key={index}
-                  className={`img-item ${index === activeIndex ? "active" : ""
-                    }`}
-                >
-                  <Image
-                    src={img}
-                    alt="Believe Letter"
-                  // width={50}
-                  // height={50}
-                  />
-                </div>
-              ))}
-            </div>
+            {images.map((img, index) => (
+              <div
+                key={index}
+                className={`img-item ${index === activeIndex ? "active" : ""
+                  }`}
+              >
+                <Image
+                  src={img}
+                  alt="Believe Letter"
+                // width={50}
+                // height={50}
+                />
+              </div>
+            ))}
           </div>
-          <p
-            className={`box-rt animatein slideinsmall--rl-800-ease-600 visible transition-all duration-500
+        </div>
+        <p
+          className={`box-rt animatein slideinsmall--rl-800-ease-600 visible transition-all duration-500
     ${expanded
-                ? "max-h-[520px] overflow-y-auto"
-                : "max-h-[520px] overflow-hidden md:max-h-none"
-              }
+              ? "max-h-[520px] overflow-y-auto"
+              : "max-h-[520px] overflow-hidden md:max-h-none"
+            }
   `}
-          >
-            {string}
+        >
+          {string}
 
-            {!expanded && (
-              <span className="block mt-4">
+          {!expanded && (
+            <span className="block mt-4">
+              <button
+                type="button"
+                onClick={() => setExpanded(true)}
+                className="text-[#42f6f6] bg-blue-800 px-10 py-3 font-semibold"
+              >
+                Read more
+              </button>
+            </span>
+          )}
+
+          {expanded && (
+            <>
+              <br />
+              <br />
+              {string2}
+
+              <span className="block mt-6">
                 <button
                   type="button"
-                  onClick={() => setExpanded(true)}
+                  onClick={() => setExpanded(false)}
                   className="text-[#42f6f6] bg-blue-800 px-10 py-3 font-semibold"
                 >
-                  Read more
+                  Read less
                 </button>
               </span>
-            )}
+            </>
+          )}
 
-            {expanded && (
-              <>
-                <br />
-                <br />
-                {string2}
-
-                <span className="block mt-6">
-                  <button
-                    type="button"
-                    onClick={() => setExpanded(false)}
-                    className="text-[#42f6f6] bg-blue-800 px-10 py-3 font-semibold"
-                  >
-                    Read less
-                  </button>
-                </span>
-              </>
-            )}
-
-          </p>
+        </p>
 
 
 
-        </div>
+      </div>
     </section>
   );
 }
