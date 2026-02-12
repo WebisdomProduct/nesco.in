@@ -5,6 +5,11 @@ import Icon3 from '@/assests/sustainability/userIcon.png';
 import Image from 'next/image';
 
 function SustainabilityGovernance() {
+
+  const handleRedirect = () => {
+    const baseUrl = window.location.origin; // automatically gets https://yourdomain.com
+    window.location.href = `${baseUrl}/sebi`;
+  };
   return (
     <div className="goal-section1 flex justify-center">
       <div className="text-center w-[90%]">
@@ -146,7 +151,7 @@ function SustainabilityGovernance() {
           </div> */}
         </div>
         <div>
-          <button className="bg-[#07af8b] text-white p-3 mb-20 text-xl static">
+          <button className="bg-[#07af8b] text-white p-3 mb-20 text-xl static"  onClick={handleRedirect}>
             {' '}
             Refer to Section Policies on BRSR
           </button>
