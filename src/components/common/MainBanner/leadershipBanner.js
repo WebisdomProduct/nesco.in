@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Navigation } from "swiper/modules";
 
@@ -16,6 +16,9 @@ function LeadershipBanner1({
   heightClassName = "",
 }) {
   const [isMobile, setIsMobile] = useState(false);
+  const prevRef = useRef(null);
+  const nextRef = useRef(null);
+  const [swiperInstance, setSwiperInstance] = useState(null);
 
   /* ================= MOBILE ================= */
   useEffect(() => {
@@ -24,6 +27,16 @@ function LeadershipBanner1({
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);
+
+  /* ================= NAVIGATION SETUP ================= */
+  useEffect(() => {
+    if (swiperInstance && prevRef.current && nextRef.current) {
+      swiperInstance.params.navigation.prevEl = prevRef.current;
+      swiperInstance.params.navigation.nextEl = nextRef.current;
+      swiperInstance.navigation.init();
+      swiperInstance.navigation.update();
+    }
+  }, [swiperInstance]);
 
   /* ================= IMAGE ================= */
   const getImage = (data) => {
@@ -36,16 +49,14 @@ function LeadershipBanner1({
       <Swiper
         modules={[Autoplay, Navigation]}
         slidesPerView={1}
-        loop
+        loop={SliderData.length > 1}
         speed={700}
         autoplay={{
           delay: 3000,
           disableOnInteraction: false,
+          pauseOnMouseEnter: true,
         }}
-        navigation={{
-          prevEl: ".leader-prev",
-          nextEl: ".leader-next",
-        }}
+        onSwiper={setSwiperInstance}
         onSlideChange={(swiper) => onSlideChange(swiper.realIndex)}
         className="w-full h-full"
       >
@@ -73,13 +84,21 @@ function LeadershipBanner1({
       </Swiper>
 
       {/* NAV BUTTONS */}
-      <div className="leader-prev absolute left-5 top-1/2 -translate-y-1/2 z-50 text-white cursor-pointer">
+      <button 
+        ref={prevRef}
+        className="absolute left-5 top-1/2 -translate-y-1/2 z-50 text-white cursor-pointer" 
+        aria-label="Previous slide"
+      >
         <IoIosArrowBack size={40} />
-      </div>
+      </button>
 
-      <div className="leader-next absolute right-5 top-1/2 -translate-y-1/2 z-50 text-white cursor-pointer">
+      <button 
+        ref={nextRef}
+        className="absolute right-5 top-1/2 -translate-y-1/2 z-50 text-white cursor-pointer" 
+        aria-label="Next slide"
+      >
         <IoIosArrowForward size={40} />
-      </div>
+      </button>
     </div>
   );
 }

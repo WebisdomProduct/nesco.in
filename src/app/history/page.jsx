@@ -79,7 +79,7 @@ const Timeline = ({ years, isFooterVisible }) => {
   return (
     <div
       className={`sideProgress flex-col items-center 
-        fixed top-[10%] right-2 md:left-auto md:right-auto md:w-auto 
+        fixed top-[17%] right-2 md:left-auto md:right-auto md:w-auto 
         lg:w-[13%]  rounded-lg z-50 hidden
         md:flex transition-opacity duration-500 ${isFooterVisible ? 'opacity-0 pointer-events-none' : 'opacity-100'
         }`}

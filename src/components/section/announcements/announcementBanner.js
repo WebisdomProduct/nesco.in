@@ -12,11 +12,20 @@ function AnnouncementBanner() {
 
   const SliderData = [
     {
-      image: bannerImage.src, // ✅ REQUIRED FIX
+      image: bannerImage.src,
       data: (
-        <div className="absolute md:right-20 px-10 z-20 flex justify-center items-center h-full top-0">
-          <div className="innerContainer text-center">
-            <p className="text-white text-[3.5rem] lg:text-[5rem] font-branding-medium">
+        <div className="absolute inset-0 z-20 flex items-center justify-center px-4 sm:px-6 md:px-10">
+          <div className="innerContainer text-center w-full max-w-5xl mx-auto">
+            <p className="
+            text-white 
+            font-branding-medium 
+            text-5xl 
+            sm:text-4xl 
+            md:text-5xl 
+            lg:text-6xl 
+            xl:text-7xl 
+            leading-tight
+          ">
               Announcements
             </p>
           </div>

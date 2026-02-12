@@ -109,9 +109,8 @@ function HospitalityProfile() {
         return (
           <div key={profile.id}>
             <div
-              className={`w-[90%] mx-auto lg:mt-20 ${
-                index !== 0 ? "mt-16 pt-16 border-t border-gray-200" : ""
-              }`}
+              className={`w-[90%] mx-auto lg:mt-20 ${index !== 0 ? "mt-16 pt-16 border-t border-gray-200" : ""
+                }`}
             >
               <div className="flex flex-col lg:flex-row items-center justify-between gap-[5vh] lg:gap-[3vw]">
 
@@ -144,7 +143,8 @@ function HospitalityProfile() {
                     {visibleDescription.map((paragraph, i) => (
                       <p
                         key={i}
-                        className="text-[22px] text-justify text-gray-900"
+                        className="  text-[22px] leading-[42px]
+md:text-[26px] md:leading-[26px] text-gray-900"
                         style={{ fontFamily: "BrandingMedium" }}
                       >
                         {paragraph}
