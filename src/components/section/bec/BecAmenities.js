@@ -102,7 +102,7 @@ function BecAmenities() {
         }));
 
   return (
-    <div className="w-full h-[110vh] flex flex-col overflow-hidden bg-white py-4 sm:py-8 lg:pt-20">
+    <div className="w-full h-full flex flex-col overflow-hidden bg-white py-4 sm:py-8 lg:pt-20">
       {/* ================= TITLE (STATIC) ================= */}
       <h2
         className="text-[48px] sm:text-[2.8rem] md:text-[3rem] font-bold px-[5%] pt-8 pb-6 sm:pb-8"
