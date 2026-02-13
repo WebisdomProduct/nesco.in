@@ -314,7 +314,7 @@ function PhilosophyForUs() {
               <button
                 type="button"
                 onClick={() => setExpanded(true)}
-                className="text-[#42f6f6] bg-blue-800 px-10 py-3 font-semibold"
+                className="text-[#42f6f6] bg-blue-800 px-3 py-1 font-semibold"
               >
                 Read more
               </button>
