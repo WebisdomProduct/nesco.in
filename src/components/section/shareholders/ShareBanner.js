@@ -18,7 +18,7 @@ function ShareBanner() {
         <div className="absolute h-full w-full">
           <div className="absolute md:left-0 md:bottom-20 bottom-1/2 py-6 px-20 z-20">
             <div className="innerContainer flex flex-col gap-3">
-              <p className="text-white text-4xl lg:text-6xl font-branding-medium">
+              <p className="text-[#45B7E2] text-4xl lg:text-6xl font-branding-medium">
                 Shareholders
               </p>
               <p className="text-4xl lg:text-6xl font-branding-medium text-[#45B7E2]">

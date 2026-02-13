@@ -36,7 +36,7 @@
     "smooth-scrollbar": "^8.8.4",
     "swiper": "^11.2.6",
     "typewriter-effect": "^2.21.0",
-    "yahoo-finance2": "^3.10.2"
+    "yahoo-finance2": "^3.13.0"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",

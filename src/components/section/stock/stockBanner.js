@@ -16,7 +16,7 @@ function StockBanner() {
       data: (
         <div className="absolute font-branding-semibold md:text-[5rem] text-[3.5rem] flex gap-2 z-20 md:left-20">
           <span className="text-white">Stock</span>
-          <span className="text-blue-600">Watch</span>
+          <span className="text-white">Watch</span>
         </div>
       ),
     },
