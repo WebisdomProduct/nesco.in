@@ -89,8 +89,8 @@ md:text-[48px] md:leading-[44px]
             {/* DESIGNATION */}
             <p
               className="
-              italic text-gray-700  text-[18px] leading-[22px]
-md:text-[26px] md:leading-[26px]
+             text-gray-700  text-[18px] leading-[22px]
+md:text-[26px] md:leading-[26px] mt-4 mb-4
               "
             >
               {mentor.designation}

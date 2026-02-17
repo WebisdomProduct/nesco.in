@@ -15,7 +15,6 @@ const API_URL = "https://nesco-backend-j567.onrender.com/api/v1/mentors";
 // Sourav + Rishabh IDs
 const MENTOR_IDS = [
   "697dfc2bd64c9ff144fd36f9",
-  "697dfd69d64c9ff144fd36fe",
 ];
 
 /* ================= COMPONENT ================= */
@@ -144,7 +143,7 @@ function HospitalityProfile() {
                       <p
                         key={i}
                         className="  text-[22px] leading-[42px]
-md:text-[26px] md:leading-[26px] text-gray-900"
+md:text-[26px] md:leading-[26px] text-gray-900 [word-spacing:6px]"
                         style={{ fontFamily: "BrandingMedium" }}
                       >
                         {paragraph}
