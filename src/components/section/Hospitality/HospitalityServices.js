@@ -11,7 +11,7 @@ import cateringImage from "@/assests/nesco-business-page/nesco-food-elements/23.
 
 // ================= API =================
 const HALLS_API =
-  "https://nesco-backend-j567.onrender.com/api/v1/business/halls/page/Hospitality";
+  "https://nesco-backend-1.onrender.com/api/v1/business/halls/page/Hospitality";
 
 function HospitalityServices() {
   // ================= STATE =================
@@ -57,10 +57,10 @@ function HospitalityServices() {
   const spaces =
     cmsSpaces.length > 0
       ? cmsSpaces.map((item) => ({
-          title: item.title,
-          image: item.image,
-          alt: item.alt || item.title,
-        }))
+        title: item.title,
+        image: item.image,
+        alt: item.alt || item.title,
+      }))
       : fallbackSpaces;
 
   return (

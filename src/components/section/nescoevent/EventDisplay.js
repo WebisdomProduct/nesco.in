@@ -6,7 +6,7 @@ import axios from "axios";
 
 const PAGE_NAME = "Nesco Events";
 const DISPLAY_API =
-  "https://nesco-backend-j567.onrender.com/api/v1/business/display";
+  "https://nesco-backend-1.onrender.com/api/v1/business/display";
 
 function EventDisplay() {
   const [displays, setDisplays] = useState([]);

@@ -11,7 +11,7 @@ import miceImg from "@/assests/nesco-business-page/bec-elements/35.jpg";
 
 const PAGE_NAME = "Bombay Exhibition Center";
 const BASE_URL =
-  "https://nesco-backend-j567.onrender.com/api/v1/business/halls";
+  "https://nesco-backend-1.onrender.com/api/v1/business/halls";
 
 function BecHalls() {
   /* ================= STATIC DEFAULT ================= */

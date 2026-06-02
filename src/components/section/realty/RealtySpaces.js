@@ -7,7 +7,7 @@ import axios from "axios";
 function RealtySpaces() {
   const PAGE_NAME = "Nesco Reality";
   const BASE_URL =
-    "https://nesco-backend-j567.onrender.com/api/v1/business/halls";
+    "https://nesco-backend-1.onrender.com/api/v1/business/halls";
 
   const [spaces, setSpaces] = useState([]);
   const [loading, setLoading] = useState(true);

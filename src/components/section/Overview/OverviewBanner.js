@@ -4,7 +4,7 @@ import axios from "axios";
 import Banner from "@/components/common/MainBanner/Banner";
 
 const API_BASE =
-  "https://nesco-backend-j567.onrender.com/api/v1/about/overview/overview-banner";
+  "https://nesco-backend-1.onrender.com/api/v1/about/overview/overview-banner";
 
 function OverviewBanner() {
   const [activeSlide, setActiveSlide] = useState(0);
@@ -45,7 +45,7 @@ function OverviewBanner() {
 
   const SliderData = bannerData.map((item) => ({
     image: item.image,
-    mobileImage:item.mobileImage,
+    mobileImage: item.mobileImage,
     data: (
       <div className="bg-[#4E4F9F] z-20 absolute left-0 bg-opacity-90">
         <div className="text-center px-10 py-8">

@@ -31,7 +31,7 @@ const STATIC_STATS = [
 
 const PAGE_NAME = "Bombay Exhibition Center";
 const BASE_URL =
-  "https://nesco-backend-j567.onrender.com/api/v1/business/stats";
+  "https://nesco-backend-1.onrender.com/api/v1/business/stats";
 
 /* ================= COMPONENT ================= */
 function BecStats() {
@@ -62,15 +62,15 @@ function BecStats() {
   const statsToRender =
     dynamicStats.length > 0
       ? dynamicStats.map((item) => ({
-          icon: item.icon, // remote URL
-          value: item.value,
-          label: item.label,
-          isRemote: true,
-        }))
+        icon: item.icon, // remote URL
+        value: item.value,
+        label: item.label,
+        isRemote: true,
+      }))
       : STATIC_STATS.map((item) => ({
-          ...item,
-          isRemote: false,
-        }));
+        ...item,
+        isRemote: false,
+      }));
 
   return (
     <div className="w-full h-auto flex items-center justify-center bg-blue-800 py-12 sm:py-16 md:py-20 lg:py-24">

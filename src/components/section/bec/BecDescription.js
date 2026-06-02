@@ -6,7 +6,7 @@ import axios from "axios";
 function BecDescription() {
   const PAGE_NAME = "Bombay Exhibition Center";
   const BASE_URL =
-    "https://nesco-backend-j567.onrender.com/api/v1/business/hero-intro";
+    "https://nesco-backend-1.onrender.com/api/v1/business/hero-intro";
 
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);

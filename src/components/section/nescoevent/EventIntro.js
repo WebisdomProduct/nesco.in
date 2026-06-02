@@ -7,7 +7,7 @@ import axios from "axios";
 
 const PAGE_NAME = "Nesco Events";
 const BASE_URL =
-  "https://nesco-backend-j567.onrender.com/api/v1/business/hero-intro";
+  "https://nesco-backend-1.onrender.com/api/v1/business/hero-intro";
 
 /* ================= FALLBACK CONTENT ================= */
 

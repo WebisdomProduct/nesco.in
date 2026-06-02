@@ -5,7 +5,7 @@ import axios from "axios";
 import bgImage from "../../../assests/life-at-nesco/careers-img-2.jpg";
 
 const API =
-  "https://nesco-backend-j567.onrender.com/api/v1/life_at_nesco/passion";
+  "https://nesco-backend-1.onrender.com/api/v1/life_at_nesco/passion";
 
 function LifePassion() {
   const [content, setContent] = useState(null);

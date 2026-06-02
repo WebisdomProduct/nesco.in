@@ -11,7 +11,7 @@ import fallbackWeldingImage from '@/assests/nesco-business-page/Indabrator-Eleme
 import indabratorLogo from '@/assests/nesco-business-page/Indabrator-Elements/50.png';
 
 const PAGE_NAME = 'Engineering';
-const BASE_URL = 'https://nesco-backend-j567.onrender.com/api/v1/business/banner';
+const BASE_URL = 'https://nesco-backend-1.onrender.com/api/v1/business/banner';
 
 function IndabratorHero() {
   const [banner, setBanner] = useState(null);

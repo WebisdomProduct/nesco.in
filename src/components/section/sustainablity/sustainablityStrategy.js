@@ -10,7 +10,7 @@ function SustainablityStrategy() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  const API = "https://nesco-backend-j567.onrender.com/api/v1/our_impact/sustainablility/stakeholder";
+  const API = "https://nesco-backend-1.onrender.com/api/v1/our_impact/sustainablility/stakeholder";
   const MAIN_TITLE = "Materiality shaping our business strategy";
 
   useEffect(() => {

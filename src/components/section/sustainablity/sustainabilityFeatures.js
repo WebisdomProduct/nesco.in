@@ -4,7 +4,7 @@ import axios from "axios";
 import Image from "next/image";
 
 const API =
-  "https://nesco-backend-j567.onrender.com/api/v1/our_impact/sustainablility/feature/feature";
+  "https://nesco-backend-1.onrender.com/api/v1/our_impact/sustainablility/feature/feature";
 
 function SustainabilityFeatures() {
   const [features, setFeatures] = useState([]);
