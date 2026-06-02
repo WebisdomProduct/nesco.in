@@ -7,7 +7,7 @@ import axios from "axios";
 function HospitalityDisplay() {
   const PAGE_NAME = "Engineering";
   const BASE_URL =
-    "https://nesco-backend-j567.onrender.com/api/v1/business/display";
+    "https://nesco-backend-1.onrender.com/api/v1/business/display";
 
   const [display, setDisplay] = useState(null);
   const [loading, setLoading] = useState(true);

@@ -10,7 +10,7 @@ import becLogo from "@/assests/nesco-business-page/bec-elements/31.png";
 
 const PAGE_NAME = "Bombay Exhibition Center";
 const BASE_URL =
-  "https://nesco-backend-j567.onrender.com/api/v1/business/banner";
+  "https://nesco-backend-1.onrender.com/api/v1/business/banner";
 
 function BecHero() {
   const [banner, setBanner] = useState(null);

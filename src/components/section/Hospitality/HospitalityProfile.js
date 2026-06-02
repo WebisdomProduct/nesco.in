@@ -10,7 +10,7 @@ import profileImage1 from "@/assests/nesco-business-page/nesco-reality-elements/
 
 /* ================= CONFIG ================= */
 
-const API_URL = "https://nesco-backend-j567.onrender.com/api/v1/mentors";
+const API_URL = "https://nesco-backend-1.onrender.com/api/v1/mentors";
 
 // Sourav + Rishabh IDs
 const MENTOR_IDS = [

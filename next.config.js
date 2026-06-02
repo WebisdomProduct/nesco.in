@@ -20,9 +20,23 @@ const nextConfig = {
   },
 
   images: {
-    domains: [
-      "nesco.in",
-      "nescodoucmentsandpdfs.s3.ap-south-1.amazonaws.com", // <-- added S3 domain
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "nesco.in",
+      },
+      {
+        protocol: "https",
+        hostname: "nescodoucmentsandpdfs.s3.ap-south-1.amazonaws.com",
+      },
+      {
+        protocol: "https",
+        hostname: "nescodocuments.s3.ap-south-1.amazonaws.com",
+      },
+      {
+        protocol: "https",
+        hostname: "nescodocuments.s3.amazonaws.com",
+      }
     ],
   },
 };

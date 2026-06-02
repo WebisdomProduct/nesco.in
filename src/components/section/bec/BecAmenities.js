@@ -60,7 +60,7 @@ const STATIC_AMENITIES = [
 
 const PAGE_NAME = "Bombay Exhibition Center";
 const BASE_URL =
-  "https://nesco-backend-j567.onrender.com/api/v1/business/amenities";
+  "https://nesco-backend-1.onrender.com/api/v1/business/amenities";
 
 /* ================= COMPONENT ================= */
 function BecAmenities() {
@@ -91,15 +91,15 @@ function BecAmenities() {
   const amenitiesToRender =
     dynamicAmenities.length > 0
       ? dynamicAmenities.map((item) => ({
-          icon: item.icon, // backend image URL
-          name: item.name,
-          desc: item.description,
-          isRemote: true,
-        }))
+        icon: item.icon, // backend image URL
+        name: item.name,
+        desc: item.description,
+        isRemote: true,
+      }))
       : STATIC_AMENITIES.map((item) => ({
-          ...item,
-          isRemote: false,
-        }));
+        ...item,
+        isRemote: false,
+      }));
 
   return (
     <div className="w-full h-full flex flex-col overflow-hidden bg-white py-4 sm:py-8 lg:pt-20">
@@ -116,9 +116,9 @@ function BecAmenities() {
         {loading
           ? null
           : amenitiesToRender.map((item, index) => (
-              <div
-                key={index}
-                className="
+            <div
+              key={index}
+              className="
                   flex flex-col items-center text-center
                   rounded-xl
                   p-4 sm:p-5 md:p-6
@@ -128,41 +128,41 @@ function BecAmenities() {
                   hover:shadow-lg
                   cursor-pointer
                 "
-              >
-                {/* ================= ICON ================= */}
-                <div className="w-[100px] h-[100px] sm:w-[120px] sm:h-[120px] md:w-[140px] md:h-[140px] lg:w-[160px] lg:h-[160px] mb-2 sm:mb-4">
-                  {item.isRemote ? (
-                    <img
-                      src={item.icon}
-                      alt={item.name}
-                      className="w-full h-full object-contain"
-                    />
-                  ) : (
-                    <Image
-                      src={item.icon}
-                      alt={item.name}
-                      width={160}
-                      height={160}
-                      className="object-contain w-full h-full"
-                    />
-                  )}
-                </div>
-
-                {/* ================= TEXT ================= */}
-                <p
-                  className="text-[22px] sm:text-[1.2rem] md:text-[1.3rem] text-blue-800"
-                  style={{ fontFamily: "BrandingMedium" }}
-                >
-                  <span
-                    className="font-bold"
-                    style={{ fontFamily: "BrandingSemibold" }}
-                  >
-                    {item.name}
-                  </span>{" "}
-                  {item.desc}
-                </p>
+            >
+              {/* ================= ICON ================= */}
+              <div className="w-[100px] h-[100px] sm:w-[120px] sm:h-[120px] md:w-[140px] md:h-[140px] lg:w-[160px] lg:h-[160px] mb-2 sm:mb-4">
+                {item.isRemote ? (
+                  <img
+                    src={item.icon}
+                    alt={item.name}
+                    className="w-full h-full object-contain"
+                  />
+                ) : (
+                  <Image
+                    src={item.icon}
+                    alt={item.name}
+                    width={160}
+                    height={160}
+                    className="object-contain w-full h-full"
+                  />
+                )}
               </div>
-            ))}
+
+              {/* ================= TEXT ================= */}
+              <p
+                className="text-[22px] sm:text-[1.2rem] md:text-[1.3rem] text-blue-800"
+                style={{ fontFamily: "BrandingMedium" }}
+              >
+                <span
+                  className="font-bold"
+                  style={{ fontFamily: "BrandingSemibold" }}
+                >
+                  {item.name}
+                </span>{" "}
+                {item.desc}
+              </p>
+            </div>
+          ))}
       </div>
     </div>
   );

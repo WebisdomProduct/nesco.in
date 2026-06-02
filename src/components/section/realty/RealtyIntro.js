@@ -4,7 +4,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 
 const HERO_API =
-  "https://nesco-backend-j567.onrender.com/api/v1/business/hero-intro/page/Nesco Reality";
+  "https://nesco-backend-1.onrender.com/api/v1/business/hero-intro/page/Nesco Reality";
 
 /* ================= FALLBACK CONTENT (DO NOT CHANGE) ================= */
 

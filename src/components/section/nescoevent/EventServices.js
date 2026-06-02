@@ -8,9 +8,9 @@ const PAGE_NAME = "Nesco Events";
 
 // APIs
 const BANNER_API =
-  "https://nesco-backend-j567.onrender.com/api/v1/business/banner";
+  "https://nesco-backend-1.onrender.com/api/v1/business/banner";
 const HERO_INTRO_API =
-  "https://nesco-backend-j567.onrender.com/api/v1/business/hero-intro";
+  "https://nesco-backend-1.onrender.com/api/v1/business/hero-intro";
 
 function EventServices() {
   const [bgImage, setBgImage] = useState(null);

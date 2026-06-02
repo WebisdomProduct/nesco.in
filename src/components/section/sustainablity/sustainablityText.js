@@ -7,7 +7,7 @@ function SustainablityText() {
 
   useEffect(() => {
     axios
-      .get("https://nesco-backend-j567.onrender.com/api/v1/our_impact/sustainablility/text/get")
+      .get("https://nesco-backend-1.onrender.com/api/v1/our_impact/sustainablility/text/get")
       .then((res) => setText(res.data?.text));
   }, []);
 

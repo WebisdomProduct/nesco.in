@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 
-const API = "https://nesco-backend-j567.onrender.com/api/v1/our_impact/csr/second_section";
+const API = "https://nesco-backend-1.onrender.com/api/v1/our_impact/csr/second_section";
 
 function SocialPower() {
   const [data, setData] = useState({

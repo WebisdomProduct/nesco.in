@@ -10,9 +10,9 @@ import foodsLogo from "@/assests/nesco-business-page/nesco-food-elements/19.png"
 
 // ================= API ENDPOINTS =================
 const BANNER_API =
-  "https://nesco-backend-j567.onrender.com/api/v1/business/banner/page/Hospitality";
+  "https://nesco-backend-1.onrender.com/api/v1/business/banner/page/Hospitality";
 const HERO_API =
-  "https://nesco-backend-j567.onrender.com/api/v1/business/hero-intro/page/Hospitality";
+  "https://nesco-backend-1.onrender.com/api/v1/business/hero-intro/page/Hospitality";
 
 function HospitalityHero() {
   // ================= STATE =================

@@ -11,7 +11,7 @@ import mealsIcon from "@/assests/nesco-business-page/nesco-food-elements/27.png"
 
 // ================= API =================
 const STATS_API =
-  "https://nesco-backend-j567.onrender.com/api/v1/business/stats/page/Hospitality";
+  "https://nesco-backend-1.onrender.com/api/v1/business/stats/page/Hospitality";
 
 function HospitalityStats() {
   // ================= FALLBACK DATA =================

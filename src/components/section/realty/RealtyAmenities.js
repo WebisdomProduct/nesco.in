@@ -17,7 +17,7 @@ import gymIcon from "@/assests/nesco-business-page/nesco-reality-elements/19.png
 function RealtyAmenities() {
   const PAGE_NAME = "Nesco Reality";
   const BASE_URL =
-    "https://nesco-backend-j567.onrender.com/api/v1/business/amenities";
+    "https://nesco-backend-1.onrender.com/api/v1/business/amenities";
 
   const [backendAmenities, setBackendAmenities] = useState([]);
 
@@ -84,10 +84,10 @@ function RealtyAmenities() {
   const amenities =
     backendAmenities.length > 0
       ? backendAmenities.map((item) => ({
-          icon: item.icon,
-          title: item.name,
-          description: item.description,
-        }))
+        icon: item.icon,
+        title: item.name,
+        description: item.description,
+      }))
       : fallbackAmenities;
 
   const topRowAmenities = amenities.slice(0, 4);

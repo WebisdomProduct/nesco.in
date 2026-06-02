@@ -5,7 +5,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 
 const API_BASE =
-  "https://nesco-backend-j567.onrender.com/api/v1/life_at_nesco/life_voices";
+  "https://nesco-backend-1.onrender.com/api/v1/life_at_nesco/life_voices";
 
 function LifeVoice() {
   const [sliderData, setSliderData] = useState([]);

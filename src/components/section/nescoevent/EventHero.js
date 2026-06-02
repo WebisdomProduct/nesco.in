@@ -11,7 +11,7 @@ import nescoEventsLogo from "@/assests/nesco-business-page/nesco-events/69.png";
 /* ================= CONFIG ================= */
 const PAGE_NAME = "Nesco Events";
 const BASE_URL =
-  "https://nesco-backend-j567.onrender.com/api/v1/business/banner";
+  "https://nesco-backend-1.onrender.com/api/v1/business/banner";
 
 /* ================= COMPONENT ================= */
 function EventHero() {

@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import axios from "axios";
+import { apiBaseUrl } from "@/apis";
 
-const API_BASE = "https://nesco-backend-j567.onrender.com/api/v1/homepage/goal";
+const API_BASE = `https://nesco-backend-1.onrender.com/api/v1/homepage/goal`;
 
 export default function Goal() {
   const [goals, setGoals] = useState([]);

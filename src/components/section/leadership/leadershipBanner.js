@@ -5,7 +5,7 @@ import LeadershipBanner1 from "@/components/common/MainBanner/leadershipBanner";
 import axios from "axios";
 
 const API_BASE =
-  "https://nesco-backend-j567.onrender.com/api/v1/about/leadership";
+  "https://nesco-backend-1.onrender.com/api/v1/about/leadership";
 
 function LeadershipBanner() {
   const [activeSlide, setActiveSlide] = useState(0);

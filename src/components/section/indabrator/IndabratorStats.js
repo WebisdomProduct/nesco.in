@@ -10,7 +10,7 @@ import projectsIcon from '@/assests/nesco-business-page/Indabrator-Elements/61.p
 import experienceIcon from '@/assests/nesco-business-page/Indabrator-Elements/62.png';
 
 const PAGE_NAME = 'Engineering';
-const BASE_URL = 'https://nesco-backend-j567.onrender.com/api/v1/business/stats';
+const BASE_URL = 'https://nesco-backend-1.onrender.com/api/v1/business/stats';
 
 const fallbackStats = [
   {

@@ -7,7 +7,7 @@ import axios from "axios";
 function EventStats() {
   const PAGE_NAME = "Nesco Events";
   const BASE_URL =
-    "https://nesco-backend-j567.onrender.com/api/v1/business/stats";
+    "https://nesco-backend-1.onrender.com/api/v1/business/stats";
 
   const [stats, setStats] = useState([]);
   const [loading, setLoading] = useState(true);
