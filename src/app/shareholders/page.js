@@ -1,8 +1,20 @@
-import MainShareholder from "@/components/section/shareholders/mainShareholders";
+"use client";
+
 import React from "react";
 
-function Page() {
-  return <MainShareholder />;
-}
+const Page = () => {
+  return (
+    <iframe
+      src="https://nesco.in/shareholder-services"
+      title="NESCO Announcements"
+      width="100%"
+      height="100%"
+      style={{
+        border: "none",
+        minHeight: "100vh",
+      }}
+    />
+  );
+};
 
 export default Page;

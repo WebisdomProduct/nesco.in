@@ -1,8 +1,20 @@
-import MainStock from "@/components/section/stock/mainStock";
+"use client";
+
 import React from "react";
 
-function Page() {
-  return <MainStock />;
-}
+const Page = () => {
+  return (
+    <iframe
+      src="https://nesco.in/stock-information"
+      title="NESCO Announcements"
+      width="100%"
+      height="100%"
+      style={{
+        border: "none",
+        minHeight: "100vh",
+      }}
+    />
+  );
+};
 
 export default Page;
