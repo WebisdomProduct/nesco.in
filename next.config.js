@@ -24,6 +24,7 @@ const nextConfig = {
       "nesco.in",
       "nescodoucmentsandpdfs.s3.ap-south-1.amazonaws.com", // <-- added S3 domain
       "nescodocuments.s3.ap-south-1.amazonaws.com",
+      "nescodocuments.s3.amazonaws.com",
     ],
   },
 };

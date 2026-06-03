@@ -175,33 +175,15 @@ const NewsCard = ({ data }) => {
             </a>
           ) : data.href ? (
             // Arrow button for links
-            data.isExternal ? (
-              <a href={data.href} target="_blank" rel="noopener noreferrer">
-                <button
-                  className="w-[40px] h-[40px] rounded-full flex justify-center items-center"
-                  style={{ backgroundColor: data.arrowColor || '#000000' }}
-                >
-                  <FaArrowRight
-                    className="text-white scale-[1.2]"
-                    style={{ color: data.backgroundColor || '#ffffff' }}
-                  />
-                </button>
-              </a>
-            ) : (
-              <Link href={data.href} legacyBehavior>
-                <a>
-                  <button
-                    className="w-[40px] h-[40px] rounded-full flex justify-center items-center"
-                    style={{ backgroundColor: data.arrowColor || '#000000' }}
-                  >
-                    <FaArrowRight
-                      className="text-white scale-[1.2]"
-                      style={{ color: data.backgroundColor || '#ffffff' }}
-                    />
-                  </button>
-                </a>
-              </Link>
-            )
+            <button
+              className="w-[40px] h-[40px] rounded-full flex justify-center items-center"
+              style={{ backgroundColor: data.arrowColor || '#000000' }}
+            >
+              <FaArrowRight
+                className="text-white scale-[1.2]"
+                style={{ color: data.backgroundColor || '#ffffff' }}
+              />
+            </button>
           ) : (
             // If no file or href, just disabled arrow
             <button

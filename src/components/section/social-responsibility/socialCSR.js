@@ -14,13 +14,13 @@ function SocialCSR() {
       title: 'Composition of CSR',
       buttonColor: '#5A9448',
       buttonColor1: '#518642',
-      link: 'https://nescodoucmentsandpdfs.s3.ap-south-1.amazonaws.com/composition.pdf',
+      link: 'https://nesco.in/Corporate 20Social 20Responsibility 20Committee.pdf',
     },
     {
       title: 'CSR Policy',
       buttonColor: '#43AD97',
       buttonColor1: '#3D9B89',
-      link: 'https://nescodoucmentsandpdfs.s3.ap-south-1.amazonaws.com/csr.pdf',
+      link: 'https://nesco.in/CSR%20policy.pdf',
     },
     {
       title: 'Proposed Action Plan',
