@@ -33,6 +33,7 @@ function HospitalityRoot() {
     const fetchData = async () => {
       try {
         const res = await fetch(API_URL);
+        console.log(res);
         const result = await res.json();
 
         if (result) {
