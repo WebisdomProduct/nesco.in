@@ -63,7 +63,7 @@ const Year1966 = () => {
           initial={{ opacity: 0, x: -50 }}
           animate={year1966InView ? { opacity: 1, x: 0 } : {}}
           transition={{ duration: 0.7, delay: 0.3 }}
-          className="leftDiv flex flex-col sm:w-full md:w-[50%] lg:w-[50%] relative "
+          className="leftDiv flex flex-col sm:w-full md:w-[50%] lg:w-[50%] relative sm:top-36 "
         >
           <div className="contentDiv flex flex-col relative gap-4 bg-cyan-400 p-12 sm:left-0 md:left-[15%] lg:left-[0%] z-20 transition-shadow duration-300 hover:shadow-lg hover:shadow-cyan-500/50">
             {/* Year Heading */}

@@ -131,7 +131,7 @@ function HospitalityProfile() {
 
                   {profile.belief && (
                     <p
-                      className="text-[clamp(1.2rem,2.5vw,1.8rem)] font-bold text-blue-800"
+                      className="text-[clamp(1.2rem,2.5vw,1.8rem)] font-bold text-blue-800 [word-spacing:3px]"
                       style={{ fontFamily: "BrandingSemibold" }}
                     >
                       {profile.belief}
@@ -142,8 +142,8 @@ function HospitalityProfile() {
                     {visibleDescription.map((paragraph, i) => (
                       <p
                         key={i}
-                        className="  text-[22px] leading-[42px]
-md:text-[26px] md:leading-[26px] text-gray-900 [word-spacing:6px]"
+                        className="  text-[22px] leading-[40px]
+md:text-[26px] md:leading-[26px] text-gray-900 [word-spacing:3px]"
                         style={{ fontFamily: "BrandingMedium" }}
                       >
                         {paragraph}
