@@ -6,7 +6,7 @@ import SocialBanner1 from "@/components/common/SocialBanner/SocialBanner";
 import { MentorModal } from "@/components/common/cards/Cards";
 
 const API =
-  "https://nesco-backend-j567.onrender.com/api/v1/our_impact/csr/social_schema";
+  "https://nesco-backend-1.onrender.com/api/v1/our_impact/csr/social_schema";
 
 const MAIN_TITLE = "Powering Education";
 
@@ -48,28 +48,28 @@ function SocialEducation() {
     setIsModalOpen(false);
   };
 
-  return (  
+  return (
 
     <div className="pt-[40px]">
       <section className="goal-section1" id="education">
 
-      <SocialBanner1 
-        SliderData={sliderData}
-        title={title}
-        onReadMore={openModal}
-      />
-
-      {isModalOpen && (
-        <MentorModal 
-          isOpen={isModalOpen}
-          onClose={closeModal}
-          data={selectedCard}
+        <SocialBanner1
+          SliderData={sliderData}
+          title={title}
+          onReadMore={openModal}
         />
-      )}
 
-    </section>
+        {isModalOpen && (
+          <MentorModal
+            isOpen={isModalOpen}
+            onClose={closeModal}
+            data={selectedCard}
+          />
+        )}
+
+      </section>
     </div>
-   
+
   );
 }
 

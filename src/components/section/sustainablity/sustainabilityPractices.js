@@ -16,7 +16,7 @@ function SustainabilityPractices() {
   const [selectedCard, setSelectedCard] = useState(null);
 
   // ✅ BACKEND API
-  const API = "https://nesco-backend-j567.onrender.com/api/v1/our_impact/sustainablility/pratices/get";
+  const API = "https://nesco-backend-1.onrender.com/api/v1/our_impact/sustainablility/pratices/get";
 
   /* ================= FETCH DATA ================= */
   const fetchPractices = async () => {

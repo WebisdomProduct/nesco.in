@@ -8,7 +8,7 @@ function Pagewrapper({ children, activeSlide }) {
     <div>
       <Navbar activeSlide={activeSlide} />
       {children}
-      {/* <Footer /> */}
+      <Footer />
     </div>
   );
 }

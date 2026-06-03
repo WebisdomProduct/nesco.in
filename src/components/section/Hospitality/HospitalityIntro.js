@@ -4,7 +4,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 
 const HERO_API =
-  "https://nesco-backend-j567.onrender.com/api/v1/business/hero-intro/page/Hospitality";
+  "https://nesco-backend-1.onrender.com/api/v1/business/hero-intro/page/Hospitality";
 
 // 🔒 Hard-coded fallbacks (DO NOT CHANGE TEXT)
 const FALLBACK_HEADING =

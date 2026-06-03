@@ -4,7 +4,7 @@ import React, { useEffect, useState } from "react";
 import Navbar from "@/components/layout/navbar/Navbar";
 import axios from "axios";
 
-const API = "https://nesco-backend-j567.onrender.com/api/v1/our_impact/sustainablility/banner";
+const API = "https://nesco-backend-1.onrender.com/api/v1/our_impact/sustainablility/banner";
 
 function SustainabilityBanner() {
   const [activeSlide, setActiveSlide] = useState(0);
@@ -31,7 +31,7 @@ function SustainabilityBanner() {
   // ✅ Create SliderData dynamically
   const SliderData = banners.map((item) => ({
     image: item.image,
-    mobileImage:item.mobileImage,
+    mobileImage: item.mobileImage,
     data: (
       <div className="goal-section1 absolute top-[40%] md:right-[10%] text-white z-20 text-5xl text-center font-branding-medium">
         <p className="mt-5 mb-2 text-secondary">

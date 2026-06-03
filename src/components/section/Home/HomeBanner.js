@@ -2,7 +2,7 @@ import Banner from "@/components/common/MainBanner/Banner";
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 
-const API_BASE = "https://nesco-backend-j567.onrender.com"; // your backend
+const API_BASE = "https://nesco-backend-1.onrender.com"; // your backend
 
 function HomeBanner({ activeSlide, setActiveSlide }) {
   const [sliderData, setSliderData] = useState([]);
@@ -19,7 +19,7 @@ function HomeBanner({ activeSlide, setActiveSlide }) {
         // Map backend data to your slider format
         const formattedData = res.data.banners.map(b => ({
           image: b.image,
-          mobileImage:b.imageForMobile,
+          mobileImage: b.imageForMobile,
           description: b.description,
           hexaImage: b.hexaImage || null,
           hexaLogo: b.hexaLogo || null

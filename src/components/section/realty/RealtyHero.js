@@ -11,7 +11,7 @@ import realtyLogo from "@/assests/nesco-business-page/nesco-reality-elements/2.p
 function RealtyHero() {
   const PAGE_NAME = "Nesco Reality";
   const BASE_URL =
-    "https://nesco-backend-j567.onrender.com/api/v1/business/banner";
+    "https://nesco-backend-1.onrender.com/api/v1/business/banner";
 
   const [banner, setBanner] = useState(null);
   const [isMobile, setIsMobile] = useState(false);

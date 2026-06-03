@@ -8,7 +8,7 @@ function SocialBanner() {
   const [activeSlide, setActiveSlide] = useState(0);
   const [sliderData, setSliderData] = useState([]);
 
-  const API = "https://nesco-backend-j567.onrender.com/api/v1/our_impact/csr/banner/all"; 
+  const API = "https://nesco-backend-1.onrender.com/api/v1/our_impact/csr/banner/all";
   // 🔁 change this to your real endpoint
 
   const handleSlideChange = () => {
@@ -22,7 +22,7 @@ function SocialBanner() {
 
       const formattedData = res.data.data.map((item) => ({
         image: item.image,
-        mobileImage:item.mobileImage,
+        mobileImage: item.mobileImage,
         data: (
           <div className="absolute md:top-[70%] top-[60%] right-0 px-20 py-6 bg-[#21409A] bg-opacity-50 text-white z-20">
             <p>{item.paragraph1}</p>

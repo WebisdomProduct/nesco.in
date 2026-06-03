@@ -9,7 +9,7 @@ import kitchenImage from "@/assests/nesco-business-page/nesco-food-elements/28.j
 /* ================= CONFIG ================= */
 
 const MENTOR_ID = "697e04b9d64c9ff144fd60ec";
-const API_URL = `https://nesco-backend-j567.onrender.com/api/v1/business/extra/${MENTOR_ID}`;
+const API_URL = `https://nesco-backend-1.onrender.com/api/v1/business/extra/${MENTOR_ID}`;
 
 /* ================= COMPONENT ================= */
 
@@ -55,7 +55,7 @@ function HospitalityRoot() {
 
   return (
     <div className="w-full max-w-[90%] h-auto lg:min-h-screen flex flex-col md:flex-row overflow-hidden bg-white mx-auto py-8 md:py-0 lg:mt-4 my-0 md:my-10 lg:my-0">
-      
+
       {/* LEFT COLUMN — TEXT */}
       <div className="md:w-1/2 w-full py-6 md:py-[2%] flex flex-col justify-center">
         <h2

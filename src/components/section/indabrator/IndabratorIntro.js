@@ -8,7 +8,7 @@ import axios from "axios";
 
 const PAGE_NAME = "Engineering";
 const BASE_URL =
-  "https://nesco-backend-j567.onrender.com/api/v1/business";
+  "https://nesco-backend-1.onrender.com/api/v1/business";
 
 /* ================= FALLBACK CONTENT ================= */
 

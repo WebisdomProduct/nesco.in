@@ -7,7 +7,7 @@ import Image from "next/image";
 import watermarkFallback from "@/assests/nesco-business-page/nesco-events/76.jpg";
 import profileFallback from "@/assests/nesco-business-page/nesco-events/75.png";
 
-const API_URL = "https://nesco-backend-j567.onrender.com/api/v1/mentors";
+const API_URL = "https://nesco-backend-1.onrender.com/api/v1/mentors";
 const MENTOR_ID = "697dfeaad64c9ff144fd3703";
 
 function EventProfile() {
@@ -70,9 +70,8 @@ function EventProfile() {
 
               {/* COLLAPSIBLE CONTENT */}
               <div
-                className={`overflow-hidden transition-all duration-500 ease-in-out ${
-                  expanded ? "max-h-[1000px] opacity-100" : "max-h-0 opacity-0"
-                }`}
+                className={`overflow-hidden transition-all duration-500 ease-in-out ${expanded ? "max-h-[1000px] opacity-100" : "max-h-0 opacity-0"
+                  }`}
               >
                 <div className="space-y-[2vh] pt-2">
                   {mentor.noteText?.slice(1).map((text, index) => (

@@ -7,7 +7,7 @@ import axios from "axios";
 function IndabratorServices() {
   const PAGE_NAME = "Engineering";
   const BASE_URL =
-    "https://nesco-backend-j567.onrender.com/api/v1/business/halls";
+    "https://nesco-backend-1.onrender.com/api/v1/business/halls";
 
   const [services, setServices] = useState([]);
   const [loading, setLoading] = useState(true);

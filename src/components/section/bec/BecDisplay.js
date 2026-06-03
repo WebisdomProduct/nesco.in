@@ -9,7 +9,7 @@ import displayImage from "@/assests/nesco-business-page/bec-elements/36.png";
 
 const PAGE_NAME = "Bombay Exhibition Center";
 const BASE_URL =
-  "https://nesco-backend-j567.onrender.com/api/v1/business/display";
+  "https://nesco-backend-1.onrender.com/api/v1/business/display";
 
 function BecDisplay() {
   const [display, setDisplay] = useState({

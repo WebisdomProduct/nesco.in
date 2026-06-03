@@ -8,7 +8,7 @@ import incubationImage from "@/assests/nesco-business-page/nesco-reality-element
 
 /* ================= CONFIG ================= */
 const MENTOR_ID = "697df949d26359f67c431acf";
-const API_URL = `https://nesco-backend-j567.onrender.com/api/v1/business/extra/${MENTOR_ID}`;
+const API_URL = `https://nesco-backend-1.onrender.com/api/v1/business/extra/${MENTOR_ID}`;
 
 function RealtyInitiative() {
   const [data, setData] = useState(null);

@@ -7,7 +7,7 @@ import Banner from "@/components/common/MainBanner/Banner";
 // import Navbar from "@/components/layout/navbar/Navbar";
 
 const API_BASE =
-  "https://nesco-backend-j567.onrender.com/api/v1/life_at_nesco/banner";
+  "https://nesco-backend-1.onrender.com/api/v1/life_at_nesco/banner";
 
 function LifeBanner() {
   const [activeSlide, setActiveSlide] = useState(0);
@@ -42,7 +42,7 @@ function LifeBanner() {
   const SliderData = useMemo(() => {
     return banners.map((item) => ({
       image: item.image,
-      mobileImage:item.mobileImage,
+      mobileImage: item.mobileImage,
       data: (
         <div className="absolute top-1/2 left-[10%] -translate-y-1/2 px-10 md:px-20 text-white z-20">
           <p className="mb-2 text-2xl md:text-4xl font-branding-medium">

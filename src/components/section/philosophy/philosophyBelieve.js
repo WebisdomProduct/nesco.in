@@ -5,7 +5,7 @@ import { gsap } from "gsap";
 import axios from "axios";
 
 const API_BASE =
-  "https://nesco-backend-j567.onrender.com/api/v1/about/philosophy";
+  "https://nesco-backend-1.onrender.com/api/v1/about/philosophy";
 
 function PhilosophyBelieve() {
   const [showContent, setShowContent] = useState(false);

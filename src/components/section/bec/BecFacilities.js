@@ -40,7 +40,7 @@ const STATIC_FACILITIES = [
 
 const PAGE_NAME = "Bombay Exhibition Center";
 const BASE_URL =
-  "https://nesco-backend-j567.onrender.com/api/v1/business/facilities";
+  "https://nesco-backend-1.onrender.com/api/v1/business/facilities";
 
 function BecFacilities() {
   const [backendFacilities, setBackendFacilities] = useState([]);

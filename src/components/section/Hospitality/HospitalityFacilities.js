@@ -12,7 +12,7 @@ import restaurantImage from "@/assests/nesco-business-page/bec-elements/35.jpg";
 
 // ================= API =================
 const FACILITIES_API =
-  "https://nesco-backend-j567.onrender.com/api/v1/business/facilities/page/Hospitality";
+  "https://nesco-backend-1.onrender.com/api/v1/business/facilities/page/Hospitality";
 
 function HospitalityFacilities() {
   // ================= FALLBACK DATA =================
@@ -138,9 +138,8 @@ function HospitalityFacilities() {
                 <div
                   key={i}
                   onClick={() => setCurrentIndex(i)}
-                  className={`w-2 h-2 rounded-full cursor-pointer ${
-                    i === currentIndex ? "bg-black" : "bg-gray-300"
-                  }`}
+                  className={`w-2 h-2 rounded-full cursor-pointer ${i === currentIndex ? "bg-black" : "bg-gray-300"
+                    }`}
                 />
               ))}
             </div>

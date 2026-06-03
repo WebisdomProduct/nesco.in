@@ -9,7 +9,7 @@ import displayImage from "@/assests/nesco-business-page/nesco-food-elements/24.j
 
 // ================= API =================
 const DISPLAY_API =
-  "https://nesco-backend-j567.onrender.com/api/v1/business/display/page/Hospitality";
+  "https://nesco-backend-1.onrender.com/api/v1/business/display/page/Hospitality";
 
 function HospitalityDisplay() {
   // ================= STATE =================
