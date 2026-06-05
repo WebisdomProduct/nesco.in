@@ -16,7 +16,6 @@ export default function OldSiteFrame({ src }) {
       }}>
         <iframe
           src={src}
-          sandbox="allow-same-origin allow-scripts allow-popups allow-forms"
           frameBorder="0"
           scrolling="yes"
           style={{
