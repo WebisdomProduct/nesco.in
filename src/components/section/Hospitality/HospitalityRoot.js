@@ -9,7 +9,7 @@ import kitchenImage from "@/assests/nesco-business-page/nesco-food-elements/28.j
 /* ================= CONFIG ================= */
 
 const MENTOR_ID = "697e04b9d64c9ff144fd60ec";
-const API_URL = `https://nesco-backend-j567.onrender.com/api/v1/business/extra/${MENTOR_ID}`;
+const API_URL = `https://nesco-backend-1.onrender.com/api/v1/business/extra/${MENTOR_ID}`;
 
 /* ================= COMPONENT ================= */
 

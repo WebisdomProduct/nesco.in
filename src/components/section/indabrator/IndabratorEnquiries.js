@@ -31,13 +31,13 @@ function IndabratorEnquiries() {
               <div className="space-y-4">
                 <div className="flex items-start">
                   <MdEmail className="w-5 h-5 mr-4 mt-1 text-blue-800 group-hover:text-white transition-colors duration-200" />
-                  <span
-                    className="text-base sm:text-lg text-blue-800 group-hover:text-white transition-colors duration-200"
+                  <div
+                    className="text-base sm:text-lg text-blue-800 group-hover:text-white transition-colors duration-200 flex flex-col gap-2"
                     style={{ fontFamily: "BrandingMedium" }}
                   >
-                    Machines related: indabrator.sales@nesco.in <br />
-                    Spares & abrasive related: indabrator.spares@nesco.in
-                  </span>
+                    <span>Machines related: indabrator.sales@nesco.in</span>
+                    <span className="whitespace-nowrap">Spares & abrasive related: indabrator.spares@nesco.in</span>
+                  </div>
                 </div>
 
                 <div className="flex items-center">

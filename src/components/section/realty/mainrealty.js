@@ -53,14 +53,14 @@ function MainRealty() {
       ),
       classCss: "section header_color_black",
     },
-    {
-      comp: (
-        <AnimateOnScroll>
-          <RealtyInitiative />
-        </AnimateOnScroll>
-      ),
-      classCss: "section header_color_black",
-    },
+    // {
+    //   comp: (
+    //     <AnimateOnScroll>
+    //       <RealtyInitiative />
+    //     </AnimateOnScroll>
+    //   ),
+    //   classCss: "section header_color_black",
+    // },
     {
       comp: (
         <AnimateOnScroll>
