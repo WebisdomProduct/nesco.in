@@ -49,8 +49,8 @@ function Mentor() {
         backgroundRepeat: 'no-repeat',
       }}
     >
-      <div className="z-20 relative lg:w-[100%] w-[90%] flex flex-col items-center justify-center mx-auto mt-12 lg:mb-0 mb-10 h-full goal-section1">
-        <div className="flex lg:flex-row flex-col lg:items-start items-center h-full w-full">
+      <div className="z-20 relative lg:w-[100%] w-[90%] flex flex-col items-center justify-center mx-auto lg:py-0 py-10 h-full goal-section1">
+        <div className="flex lg:flex-row flex-col lg:items-center items-center h-full w-full">
 
           {/* Mentor Image */}
           <div className="flex flex-col lg:w-[50%] w-full h-full lg:justify-end justify-center z-10 relative mb-6 lg:mb-0">
@@ -62,12 +62,11 @@ function Mentor() {
           </div>
 
           {/* Mentor Info */}
-          <div className="relative lg:w-[50%] h-full flex flex-col justify-center xl:pt-32 lg:pl-10 lg:pr-16">
+          <div className="relative lg:w-[50%] h-full flex flex-col justify-center lg:pl-10 lg:pr-16 lg:py-0 py-8">
             <h2
               className="
-                 text-[28px] leading-[32px] text-blue-800 font-bold
-md:text-[48px] md:leading-[44px]
-
+                 text-[32px] leading-[40px] text-[#1e3a8a] font-bold
+                 md:text-[48px] md:leading-[56px]
               "
             >
               {mentor.name}
@@ -75,9 +74,8 @@ md:text-[48px] md:leading-[44px]
 
             <p
               className="
-                 text-[18px] leading-[22px]
-md:text-[26px] md:leading-[26px]
-
+                 text-[18px] leading-[26px] font-medium text-gray-800 mt-2
+                 md:text-[24px] md:leading-[32px] md:mt-3
               "
             >
               {mentor.designation}
@@ -85,29 +83,29 @@ md:text-[26px] md:leading-[26px]
 
             <h3
               className="
-               font-semibold
-                text-[34px] leading-[46px]
-                md:text-[28px] md:leading-[40px]
+               font-semibold text-black mt-8 mb-6
+                text-[26px] leading-[34px]
+                md:text-[32px] md:leading-[42px]
               "
             >
               {mentor.noteTitle}
             </h3>
 
-            <div className="space-y-3 mt-3">
+            <div className="space-y-4">
               {mentor.noteText && Array.isArray(mentor.noteText)
                 ? mentor.noteText.map((paragraph, idx) => (
                   <p
                     key={idx}
                     className="
-                          text-[20px] leading-[26px]
-md:text-[22px] md:leading-[32px]
+                          text-[18px] leading-[28px] text-gray-700 font-medium
+                          md:text-[20px] md:leading-[32px]
                       "
                   >
                     {paragraph}
                   </p>
                 ))
                 : (
-                  <p className="text-[16px] leading-[26px]">
+                  <p className="text-[18px] leading-[28px] text-gray-700">
                     No message available.
                   </p>
                 )}

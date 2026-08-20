@@ -130,7 +130,7 @@ function BecAmenities() {
                 "
             >
               {/* ================= ICON ================= */}
-              <div className="w-[100px] h-[100px] sm:w-[120px] sm:h-[120px] md:w-[140px] md:h-[140px] lg:w-[160px] lg:h-[160px] mb-2 sm:mb-4">
+              <div className="w-[70px] h-[70px] sm:w-[100px] sm:h-[100px] md:w-[120px] md:h-[120px] lg:w-[140px] lg:h-[140px] mb-2 sm:mb-4">
                 {item.isRemote ? (
                   <img
                     src={item.icon}
@@ -150,11 +150,11 @@ function BecAmenities() {
 
               {/* ================= TEXT ================= */}
               <p
-                className="text-[22px] sm:text-[1.2rem] md:text-[1.3rem] text-blue-800"
+                className="text-[14px] leading-[1.3] sm:text-[16px] md:text-[1.1rem] lg:text-[1.2rem] text-blue-800"
                 style={{ fontFamily: "BrandingMedium" }}
               >
                 <span
-                  className="font-bold"
+                  className="font-bold block sm:inline mb-1 sm:mb-0"
                   style={{ fontFamily: "BrandingSemibold" }}
                 >
                   {item.name}

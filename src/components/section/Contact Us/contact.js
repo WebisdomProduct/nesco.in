@@ -25,21 +25,21 @@ function Contact() {
 
   return (
     <div className="bg-[#0A2B72] w-full xl:py-36 py-20 flex flex-col justify-between items-center relative overflow-hidden">
-      <div className="absolute z-0 w-full h-full lg:top-0 md:top-[20%] top-[25%]">
+      <div className="absolute inset-0 z-0 flex items-center justify-center pointer-events-none opacity-50">
         <Image
           src={WorldImage}
           alt="World Image"
-          className="w-[90%] object-cover mx-auto"
+          className="w-full h-full object-contain p-4 md:p-10"
         />
       </div>
 
       <div>
-        <h1 className="font-branding-medium text-white text-6xl z-10 relative">
+        <h1 className="font-branding-medium text-white text-4xl md:text-6xl z-10 relative mt-10 md:mt-0">
           Contact Us
         </h1>
       </div>
 
-      <div className="w-full flex flex-col md:items-center mt-32 z-10 relative">
+      <div className="w-full flex flex-col md:items-center mt-10 md:mt-32 z-10 relative">
         <SlidedownCard data={data} />
       </div>
     </div>

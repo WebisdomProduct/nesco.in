@@ -24,14 +24,14 @@ export default function Goal() {
   if (!goals.length) return null;
 
   return (
-    <section className="w-full lg:h-screen h-full bg-gray-200 pb-10 flex flex-col justify-center min-h-[800px]">
+    <section className="w-full lg:h-screen h-full bg-gray-200 lg:py-0 py-10 flex flex-col justify-center">
       {goals.map((goal) => (
         <div
           key={goal._id}
-          className="grid md:grid-cols-2 justify-between gap-10 md:gap-0 pt-16 items-center w-[90%] mx-auto goal-section1"
+          className="grid md:grid-cols-2 justify-between gap-10 md:gap-0 items-center w-[90%] mx-auto goal-section1"
         >
           {/* Image Section */}
-          <div className="relative h-[400px] md:h-[700px] mt-12">
+          <div className="relative h-[300px] md:h-[450px] lg:h-[600px] mt-8 lg:mt-0">
             <Image
               src={goal.image}
               alt={`${goal.heading1} illustration`}
@@ -52,7 +52,6 @@ export default function Goal() {
                   text-[48px] leading-[56px]
                   md:text-[48px] md:leading-[60px]
                   lg:text-[48px] lg:leading-[60px]
-                  md:pt-28
                   text-center lg:text-left
                 "
               >
@@ -81,6 +80,7 @@ export default function Goal() {
                   font-semibold
                   text-[28px] leading-[36px]
                   md:text-[28px] md:leading-[40px]
+                  text-center lg:text-left
                 "
               >
                 {goal.heading3}
@@ -92,6 +92,7 @@ export default function Goal() {
                   font-medium
                   text-[18px] leading-[28px]
                   md:text-[18px] md:leading-[30px]
+                  text-center lg:text-left
                 "
               >
                 {goal.paragraphDescription}

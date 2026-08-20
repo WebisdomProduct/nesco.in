@@ -30,21 +30,21 @@ function IndabratorProfile() {
           {/* TEXT */}
           <div className="w-full lg:w-[50%] space-y-[2vh]">
             <h3
-              className="text-[clamp(2rem,4vw,3.5rem)] font-bold"
+              className="text-[clamp(2.5rem,5vw,3.5rem)] font-bold"
               style={{ fontFamily: "BrandingSemibold" }}
             >
               {mentor.name}
             </h3>
 
             <p
-              className="text-[clamp(1.2rem,2.5vw,1.8rem)] text-gray-600"
+              className="text-[clamp(1.4rem,3vw,1.8rem)] text-gray-600"
               style={{ fontFamily: "BrandingMedium" }}
             >
               {mentor.designation}
             </p>
 
             <p
-              className="text-[clamp(1.2rem,2.5vw,1.8rem)] font-bold text-blue-800"
+              className="text-[clamp(1.4rem,3vw,1.8rem)] font-bold text-blue-800"
               style={{ fontFamily: "BrandingSemibold" }}
             >
               {mentor.noteTitle}
@@ -53,7 +53,7 @@ function IndabratorProfile() {
             {visibleText.map((para, i) => (
               <p
                 key={i}
-                className="text-[clamp(1rem,2.2vw,1.6rem)] text-gray-700"
+                className="text-[clamp(1.15rem,2.5vw,1.6rem)] text-gray-700"
                 style={{ fontFamily: "BrandingMedium" }}
               >
                 {para}

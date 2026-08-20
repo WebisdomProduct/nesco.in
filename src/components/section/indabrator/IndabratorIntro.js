@@ -76,7 +76,7 @@ export default function IndabratorIntro() {
         <div className="w-full md:w-[50%] flex flex-col justify-center py-8 md:pt-32 md:pb-12">
           <h1
             className="
-              text-[2rem] xs:text-[2.4rem] sm:text-[2.8rem]
+              text-[2.5rem] xs:text-[2.8rem] sm:text-[3rem]
               md:text-[3.4rem] lg:text-[3.8rem]
               xl:text-[4.4rem] 2xl:text-[5rem]
               font-bold leading-[1.1] sm:leading-[1.15]
@@ -96,7 +96,7 @@ export default function IndabratorIntro() {
               <p
                 key={index}
                 className="
-                  text-[0.95rem] xs:text-[1rem] sm:text-[1.1rem]
+                  text-[1.15rem] xs:text-[1.25rem] sm:text-[1.3rem]
                   md:text-[1.2rem] lg:text-[1.3rem]
                   xl:text-[1.4rem] 2xl:text-[1.5rem]
                   leading-[1.6] sm:leading-[1.65] md:leading-[2]

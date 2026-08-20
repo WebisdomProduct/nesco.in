@@ -14,7 +14,7 @@ function SocialCSR() {
       title: 'Composition of CSR',
       buttonColor: '#5A9448',
       buttonColor1: '#518642',
-      link: 'https://nesco.in/Corporate 20Social 20Responsibility 20Committee.pdf',
+      link: 'https://nesco.in/Corporate%20Social%20Responsibility%20Committee.pdf',
     },
     {
       title: 'CSR Policy',

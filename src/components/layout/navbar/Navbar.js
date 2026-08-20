@@ -562,8 +562,8 @@ function Navbar({ activeSlide }) {
               {expandedMenuIndex === index && data.subMenu.length > 0 && (
                 <ul className="pl-4 mt-2">
                   {data.subMenu.map((subData, subIndex) => (
-                    <li key={subIndex} className="text-white text-lg my-1">
-                      <Link href={subData.route}>{subData.title}</Link>
+                    <li key={subIndex} className="text-white text-lg my-1 leading-tight">
+                      <Link href={subData.route} className="block py-1">{subData.title}</Link>
                     </li>
                   ))}
                 </ul>

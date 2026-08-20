@@ -49,7 +49,7 @@ function SlidedownCard({ data }) {
       {data.map((element, index) => (
         <div key={index} className="md:w-[50%] my-2 ">
           <div
-            className="font-branding-medium text-3xl text-white flex justify-between items-center cursor-pointer"
+            className="font-branding-medium text-xl md:text-3xl text-white flex justify-between items-center cursor-pointer p-4 hover:bg-white/10 rounded-lg transition-colors border-b border-white/20"
             onClick={() => handleToggle(index)}
           >
             {element.title}
@@ -69,13 +69,19 @@ function SlidedownCard({ data }) {
                   : "opacity-0 max-h-0"
               }`}
             >
-              <div className="bg-[#114086] flex flex-col relative text-white p-3 opacity-65">
+              <div className="bg-[#114086]/70 flex flex-col relative text-white p-5 rounded-b-lg gap-2 text-base md:text-lg">
                 <p>{element.description.address1}</p>
                 <p>{element.description.address2}</p>
                 <p>{element.description.city}</p>
-                <p>Phone: {element.description.phone1}</p>
-                <p>{element.description.contact}</p>
-                <p>{element.description.phone2}</p>
+                {element.description.phone1 && (
+                  <p>Phone: <a href={`tel:${element.description.phone1.replace(/\s+/g, '')}`} className="hover:underline text-blue-300">{element.description.phone1}</a></p>
+                )}
+                {element.description.phone2 && (
+                  <p>Alt Phone: <a href={`tel:${element.description.phone2.replace(/\s+/g, '')}`} className="hover:underline text-blue-300">{element.description.phone2}</a></p>
+                )}
+                {element.description.contact && (
+                  <p>Email: <a href={`mailto:${element.description.contact}`} className="hover:underline text-blue-300">{element.description.contact}</a></p>
+                )}
               </div>
             </div>
           </div>

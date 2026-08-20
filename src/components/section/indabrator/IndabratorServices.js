@@ -61,7 +61,7 @@ function IndabratorServices() {
               />
               <div className="absolute inset-0 bg-black/10 hover:bg-black/5 transition-all" />
             </div>
-            <h3 className="text-center text-white text-lg font-medium leading-tight">
+            <h3 className="text-center text-white text-[1.25rem] font-medium leading-tight">
               {service.title}
             </h3>
           </div>

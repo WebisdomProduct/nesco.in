@@ -74,7 +74,7 @@ export const MentorModal = ({ isOpen, onClose, data, lenis }) => {
         footer={false}
       >
         <div ref={modalRef} className="w-full -mb-3">
-          <h2 className="text-2xl font-branding-semibold text-primary">
+          <h2 className="text-2xl font-branding-semibold text-primary pr-8">
             {data.name || data.title}
           </h2>
           <p className="text-gray-700 mb-5 text-[1.1rem]">{data.position}</p>
@@ -83,7 +83,7 @@ export const MentorModal = ({ isOpen, onClose, data, lenis }) => {
               }`}
           >
             <div className="flex flex-col gap-4">
-              <p className="text-gray-800 ">{data.description}</p>
+              <p className="text-gray-800 ">{data.description?.replace(/\\/g, '')}</p>
             </div>
             {data.image && (
               <div className="flex justify-end items-start">

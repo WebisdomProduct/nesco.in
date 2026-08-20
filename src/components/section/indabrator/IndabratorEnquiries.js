@@ -36,7 +36,7 @@ function IndabratorEnquiries() {
                     style={{ fontFamily: "BrandingMedium" }}
                   >
                     <span>Machines related: indabrator.sales@nesco.in</span>
-                    <span className="whitespace-nowrap">Spares & abrasive related: indabrator.spares@nesco.in</span>
+                    <span className="break-words sm:whitespace-nowrap">Spares & abrasive related: indabrator.spares@nesco.in</span>
                   </div>
                 </div>
 

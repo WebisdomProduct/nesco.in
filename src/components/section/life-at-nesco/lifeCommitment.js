@@ -34,7 +34,7 @@ function LifeCommitment() {
       <div className="grid md:grid-cols-2 justify-between gap-10 pt-24 xl:items-start items-center w-[90%] mx-auto">
 
         {/* CONTENT */}
-        <div>
+        <div className="text-center md:text-left">
           <h2
             style={{ fontFamily: "BrandingSemibold" }}
             className="text-[#1e3a8a] text-[48px] font-branding-semibold font-bold"

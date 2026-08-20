@@ -51,7 +51,7 @@ function News() {
         className="text-[48px] text-primary"
         style={{ fontFamily: 'BrandingSemibold' }}
       >
-        In the news
+        In the News
       </p>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-8 w-[90%] mt-10">
@@ -68,17 +68,15 @@ function News() {
             <div className="flex flex-col my-2 md:px-10 z-10 items-center relative">
               <div className="flex justify-between w-full mb-2">
                 <button
-                  className={`text-2xl font-semibold ${
-                    selectedExchange === 'bse' ? 'text-primary' : 'text-[#445F53]'
-                  }`}
+                  className={`text-2xl font-semibold ${selectedExchange === 'bse' ? 'text-primary' : 'text-[#445F53]'
+                    }`}
                   onClick={() => setSelectedExchange('bse')}
                 >
                   BSE
                 </button>
                 <button
-                  className={`text-2xl font-semibold ${
-                    selectedExchange === 'nse' ? 'text-primary' : 'text-[#445F53]'
-                  }`}
+                  className={`text-2xl font-semibold ${selectedExchange === 'nse' ? 'text-primary' : 'text-[#445F53]'
+                    }`}
                   onClick={() => setSelectedExchange('nse')}
                 >
                   NSE

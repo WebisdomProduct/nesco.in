@@ -57,7 +57,7 @@ function SocialPower() {
             </span>
           )}
           {data.paragraph2 && (
-            <span className="mt-2">
+            <span className="font-branding-bold mt-2">
               {data.paragraph2}
             </span>
           )}

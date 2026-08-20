@@ -46,7 +46,7 @@ function LifeCulture() {
         </div>
 
         {/* CONTENT */}
-        <div>
+        <div className="text-center md:text-left">
           <h2
             style={{ fontFamily: "BrandingSemibold" }}
             className="text-[#1e3a8a] text-[48px] font-branding-semibold font-bold"

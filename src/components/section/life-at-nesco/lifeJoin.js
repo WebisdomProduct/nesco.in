@@ -33,16 +33,16 @@ function LifeJoin() {
         >
           Join Us
         </h2>
-        <p className="text-[22px] text-center px-20  mb-10">
+        <p className="text-[22px] text-center px-4 md:px-20 mb-10">
           At Nesco, we believe in fostering talent across all stages of your career. Whether you are an intern eager to learn, a fresh graduate ready to take on new challenges, or an experienced professional looking to grow, we offer a wide range of opportunities to help you thrive.
         </p>
         <div className="grid lg:grid-cols-3 grid-cols-1 md:grid-cols-2 gap-12 w-full">
           {careerCard.map((data, index) => (
             <div
               key={index}
-              className="flex flex-col justify-center items-center bg-white rounded-xl shadow-lg p-8 transition-transform hover:scale-105 min-h-[22rem]"
+              className="flex flex-col justify-center items-center bg-white rounded-xl shadow-lg p-8 transition-transform hover:scale-105 min-h-[16rem] md:min-h-[22rem]"
             >
-              <div className="md:w-[14rem] md:h-[14rem] w-[60%] h-[12rem] flex items-center justify-center mb-4">
+              <div className="md:w-[14rem] md:h-[14rem] w-[50%] h-[8rem] flex items-center justify-center mb-0 md:mb-4">
                 <Link href={data.link}>
                   <Image
                     src={data.image}

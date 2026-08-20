@@ -88,6 +88,17 @@ function BecFacilities() {
     );
   };
 
+  /* ================= AUTO PLAY ================= */
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentIndex((prevIndex) =>
+        prevIndex === facilities.length - 1 ? 0 : prevIndex + 1
+      );
+    }, 5000); // Auto-change every 5 seconds
+    
+    return () => clearInterval(timer);
+  }, [facilities.length]);
+
   return (
     <div className="w-full h-screen overflow-hidden">
       {/* TITLE */}

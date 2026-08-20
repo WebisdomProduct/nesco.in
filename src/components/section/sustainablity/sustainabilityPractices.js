@@ -21,8 +21,18 @@ function SustainabilityPractices() {
   /* ================= FETCH DATA ================= */
   const fetchPractices = async () => {
     try {
-      const res = await axios.get(API);
-      setCardData(res.data.data);
+      const cleanedData = res.data.data.map(item => ({
+        ...item,
+        title: item.title?.replace("account ability", "accountability")
+                         ?.replace("Active en gagement", "Active engagement")
+                         ?.replace("minimizing mizing", "minimizing")
+                         ?.replace(/&#39;/g, "'"),
+        description: item.description?.replace("account ability", "accountability")
+                                   ?.replace("Active en gagement", "Active engagement")
+                                   ?.replace("minimizing mizing", "minimizing")
+                                   ?.replace(/&#39;/g, "'")
+      }));
+      setCardData(cleanedData);
       setLoading(false);
     } catch (err) {
       console.error(err);

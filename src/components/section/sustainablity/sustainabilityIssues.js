@@ -11,9 +11,9 @@ function SustainabilityIssues() {
           Material ESG Issues
         </h1>
         <div className="overflow-x-auto">
-          <table className="w-full border-2 border-gray-400 text-xl text-left">
+          <table className="w-full border-2 border-gray-400 text-xs sm:text-sm lg:text-xl text-left">
             <thead>
-              <tr className="bg-violet-900 text-[#b6d6ef] text-2xl text-center">
+              <tr className="bg-violet-900 text-[#b6d6ef] text-sm sm:text-base lg:text-2xl text-center">
                 <th scope="col" className="w-[15%] h-[20%]"></th>
                 <th scope="col" className="py-2 px-2">
                   Environmental
@@ -24,11 +24,11 @@ function SustainabilityIssues() {
             </thead>
             <tbody>
               <tr className="border-2 border-gray-400">
-                <td className="text-center flex flex-col items-center justify-center py-5">
-                  <div className="overflow-hidden w-[80px] flex items-center justify-center">
+                <td className="text-center flex flex-col items-center justify-center py-2 lg:py-5">
+                  <div className="overflow-hidden w-[40px] lg:w-[80px] flex items-center justify-center">
                     <Image src={doubleDanger} alt="High Risk" className="" />
                   </div>
-                  <span className="font-branding-semibold mt-5 text-gray-800 ">
+                  <span className="font-branding-semibold mt-2 lg:mt-5 text-gray-800">
                     High
                   </span>
                 </td>
@@ -54,15 +54,15 @@ function SustainabilityIssues() {
                 </td>
               </tr>
               <tr className="border-2 border-gray-400">
-                <td className="text-center flex flex-col items-center justify-center py-5">
-                  <div className="overflow-hidden w-[70px] flex items-center justify-center">
+                <td className="text-center flex flex-col items-center justify-center py-2 lg:py-5">
+                  <div className="overflow-hidden w-[35px] lg:w-[70px] flex items-center justify-center">
                     <Image
                       src={singleDanger}
                       alt="Medium High Risk"
                       className=""
                     />
                   </div>
-                  <span className="font-branding-semibold mt-5 text-gray-800 px-20">
+                  <span className="font-branding-semibold mt-2 lg:mt-5 text-gray-800 lg:px-20 px-2">
                     Medium High
                   </span>
                 </td>
